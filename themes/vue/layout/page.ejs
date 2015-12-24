@@ -1,0 +1,26 @@
+<% if (page.type) { %>
+    <%- partial('partials/sidebar', { type: page.type, index: page.index }) %>
+<% } %>
+<div class="content <%- page.type ? page.type + ' with-sidebar' : '' %>">
+    <h1><%- page.title %><%- page.type === 'examples' ? ' Example' : '' %></h1>
+    <div id="ad">
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=vuejs" id="_carbonads_js"></script>
+    </div>
+    <%- page.content %>
+    <% if (page.type === 'guide') { %>
+      <div class="guide-links">
+        <% site.pages.find({ type: page.type, order: page.order - 1 }).each(function (page) { %>
+          <span>← <a href="<%- url_for(page.path) %>"><%- page.title %></a></span>
+        <% }) %>
+        <% site.pages.find({ type: page.type, order: page.order + 1 }).each(function (page) { %>
+          <span style="float:right"><a href="<%- url_for(page.path) %>"><%- page.title %></a> →</span>
+        <% }) %>
+      </div>
+    <% } %>
+    <div class="footer">
+      Trovato qualche errore nella documentazione?
+      <a href="https://github.com/vuejs/vuejs.org/blob/master/src/<%- page.path.replace(/\.html$/, '.md') %>" target="_blank">
+        Modifica questa pagina su Github!
+      </a>
+    </div>
+</div>
