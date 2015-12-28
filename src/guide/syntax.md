@@ -4,7 +4,7 @@ type: guide
 order: 4
 ---
 
-Vue.js implementa un sistema di template basato sul DOM della pagina HTML. Questo significa chhe tutti i template Vue.js sono visti come delle porzioni di DOM con qualche funzionalità in più. Tenete a mente che questo rende i template di Vue.js molto differenti dai template su unica stringa.
+Vue.js implementa un sistema di template basato sul DOM della pagina HTML. Questo significa che tutti i template Vue.js sono visti come delle porzioni di DOM con qualche funzionalità in più. Tenete a mente che questo rende i template di Vue.js molto differenti dai template su unica stringa.
 
 ## Interpolazioni
 
@@ -16,7 +16,7 @@ La più base delle interpolazioni è quella che utilizza la sintassi "Mustache",
 <span>Messaggio: {{ msg }}</span>
 ```
 
-Le parentesi graffe verranno rimpiazzate dal valore della variable `msg`, più propriamente andrà a sostituire la proprietà dell'oggetto `data` di Vue. Essendo reattiva ogni cambiamento a `msg` verrà riflettuto sulla vista
+Le parentesi graffe verranno rimpiazzate dal valore della variable `msg`, più propriamente andrà a sostituire la proprietà dell'oggetto `data.message` di Vue. Essendo reattiva ogni cambiamento a `msg` verrà riflettuto sulla vista
 
 Puoi anche effettuare un interpolazione unica omettendo il sistema di sincronizzazione:
 
@@ -34,7 +34,7 @@ Le doppie parentesi graffe interpretano i dati come testo, non come HTML. Per ot
 
 Il contenuto verrà inserito come HTML, I vincoli con i dati verranno ignorati. Se questo sistema inizia a diventare ripetitivo puoi sempre fare uso dei [Parziali](/api/#partial).
 
-<p class="tip">Attenzione, fare il rendering dinamico di HTML sulla tua applicazione può essere pericolo in quanto può scatenare [Attacchi XSS](https://en.wikipedia.org/wiki/Cross-site_scripting). Usate questa procedura se e soltanto se avete la certezza sicura di dove provenga l'HTML che volete interpretare e **mai** renderizzare HTML generato dagli utenti.</p>
+<p class="tip">Attenzione, fare il rendering dinamico di HTML sulla tua applicazione può essere pericolo in quanto può essere soggetto di [Attacchi XSS](https://en.wikipedia.org/wiki/Cross-site_scripting). Usate questa procedura se e soltanto se avete la certezza assoluta della provenienza del codice HTML che volete interpretare e **mai** renderizzare HTML generato dagli utenti.</p>
 
 ### Attributi
 
@@ -44,7 +44,7 @@ Le parentesi graffe possono essere usate anche negli attributi dello specifico e
 <div id="item-{{ id }}"></div>
 ```
 
-Da notare che l'interpolazione degli attributi è disabilitata neglle specifiche direttive oppure negli attributi personali di Vue.js. Non preoccupatevi perchè Vue.js vi allerterà qualora utilizziate male le parentesi graffe.
+Da notare che l'interpolazione degli attributi è disabilitata nelle specifiche direttive oppure negli attributi personali di Vue.js. Non preoccupatevi perchè Vue.js vi allerterà qualora utilizziate male le parentesi graffe.
 
 ## Espressioni Vincolanti
 
@@ -52,7 +52,7 @@ Il testo all'interno delle doppie parentesi graffe viene chiamato **espressione 
 
 ### Espressioni in JavaScript
 
-Fin'ora abbiamo solo visto come vegono gestite le proprità dell'oggetto data nel nostro template HTML. Vue.js può anche interpretare complesse espressioni JavaScript all'interno delle parentesi graffe:
+Fin'ora abbiamo solo visto come vegono gestite le proprità dell'oggetto `data` nel nostro template HTML. Vue.js può anche interpretare complesse espressioni JavaScript all'interno delle parentesi graffe:
 
 ``` html
 {{ number + 1 }}
@@ -82,7 +82,7 @@ Vue.js permette di inserire dei "filtri" opzionali alla fine di un espressione t
 
 In questo caso stiamo "accodando" (piping) il risultato della espressione di sinistra, ovvero il valore della proprietà `message`, alla parte di espressione dopo la `pipe` che, in questo caso, è il funzione interna `capitalize`. Vue.js fornisce una serie di filtri integrati già pronti all'utilizzo, successivamente vedremo come scrivere filtri personalizzati.
 
-Da notare che la `pipe` non fa parte della sintassi generale di JavaScript, difatti non può essere mescolata con altre espressioni ma solo usata come conflusso di dati tra la parte sinistra della pipe e la parte destra dell'espressione.
+Da notare che la `pipe` non fa parte della sintassi generale di JavaScript, difatti non può essere mescolata con altre espressioni ma solo usata come conflusso di dati tra la parte sinistra e destra della pipe stessa.
 
 I filtri possono essere concatenati:
 
@@ -96,7 +96,7 @@ Inoltre possono ricevere parametri come argomenti
 {{ message | filterA 'arg1' arg2 }}
 ```
 
-La funzione del filtro in se riceverà sempre il risultato dell'espressione a sinistra della pipe come primo argomento. Il resto degli argomenti vengono presi come vendono scritti, i valori circondati da apici verranno interpretati come stringhe, gli altri sempre come espressioni. Nell'esempio sopra la stringa `'arg1'` verrà passata come secondo parametro della funzione del filtro, invece il secondo parametro `arg2` verra valutato come risultato di un espressione e poi passato alla funzione del filtro.
+La funzione del filtro in se riceverà sempre il risultato dell'espressione a sinistra della pipe come primo argomento. Il resto degli argomenti vengono presi come vengono scritti, i valori circondati da apici verranno interpretati come stringhe, gli altri sempre come espressioni. Nell'esempio sopra la stringa `'arg1'` verrà passata come secondo parametro della funzione del filtro, invece il secondo parametro `arg2` verra valutato come risultato di un espressione e poi passato alla funzione del filtro.
 
 ## Direttive
 
@@ -107,11 +107,11 @@ Rivediamo l'esempio dell'introduzione:
 <p v-if="greeting">Ciao!</p>
 ```
 
-In questo caso, la direttiva `v-if` rimuoverà l'intero elemento del DOM `<p>` se l'espressione `greeting` risulta non veritiera.
+In questo caso, la direttiva `v-if` rimuoverà l'intero elemento `<p>` dal DOM se l'espressione `greeting` risulta non veritiera.
 
 ### Argomenti
 
-Alcune direttive possono ricevete degli "argomenti", separati da un `:` dopo il nome della direttiva stessa. Per esempio `v-bind` può essere utilizzato per aggiornare in modo reattivo un singolo attributo HTML:
+Alcune direttive possono ricevere degli "argomenti", separati da un `:` dopo il nome della direttiva stessa. Per esempio `v-bind` può essere utilizzato per aggiornare in modo reattivo un singolo attributo HTML:
 
 ``` html
 <a v-bind:href="url"></a>
@@ -129,7 +129,7 @@ In questo caso l'argomento principale è l'evento da ascoltare, il click, parler
 
 ### Modificatori
 
-I modificatori sono suffissi speciali, separati da un punto, che indica in che modo particolare la direttiva debba legarsi. Per esempio, il modificatore `.literal` impone alla direttiva di intrpretare il valore della suo attributo come una stringa piuttosto che come un espressione:
+I modificatori sono suffissi speciali, separati da un punto, che indica in che modo particolare la direttiva debba legarsi. Per esempio, il modificatore `.literal` impone alla direttiva di intrpretare il valore che riceve come una stringa piuttosto che come un espressione:
 
 ``` html
 <a v-bind:href.literal="/a/b/c"></a>

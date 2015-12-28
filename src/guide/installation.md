@@ -15,14 +15,14 @@ gz_size: "23.85"
 Per installare Vue.js in locale scaricate lo script ed includetelo nel classico script tag. `Vue` verrà registrata come variabile globale. **Ricorda: Non usate la versione compressa durante lo sviluppo perchè andreste a perdere tutti gli avvisi per eventuali errori comuni.**
 
 <div id="downloads">
-<a class="button" href="/js/vue.js" download>Versione di Sviluppo</a><span class="light info">Completa di avvisi e modalità debug</span>
+<a class="button" href="/js/vue.js" download>Versione per lo Sviluppo</a><span class="light info">Completa di avvisi e modalità debug</span>
 
-<a class="button" href="/js/vue.min.js" download>Version di Produzione</a><span class="light info">Niente avvisi, {{gz_size}}kb min+gzip</span>
+<a class="button" href="/js/vue.min.js" download>Version per la Produzione</a><span class="light info">Niente avvisi, {{gz_size}}kb min+gzip</span>
 </div>
 
 ### CDN
 
-Vue.js è disponibile su [jsdelivr](//cdn.jsdelivr.net/vue/{{vue_version}}/vue.min.js) oppure [cdnjs](//cdnjs.cloudflare.com/ajax/libs/vue/{{vue_version}}/vue.min.js) (ci vuole del tempo prima che venga sincronizzata con l'ultima versione, perciò magari non è ancora disponbile online).
+Vue.js è disponibile su [jsdelivr](//cdn.jsdelivr.net/vue/{{vue_version}}/vue.min.js) oppure [cdnjs](//cdnjs.cloudflare.com/ajax/libs/vue/{{vue_version}}/vue.min.js) (ci vuole del tempo prima che vengano sincronizzate con l'ultima versione, perciò magari non è ancora disponbile online).
 
 ### Versione CSP compatibile
 
@@ -30,7 +30,7 @@ Alcuni ambienti, come il Google Chrome Apps, obbligano l'utilizzo delle CSP (Con
 
 ## NPM
 
-NPM è il sistema di installazione consigliato quando si costruiscono applicazioni di modeste dimensioni con Vue.js. Si accoppia in modo ottimale con i comuni moduli di CommonJS come, per esempio [Webpack](http://webpack.github.io/) oppure [Browserify](http://browserify.org/). Vue.js inoltre fornisce uno strumento di accompagnamento per l'authoring di [Componenti a file Singolo](application.html#Single_File_Components).
+NPM è il sistema di installazione consigliato quando si costruiscono applicazioni di modeste dimensioni con Vue.js. Si accoppia in modo ottimale con i comuni moduli di CommonJS come, per esempio, [Webpack](http://webpack.github.io/) oppure [Browserify](http://browserify.org/). Vue.js inoltre fornisce uno strumento di accompagnamento per l'authoring di [Componenti a file Singolo](application.html#Single_File_Components).
 
 ``` bash
 # Ultima version stabile

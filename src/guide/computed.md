@@ -51,7 +51,7 @@ var vm = new Vue({
 </script>
 {% endraw %}
 
-Abbiamo dichiarato una proprietà derivata `b`. La funziona che implementa questa properità derivata è utilizzata come Getter per la proprietà `vm.b`:
+Abbiamo dichiarato una proprietà derivata `b`. La funziona che implementa questa properità derivata è un Getter per la proprietà `vm.b`:
 
 ``` js
 console.log(vm.b) // -> 2
@@ -89,7 +89,7 @@ vm.$watch('lastName', function (val) {
 })
 ```
 
-Il codice sovrastante è riperitivo ed imperativo. Confrontatelo con una properietà derivata:ß
+Il codice sovrastante è riperitivo ed imperativo. Confrontatelo con una properietà derivata:
 
 ``` js
 var vm = new Vue({
@@ -109,7 +109,7 @@ Molto meglio, non trovate?
 
 ### Setter Derivati
 
-Le properietà derivate tendenzialmente vengono usate solo come getter, ma puoi comunuqe specificare un setter nel caso ti serva:
+Le properietà derivate tendenzialmente vengono usate solo come getter, ma puoi comunuqe specificare un setter nel caso vi serva:
 
 ``` js
 // ...
