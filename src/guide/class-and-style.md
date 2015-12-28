@@ -1,18 +1,18 @@
 ---
-title: Class and Style Bindings
+title: Vincolo sul CSS
 type: guide
 order: 6
 ---
 
-A common need for data binding is manipulating an element's class list and its inline styles. Since they are both attributes, we can use `v-bind` to handle them: we just need to calculate a final string with our expressions. However, meddling with string concatenation is annoying and error-prone. For this reason, Vue.js provides special enhancements when `v-bind` is used for `class` and `style`. In addition to Strings, the expressions can also evaluate to Objects or Arrays.
+Una necessità molto comune quando si utilizza il vincolo dei dati è quello di manipolare le classi e lo style CSS del tag HTML in questione. Visto che entrambi sono degli attributi comuni dei tag HTML, possiamo usare `v-bind` per gestirli: dobbiamo solo calcolare il corretto risultato finale della nostra espressione. Comunque sia pasticciare gli attributi con concatenazione di string e risultati di espresioni può portare ed errori. Per questo motivo Vue.js offre dei miglioramenti quando capisce che `v-bind` è utilizzato per l'attributo `class` o `style`. In aggiunta alle stringhe, l'espressione in `v-bind` potrà valutare anche Oggetti ed Array.
 
-## Binding HTML Classes
+## Vincolare Classi HTML
 
-<p class="tip">Although you can use mustache interpolations such as `{% raw %}class="{{ className }}"{% endraw %}` to bind the class, it is not recommended to mix that style with `v-bind:class`. Use one or the other!</p>
+<p class="tip">Anche se potreste usare l'interpolazione con le parentesi graffe `{% raw %}class="{{ className }}"{% endraw %}` per vincolare le classi, non è raccomandato mescolare quel metodo con `v-bind:class`, usate o uno o l'altro!</p>
 
-### Object Syntax
+### Sintassi per gli Oggetti
 
-We can pass an Object to `v-bind:class` to dynamically toggle classes. Note the `v-bind:class` directive can co-exist with the plain `class` attribute:
+Possiamo passare un Oggetto a `v-bind:class` per attivare classi CSS in modo dinamico. Notare che la direttiva `v-bind:class` può coesistere con l'attributo standard `class`:
 
 ``` html
 <div class="static" v-bind:class="{ 'class-a': isA, 'class-b': isB }"></div>
@@ -24,15 +24,15 @@ data: {
 }
 ```
 
-Which will render:
+Verrà renderizzato:
 
 ``` html
 <div class="static class-a"></div>
 ```
 
-When `isA` and `isB` changes, the class list will be updated accordingly. For example, if `isB` becomes `true`, the class list will become `"static class-a class-b"`.
+Quando `isA` e `isB` cambiano, la lista delle classi cambierà di conseguenza. Per esempio se `isB` diventa `true`, la classi css finali saranno `"static class-a class-b"`.
 
-And you can directly bind to an object in data as well:
+Tra le altre cose, puoi vincolare anche un oggetto:
 
 ``` html
 <div v-bind:class="classObject"></div>
@@ -46,11 +46,11 @@ data: {
 }
 ```
 
-This will render the same result. As you may have noticed, we can also bind to a [computed property](computed.html) that returns an Object. This is a common and powerful pattern.
+Questo esempio avrà lo stesso risultato. Come avrai intuito possiamo anche vincolare una [Proprietà Derivata](computed.html) la quale restituisce un Oggetto. Questo è un metodo di sviluppo comune e molto potente.
 
-### Array Syntax
+### Sintassi per gli Array
 
-We can pass an Array to `v-bind:class` to apply a list of classes:
+Potete passare un Array a `v-bind:class` per applicare una lista di classi CSS:
 
 ``` html
 <div v-bind:class="[classA, classB]">
@@ -62,25 +62,25 @@ data: {
 }
 ```
 
-Which will render:
+Verrà renderizzato:
 
 ``` html
 <div class="class-a class-b"></div>
 ```
 
-If you would like to also toggle a class in the list conditionally, you can do it with a ternary expression:
+Se avete la necessità di attivare una specifica classe in base ad una condizione, potete farlo usando le espressioni ternarie:
 
 ``` html
 <div v-bind:class="[classA, isB ? classB : '']">
 ```
 
-This will always apply `classA`, but will only apply `classB` when `isB` is `true`.
+In questo caso `classA` verrà sempre inserita, ma `classB` verrà inserita solo se `isB` è `true`.
 
-## Binding Inline Styles
+## Vincolare lo Style CSS
 
-### Object Syntax
+### Sintassi per gli Oggetti
 
-The Object syntax for `v-bind:style` is pretty straightforward - it looks almost like CSS, except it's a JavaScript object. You can use either camelCase or kebab-case for the CSS property names:
+La sintasssi per gli oggetti di `v-bind:style` è molto chiara - assomiglia molto a quella usata per le classi CSS, tolto il fatto che è un Oggetto JavaScript in questo caso. Puoi utilizzare la sintassi camelCase o kebab-case per i nomi delle proprietà CSS:
 
 ``` html
 <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
@@ -92,7 +92,7 @@ data: {
 }
 ```
 
-It is often a good idea to bind to a style object directly so that the template is cleaner:
+Spesso è consigliato vincolare lo style utilizzando direttamente on oggetto, per far si di tenere il template più pulito:
 
 ``` html
 <div v-bind:style="styleObject"></div>
@@ -106,16 +106,16 @@ data: {
 }
 ```
 
-Again, the Object syntax is often used in conjunction with computed properties that return Objects.
+Anche qui, la sintassi ad oggetti è spesso usata sfruttando le properità derivate le quali restituiscono un oggetto.
 
-### Array Syntax
+### Sintassi per gli Array
 
-The Array syntax for `v-bind:style` allows you to apply multiple style objects to the same element:
+La sintassi ad Array per `v-bind:style` vi permette di applicare più oggetti allo stesso elemento:
 
 ``` html
 <div v-bind:style="[styleObjectA, styleObjectB]">
 ```
 
-### Auto-prefixing
+### Prefisso Automatico
 
-When you use a CSS property that requires vendor prefixes in `v-bind:style`, for example `transform`, Vue.js will automatically detect and add appropriate prefixes to the applied styles.
+Quando si utilizzano delle properità CSS che richiedono dei prefissi, per esempio `transform` Vue.js cercherà in automatico di individuare ed applicare i prefissi alle properità che necessitano tale controllo.
