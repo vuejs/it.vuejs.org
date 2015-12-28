@@ -1,12 +1,12 @@
 ---
-title: Custom Filters
+title: Filtri Personalizzati
 type: guide
 order: 15
 ---
 
-## Basics
+## Le Basi
 
-Similar to custom directives, you can register a custom filter with the global `Vue.filter()` method, passing in a **filterID** and a **filter function**. The filter function takes a value as the argument and returns the transformed value:
+Simili alle Direttive Personalizzate, potete registrare Filtri Personalizzati tramite il metodo globale `Vue.filter()`, passandogli un **filterID** ed una **filter function**. La funzione prenderà i valori come argomenti e restituirà quest'ultimi con i nuovi valori modificati:
 
 ``` js
 Vue.filter('reverse', function (value) {
@@ -19,7 +19,7 @@ Vue.filter('reverse', function (value) {
 <span v-text="message | reverse"></span>
 ```
 
-The filter function also receives any inline arguments:
+La funzione del filtro può ricevere argomenti su riga:
 
 ``` js
 Vue.filter('wrap', function (value, begin, end) {
@@ -32,19 +32,19 @@ Vue.filter('wrap', function (value, begin, end) {
 <span v-text="message | wrap 'before' 'after'"></span>
 ```
 
-## Two-way Filters
+## Filtri a due Direzioni
 
-Up till now we have used filters to transform values coming from the model and before displaying them in the view. But it is also possible to define a filter that transforms the value before it is written back to the model from the view (input elements):
+Fino ad ora abbiamo trasformato i valori che arrivavano dal modello prima di presentarli alla vista. E' possibile creare dei filtri che facciano l'inverso, modificare il valore dalla vista prima che venga passato al modello:
 
 ``` js
 Vue.filter('currencyDisplay', {
   // model -> view
-  // formats the value when updating the input element.
+  // Formattiamo il valore prima di passarlo alla vista
   read: function(val) {
     return '$'+val.toFixed(2)
   },
   // view -> model
-  // formats the value when writing to the data.
+  // formattiamo il valore prima di passarlo al modello
   write: function(val, oldVal) {
     var number = +val.replace(/[^\d.]/g, '')
     return isNaN(number) ? 0 : parseFloat(number.toFixed(2))
@@ -52,7 +52,7 @@ Vue.filter('currencyDisplay', {
 })
 ```
 
-Demo:
+Esempio:
 
 {% raw %}
 <div id="two-way-filter-demo" class="demo">
@@ -80,9 +80,9 @@ new Vue({
 </script>
 {% endraw %}
 
-## Dynamic Arguments
+## Argomenti Dinamici
 
-If a filter argument is not enclosed by quotes, it will be evaluated dynamically in the current vm's data context. In addition, the filter function is always invoked using the current vm as its `this` context. For example:
+Se un argomento non è racchiuso tra apici, verrà valutato dinamicamente nel contesto dei dati di vm. In più la funzione del filtro è sempre invocata utilizzando `this` come contesto della vm attuale, per esempio:
 
 ``` html
 <input v-model="userInput">
@@ -91,11 +91,11 @@ If a filter argument is not enclosed by quotes, it will be evaluated dynamically
 
 ``` js
 Vue.filter('concat', function (value, input) {
-  // here `input` === `this.userInput`
+  // in questo caso `input` === `this.userInput`
   return value + input
 })
 ```
 
-For this simple example above, you can achieve the same result with just an expression, but for more complicated procedures that need more than one statement, you need to put them either in a computed property or a custom filter.
+L'esempio qui sopra si poteva risolvere benissimo tramite un espressione, oppure una Properità Derivata, ma per procedure e logiche più complesse i filtri sono la scelta migliore.
 
-The built-in `filterBy` and `orderBy` filters are both filters that perform non-trivial work on the Array being passed in and relies on the current state of the owner Vue instance.
+I filtri integrati `filterBy` e `orderBy` sono filtri che effettuano logica non insignificante sugli Array che gli vengono passati e si appoggiano totalmente allo stato corrente dell'istanza Vue.
