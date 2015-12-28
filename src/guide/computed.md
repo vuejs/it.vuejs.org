@@ -1,12 +1,12 @@
 ---
-title: Computed Properties
+title: Proprietà Derivate
 type: guide
 order: 5
 ---
 
-In-template expressions are very convenient, but they are really meant for simple operations only. Templates are meant to describe the structure of your view. Putting too much logic into your templates can make them bloated and hard to maintain. This is why Vue.js limits binding expressions to one expression only. For any logic that requires more than one expression, you should use a **computed property**.
+Le proprietà in-template sono molto comode per alcuni piccoli task dove le espressioni non sono complesse. Inserire troppa logica, calcolata al momento, in un template strutturato e complesso può diventare difficile da mantenere. Ecco perchè Vue.js limita la logica di una proprietà in-template ad una sola espressione, quasi primitiva. Per qualsiasi altro scopo, più complesso, esistono le **Proprietà Derivate**.
 
-### Basic Example
+### Esempio Iniziale
 
 ``` html
 <div id="example">
@@ -21,16 +21,16 @@ var vm = new Vue({
     a: 1
   },
   computed: {
-    // a computed getter
+    // Un getter derivato
     b: function () {
-      // `this` points to the vm instance
+      // `this` punta alla istanza vm
       return this.a + 1
     }
   }
 })
 ```
 
-Result:
+Risultato:
 
 {% raw %}
 <div id="example" class="demo">
@@ -51,7 +51,7 @@ var vm = new Vue({
 </script>
 {% endraw %}
 
-Here we have declared a computed property `b`. The function we provided will be used as the getter function for the property `vm.b`:
+Abbiamo dichiarato una proprietà derivata `b`. La funziona che implementa questa properità derivata è utilizzata come Getter per la proprietà `vm.b`:
 
 ``` js
 console.log(vm.b) // -> 2
@@ -59,13 +59,13 @@ vm.a = 2
 console.log(vm.b) // -> 3
 ```
 
-You can open the console and play with the example vm yourself. The value of `vm.b` is always dependent on the value of `vm.a`.
+Puoi aprire la console del browser e provare tu stesso. Il valore di `vm.b` dipende, o deriva, dal valore di `vm.a`.
 
-You can data-bind to computed properties in templates just like a normal property. Vue is aware that `vm.b` depends on `vm.a`, so it will update any bindings that depends on `vm.b` when `vm.a` changes. And the best part is that we've created this dependency relationship declaratively: the computed getter function is pure and has no side effects, which makes it easy to test and reason about.
+Le properità derivate possono essere vincolate all'interno del template come una qualsiasi properità normale. Vue.js sa che `vm.b` deriva da `vm.a`, perciò aggiornerà `vm.b` ogni volta che `vm.a` cambia. La parte più interessante è che abbiamo creato questa dipendenza in modo dichiarativo: La funzione che implementa la properità derivata è primitiva, senza effetti collaterali ed è facile da testare.
 
-### Computed Property vs. $watch
+### Proprietà Derivate vs. $watch
 
-Vue.js does provide an API method called `$watch` that allows you to observe data changes on a Vue instance. When you have some data that needs to change based on some other data, it is tempting to use `$watch` - especially if you are coming from an AngularJS background. However, it is often a better idea to use a computed property rather than an imperative `$watch` callback. Consider this example:
+Vue.js fornisce un metodo delle API chiamato `$watch`, quest'ultimo permette di osservare il cambiamento su alcuni dati dell'istanza Vue corrente. Quando si hanno dei dati che cambiano in base ad altri dati, come nel nostro esempio precedente, c'è la tentazione di sfruttare `$watch` - specialmente se si arriva da un ambiente come AngularJS. Però è quasi sempre meglio usare una properietà derivata rispetto a `$watch`. Considerate questo esempio:
 
 ``` html
 <div id="demo">{{fullName}}</div>
@@ -89,7 +89,7 @@ vm.$watch('lastName', function (val) {
 })
 ```
 
-The above code is imperative and repetitive. Compare it with a computed property version:
+Il codice sovrastante è riperitivo ed imperativo. Confrontatelo con una properietà derivata:ß
 
 ``` js
 var vm = new Vue({
@@ -105,11 +105,11 @@ var vm = new Vue({
 })
 ```
 
-Much better, isn't it?
+Molto meglio, non trovate?
 
-### Computed Setter
+### Setter Derivati
 
-Computed properties are by default getter-only, but you can also provide a setter when you need it:
+Le properietà derivate tendenzialmente vengono usate solo come getter, ma puoi comunuqe specificare un setter nel caso ti serva:
 
 ``` js
 // ...
@@ -130,6 +130,6 @@ computed: {
 // ...
 ```
 
-Now when you call `vm.fullName = 'John Doe'`, the setter will be invoked and `vm.firstName` and `vm.lastName` will be updated accordingly.
+In questo caso, quando chiamerai `vm.fullName = 'John Doe'`, il setter verrà invocato e `vm.firstName`, `vm.lastName` verranno aggiornati automaticamente.
 
-The technical details behind how computed properties are updated are [discussed in another section](reactivity.html#Inside_Computed_Properties) dedicated to the reactivity system.
+I dettagli tecnici di come funzionano le properità derivate vengono [discussi in un altro capitolo](reactivity.html#Inside_Computed_Properties) nel quale si parla del sistema Reattivo.
