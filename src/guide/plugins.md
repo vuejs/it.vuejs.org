@@ -6,71 +6,71 @@ order: 17
 
 
 
-## Writing a Plugin
+## Scrivere un Plugin
 
-Plugins usually add global-level functionality to Vue. There is no strictly defined scope for a plugin - there are typically several types of plugins you can write:
+I Plugins sono funzionalità inserite a livello globale in Vue. Non ci sono ambiti strettamente predefiniti per i plugin - ecco una lista dei tipici plugin che potresti scrivere:
 
-1. Add some global methods or properties. e.g. [vue-element](https://github.com/vuejs/vue-element)
+1. Aggiungere dei metodo o properità globali. Esempio [vue-element](https://github.com/vuejs/vue-element)
 
-2. Add one or more global assets: directives/filters/transitions etc. e.g. [vue-touch](https://github.com/vuejs/vue-touch)
+2. Aggiungere assets globali: direttive/filtri/transizioni. Esempio [vue-touch](https://github.com/vuejs/vue-touch)
 
-3. Add some Vue instance methods by attaching them to Vue.prototype.
+3. Aggiungere dei metodi all'istanza Vue legandoli tramite Vue.prototype.
 
-4. A library that provides an API of its own, while at the same time injecting some combination of the above. e.g. [vue-router](https://github.com/vuejs/vue-router)
+4. Una libreria che fornisce delle API nuove, magari sfruttando alcune sopra definite. Esempio [vue-router](https://github.com/vuejs/vue-router)
 
-A Vue.js plugin should expose an `install` method. The method will be called with the `Vue` constructor as the first argument, along with possible options:
+Un plugin in Vue.js deve esperrore un metodo `install`. Quest'ultimo verrà chiamato dal costruttore `Vue` come primo argomento, assieme a tutte le opzioni possibili:
 
 ``` js
 MyPlugin.install = function (Vue, options) {
-  // 1. add global method or property
+  // 1. Aggiungi una properità o metodo globale
   Vue.myGlobalMethod = ...
-  // 2. add a global asset
+  // 2. Aggiungi asset globali
   Vue.directive('my-directive', {})
-  // 3. add an instance method
+  // 3. Aggiungi un metodo di istanza
   Vue.prototype.$myMethod = ...
 }
 ```
 
-## Using a Plugin
+## Usare un Plugin
 
-Use plugins by calling the `Vue.use()` global method:
+Per usare un plugin basta chiamare il metodo globale `Vue.use()`ß:
 
 ``` js
-// calls `MyPlugin.install(Vue)`
+// chiama `MyPlugin.install(Vue)`
 Vue.use(MyPlugin)
 ```
 
-You can optionally pass in some options:
+Puoi anche passare delle opzioni, se richieste:
 
 ``` js
 Vue.use(MyPlugin, { someOption: true })
 ```
 
-Some plugins such as `vue-router` automatically calls `Vue.use()` if `Vue` is available as a global variable. However in a module environment you always need to call `Vue.use()` explicitly:
+Alcuni plugin, come `vue-router` chiamano in automatico `Vue.use()` se `Vue` è disponibile come variable globale. Ciò nonostante in un ambiente di sviluppo a moduli dovrai chiamare sempre `Vue.use()` in modo esplicito:
 
 ``` js
-// When using CommonJS via Browserify or Webpack
+// Quando si usa CommonJS tramite Browserify o Webpack
 var Vue = require('vue')
 var VueRouter = require('vue-router')
 
-// Don't forget to call this
+// Non dimenticate di chiamare
 Vue.use(VueRouter)
 ```
 
-## Existing Plugins & Tools
+## Plugin e Strumenti Disponibili
 
-- [vue-router](https://github.com/vuejs/vue-router): The official router for Vue.js. Deeply integrated with Vue.js core to make building Single Page Applications a breeze.
+- [vue-router](https://github.com/vuejs/vue-router): Il sistema di routing ufficiale di Vue.js, integrato profondamente con Vue.js per creare Applicazioni a Pagina Singola.
 
-- [vue-resource](https://github.com/vuejs/vue-resource): A plugin that provides services for making web requests and handle responses using a XMLHttpRequest or JSONP.
+- [vue-resource](https://github.com/vuejs/vue-resource): Un plugin per permettere di effettuare chiamate asincrone tramite XMLHttpRequest o JSONP.
 
-- [vue-async-data](https://github.com/vuejs/vue-async-data): Async data loading plugin.
+- [vue-async-data](https://github.com/vuejs/vue-async-data): Plugin per caricare i dati in modo asincrono.
 
-- [vue-validator](https://github.com/vuejs/vue-validator): A plugin for form validations.
+- [vue-validator](https://github.com/vuejs/vue-validator): Un plugin per la validazione dei form.
 
-- [vue-devtools](https://github.com/vuejs/vue-devtools): A Chrome devtools extension for debugging Vue.js applications.
+- [vue-devtools](https://github.com/vuejs/vue-devtools): Un estensione per Chrome devtools per fare debug delle applicazioni Vue.js.
 
-- [vue-touch](https://github.com/vuejs/vue-touch): Add touch-gesture directives using Hammer.js. (outdated)
+- [vue-touch](https://github.com/vuejs/vue-touch): Aggiungi movimenti touch sfruttando Hammer.js (vecchio)
 
-- [vue-element](https://github.com/vuejs/vue-element): Register Custom Elements with Vue.js.
+- [vue-element](https://github.com/vuejs/vue-element): Registra elementi personalizzati con Vue.js
 
-- [List of User Contributed Tools](https://github.com/vuejs/vue/wiki/User-Contributed-Components-&-Tools)
+- [Lista di Strumenti esterni](https://github.com/vuejs/vue/wiki/User-Contributed-Components-&-Tools)
