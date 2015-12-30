@@ -1,20 +1,20 @@
 ---
-title: Methods and Event Handling
+title: Gestione degli Eventi e dei Metodi
 type: guide
 order: 9
 ---
 
-## Method Handler
+## Gestione dei Metodi
 
-We can then use the `v-on` directive to listen to DOM events:
+Quando usiamo la direttiva `v-on` per ascoltare eventi provenienti dal DOM:
 
 ``` html
 <div id="example">
-  <button v-on:click="greet">Greet</button>
+  <button v-on:click="greet">Saluta</button>
 </div>
 ```
 
-We are binding a click event listener to a method named `greet`. Here's how to define that method in our Vue instance:
+Stiamo legando l'evento click al metodo `greet`. Ecco come poi definiamo il metodo internamente nella nostra istanza Vue:
 
 ``` js
 var vm = new Vue({
@@ -22,26 +22,26 @@ var vm = new Vue({
   data: {
     name: 'Vue.js'
   },
-  // define methods under the `methods` object
+  // Definiamo il metodo dentro l'oggetto `methods`
   methods: {
     greet: function (event) {
-      // `this` inside methods point to the Vue instance
-      alert('Hello ' + this.name + '!')
-      // `event` is the native DOM event
+      // `this` punta all'istanza di Vue
+      alert('Ciao ' + this.name + '!')
+      // `event` è l'evento del DOM nativo
       alert(event.target.tagName)
     }
   }
 })
 
-// you can invoke methods in JavaScript too
-vm.greet() // -> 'Hello Vue.js!'
+// Puoi anche invocare i metodi direttamente via JavaScript
+vm.greet() // -> 'Ciao Vue.js!'
 ```
 
-Test it yourself:
+Prova tu stesso:
 
 {% raw %}
 <div id="example" class="demo">
-  <button v-on:click="greet">Greet</button>
+  <button v-on:click="greet">Saluta</button>
 </div>
 <script>
 var vm = new Vue({
@@ -49,12 +49,12 @@ var vm = new Vue({
   data: {
     name: 'Vue.js'
   },
-  // define methods under the `methods` object
+  // Definiamo il metodo dentro l'oggetto `methods`
   methods: {
     greet: function (event) {
-      // `this` inside methods point to the vm
-      alert('Hello ' + this.name + '!')
-      // `event` is the native DOM event
+      // `this` punta all'istanza di Vue
+      alert('Ciao ' + this.name + '!')
+      // `event` è l'evento del DOM nativo
       alert(event.target.tagName)
     }
   }
@@ -62,14 +62,14 @@ var vm = new Vue({
 </script>
 {% endraw %}
 
-## Inline Statement Handler
+## Gestione degli eventi Inline
 
-Instead of binding directly to a method name, we can also use an inline JavaScript statement:
+Invece di legare il metodo direttamente tramite il nome, possiamo utilizzare la sintassi inline di JavaScript:
 
 ``` html
 <div id="example-2">
-  <button v-on:click="say('hi')">Say Hi</button>
-  <button v-on:click="say('what')">Say What</button>
+  <button v-on:click="say('ciao')">Di Ciao</button>
+  <button v-on:click="say('cosa')">Di Cosa</button>
 </div>
 ```
 ``` js
@@ -85,9 +85,9 @@ new Vue({
 
 Result:
 {% raw %}
-<div id="example-2" class="demo">
-  <button v-on:click="say('hi')">Say Hi</button>
-  <button v-on:click="say('what')">Say What</button>
+<div id="example-2">
+  <button v-on:click="say('ciao')">Di Ciao</button>
+  <button v-on:click="say('cosa')">Di Cosa</button>
 </div>
 <script>
 new Vue({
@@ -101,64 +101,64 @@ new Vue({
 </script>
 {% endraw %}
 
-Similar to the restrictions on inline expressions, event handlers are restricted to **one statement only**.
+Come le espressioni inline, anche la gestione degli eventi è limitata ad **una sola dichiarazione**.
 
-Sometimes we also need to access the original DOM event in an inline statement handler. You can pass it into a method using the special `$event` variable:
+A volte abbiamo bisogno di accedere all evento originale scaturito dal DOM anche negli eventi gestiti inline, per farlo esiste una variabile speciale `$event`:
 
 ``` html
-<button v-on:click="say('hello!', $event)">Submit</button>
+<button v-on:click="say('Ciao!', $event)">Invia</button>
 ```
 
 ``` js
 // ...
 methods: {
   say: function (msg, event) {
-    // now we have access to the native event
+    // Ora abbiamo accesso all evento nativo
     event.preventDefault()
   }
 }
 ```
 
-## Event Modifiers
+## Modificatori degli Eventi
 
-It is a very common need to call `event.preventDefault()` or `event.stopPropagation()` inside event handlers. Although we can do this easily inside methods, it would be better if the methods can be purely about data logic rather than having to deal with DOM event details.
+Quando diventa comune chiamare `event.preventDefault()` o `event.stopPropagation()` all interno di un metodo, anche se possiamo continuare a farlo, è conveniente spostare tale logica nel DOM, dato che si tratta di dettagli su come il DOM deve comportarsi allo scaturirsi di un tale evento.
 
-To address this problem, Vue.js provides two **event modifiers** for `v-on`: `.prevent` and `.stop`. Recall that modifiers are directive postfixes denoted by a dot:
+Per risolvere questo problema, Vue.js fornisce degli **Modificatori di Eventi** per `v-on`: `.prevent` e `.stop`. Per richiamarli semplicemente vanno aggiungi dopo l'evento che si sta invocando, prefissati da un punto:
 
 ``` html
-<!-- the click event's propagation will be stopped -->
+<!-- La propagazione del evento click verrà stoppata -->
 <a v-on:click.stop="doThis"></a>
 
-<!-- the submit event will no longer reload the page -->
+<!-- Il submit del form non ricaricherà la pagina -->
 <form v-on:submit.prevent="onSubmit"></form>
 
-<!-- modifiers can be chained -->
+<!-- I modificatori possono essere concatenati -->
 <a v-on:click.stop.prevent="doThat">
 
-<!-- just the modifier -->
+<!-- Si può usare solo il motidicatore -->
 <form v-on:submit.prevent></form>
 ```
 
-## Key Modifiers
+## Modificatorio per i Tasti
 
-When listening for keyboard events, we often need to check for common key codes. Vue.js also allows adding key modifiers for `v-on` when listening for key events:
+Quando si ascolta per degli eventi dalla tastiera, abbiamo bisogno di sapere quale tasto è stato premuto. Vue.js offre un modificatore per `v-on` per quando si ascoltano gli eventi da tastiera:
 
 ``` html
-<!-- only call vm.submit() when the keyCode is 13 -->
+<!-- Chiama il submit solo se il tasto premuto è uguale al KeyCode 13 -->
 <input v-on:keyup.13="submit">
 ```
 
-Remembering all the keyCodes is a hassle, so Vue.js provides aliases for most commonly used keys:
+Ricordarsi tutti i Codici dei tasti è un disastro, per questo Vue.js fornisce degli alias per quelli più utilizzati:
 
 ``` html
-<!-- same as above -->
+<!-- Come prima -->
 <input v-on:keyup.enter="submit">
 
-<!-- also works for shorthand -->
+<!-- Funzionano pure con le scorciatoie -->
 <input @keyup.enter="submit">
 ```
 
-Here's the full list of key modifier aliases:
+Ecco una lista completa di tutti gli alias:
 
 - enter
 - tab
@@ -170,14 +170,14 @@ Here's the full list of key modifier aliases:
 - left
 - right
 
-In addition, single letter key aliases are also supported in 1.0.8+.
+In aggiunta, gli alias per le lettere singole sono supportati dalla versione 1.0.8 in poi.
 
-## Why Listeners in HTML?
+## Perchè ascoltare gli eventi via HTML?
 
-You might be concerned that this whole event listening approach violates the good old rules about "separation of concern". Rest assured - since all Vue.js handler functions and expressions are strictly bound to the ViewModel that's handling the current View, it won't cause any maintenance difficulty. In fact, there are several benefits in using `v-on`:
+Forse sarete preoccupati a vedere tutti questi eventi ascoltati tramite direttive via HTML, potrebbe sembrare che stessimo violando la vecchia regola di "Separazione dei compiti". Non vi preoccupate - perchè tutta la gestione Vue.js la lega alla vista corrente, non ci sono difficoltà nello scalare e mantenere questa mentalità che deriva dall approcio del ViewModel. Difatti ci sono tre vantaggi nell utilizzo di `v-on`:
 
-1. It makes it easier to locate the handler function implementations within your JS code by simply skimming the HTML template.
+1. Rendere più facile capire quali metodi in JavaScript gestiscono quali eventi nel template HTML.
 
-2. Since you don't have to manually attach event listeners in JS, your ViewModel code can be pure logic and DOM-free. This makes it easier to test.
+2. Visto che non dovete legare manualmente la logica di ascolto degli eventi, il vostro codice sarà libero da qualsiasi tag HTML o logica del DOM. Avrete JavaScript più facile da testare.
 
-3. When a ViewModel is destroyed, all event listeners are automatically removed. You don't need to worry about cleaning it up yourself.
+3. Quando un ViewModel viene eliminato, tutti gli eventi ascoltati verranno automaticamente rimossi, non dovrete preoccuparvi di fare voi pulizia.
