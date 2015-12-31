@@ -1,25 +1,25 @@
 ---
-title: Form Input Bindings
+title: Vincolo sugli input dei Form
 type: guide
 order: 10
 ---
 
-## Basics Usage
+## Utilizzo di Base
 
-You can use the `v-model` directive to create two-way data bindings on form input elements. It automatically picks the correct way to update the element based on the input type. Although a bit magical, `v-model` is essentially syntax sugar for updating data on user input events, plus special care for some edge cases.
+Potete usare la direttiva `v-model` per creare un vincolo a dure direzioni tra l'elemento del form, un input, e i dati presenti in Vue. Vue.js cercherà sempre di aggiornare il vincolo con un occhio di riguardo al tipo di dato.
 
-### Text
+### Testo
 
 ``` html
-<span>Message is: {{ message }}</span>
+<span>Messaggio: {{ message }}</span>
 <br>
-<input type="text" v-model="message" placeholder="edit me">
+<input type="text" v-model="message" placeholder="Modificami">
 ```
 
 {% raw %}
 <div id="example-1" class="demo">
-  <span>Message is: {{ message }}</span><br>
-  <input type="text" v-model="message" placeholder="edit me">
+  <span>Messaggio: {{ message }}</span><br>
+  <input type="text" v-model="message" placeholder="Modificami">
 </div>
 <script>
 new Vue({
@@ -33,7 +33,7 @@ new Vue({
 
 ### Checkbox
 
-Single checkbox, boolean value:
+Checkbox singolo, valore booleano:
 
 ``` html
 <input type="checkbox" id="checkbox" v-model="checked">
@@ -54,7 +54,7 @@ new Vue({
 </script>
 {% endraw %}
 
-Mutiple checkboxes, bound to the same Array:
+Checkbox multipli, vincolati allo stesso Array:
 
 ``` html
 <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
@@ -64,7 +64,7 @@ Mutiple checkboxes, bound to the same Array:
 <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
 <label for="mike">Mike</label>
 <br>
-<span>Checked names: {{ checkedNames | json }}</span>
+<span>Nomi selezionati: {{ checkedNames | json }}</span>
 ```
 {% raw %}
 <div id="example-3" class="demo">
@@ -75,7 +75,7 @@ Mutiple checkboxes, bound to the same Array:
   <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
   <label for="mike">Mike</label>
   <br>
-  <span>Checked names: {{ checkedNames | json }}</span>
+  <span>Nomi selezionati: {{ checkedNames | json }}</span>
 </div>
 <script>
 new Vue({
@@ -91,23 +91,23 @@ new Vue({
 
 
 ``` html
-<input type="radio" id="one" value="One" v-model="picked">
-<label for="one">One</label>
+<input type="radio" id="one" value="Uno" v-model="picked">
+<label for="one">Uno</label>
 <br>
-<input type="radio" id="two" value="Two" v-model="picked">
-<label for="two">Two</label>
+<input type="radio" id="two" value="Due" v-model="picked">
+<label for="two">Due</label>
 <br>
-<span>Picked: {{ picked }}</span>
+<span>Selezionato: {{ picked }}</span>
 ```
 {% raw %}
 <div id="example-4" class="demo">
-  <input type="radio" id="one" value="One" v-model="picked">
-  <label for="one">One</label>
+  <input type="radio" id="one" value="Uno" v-model="picked">
+  <label for="one">Uno</label>
   <br>
-  <input type="radio" id="two" value="Two" v-model="picked">
-  <label for="two">Two</label>
+  <input type="radio" id="two" value="Due" v-model="picked">
+  <label for="two">Due</label>
   <br>
-  <span>Picked: {{ picked }}</span>
+  <span>Selezionato: {{ picked }}</span>
 </div>
 <script>
 new Vue({
@@ -121,7 +121,7 @@ new Vue({
 
 ### Select
 
-Single select:
+Select singolo:
 
 ``` html
 <select v-model="selected">
@@ -129,7 +129,7 @@ Single select:
   <option>B</option>
   <option>C</option>
 </select>
-<span>Selected: {{ selected }}</span>
+<span>Selezionato: {{ selected }}</span>
 ```
 {% raw %}
 <div id="example-5" class="demo">
@@ -138,7 +138,7 @@ Single select:
     <option>B</option>
     <option>C</option>
   </select>
-  <span>Selected: {{ selected }}</span>
+  <span>Selezionato: {{ selected }}</span>
 </div>
 <script>
 new Vue({
@@ -150,7 +150,7 @@ new Vue({
 </script>
 {% endraw %}
 
-Multiple select (bound to Array):
+Select multiplo, vincolato ad un Array:
 
 ``` html
 <select v-model="selected" multiple>
@@ -159,7 +159,7 @@ Multiple select (bound to Array):
   <option>C</option>
 </select>
 <br>
-<span>Selected: {{ selected | json }}</span>
+<span>Selezionati: {{ selected | json }}</span>
 ```
 {% raw %}
 <div id="example-6" class="demo">
@@ -169,7 +169,7 @@ Multiple select (bound to Array):
     <option>C</option>
   </select>
   <br>
-  <span>Selected: {{ selected | json }}</span>
+  <span>Selezionati: {{ selected | json }}</span>
 </div>
 <script>
 new Vue({
@@ -181,7 +181,7 @@ new Vue({
 </script>
 {% endraw %}
 
-Dynamic options rendered with `v-for`:
+Opzioni dinamiche renderizzate con `v-for`:
 
 ``` html
 <select v-model="selected">
@@ -189,7 +189,7 @@ Dynamic options rendered with `v-for`:
     {{ option.text }}
   </option>
 </select>
-<span>Selected: {{ selected }}</span>
+<span>Selezionato: {{ selected }}</span>
 ```
 ``` js
 new Vue({
@@ -197,9 +197,9 @@ new Vue({
   data: {
     selected: 'A',
     options: [
-      { text: 'One', value: 'A' },
-      { text: 'Two', value: 'B' },
-      { text: 'Three', value: 'C' }
+      { text: 'Uno', value: 'A' },
+      { text: 'Due', value: 'B' },
+      { text: 'Tre', value: 'C' }
     ]
   }
 })
@@ -211,7 +211,7 @@ new Vue({
       {{ option.text }}
     </option>
   </select>
-  <span>Selected: {{ selected }}</span>
+  <span>Selezionato: {{ selected }}</span>
 </div>
 <script>
 new Vue({
@@ -219,33 +219,33 @@ new Vue({
   data: {
     selected: 'A',
     options: [
-      { text: 'One', value: 'A' },
-      { text: 'Two', value: 'B' },
-      { text: 'Three', value: 'C' }
+      { text: 'Uno', value: 'A' },
+      { text: 'Due', value: 'B' },
+      { text: 'Tre', value: 'C' }
     ]
   }
 })
 </script>
 {% endraw %}
 
-## Value Bindings
+## Vincolo sui Valori
 
-For radio, checkbox and select options, the `v-model` binding values are usually static strings (or booleans for checkbox):
+Quando si lega `v-model` ad un Radio, Checkbox o Select solitamente è un legame statico, con stringhe o valori booleani:
 
 ``` html
-<!-- `picked` is a string "a" when checked -->
+<!-- `picked` è una stringa con valore "a" quando viene selezionato questo input -->
 <input type="radio" v-model="picked" value="a">
 
-<!-- `toggle` is either true or false -->
+<!-- `toggle` è o vero o falso -->
 <input type="checkbox" v-model="toggle">
 
-<!-- `selected` is a string "abc" when selected -->
+<!-- `selected` è una stringa con valore "abc" quando selezionata !-->
 <select v-model="selected">
   <option value="abc">ABC</option>
 </select>
 ```
 
-But sometimes we may want to bind the value to a dynamic property on the Vue instance. We can use `v-bind` to achieve that. In addition, using `v-bind` allows us to bind the input value to non-string values.
+A volte c'è bisogno di legare il valore ad una proprietà dinamica dell'istanza di Vue. Per compiere ciò dobbiamo utilizzare l'attributo `v-bind`. In aggiunta, `v-bind` ci permette di legare valori distinti per le condizioni booleane.
 
 ### Checkbox
 
@@ -258,9 +258,9 @@ But sometimes we may want to bind the value to a dynamic property on the Vue ins
 ```
 
 ``` js
-// when checked:
+// quando selezionato:
 vm.toggle === vm.a
-// when unchecked:
+// quando deselezionato:
 vm.toggle === vm.b
 ```
 
