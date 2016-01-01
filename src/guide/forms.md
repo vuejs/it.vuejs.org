@@ -271,39 +271,39 @@ vm.toggle === vm.b
 ```
 
 ``` js
-// when checked:
+// quando selezionato:
 vm.pick === vm.a
 ```
 
-### Select Options
+### Opzioni della Select
 
 ``` html
 <select v-model="selected">
-  <!-- inline object literal -->
+  <!-- Oggetto inline -->
   <option v-bind:value="{ number: 123 }">123</option>
 </select>
 ```
 
 ``` js
-// when selected:
+// Quando selezionato:
 typeof vm.selected // -> 'object'
 vm.selected.number // -> 123
 ```
 
-## Param Attributes
+## Attributi parametrici
 
 ### lazy
 
-By default, `v-model` syncs the input with the data after each `input` event. You can add a `lazy` attribute to change the behavior to sync after `change` events:
+Per definizione, `v-model` sincronizza l'input con i dati ad ogni evento di inserimento, keypress per esempio. Si può aggiungee un attributo `lazy` per cambiare il modo con il quale vengono sincronizzati i dati:
 
 ``` html
-<!-- synced after "change" instead of "input" -->
+<!-- Verrà sincronizzato dopo l'immisione -->
 <input v-model="msg" lazy>
 ```
 
 ### number
 
-If you want user input to be automatically persisted as numbers, you can add a `number` attribute to your `v-model` managed inputs:
+Se volete convertire automaticamente l'input in numeri potete farlo tramite l'attributo `number`:
 
 ``` html
 <input v-model="age" number>
@@ -311,7 +311,7 @@ If you want user input to be automatically persisted as numbers, you can add a `
 
 ### debounce
 
-The `debounce` param allows you to set a minimum delay after each keystroke before the input's value is synced to the model. This can be useful when you are performing expensive operations on each update, for example making an Ajax request for type-ahead autocompletion.
+Il parametro `debounce` vi permette di impostare un ritardo dopo ogni pressione di un tasto in modo tale che i dati vengano sincronizzati dopo il ritardo stesso. Questo può essere utile quando si fanno operazioni dispendiose ad ogni cambiamento del valore di input, per esempio un campo di testo per l'auto completamento della parola.
 
 ``` html
 <input v-model="msg" debounce="500">
@@ -324,9 +324,9 @@ The `debounce` param allows you to set a minimum delay after each keystroke befo
 <script>
 new Vue({
   el:'#debounce-demo',
-  data: { msg: 'edit me' }
+  data: { msg: 'Modificami' }
 })
 </script>
 {% endraw %}
 
-Note that the `debounce` param does not debounce the user's input events: it debounces the "write" operation to the underlying data. Therefore you should use `vm.$watch()` to react to data changes when using `debounce`. For debouncing real DOM events you should use the [debounce filter](/api/#debounce).
+Da notare che `debounce` non ritarda l'evento di input bensì l'operazione di sincronizzazione dei dati. E' consigliato l'uso di `vm.$watch()` per reagire al cambiamento dei dati con `debounce` attivo. Per fare il `debouncing` di eventi del DOM dovreste utilizzare [il filtro per il debounce](/api/#debounce).
