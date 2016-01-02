@@ -1,47 +1,47 @@
 ---
-title: Transitions
+title: Transizioni
 type: guide
 order: 11
 ---
 
-With Vue.js' transition system you can apply automatic transition effects when elements are inserted into or removed from the DOM. Vue.js will automatically add/remove CSS classes at appropriate times to trigger CSS transitions or animations for you, and you can also provide JavaScript hook functions to perform custom DOM manipulations during the transition.
+Tramite il sistema di transizioni di Vue.js potrai applicare gli effetti di transizione tipici agli elementi che aggiungi o rimuovi dal DOM. Vue.js aggiungerà/rimuoverà automaticamente determinate classi CSS le quali attivano tali effetti. Ovviamente potrete definire le vostre classi personalizzate per fare transizioni del tutto uniche.
 
-To apply transition effects, you need to use the special `transition` attribute on the target element:
+Per sfruttare le transizioni dovrete utilizzare l'attributo `transition` sul vostro elemento:
 
 ``` html
 <div v-if="show" transition="my-transition"></div>
 ```
 
-The `transition` attribute can be used together with:
+L'attributo `transition` può essere usato accoppiato con:
 
 - `v-if`
 - `v-show`
-- `v-for` (triggered for insertion and removal only)
-- Dynamic components (introduced in the [next section](components.html#Dynamic_Components))
-- On a component root node, and triggered via Vue instance DOM methods, e.g. `vm.$appendTo(el)`.
+- `v-for` (verrà attivato ad ogni aggiunta o rimozione)
+- Componenti Dinamici (che vedremo [nella prossima sezione](components.html#Dynamic_Components))
+- Su un nuovo componente attivato tramite l'istanza Vue, per esempio `vm.$appendTo(el)`.
 
-When an element with transition is inserted or removed, Vue will:
+Quando un elemento è inserito o rimosso tramite transizioni, Vue cercherà:
 
-1. Try to find a JavaScript transition hooks object registered either through `Vue.transition(id, hooks)` or passed in with the `transitions` option, using the id `"my-transition"`. If it finds it, it will call the appropriate hooks at different stages of the transition.
+1. Di trovare la transizione registrata tramite il metodo `Vue.transition(id, hooks)` oppure passata tramite l'attributo `transitions`. Se trova la transizione, chiamarà l'hook adeguato per ogni fase della transizione stessa.
 
-2. Automatically sniff whether the target element has CSS transitions or CSS animations applied, and add/remove the CSS classes at the appropriate times.
+2. Di capire in automatico quando un elemento ha già applicata o meno una classe CSS di transizione e rimuoverla o aggiungerla al momento giusto.
 
-3. If no JavaScript hooks are provided and no CSS transitions/animations are detected, the DOM operation (insertion/removal) is executed immediately on next frame.
+3. Di eseguire immediatamente l'operazione di rimozione/aggiunta se non trova l'hook dedicato alla transizione che si vuole effettuare.
 
-## CSS Transitions
+## Transizioni via CSS
 
-### Example
+### Esempio
 
-A typical CSS transition looks like this:
+Una transizione via CSS assomiglia a questa:
 
 ``` html
 <div v-if="show" transition="expand">hello</div>
 ```
 
-You also need to define CSS rules for `.expand-transition`, `.expand-enter` and `.expand-leave` classes:
+Dovrai anche devinire le regole CSS per la transizione, in particolare `.expand-transition`, `.expand-enter` e `.expand-leave`:
 
 ``` css
-/* always present */
+/* La transizione vera e propria */
 .expand-transition {
   transition: all .3s ease;
   height: 30px;
@@ -50,8 +50,8 @@ You also need to define CSS rules for `.expand-transition`, `.expand-enter` and 
   overflow: hidden;
 }
 
-/* .expand-enter defines the starting state for entering */
-/* .expand-leave defines the ending state for leaving */
+/* .expand-enter è lo stato iniziale del elemento */
+/* .expand-leave è lo stato finale del elemento */
 .expand-enter, .expand-leave {
   height: 0;
   padding: 0 10px;
@@ -59,7 +59,7 @@ You also need to define CSS rules for `.expand-transition`, `.expand-enter` and 
 }
 ```
 
-In addition, you can provide JavaScript hooks:
+In aggiunta puoi fornire degli hook in JavaScript:
 
 ``` js
 Vue.transition('expand', {
@@ -94,8 +94,8 @@ Vue.transition('expand', {
 
 {% raw %}
 <div id="demo">
-  <div v-if="show" transition="expand">hello</div>
-  <button @click="show = !show">Toggle</button>
+  <div v-if="show" transition="expand">Ciao</div>
+  <button @click="show = !show">Cambia</button>
 </div>
 
 <style>
@@ -146,19 +146,19 @@ new Vue({
 </script>
 {% endraw %}
 
-### Transition CSS Classes
+### Le classi CSS per le Transizioni
 
-The classes being added and toggled are based on the value of the `transition` attribute. In the case of `transition="fade"`, three CSS classes are involved:
+In base al valore contenuto nell attributo `transition`, verranno attivate determinate classi CSS. Per esempio se avete una transizione del tipo `transition="fade"`, tre classi CSS sono coinvolte:
 
-1. The class `.fade-transition` will be always present on the element.
+1. La classe `.fade-transition`, quella di base e sarà sempre presente.
 
-2. `.fade-enter` defines the starting state of an entering transition. It is applied for a single frame and then immediately removed.
+2. La classe `.fade-enter` che definisce lo stato iniziale della transizione. E' applicata al primo frame e subito rimossa.
 
-3. `.fade-leave` defines the ending state of a leaving transition. It is applied when the leaving transition starts and removed when the transition finishes.
+3. La classe `.fade-leave` che definisce lo stato finale della transzione. Viene applicata quando la transizione è finita.
 
-If the `transition` attribute has no value, the classes will default to `.v-transition`, `.v-enter` and `.v-leave`.
+Se l'attributo `transition` non ha valore, le classi applicate saranno quelle di default `.v-transition`, `.v-enter` e `.v-leave`.
 
-### Transition Flow Details
+### Flusso della Transizione
 
 When the `show` property changes, Vue.js will insert or remove the `<div>` element accordingly, and apply transition classes as specified below:
 
