@@ -1,31 +1,31 @@
 ---
-title: Components
+title: Componenti
 type: guide
 order: 12
 ---
 
-## Using Components
+## Utilizzare i Componenti
 
-### Registration
+### Registrazione
 
-We've learned in the previous sections that we can create a component constructor using `Vue.extend()`:
+Nelle sezioni precedenti abbiamo imparato a costruire dei componenti personalizzati tramite il costruttore `Vue.extend()`:
 
 ``` js
 var MyComponent = Vue.extend({
-  // options...
+  // opzioni...
 })
 ```
 
-To use this constructor as a component, you need to **register** it with `Vue.component(tag, constructor)`:
+Per utilizzarlo come un componente, dovete **registrarlo** tramite la funzione `Vue.component(tag, constructor)`:
 
 ``` js
-// Globally register the component with tag: my-component
+// Componente registrato a livello globale con il tag my-component
 Vue.component('my-component', MyComponent)
 ```
 
-<p class="tip">Note that Vue.js does not enforce the [W3C rules](http://www.w3.org/TR/custom-elements/#concepts) for custom tag-names (all-lowercase, must contain a hyphen) though following this convention is considered good practice.</p>
+<p class="tip">Nota: Vue.js non ti forza ad utilizzare le [regole W3C](http://www.w3.org/TR/custom-elements/#concepts) per i nomi dei tag personalizzati, anche se rispettare tali regole è considerata cosa buona e giusta.</p>
 
-Once registered, the component can now be used in a parent instance's template as a custom element, `<my-component>`. Make sure the component is registered **before** you instantiate your root Vue instance. Here's the full example:
+Una volta registrato il componente, può essere utilizzato nell'istanza di Vue tramite il tag `<my-component>`. Assicuratevi che il componente sia registrato **prima** della vostra istanza di Vue. Ecco un esempio completo:
 
 ``` html
 <div id="example">
@@ -34,25 +34,25 @@ Once registered, the component can now be used in a parent instance's template a
 ```
 
 ``` js
-// define
+// definizione
 var MyComponent = Vue.extend({
-  template: '<div>A custom component!</div>'
+  template: '<div>Un componente custom!</div>'
 })
 
-// register
+// registrazione
 Vue.component('my-component', MyComponent)
 
-// create a root instance
+// creazione dell'istanza
 new Vue({
   el: '#example'
 })
 ```
 
-Which will render:
+Renderizzato diventerà:
 
 ``` html
 <div id="example">
-  <div>A custom component!</div>
+  <div>Un componente custom!</div>
 </div>
 ```
 
@@ -62,17 +62,17 @@ Which will render:
 </div>
 <script>
 Vue.component('my-component', {
-  template: '<div>A custom component!</div>'
+  template: '<div>Un componente custom!</div>'
 })
 new Vue({ el: '#example' })
 </script>
 {% endraw %}
 
-Note the component's template **replaces** the custom element, which only serves as a **mounting point**. This behavior can be configured using the `replace` instance option.
+Da notare come il template del componente **rimpiazzi** il tag personalizzato, il quale serve solo come **riferimento** per lo sviluppatore. Il comportamento in fase di rimpiazzamento può essere gestito tramite l'opzione `replace`.
 
-### Local Registration
+### Registrazione Locale
 
-You don't have to register every component globally. You can make a component available only in the scope of another component by registering it with the `components` instance option:
+Non dovete per forza registrare ogni componente in modo globale. Potete anche creare dei componenti che esistono solo all interno di un altro componente registrandolo internamente:
 
 ``` js
 var Child = Vue.extend({ /* ... */ })
@@ -80,13 +80,13 @@ var Child = Vue.extend({ /* ... */ })
 var Parent = Vue.extend({
   template: '...',
   components: {
-    // <my-component> will only be available in Parent's template
+    // <my-component> sarà disponibile solo all interno del template del padre
     'my-component': Child
   }
 })
 ```
 
-The same encapsulation applies for other assets types such as directives, filters and transitions.
+Questa logica può essere utilizzata per altri scopi, per esempio incapsulamento di direttive, filtri e transizioni.
 
 ### Registration Sugar
 
