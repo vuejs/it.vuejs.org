@@ -88,17 +88,17 @@ var Parent = Vue.extend({
 
 Questa logica può essere utilizzata per altri scopi, per esempio incapsulamento di direttive, filtri e transizioni.
 
-### Registration Sugar
+### Facilitare la Registrazione
 
-To make things easier, you can directly pass in the options object instead of an actual constructor to `Vue.component()` and the `component` option. Vue.js will automatically call `Vue.extend()` for you under the hood:
+Per rendervi le cose ancora più facili, potete passare le opzioni direttamente alla funzione `Vue.component()` invece di utilizzare un costruttore separato.
 
 ``` js
-// extend and register in one step
+// Un solo step per la registrazione
 Vue.component('my-component', {
   template: '<div>A custom component!</div>'
 })
 
-// also works for local registration
+// funziona anche per le registrazioni locali
 var Parent = Vue.extend({
   components: {
     'my-component': {
@@ -108,9 +108,9 @@ var Parent = Vue.extend({
 })
 ```
 
-### Component Option Caveats
+### Opzioni dei Componenti
 
-Most of the options that can be passed into the Vue constructor can be used in `Vue.extend()`, with two special cases: `data` and `el`. Imagine we simply pass an object as `data` to `Vue.extend()`:
+Molte delle opzioni passate al costruttore del componente possono essere utilizzate direttamente tramite `Vue.extend()`:
 
 ``` js
 var data = { a: 1 }
@@ -119,7 +119,7 @@ var MyComponent = Vue.extend({
 })
 ```
 
-The problem with this is that the same `data` object will be shared across all instances of `MyComponent`! This is most likely not what we want, so we should use a function that returns a fresh object as the `data` option:
+Il problema di questo approccio è che l oggetto `data` sarà condiviso con tutte le istanze del componente stesso! Questo comportamento non è quello che ci aspettiamo da un componente, il quale dovrebbe avere tutto incapsulato, per risolvere questo problema possiamo specificare una funzione per il nostro oggetto `data` la quale restituisce un oggetto nuovo:
 
 ``` js
 var MyComponent = Vue.extend({
@@ -129,11 +129,11 @@ var MyComponent = Vue.extend({
 })
 ```
 
-The `el` option also requires a function value when used in `Vue.extend()`, for exactly the same reason.
+Questo discorso vale anche per l'opzione `el`, in quanto vige lo stesso problema di condivizione.
 
-### `is` attribute
+### Attributo `is`
 
-Some HTML elements, for example `<table>`, has restrictions on what elements can appear inside it. Custom elements that are not in the whitelist will be hoisted out and thus not render properly. In such cases you should use the `is` special attribute to indicate a custom element:
+Alcuni elementi HTML, per esempio `<table>`, hanno restrizioni su cosa può esserci al loro interno. Una di queste restrizioni non permette l'utilizzo di elementi custom e perciò non vengono renderizzati a dovere. In questo caso la soluzione è utilizzare l'attributo `is` su un elemento permesso in modo tale da sfruttarlo per il nostro componente:
 
 ``` html
 <table>
