@@ -143,33 +143,33 @@ Alcuni elementi HTML, per esempio `<table>`, hanno restrizioni su cosa può esse
 
 ## Props
 
-### Passing Data with Props
+### Passaggio dei Dati tramite i Props
 
-Every component instance has its own **isolated scope**. This means you cannot (and should not) directly reference parent data in a child component's template. Data can be passed down to child components using **props**.
+Tutti i componenti hanno una loro istanza **isolata**. Questo significa che non potete (e non dovreste) referenziare i dati di un componente padre internamente al figlio. I dati però possono essere passati tra le istanze correlate tramite i **props**.
 
-A "prop" is a field on a component's data that is expected to be passed down from its parent component. A child component needs to explicitly declare the props it expects to receive using the [`props` option](/api/#props):
+Un "prop", detta anche proprietà di sostengo, è un campo all interno del componento che si aspetta o che intende condividere, se è un componente padre a sua volta. Un componente deve dichiaratamente esprimere quali dati vuole che gli vengano passati, per farlo deve utilizzare [l'opzione `prop`](/api/#props):
 
 ``` js
 Vue.component('child', {
-  // declare the props
+  // Dichiariamo il prop
   props: ['msg'],
-  // the prop can be used inside templates, and will also
-  // be set as `this.msg`
+  // Il prop può essere usato internamente nel template
+  // E in tutta l'istanza del componente con this.
   template: '<span>{{ msg }}</span>'
 })
 ```
 
-Then, we can pass a plain string to it like so:
+Successivamente possiamo usarlo come sempre:
 
 ``` html
-<child msg="hello!"></child>
+<child msg="Ciao!"></child>
 ```
 
-**Result:**
+**Risultato:**
 
 {% raw %}
 <div id="prop-example-1" class="demo">
-  <child msg="hello!"></child>
+  <child msg="Ciao!"></child>
 </div>
 <script>
 new Vue({
@@ -186,7 +186,7 @@ new Vue({
 
 ### camelCase vs. kebab-case
 
-HTML attributes are case-insensitive. When using camelCased prop names as attributes, you need to use their kebab-case (hyphen-delimited) equivalents:
+Nel linguaggio HTML gli attributi sono insensibili alla capitalizzazione. Quando si utilizzano i prop come attributi è conveniente usare la notazione kebab-case, come nell esempio:
 
 ``` js
 Vue.component('child', {
@@ -198,7 +198,7 @@ Vue.component('child', {
 
 ``` html
 <!-- kebab-case in HTML -->
-<child my-message="hello!"></child>
+<child my-message="Ciao!"></child>
 ```
 
 ### Dynamic Props
