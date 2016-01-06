@@ -201,9 +201,9 @@ Vue.component('child', {
 <child my-message="Ciao!"></child>
 ```
 
-### Dynamic Props
+### Props Dinamici
 
-Similar to binding a normal attribute to an expression, we can also use `v-bind` for dynamically binding props to data on the parent. Whenever the data is updated in the parent, it will also flow down to the child:
+Come abbiamo già visto è possibile vincolare ad un attributo una particolare espressione, con `v-bind` possiamo anche vincolare i props in modo dinamico, i quali verrano aggiornati ogni volta che il dato di origine, quello padre, verrà aggiornato:
 
 ``` html
 <div>
@@ -213,13 +213,13 @@ Similar to binding a normal attribute to an expression, we can also use `v-bind`
 </div>
 ```
 
-It is often simpler to use the shorthand syntax for `v-bind`:
+E' sempre comodo usare le scorciatoie di sintassi, per `v-bind` abbiamo:
 
 ``` html
 <child :my-message="parentMsg"></child>
 ```
 
-**Result:**
+**Risultato:**
 
 {% raw %}
 <div id="demo-2" class="demo">
@@ -243,83 +243,83 @@ new Vue({
 </script>
 {% endraw %}
 
-### Literal vs. Dynamic
+### Dinamico vs Non Dinamico
 
-A common mistake beginners tend to make is attempting to pass down a number using the literal syntax:
+Un errore comune, soprattutto agli inizi, è quello di passare un numero fisso ad un attributo, come in questo esempio:
 
 ``` html
-<!-- this passes down a plain string "1" -->
+<!-- Viene passato 1 come stringa -->
 <comp some-prop="1"></comp>
 ```
 
-However, since this is a literal prop, its value is passed down a the plain string `"1"`, instead of an actual number. If we want to pass down an actual JavaScript number, we need to use the dynamic syntax to make its value be evaluated as a JavaScript expression:
+Però, essendo questo un prop non dinamico, il valore verrà passato proprio come stringa `"1"`, invece che come numero. Se volete passare un numero vero e proprio, dobbiamo utilizzare la sintassi dinamica vistra precedentemente:
 
 ``` html
-<!-- this passes down an actual number -->
+<!-- In questo modo si passa un numero -->
 <comp :some-prop="1"></comp>
 ```
 
-### Prop Binding Types
+### Tipo di Vincolo dei Prop
 
-By default, all props form a **one-way-down** binding between the child property and the parent one: when the parent property updates, it will flow down to the child, but not the other way around. This default is meant to prevent child components from accidentally mutating the parent's state, which can make your app's data flow harder to reason about. However, it is also possible to explicitly enforce a two-way or a one-time binding with the `.sync` and `.once` **binding type modifiers**:
+Per definizione, tutti i prop hanno un vincolo **mono direzionale** tra il padre ed il figlio: quando l'attributo padre viene aggiornato, il prop figlio viene aggiornato di conseguenza ma non viceversa. Questo comportamento standard previene eventuali mutamenti dello stato corrente della proprietà del padre, mutamenti accidentali che possono essere scatenati da componenti figli. Potrà sembrare restrittivo, per questo Vuejs permette di **modificare questo vincoli** tramite dei modificatori come `.sync` e `.once`:
 
-Compare the syntax:
+Ecco la sintassi:
 
 ``` html
-<!-- default, one-way-down binding -->
+<!-- default, vincolo mono direzionale -->
 <child :msg="parentMsg"></child>
 
-<!-- explicit two-way binding -->
+<!-- vincolo bidirezionale esplicito -->
 <child :msg.sync="parentMsg"></child>
 
-<!-- explicit one-time binding -->
+<!-- vincolo bidirezionale esplicito che occorre una volta -->
 <child :msg.once="parentMsg"></child>
 ```
 
-The two-way binding will sync the change of child's `msg` property back to the parent's `parentMsg` property. The one-time binding, once set up, will not sync future changes between the parent and the child.
+Il vincolo a due direzioni sincronizzerà lo stato della proprietà `msg` con quella del padre `parentMsg`. Il vincolo bidirezionale esplicito che occorre una volta sola sincronizzerà le due proprietà ma solo alla prima occasione.
 
-<p class="tip">Note that if the prop being passed down is an Object or an Array, it is passed by reference. Mutating the Object or Array itself inside the child **will** affect parent state, regardless of the binding type you are using.</p>
+<p class="tip">Attenzione, se il prop che viene passato è un Oggetto od un Array, verrà passato per referenza. Modificare un Oggetto o l'Array internamente al figlio **muterà** anche la properità del padre indipendentemente dal tipo di vincolo che state utilizzando</p>
 
-### Prop Validation
+### Validazione dei Prop
 
-It is possible for a component to specify the requirements for the props it is receiving. This is useful when you are authoring a component that is intended to be used by others, as these prop validation requirements essentially constitute your component's API, and ensure your users are using your component correctly. Instead of defining the props as an array of strings, you can use the object hash format that contain validation requirements:
+E' possibile, per un componente, specificare i requisiti di validazione di ogni prop. Questo è molto utile quando i prop di un componente verranno utilizzati da altri, dato che questo tipo di validazione sostanzialmente costuisce le fondamente di API per il componente stesso, e rafforza il buon uso del componente stesso. Per attivare le validazioni bisogna trattare la properità prop come un insieme di oggetti:
 
 ``` js
 Vue.component('example', {
   props: {
-    // basic type check (`null` means accept any type)
+    // Tipo richiesto (`null` significa qualsiasi tipo)
     propA: Number,
-    // a required string
+    // Una stringa richiesta
     propB: {
       type: String,
       required: true
     },
-    // a number with default value
+    // Un numero con un valore di default
     propC: {
       type: Number,
       default: 100
     },
-    // object/array defaults should be returned from a
-    // factory function
+    // Un oggetto con una funzione per creare un oggetto di default
+    // Questo concetto va applicato anche per gli Array
     propD: {
       type: Object,
       default: function () {
         return { msg: 'hello' }
       }
     },
-    // indicate this prop expects a two-way binding. will
-    // raise a warning if binding type does not match.
+    // Indica che questo prop si aspetta un vincolo bidirezionale, se non lo trova
+    // Scatenerà dei warning.
     propE: {
       twoWay: true
     },
-    // custom validator function
+    // Validazione personalizzata
     propF: {
       validator: function (value) {
         return value > 10
       }
     },
-    // coerce function (new in 1.0.12)
-    // cast the value before setting it on the component
+    // Funzione di coerenza (novità dalla 1.0.12)
+    // Rafforza il tipo di dato prima di assegnarlo al prop
     propG: {
       coerce: function (val) {
         return val + '' // cast the value to string
@@ -329,7 +329,7 @@ Vue.component('example', {
 })
 ```
 
-The `type` can be one of the following native constructors:
+I tipi di dato disponibili sono:
 
 - String
 - Number
@@ -338,48 +338,48 @@ The `type` can be one of the following native constructors:
 - Object
 - Array
 
-In addition, `type` can also be a custom constructor function and the assertion will be made with an `instanceof` check.
+In aggiunta si può definire la proprietà `type` con una funzione la quale conterrà un controllo utilizzando `instanceof`, molto utile per i tipi di dato personalizzati.
 
-When a prop validation fails, Vue will refuse to set the value on the child component, and throw a warning if using the development build.
+Quando una validazione fallisce, Vue si rifiuterà di impostare il valore, e lancerà un warning se si sta utilizzando la build per gli sviluppatori.
 
-## Parent-Child Communication
+## Comunicazione Padre-Figlio
 
-### Parent Chain
+### La Catena dei Padri
 
-A child component holds access to its parent component as `this.$parent`. A root Vue instance will be available to all of its descendants as `this.$root`. Each parent component has an array, `this.$children`, which contains all its child components.
+Un componente figlio ha accesso al componente padre tramite l'utilizzo di `this.$parent`. Un istanza Vue è disponibile a tutti i componenti e i loro discendenti tramite `this.$root`. Ogni padre ha un Array di componenti figli in un array `this.$children`.
 
-Although it's possible to access any instance the parent chain, you should avoid directly relying on parent data in a child component and prefer passing data down explicitly using props. In addition, it is a very bad idea to mutate parent state from a child component, because:
+Anche se questa logica rendere virtualmente possibile l'accesso alla catena dei padri da parte di un eventuale figlio, è vivamente sconsigliata e, invece, dovreste sempre passare i dati in modo esplicito tramite i prop. In aggiunta al discorso, è una cattiva abitudine quella di mutare lo stato di un componente padre da parte di un figlio per i seguenti motivi:
 
-1. It makes the parent and child tightly coupled;
+1. Rende il legame padre e figlio strettamente dipendenti;
 
-2. It makes the parent state much harder to reason about when looking at it alone, because its state may be modified by any child! Ideally, only a component itself should be allowed to modify its own state.
+2. Rende difficile stabilire lo stato corrente del padre senza dipendere dagli stati di eventuali figli! In un sistema ideale lo stato di ogni componente dev'essere auto gestito.
 
-### Custom Events
+### Eventi Personalizzati
 
-All Vue instances implement a custom event interface that facilitates communication within a component tree. This event system is independent from the native DOM events and works differently.
+Tutte le istanze di Vue implementano un interfaccia per facilitare la comunicazione tra gli eventi di ogni componente. Questo sistema di eventi è indipendente dal sitema degli eventi legati al DOM e lavora in modo differente.
 
-Each Vue instance is an event emitter that can:
+Tutte le istanze di Vue possono:
 
-- Listen to events using `$on()`;
+- Ascoltare gli eventi tramite `$on()`;
 
-- Trigger events on self using `$emit()`;
+- Attivare gli eventi da soli utilizzando `$emit()`;
 
-- Dispatch an event that propagates upward along the parent chain using `$dispatch()`;
+- Spedire gli eventi che si propagano per tutta la catena dei padri tramite `$dispatch()`;
 
-- Broadcast an event that propagates downward to all descendants using `$broadcast()`.
+- Trasmettere gli eventi a tutti i discendenti tramite `$broadcast()`.
 
-<p class="tip">Unlike DOM events, Vue events will automatically stop propagation after triggering callbacks for the first time along a propagation path, unless the callback explicitly returns `true`.</p>
+<p class="tip">Al contrario degli eventi DOM, gli eventi un Vue verranno automaticamente fermati una volta che la propagazione raggiunte il callback finale, a meno che tale callback non abbia un `return true` alla fine.</p>
 
-A simple example:
+Un semplice esempio:
 
 ``` html
-<!-- template for child -->
+<!-- Template, componente figlio -->
 <template id="child-template">
   <input v-model="msg">
-  <button v-on:click="notify">Dispatch Event</button>
+  <button v-on:click="notify">Invia Evento</button>
 </template>
 
-<!-- template for parent -->
+<!-- Template, componente padre -->
 <div id="events-example">
   <p>Messages: {{ messages | json }}</p>
   <child></child>
@@ -387,12 +387,11 @@ A simple example:
 ```
 
 ``` js
-// register child, which dispatches an event with
-// the current message
+// Registriamo il figlio che poi invierà l'Evento
 Vue.component('child', {
   template: '#child-template',
   data: function () {
-    return { msg: 'hello' }
+    return { msg: 'Ciao' }
   },
   methods: {
     notify: function () {
@@ -404,19 +403,16 @@ Vue.component('child', {
   }
 })
 
-// bootstrap parent, which pushes message into an array
-// when receiving the event
+// Creiamo il padre, che riceverà il messaggio in un array
 var parent = new Vue({
   el: '#events-example',
   data: {
     messages: []
   },
-  // the `events` option simply calls `$on` for you
-  // when the instance is created
+  // l'opzione `events` chiamerà `$on()` per voi quando l'istanza verrà creata
   events: {
     'child-msg': function (msg) {
-      // `this` in event callbacks are automatically bound
-      // to the instance that registered it
+      // `this` è legato all'istanza corrente in automatico
       this.messages.push(msg)
     }
   }
@@ -426,7 +422,7 @@ var parent = new Vue({
 {% raw %}
 <script type="x/template" id="child-template">
   <input v-model="msg">
-  <button v-on:click="notify">Dispatch Event</button>
+  <button v-on:click="notify">Invia Evento</button>
 </script>
 
 <div id="events-example" class="demo">
@@ -437,7 +433,7 @@ var parent = new Vue({
 Vue.component('child', {
   template: '#child-template',
   data: function () {
-    return { msg: 'hello' }
+    return { msg: 'Ciao' }
   },
   methods: {
     notify: function () {
@@ -463,19 +459,19 @@ var parent = new Vue({
 </script>
 {% endraw %}
 
-### v-on for Custom Events
+### Eventi Personalizzati e v-on
 
-The example above is pretty nice, but when we are looking at the parent's code, it's not so obvious where the `"child-msg"` event comes from. It would be better if we can declare the event handler in the template, right where the child component is used. To make this possible, `v-on` can be used to listen for custom events when used on a child component:
+L'esempio sopra citato è un buon inizio, ma se guardate attentamente il codice del componente padre, non è chiaro da dove `"child-msg"` arrivi. Sarebbe meglio se potessimo dichiarare il gestore di quello specifico evento direttamente nel template, dove viene utilizzato dal componente figlio. Per fare ciò  `v-on` è la soluzione ideale e può essere usato per ascoltare gli eventi che verranno poi utilizzati dai componenti figli:
 
 ``` html
 <child v-on:child-msg="handleIt"></child>
 ```
 
-This makes things very clear: when the child triggers the `"child-msg"` event, the parent's `handleIt` method will be called. Any code that affects the parent's state will be inside the `handleIt` parent method; the child is only concerned with triggering the event.
+Questo rende le cose ancora più chiare: quando un figlio attiva `"child-msg"` allora la funzione `handleIt` del padre verrà chiamata. Qualsiasi codice o logica che modificherà lo stato del componente padre verrà tenuta incapsulata all'interno del padre stesso, il figlio non dovrà preoccuparsi di nulla.
 
-### Child Component Refs
+### Riferimenti ai Componenti Figli
 
-Despite the existence of props and events, sometimes you might still need to directly access a child component in JavaScript. To achieve this you have to assign a reference ID to the child component using `v-ref`. For example:
+Nonostante ci siano i Prop e gli eventi, a volte può essere ancora necessario accedere direttamente ad un componente figlio tramite JavaScript. Per fare ciò si può assegnare un ID univoco al componente figlio tramite l'utilizzo di `v-ref`, per esemio:
 
 ``` html
 <div id="parent">
@@ -489,11 +485,11 @@ var parent = new Vue({ el: '#parent' })
 var child = parent.$refs.profile
 ```
 
-When `v-ref` is used together with `v-for`, the ref you get will be an Array or an Object containing the child components mirroring the data source.
+Quando `v-ref` viene usato assieme a `v-for`, il riferimento diventerà un Array o un Oggetto contenente tutti i componenti figli.
 
-## Content Distribution with Slots
+## Distribuzione dei Contenuti tramite Slots
 
-When using components, it is often desired to compose them like this:
+Quando si usano dei componenti, molto spesso il risultato è qualcosa di simile:
 
 ``` html
 <app>
@@ -502,13 +498,13 @@ When using components, it is often desired to compose them like this:
 </app>
 ```
 
-There are two things to note here:
+Ci sono due cose da notare in questo particolare codice:
 
-1. The `<app>` component does not know what content may be present inside its mount target. It is decided by whatever parent component that is using `<app>`.
+1. Il componente `<app>` non sa il contenuto che potrà essere presente internamente agli altri componenti è deciso da qualsiasi componente includa `<app>` stesso.
 
-2. The `<app>` component very likely has its own template.
+2. Il componente `<app>` probabilmente avrà un suo template.
 
-To make the composition work, we need a way to interweave the parent "content" and the component's own template. This is a process called **content distribution** (or "transclusion" if you are familiar with Angular). Vue.js implements a content distribution API that is modeled after with the current [Web Components spec draft](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md), using the special `<slot>` element to serve as distribution outlets for the original content.
+Per far in modo che la composizione sia efficace, bisogna intervenire sul flusso dei componenti e del loro stesso stemplate. Questo processo viene definito **distribuzione dei contenuti** (o "transclusion" se arrivate dal mondo AngularJS). Vue.js implemente un sistema di distribuzione dei contenuti e fornisce delle API modellate appositamente secondo [le specifiche dei Componenti Web](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md), utilizzando l elemento speciale `<slot>` per distribuire tali componenti.
 
 ### Compilation Scope
 
