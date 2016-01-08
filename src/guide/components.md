@@ -324,6 +324,10 @@ Vue.component('example', {
       coerce: function (val) {
         return val + '' // cast the value to string
       }
+    },
+    propH: {
+      coerce: function (val) {
+        return JSON.parse(val) // mutiamo il typo ad Oggetto
     }
   }
 })

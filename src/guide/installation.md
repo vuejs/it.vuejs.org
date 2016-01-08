@@ -39,6 +39,21 @@ $ npm install vue
 $ npm install vue@csp
 ```
 
+## CLI
+
+Vue.js fornisce anche un'interfaccia [CLI ufficiale](https://github.com/vuejs/vue-cli) per una creazione rapida di Applicazioni a Pagina Singola. Questa interfaccia fornisce un interessante e veloce feedback per un flusso di lavoro moderno e dinamico. Vi aiuterà a impostare nuove applicazioni in pochi minuti tramite hot-reload e auto costruzione delle versioni da pubblicare di Vue.js:
+
+``` bash
+# installate vue-cli
+$ npm install -g vue-cli
+# creare un nuovo progetto usanto "webpack" come scheletro
+$ vue init webpack my-project
+# installate le dipendenze e siete pronti a partire!
+$ cd my-project
+$ npm install
+$ npm run dev
+```
+
 ## Versione per lo Sviluppo
 
 **Attenzione**: Il pacchetto CommonJS distribuito via NPM (`vue.common.js`) **non è** checked into source control, perciò per usare l'ultima versione del codice sorgente di Vue.js dovrete ricompilarlo a mano!
