@@ -512,32 +512,34 @@ Per far in modo che la composizione sia efficace, bisogna intervenire sul flusso
 
 ### Compilation Scope
 
-Before we dig into the API, let's first clarify which scope the contents are compiled in. Imagine a template like this:
+Prima di approfondire la nostra consocenze sulle API, chiarifichiamo in quale ambito i contenuti vengono compilati. Immaginate un template del tipo:
 
 ``` html
-<child>
-  {{ msg }}
-</child>
+<parent>
+  <child>
+    {{ msg }}
+  </child>
+</parent>
 ```
 
-Should the `msg` be bound to the parent's data or the child data? The answer is parent. A simple rule of thumb for component scope is:
+In questo caso `msg` andrebbe vincolato ai dati del padre oppure del figlio? La risposta è del padre, una regola di base per stabilire l'ambito dei componenti è:
 
-> Everything in the parent template is compiled in parent scope; everything in the child template is compiled in child scope.
+> Tutto ciò che viene compilato all'interno dell'ambito del padre appartiene al padre stesso, tutto quello che viene compilato nell'ambito del figlio appartiene al figlio.
 
-A common mistake is trying to bind a directive to a child property/method in the parent template:
+Un esempio di errore molto comunque è quello di cercare di legare una direttiva del figlio a qualche metodo o proprietà del padre:
 
 ``` html
-<!-- does NOT work -->
-<child v-show="someChildProperty"></child>
+<!-- Non funziona -->
+<child v-show="someParentProperty"></child>
 ```
 
-Assuming `someChildProperty` is a property on the child component, the example above would not work as intended. The parent's template should not be aware of the state of a child component.
+Mettiamo caso che `someParentProperty` sia una proprietà interna del figlio, l'esempio sopra comunque non funzionerebbe come previsto. Il padre non deve essere a conoscenza dello stato del figlio, o per lo meno non dovrebbe preoccuparsene.
 
-If you need to bind child-scope directives on a component root node, you should do so in the child component's own template:
+Se avete proprio la necessità di legare direttive figlie a qualche componente padre, dovete farlo all'interno della definizione del componente figlio stessa:
 
 ``` js
 Vue.component('child-component', {
-  // this does work, because we are in the right scope
+  // Questo funziona, siamo nell'ambito giusto
   template: '<div v-show="someChildProperty">Child</div>',
   data: function () {
     return {
@@ -547,52 +549,49 @@ Vue.component('child-component', {
 })
 ```
 
-Similarly, distributed content will be compiled in the parent scope.
+### Slot Singolo
 
-### Single Slot
+Il contenuto del padre verrà **scartato** a meno che il componente figlio non contenga almeno un elemento `<slot>`. Quando viene rilevato un elemento slot, senza contenuti ne attributi, tutto il contenuto del padre andrà a rimpiazzare lo slot stesso.
 
-Parent content will be **discarded** unless the child component template contains at least one `<slot>` outlet. When there is only one slot with no attributes, the entire content fragment will be inserted at its position in the DOM, replacing the slot itself.
+Se invece c'è del contenuto dentro uno `<slot>` allora verrà considerato **contenuto di rimpiazzio**. Ciò significa che verrà visualizzato se il padre non ha niente da mostrare.
 
-Anything originally inside the `<slot>` tags is considered **fallback content**. Fallback content is compiled in the child scope and will only be displayed if the hosting element is empty and has no content to be inserted.
-
-Suppose we have a component with the following template:
+Supponiamo di avere un componente del tipo:
 
 ``` html
 <div>
-  <h1>This is my component!</h1>
+  <h1>Questo è un componente!</h1>
   <slot>
-    This will only be displayed if there is no content
-    to be distributed.
+    Questo contenuto verrà visualizzato se il padre non ha bisogno dello slot
   </slot>
 </div>
 ```
 
-Parent markup that uses the component:
+Il padre che utilizzerà il componente:
 
 ``` html
 <my-component>
-  <p>This is some original content</p>
-  <p>This is some more original content</p>
+  <p>Contenuto originale</p>
+  <p>Altro contenuto originale</p>
 </my-component>
 ```
 
-The rendered result will be:
+Il risultato finale sarà
 
 ``` html
 <div>
-  <h1>This is my component!</h1>
-  <p>This is some original content</p>
-  <p>This is some more original content</p>
+  <h1>Questo è un componente!</h1>
+  <p>Contenuto originale</p>
+  <p>Altro contenuto originale</p>
 </div>
 ```
 
-### Named Slots
+### Slots Nominativi
 
-`<slot>` elements have a special attribute, `name`, which can be used to further customize how content should be distributed. You can have multiple slots with different names. A named slot will match any element that has a corresponding `slot` attribute in the content fragment.
+Gli elementi `<slot>` hanno un attributo speciale chiamato `name`, tale attributo può essere utilizzato per personalizzare il contenuto distribuito dagli slot stessi. Puoi avere slot multipli con nomi differenti. Il contenuto di uno slot nominativo viene cercato usando il nome dello slot come referenza.
 
-There can still be one unnamed slot, which is the **default slot** that serves as a catch-all outlet for any unmatched content. If there is no default slot, unmatched content will be discarded.
+Possono ancora esistere gli slot anonimi, i quali vengono utilizzati come **slot di default**.
 
-For example, suppose we have a `multi-insertion` component with the following template:
+Ecco un esempio di slot multipli:
 
 ``` html
 <div>
@@ -602,7 +601,7 @@ For example, suppose we have a `multi-insertion` component with the following te
 </div>
 ```
 
-Parent markup:
+Codice del Padre:
 
 ``` html
 <multi-insertion>
@@ -612,7 +611,7 @@ Parent markup:
 </multi-insertion>
 ```
 
-The rendered result will be:
+Risultato:
 
 ``` html
 <div>
@@ -622,7 +621,7 @@ The rendered result will be:
 </div>
 ```
 
-The content distribution API is a very useful mechanism when designing components that are meant to be composed together.
+Il sistema degli slot e la distribuzione dei contenuti è un meccanismo utilissimo per comporre template con componenti che interagiscono tra di loro.
 
 ## Dynamic Components
 
