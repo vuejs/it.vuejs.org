@@ -623,9 +623,9 @@ Risultato:
 
 Il sistema degli slot e la distribuzione dei contenuti è un meccanismo utilissimo per comporre template con componenti che interagiscono tra di loro.
 
-## Dynamic Components
+## Componenti Dinamici
 
-You can use the same mount point and dynamically switch between multiple components by using the reserved `<component>` element and dynamically bind to its `is` attribute:
+Sfruttando una singla istanza puoi cambiare dinamicamente i componenti utilizzati tramite l'elemento `<component>` e il suo attributo `is`:
 
 ``` js
 new Vue({
@@ -643,21 +643,21 @@ new Vue({
 
 ``` html
 <component :is="currentView">
-  <!-- component changes when vm.currentview changes! -->
+  <!-- il componente cambierà in base al valore di is -->
 </component>
 ```
 
-If you want to keep the switched-out components alive so that you can preserve its state or avoid re-rendering, you can add a `keep-alive` directive param:
+Nel caso tu voglia mantenere lo stato del componente anche se cambia, in modo da evitare una doppia renderizzazione, puoi utilizzare la direttiva `keep-alive`:
 
 ``` html
 <component :is="currentView" keep-alive>
-  <!-- inactive components will be cached! -->
+  <!-- il componente inattivo verrà messo in cache -->
 </component>
 ```
 
-### `activate` Hook
+### Hook `activate`
 
-When switching components, the incoming component might need to perform some asynchronous operation before it should be swapped in. To control the timing of component swapping, implement the `activate` hook on the incoming component:
+Quando si cambiano componenti, ed il componente in arrivo deve fare qualche lavoro asincrono prima di essere renderizzato, si può sfruttare l hook `activate` per gestire quel frangente tra il richiamo e la renderizzazione:
 
 ``` js
 Vue.component('activate-example', {
@@ -671,22 +671,22 @@ Vue.component('activate-example', {
 })
 ```
 
-Note the `activate` hook is only respected during dynamic component swapping or the initial render for static components - it does not affect manual insertions with instance methods.
+Da notare che questo `activate` viene chiamato solo durante il cambio di componenti o al primo richiamo del componente stesso. Non viene chiamato se viene inserito all interno di un istanza Vue.
 
 ### `transition-mode`
 
-The `transition-mode` param attribute allows you to specify how the transition between two dynamic components should be executed.
+L attributo `transition-mode` vi permette di specificare in che modo avvenga il cambio di due o più componenti dinamici.
 
-By default, the transitions for incoming and outgoing components happen simultaneously. This attribute allows you to configure two other modes:
+Per definizione, la transizione avviene in modo simultaneo. Questo però non vi impedisce di provare altri due modi disponibili:
 
-- `in-out`: New component transitions in first, current component transitions out after incoming transition has finished.
+- `in-out`: Il nuovo componente entra per primo, il componente che deve svanire lo fa finita la transizione del nuovo componente.
 
-- `out-in`: Current component transitions out first, new component transitions in after outgoing transition has finished.
+- `out-in`: Il componente attuale esce di scena per primo, il nuovo componente apparirà quando la transizione è finita.
 
-**Example**
+**Esempio**
 
 ``` html
-<!-- fade out first, then fade in -->
+<!-- fade out prima, poi fade in -->
 <component
   :is="view"
   transition="fade"
@@ -739,17 +739,17 @@ new Vue({
 </script>
 {% endraw %}
 
-## Misc
+## Altri Particolari
 
-### Components and v-for
+### I Componenti e v-for
 
-You can directly use `v-for` on the custom component, like any normal element:
+Potete usare `v-for` sui componenti come fate su qualsiasi altro elemento:
 
 ``` html
 <my-component v-for="item in items"></my-component>
 ```
 
-However, this won't pass any data to the component, because components have isolated scopes of their own. In order to pass the iterated data into the component, we should also use props:
+Però, tale metodo non passerà nessun dato al componente perchè ogni componente ha il proprio ambito isolato. Per passargli i dati tramite un ciclo `v-for` dovete utilizzare una sintassi del tipo:
 
 ``` html
 <my-component
@@ -759,21 +759,21 @@ However, this won't pass any data to the component, because components have isol
 </my-component>
 ```
 
-The reason for not automatically injecting `item` into the component is because that makes the component tightly coupled to how `v-for` works. Being explicit about where its data comes from makes the component reusable in other situations.
+La motivazione dietro tutto cioè è che non si vuole legare strettamente il componente al funzionamento di `v-for`, se si obbliga a rendere esplicita la provenienza dei dati, sarà più facile riutilizzare il componente.
 
-### Authoring Reusable Components
+### Authoring dei Componenti Riutilizzabili
 
-When authoring components, it is good to keep in mind whether you intend to reuse this component somewhere else later. It is OK for one-off components to have some tight coupling with each other, but reusable components should define a clean public interface.
+Quando si effettua authoring dei componenti, è buona cosa tenere a mente quando si vuole riutilizzare tale componente altrove. A volte può capitare di avere dei componenti poco riutilizzabili ma tenete a mente che è sempre meglio esporre un interfaccia API pulita e chiara per ogni componente.
 
-The API for a Vue.js component essentially comes in three parts - props, events and slots:
+Le API per un componente in Vue.js si suddividono sostanzialmente in tre parti - props, eventi e slots:
 
-- **Props** allow the external environment to feed data to the component;
+- **Props** ti permettono di ricevere dati dall'esterno del componente;
 
-- **Events** allow the component to trigger actions in the external environment;
+- **Eventi** ti permetto di attivare azioni che vengono distribuite all'esterno dei componenti;
 
-- **Slots** allow the external environment to insert content into the component's view structure.
+- **Slots** ti permettono di inserire del contenuto esterno all'interno della struttura del componente.
 
-With the dedicated shorthand syntax for `v-bind` and `v-on`, the intents can be clearly and succinctly conveyed in the template:
+Con le scorciatoie dedicate per `v-bind` e `v-on`, l'intento è quello di fornire delle API chiare anche nel template:
 
 ``` html
 <my-component
@@ -783,7 +783,7 @@ With the dedicated shorthand syntax for `v-bind` and `v-on`, the intents can be 
   @event-b="doThat">
   <!-- content -->
   <img slot="icon" src="...">
-  <p slot="main-text">Hello!</p>
+  <p slot="main-text">Ciao!</p>
 </my-component>
 ```
 
