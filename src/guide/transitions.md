@@ -158,6 +158,37 @@ In base al valore contenuto nell attributo `transition`, verranno attivate deter
 
 Se l'attributo `transition` non ha valore, le classi applicate saranno quelle di default `.v-transition`, `.v-enter` e `.v-leave`.
 
+### Classi Personalizzate per le Transizioni
+
+> Novità in 1.0.14
+
+You can specify custom `enterClass` and `leaveClass` in the transition definition. These will override the conventional class names. Useful when you want to combine Vue's transition system with an existing CSS animation library, e.g. [Animate.css](https://daneden.github.io/animate.css/):
+
+``` html
+<div v-show="ok" class="animated" transition="bounce">Watch me bounce</div>
+```
+
+``` js
+Vue.transition('bounce', {
+  enterClass: 'bounceInLeft',
+  leaveClass: 'bounceOutRight'
+})
+```
+
+### Dichiarare il Tipo di Transizione
+
+> Novità in 1.0.14
+
+Vue.js needs to attach event listeners in order to know when the transition has ended. It can either be `transitionend` or `animationend`, depending on the type of CSS rules applied. If you are only using one or the other, Vue.js can automatically detect the correct type. However, if in some cases you want to have both on the same element, for example having a CSS animation triggered by Vue, and also having a CSS transition effect on hover, you will have to explicitly declare the type you want Vue to care about:
+
+``` js
+Vue.transition('bounce', {
+  // Vue will now only care about `animationend` events
+  // for this transition
+  type: 'animation'
+})
+```
+
 ### Flusso della Transizione
 
 Quando la proprietà `show` cambia valore, Vue.js inserirà/rimuoverà l elemento `<div>` appropriatamente ed applicherà le transizioni necessarie secondo questo schema:
