@@ -4,27 +4,27 @@ type: api
 
 ## Global Config
 
-`Vue.config` è un oggetto contente le configurazioni globali di Vue. E' possibile modificarne le proprietà qui sotto elencate prima di prototipare la vostra applicazione.
+`Vue.config` is an object containing Vue's global configurations. You can modify its properties listed below before bootstrapping your application:
 
 ### debug
 
-- **Tipo:** `Booleano`
+- **Type:** `Boolean`
 
-- **Predefinito:** `falso`
+- **Default:** `false`
 
-- **Utilizzo:**
+- **Usage:**
 
   ``` js
   Vue.config.debug = true
   ```
 
-  Quando è in modalità debug Vue farà:
+  When in debug mode, Vue will:
 
-  1. La stampa di tutti gli stack per tutti gli allarmi.
+  1. Print stack traces for all warnings.
 
-  2. In modo che tutti i nodi ancorati a Vue siano visibili nella sezione commenti del DOM, così da renderne facile la consultazione tramite l'ispeziona elemento del browser.
+  2. Make all anchor nodes visible in the DOM as Comment nodes. This makes it easier to inspect the structure of the rendered result.
 
-  <p class="tip">La modalità debug è disponibile solo nella build di sviluppo.</p>
+  <p class="tip">Debug mode is only available in development build.</p>
 
 ### delimiters
 
@@ -970,7 +970,7 @@ type: api
 ### vm.$watch( expOrFn, callback, [options] )
 
 - **Arguments:**
-  - `{String|Function} expOrFn`
+  - `{String | Function} expOrFn`
   - `{Function} callback`
   - `{Object} [options]`
     - `{Boolean} deep`
@@ -1290,7 +1290,7 @@ type: api
 ### vm.$appendTo( elementOrSelector, [callback] )
 
 - **Arguments:**
-  - `{Element|String} elementOrSelector`
+  - `{Element | String} elementOrSelector`
   - `{Function} [callback]`
 
 - **Returns:** `vm` - the instance itself
@@ -1302,7 +1302,7 @@ type: api
 ### vm.$before( elementOrSelector, [callback] )
 
 - **Arguments:**
-  - `{Element|String} elementOrSelector`
+  - `{Element | String} elementOrSelector`
   - `{Function} [callback]`
 
 - **Returns:** `vm` - the instance itself
@@ -1314,7 +1314,7 @@ type: api
 ### vm.$after( elementOrSelector, [callback] )
 
 - **Arguments:**
-  - `{Element|String} elementOrSelector`
+  - `{Element | String} elementOrSelector`
   - `{Function} [callback]`
 
 - **Returns:** `vm` - the instance itself
@@ -1373,7 +1373,7 @@ type: api
 ### vm.$mount( [elementOrSelector] )
 
 - **Arguments:**
-  - `{Element|String} [elementOrSelector]`
+  - `{Element | String} [elementOrSelector]`
 
 - **Returns:** `vm` - the instance itself
 
@@ -1783,6 +1783,10 @@ type: api
 
 - **Attributes:**
   - `is`
+
+- **Param Attributes:**
+  - [`keep-alive`](/guide/components.html#keep-alive)
+  - [`transition-mode`](/guide/components.html#transition-mode)
 
 - **Usage:**
 
