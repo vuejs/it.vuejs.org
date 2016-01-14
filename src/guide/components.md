@@ -647,6 +647,8 @@ new Vue({
 </component>
 ```
 
+### `keep-alive`
+
 Nel caso tu voglia mantenere lo stato del componente anche se cambia, in modo da evitare una doppia renderizzazione, puoi utilizzare la direttiva `keep-alive`:
 
 ``` html
