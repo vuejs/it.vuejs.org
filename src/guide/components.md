@@ -789,51 +789,51 @@ Con le scorciatoie dedicate per `v-bind` e `v-on`, l'intento è quello di fornir
 </my-component>
 ```
 
-### Async Components
+### Componenti Asincroni
 
-In large applications, we may need to divide the app into smaller chunks, and only load a component from the server when it is actually needed. To make that easier, Vue.js allows you to define your component as a factory function that asynchronously resolves your component definition. Vue.js will only trigger the factory function when the component actually needs to be rendered, and will cache the result for future re-renders. For example:
+In applicazioni molto grosse, è utile poter dividere il tutto in piccole parti, e caricare solo i componenti quanto solo veramente necessari. Per facilitare questo processo, Vue.js vi permette di definire i vostri componenti in una funzione factory che automaticamente risolverà e renderizzerà i componenti per voi quando richiesti:
 
 ``` js
 Vue.component('async-example', function (resolve, reject) {
   setTimeout(function () {
     resolve({
-      template: '<div>I am async!</div>'
+      template: '<div>Sono Asincrono!</div>'
     })
   }, 1000)
 })
 ```
 
-The factory function receives a `resolve` callback, which should be called when you have retrieved your component definition from the server. You can also call `reject(reason)` to indicate the load has failed. The `setTimeout` here is simply for demonstration; How to retrieve the component is entirely up to you. One recommended approach is to use async components together with [Webpack's code-splitting feature](http://webpack.github.io/docs/code-splitting.html):
+La funzione factory riceve un callback chiamato `resolve`, il quale dovrebbe essere chiamato quando avete ricevuto la definizione del componente dal server. Potete anche chiamare `reject(reason)` per indicare un caricamento fallito, con tanto di moticazione. Nel nostro esempio il `setTimeout` dimostra come il componente venga caricato un secondo dopo in modo asincrono. La logica di caricamento è totalmente gestita da voi. Un consiglio è quello di utilizzare i componenti asincroni ed la [funzione code-splitting di Webpack](http://webpack.github.io/docs/code-splitting.html):
 
 ``` js
 Vue.component('async-webpack-example', function (resolve) {
-  // this special require syntax will instruct webpack to
-  // automatically split your built code into bundles which
-  // are automatically loaded over ajax requests.
+  // Usando require il vostro codice saprà che
+  // webpack è necessario per importare il componente in modo
+  // asincrono ed automatico.
   require(['./my-async-component'], resolve)
 })
 ```
 
-### Assets Naming Convention
+### Convenzione sui Nomi da usare
 
-Some assets, such as components and directives, appear in templates in the form of HTML attributes or HTML custom tags. Since HTML attribute names and tag names are **case-insensitive**, we often need to name our assets using kebab-case instead of camelCase, which can be a bit inconvenient.
+Alcuni elementi, come le direttive ed i componenti, vengono renderizzari dentro il codice HTML sotto forma di attributi oppure tag personalizzati. Dato che gli attributi ed i tag in HTML sono **case-insensitive**, è buona cosa utilizzare la sintassi kebab-case piuttosto che camelCase, quest'ultima potrebbe recare confusione.
 
-Vue.js actually supports naming your assets using camelCase or PascalCase, and automatically resolves them as kebab-case in templates (similar to the name conversion for props):
+Vue.js supporta l'uso di camelCase o PascalCase per le direttive o i componenti, e cercherà nel migliore dei modi di tradurle in kebab-case:
 
 ``` js
-// in a component definition
+// Nella definizione di un componente
 components: {
-  // register using camelCase
+  // registri il componente tramite camelCase
   myComponent: { /*... */ }
 }
 ```
 
 ``` html
-<!-- use dash case in templates -->
+<!-- utilizza il kebab-case nel template -->
 <my-component></my-component>
 ```
 
-This works nicely with [ES6 object literal shorthand](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_6):
+Questo approccio funzione bene con le [scorciatoie pr oggetti in ES6](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_6):
 
 ``` js
 // PascalCase
@@ -842,85 +842,85 @@ import DropdownMenu from './components/dropdown-menu';
 
 export default {
   components: {
-    // use in templates as <text-box> and <dropdown-menu>
+    // usati nel template come <text-box> e <dropdown-menu>
     TextBox,
     DropdownMenu
   }
 }
 ```
 
-### Recursive Component
+### Componenti Ricorsivi
 
-Components can recursively invoke itself in its own template, however, it can only do so when it has the `name` option:
+Un componente può invocare se stesso in modo ricorsivo, però questo è possibile solo quando l'opzione `name` è specificata:
 
 ``` js
 var StackOverflow = Vue.extend({
   name: 'stack-overflow',
   template:
     '<div>' +
-      // recursively invoke self
+      // invocazione ricorsiva
       '<stack-overflow></stack-overflow>' +
     '</div>'
 })
 ```
 
-A component like the above will result in a "max stack size exceeded" error, so make sure recursive invocation is conditional. When you register a component globally using `Vue.component()`, the global ID is automatically set as the component's `name` option.
+Una chiamata come quella dell'esempio sopra, porterebbe il vostro codice ad un errore del tipo "max stack size exceeded", assicuratevi che le chiamate ricorsive siano sempre monitorate da qualche condizione che ne limiti la creazione stessa. Quando registrate un componente a livello globale tramite `Vue.component()`, l'ID viene automaticamente generato e associato alla opzione `name`.
 
-### Fragment Instance
+### Istanze Frammentate
 
-When you use the `template` option, the content of the template will replace the element the Vue instance is mounted on. It is therefore recommended to always have a single root-level, plain element in templates.
+Quando si utilizza l'opzione `template` di un componente, essa andrà a sostituire il contenuto del componente per ogni istanza Vue nella quale il componente viene chiamato. A conoscenza di ciò è consigliato sempre tenere un unico livello di root per tutti i componenti di una singola istanza Vue.
 
-Instead of templates like this:
+Invece di un template del genere:
 
 ``` html
 <div>root node 1</div>
 <div>root node 2</div>
 ```
 
-Prefer this:
+E' consigliato questo:
 
 ``` html
 <div>
-  I have a single root node!
+  Un solo livello di Root!
   <div>node 1</div>
   <div>node 2</div>
 </div>
 ```
 
-There are multiple conditions that will turn a Vue instance into a **fragment instance**:
+Ci sono molte situazione che possono trasformare una istanza Vue in un'**istanza frammentata**:
 
-1. Template contains multiple top-level elements.
-2. Template contains only plain text.
-3. Template contains only another component (which can potentially be a fragment instance itself).
-4. Template contains only an element directive, e.g. `<partial>` or vue-router's `<router-view>`.
-5. Template root node has a flow-control directive, e.g. `v-if` or `v-for`.
+1. Il template contiene più elementi di root assieme.
+2. Il template contiene solo testo.
+3. Il template contiene un altro componente (il quale potrebbe essere frammentato):
+4. Il template contiene solo una direttiva come `<partial>` oppure una vou-route `<router-view>`.
+5. Il template contiene un elemento di root con delle condizioni tipo `v-if` o `v-for`.
 
-The reason is that all of the above cause the instance to have an unknown number of top-level elements, so it has to manage its DOM content as a fragment. A fragment instance will still render the content correctly. However, it will **not** have a root node, and its `$el` will point to an "anchor node", which is an empty Text node (or a Comment node in debug mode).
+La ragione per la quale tutte questi punto possono portare ad una istanza frammentata è che non si riesce più a definire quale sia l'elemento di rotto principale, questo costringe Vue a gestire tutto il contenuto del DOM come un template. Questo non impedirà di renderizzare il tutto correttamente ma non avendo un elemento di root l'opzione `$el` punterà ad un elemento non corretto, di solito un elemento del DOM testuale.
 
-What's more important though, is that **non-flow-control directives, non-prop attributes and transitions on the component element will be ignored**, because there is no root element to bind them to:
+La cosa più importante di ciò è che **verranno ignorate tutte le direttive non di controllo, tutti gli attributi che non sono prop e tutte le transizioni dei componenti**, perchè non c'è nessun elemento di root definito al quale legarle:
 
 ``` html
-<!-- doesn't work due to no root element -->
+<!-- Non funzionerà -->
 <example v-show="ok" transition="fade"></example>
 
-<!-- props work -->
+<!-- Funzionerà, i prop funzionano -->
 <example :prop="someData"></example>
 
-<!-- flow control works, but without transitions -->
+<!-- il controllo funziona ma senza transizioni-->
 <example v-if="ok"></example>
 ```
 
-There are, of course, valid use cases for fragment instances, but it is in general a good idea to give your component template a single, plain root element. It ensures directives and attributes on the component element to be properly transferred, and also results in slightly better performance.
+Ci sono dei casi nei quali le istanze frammentate sono l'unico modo di operare, in generale però è sempre meglio evitarle specificando un singolo elemento di root. Oltre alle motivazioni citate precedentemente, avere un elemento di root migliora anche le prestazioni.
 
-### Inline Template
+### Template Inline
 
-When the `inline-template` special attribute is present on a child component, the component will use its inner content as its template, rather than treating it as distributed content. This allows more flexible template-authoring.
+Quando si utilizzano i template inline, lo si fa tramite l'utilizzo di un attributo speciale chiamato `inline-template`, questo permette di utilizzare il contenuto scritto nel componente come unico contenuto per il suo template:
 
 ``` html
 <my-component inline-template>
-  <p>These are compiled as the component's own template</p>
-  <p>Not parent's transclusion content.</p>
+  <p>Questi due elemento sono compilati come parte del template del componente</p>
+  <p>Senza inclusione da parte di un eventuale componente padre</p>
 </my-component>
 ```
 
-However, `inline-template` makes the scope of your templates harder to reason about, and makes the component's template compilation un-cachable. As a best practice, prefer defining templates inside the component using the `template` option.
+Comunque sia gli `inline-template` rendono lo scope del vostro template più difficile da definire, e rendono il contenuto del template impossibile da salvare in cache. E' sempre consigliato salvare e definire il template internamente al componente tramite l'opzione `template`.
