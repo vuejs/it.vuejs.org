@@ -1,97 +1,97 @@
 ---
-title: Reactivity in Depth
+title: Reattività nel Dettaglio
 type: guide
 order: 13
 ---
 
-We've covered most of the basics - now it's time to take a deep dive! One of Vue.js' most distinct features is the unobtrusive reactive system - models are just plain JavaScript objects, modify it and the view updates. It makes state management very simple and intuitive, but it's also important to understand how it works to avoid some common gotchas. In this section, we are going to dig into some of the lower-level details of Vue.js' reactivity system.
+Abbiamo visto tutte le basi per utilizzare VueJs - ora è tempo di guardare nel dettaglio alcune parti fondamentali, la prima che andremo ad affrontare è una delle più importanti e meno visibili di VueJs, il sistema di reattività. La reattività è tutto quel sistema che vi permette di aggiornare gli oggetti Javascript della vostra istanza. La reattività rende la gestione dello stato veramente semplice ed intuitiva, ma è anche importante e bisogna capire come funziona per evitare sorprese in futuro. In questa sezione andremo ad analizzare nel dettagli il sistema di reattività per capire come funziona dietro le quinte.
 
-## How Changes Are Tracked
+## Come vengono tracciati i Cambiamenti
 
-When you pass a plain JavaScript object to a Vue instance as its `data` option, Vue.js will walk through all of its properties and convert them to getter/setters using [Object.defineProperty](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty). This is an ES5-only and un-shimmable feature, which is why Vue.js doesn't support IE8 and below.
+Quando passate un oggetto Javascript ad un'istanza Vue, ovvero alla sua opzione `data`, Vue.js in primis analizzerà tutte le sue proprietà e le convertirà in getter/setter usando la funzione [Object.defineProperty](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty). Questa funzione è disponibile sono da ES5 in su, per questo Vue.js non supportà IE8 e predecessori.
 
-The getter/setters are invisible to the user, but under the hood they enable Vue.js to perform dependency-tracking and change-notification when properties are accessed or modified. One caveat is that browser consoles format getter/setters differently when converted data objects are logged, so make sure to use the `vm.$log()` instance method for more inspection-friendly output.
+I getter/setters saranno invisibili all utente, ma dietro le quinte questi nuovi metodi permettono a Vue.js di tracciare i cambiamenti e di effetturare un tracciamento delle dipendenze esterne per quell oggetto specifico. Da notare che il browser formattano i getter/setter in maniera diversa rispetto a Vue.js, perciò quando volete effettuare il log di un oggetto è preferibile usare `vm.$log()` piuttosto che il log nativo del browser.
 
-For every directive / data binding in the template, there will be a corresponding **watcher** object, which records any properties "touched" during its evaluation as dependencies. Later on when a dependency's setter is called, it triggers the watcher to re-evaluate, and in turn causes its associated directive to perform DOM updates.
+Per ogni direttiva / vincolo di dati nel template, ci sarà un **watcher** dedicato, che tiene traccia di ogni cambiamento sia che proviene dal DOM, il quale va aggiornare il corrispettivo setter, sia che provenga da Vuejs, il quale andrà aggiornate il corrispettivo getter.
 
 ![data](/images/data.png)
 
-## Change Detection Caveats
+## Trucchi per determinare i Cambiamenti
 
-Due to the limitation of ES5, Vue.js **cannot detect property addition or deletion**. Since Vue.js performs the getter/setter conversion process during instance initialization, a property must be present in the `data` object in order for Vue.js to convert it and make it reactive. For example:
+Date alcune limitazioni di ES5, Vue.js **non può capire quando una proprietà viene aggiunta od eliminata** dato Vue.js crea questi getter/setter dedicati, se vengono aggiunte proprietà al di fuori, esse non saranno reattive, per esempio:
 
 ``` js
 var data = { a: 1 }
 var vm = new Vue({
   data: data
 })
-// `vm.a` and `data.a` are now reactive
+// `vm.a` e `data.a` non sono reattivi
 
 vm.b = 2
-// `vm.b` is NOT reactive
+// `vm.b` non è reattivo
 
 data.b = 2
-// `data.b` is NOT reactive
+// `data.b` non è reattivo
 ```
 
-However, there are ways to **add a property and make it reactive** after an instance has been created.
+Però, **c'è un modo per aggiungere una proprietà reattiva** dopo che l'istanza è stata creata.
 
-For Vue instances, you can use the `$set(path, value)` instance method:
+Per Vue in particolare, si può usare il metodo `$set(path, value)`:
 
 ``` js
 vm.$set('b', 2)
-// `vm.b` and `data.b` are now reactive
+// `vm.b` e `data.b` saranno reattivit
 ```
 
-For plain data objects, you can use the global `Vue.set(object, key, value)` method:
+Per un oggetto, potete usare il metodo globale `Vue.set(object, key, value)`:
 
 ``` js
 Vue.set(data, 'c', 3)
-// `vm.c` and `data.c` are now reactive
+// `vm.c` w `data.c` ora sono reattivi
 ```
 
-Sometimes you may want to assign a number of properties on to an existing object, for example using `Object.assign()` or `_.extend()`. However, new properties added to the object will not trigger changes. In such cases, create a fresh object with properties from both the original object and the mixin object:
+Qualche voltra avrete bisogno di assegnare un numero di properità ad un oggetto già esistente, per esempio utilizzando `Object.assign()` o `_.extend()`. Comunque le nuove properità non saranno reattive, per far si che lo diventino bisogna riassegnare l'oggetto in questa maniera:
 
 ``` js
-// instead of `Object.assign(this.someObject, { a: 1, b: 2 })`
+//  invece di `Object.assign(this.someObject, { a: 1, b: 2 })`
 this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 })
 ```
 
-There are also a few Array-related caveats, which were [discussed earlier in the list rendering section](/guide/list.html#Caveats).
+Ci sono anche alcuni trucchi per gli Array, discussi in [precedenza sulla guida alle liste](/guide/list.html#Caveats).
 
-## Initialize Your Data
+## Inizializzare i Vostri Dati
 
-Although Vue.js provides the API to dynamically add reactive properties on the fly, it is recommended to declare all reactive properties upfront in the `data` option.
+Nonostante esistano delle API che permettano di dichiarare in modo dinamico le proprietà reattive, è sempre consigliato farlo inizialmente, con l'opzione `data`.
 
-Instead of this:
+Invece di questo::
 
 ``` js
 var vm = new Vue({
   template: '<div>{{msg}}</div>'
 })
-// add `msg` later
+// aggiungi `msg` dopo
 vm.$set('msg', 'Hello!')
 ```
 
-Prefer this:
+E' consigliato questo:
 
 ``` js
 var vm = new Vue({
   data: {
-    // declare msg with an empty value
+    // dichiarare msg dentro data anche se vuoto
     msg: ''
   },
   template: '<div>{{msg}}</div>'
 })
-// set `msg` later
+// impostare msg dopo
 vm.msg = 'Hello!'
 ```
 
-There are two reasons behind this pattern:
+Vi sono anche due ragioni dietro questo suggerimento:
 
-1. The `data` object is like the schema for your component's state. Declaring all reactive properties upfront makes the component code easier to understand and reason about.
+1. L'oggetto `data` è come lo schema per il vostro componente ed il suo stato. Dichiarare tutte le properità al suo interno rende il componente più facile da capire ed utilizzare.
 
-2. Adding a top level reactive property on a Vue instance will force all the watchers in its scope to re-evaluate, because it didn't exist before and no watcher could have tracked it as a dependency. The performance is usually acceptable (essentially the same as Angular's dirty checking), but can be avoided when you initialize the data properly.
+2. Aggiungere una properità reattiva al livello alto della vostra istanza Vue obbligherà i watchers a rivalutare l'istanza stessa, perchè non esiste un watcher che aveva tale properità come dipendenza. Le prestazioni di tale operazione sono accettabili (e sono molto simili alle prestazioni del controllo analogo su Angular), ma si possono evitare problemi con la dichiarazione delle properità nell oggetto data.
 
 ## Async Update Queue
 
