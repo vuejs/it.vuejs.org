@@ -93,11 +93,11 @@ Vi sono anche due ragioni dietro questo suggerimento:
 
 2. Aggiungere una properità reattiva al livello alto della vostra istanza Vue obbligherà i watchers a rivalutare l'istanza stessa, perchè non esiste un watcher che aveva tale properità come dipendenza. Le prestazioni di tale operazione sono accettabili (e sono molto simili alle prestazioni del controllo analogo su Angular), ma si possono evitare problemi con la dichiarazione delle properità nell oggetto data.
 
-## Async Update Queue
+## Coda di aggiornamento Asincrona
 
-By default, Vue.js performs DOM updates **asynchronously**. Whenever a data change is observed, Vue will open a queue and buffer all the data changes that happens in the same event loop. If the same watcher is triggered multiple times, it will be pushed into the queue only once. Then, in the next event loop "tick", Vue flushes the queue and performs only the necessary DOM updates. Internally Vue uses `MutationObserver` if available for the asynchronous queuing and falls back to `setTimeout(fn, 0)`.
+Per definizione, Vue.js aggiorna il DOM della pagina in modo **asincrono**. Ogni volta che un dato cambia, Vue aprirà una cosa e metterà in buffer tutti i cambiamenti avvenuti. Se un watcher viene richiamato più volte verrà messo in coda solo una volta sola ed al successivo ciclo di aggiornamento verrà fatto uscire dalla coda ed eseguito. Di default Vue usa un `MutationObserver` per gestire la coda asincrona, ma puoi anche ripiegare su `setTimeout(fn, 0)` se necessario.
 
-For example, when you set `vm.someData = 'new value'`, the DOM will not update immediately. It will update in the next "tick", when the queue is flushed. Most of the time we don't need to care about this, but it can be tricky when you want to do something that depends on the post-update DOM state. Although Vue.js generally encourages developers to think in a "data-driven" fashion and avoid touching the DOM directly, sometimes it might be necessary to get your hands dirty. In order to wait until Vue.js has finished updating the DOM after a data change, you can use `Vue.nextTick(callback)` immediately after the data is changed. The callback will be called after the DOM has been updated. For example:
+Un esempio, volete impostare `vm.someData = 'new value'`, il DOM non verrà aggiornato automaticamente ma al successivo "tick", quando la coda viene interrogata e liberata. La maggior parte delle volte tale comportamento va bene, e non ci accorgiamo nemmeno del tick di differenza ma in alcune sicutazioni, come uno stato che dipende da un altro aggiornamento precedente, la differenza di update può essere notata. La filosofia di Vue.js vi incoraggia sempre a pensare prima ai dati, senza toccare il DOM in maniera diretta, con aggiornamenti che dipendono da altri, però a volte è necessario per questo esiste un metodo chiamato `Vue.nextTick(callback)` che viene chiamato immediatamento ignorando la coda:
 
 ``` html
 <div id="example">{{msg}}</div>
@@ -110,14 +110,14 @@ var vm = new Vue({
     msg: '123'
   }
 })
-vm.msg = 'new message' // change data
+vm.msg = 'new message' // cabio di dati
 vm.$el.textContent === 'new message' // false
 Vue.nextTick(function () {
   vm.$el.textContent === 'new message' // true
 })
 ```
 
-There is also the `vm.$nextTick()` instance method, which is especially handy inside components, because it doesn't need global `Vue` and its callback's `this` context will be automatically bound to the current Vue instance:
+Naturalmente il sistema `vm.$nextTick()` può essere usato anche per i componenti, dato che è un metodo globale lo troverete nello scope di `this`:
 
 ``` js
 Vue.component('example', {
@@ -130,9 +130,9 @@ Vue.component('example', {
   methods: {
     updateMessage: function () {
       this.msg = 'updated'
-      console.log(this.$el.textContent) // => 'not updated'
+      console.log(this.$el.textContent) // => 'non aggiornato'
       this.$nextTick(function () {
-        console.log(this.$el.textContent) // => 'updated'
+        console.log(this.$el.textContent) // => 'aggiornato'
       })
     }
   }
