@@ -139,18 +139,18 @@ Vue.component('example', {
 })
 ```
 
-## Inside Computed Properties
+## Le proprietà derivate
 
-It should be noted that Vue.js computed properties are **not** simple getters. Each computed property keeps track of its own reactive dependencies. When a computed property is evaluated, Vue.js updates its dependency list and caches the result value. The cached value is only invalidated when one of the tracked dependencies have changed. Therefore, as long as the dependencies did not change, accessing the computed property will directly return the cached value instead of calling the getter.
+Come visto in precedenza, Vue.js **non** tratta le proprietà derivate come dei semplici getters. Ogni proprietà derivata tiene traccia delle dipendenze a lei associate, ovvero le proprietà dalla quale deriva. Quando una properità derivata viene richiamata, Vue.js aggiorna la lista delle dipendenze di tale proprietà e tiene in cache il risultato. Tale cache viene invalidata, e ricalcolata, ogni volta che una dipendenza cambia stato/valore. Questo fa si che se non viene cambiato lo stato, la proprietà derivata accederà sempre e solo al valore salvato nella cache, invece di richiamare la properità tramite un getter.
 
-Why do we need caching? Imagine we have an expensive computed property **A**, which requires looping through a huge Array and doing a lot of computations. Then, we may have other computed properties that in turn depend on **A**. Without caching, we would be calling **A**’s getter many more times than necessary!
+Perchè abbiamo bisogno del sistema di caching? Immaginate di avere una proprietà derivata che effettua molte istruzioni, portando via tempo computazionale, chiamiamola **A**. Poi abbiamo un'altra properità derivata che dipende da **A**, ogni volta che viene chiamata questa nuova properità derivata **A** dovrebbe rifare tutti i calcoli!
 
-Because of computed property caching, the getter function is not always called when you access a computed property. Consider the following example:
+A causa del sistema di cachine, la funzione di getter non viene sempre richiamata ma, considerate il seguente esempio:
 
 ``` js
 var vm = new Vue({
   data: {
-    msg: 'hi'
+    msg: 'ciao'
   },
   computed: {
     example: function () {
@@ -160,14 +160,14 @@ var vm = new Vue({
 })
 ```
 
-The computed property `example` has only one dependency: `vm.msg`. `Date.now()` is **not** a reactive dependency, because it has nothing to do with Vue's data observation system. Therefore, when you programmatically access `vm.example`, you will find the timestamp to remain the same unless `vm.msg` triggers a re-evaluation.
+La properità derivata `example` ha solo una dipendenza: `vm.msg`. `Date.now()` **non è** una dipendenza reattiva, perchè non ha niente a che fare con il sistema di osservamento dati di Vue. Ogni volta che `example` verrà chiamata, la data calcolata sarà sempre la stesse a meno che `vm.msg` non scateni una rivalutazione, tramite cambiamento del suo stato.
 
-In some use cases you may want to preserve the simple getter-like behavior, where every time you access `vm.example` it simply calls the getter again. You can do that by turning off caching for a specific computed property:
+In alcuni casi avrete bisogno di ottenere sempre il getter senza cache. Potete farlo disattivando la cache per ogni properità derivata:
 
 ``` js
 computed: {
   example: {
-    cache: false,
+    cache: false, // Ora non viene più usata la cache
     get: function () {
       return Date.now() + this.msg
     }
@@ -175,4 +175,4 @@ computed: {
 }
 ```
 
-Now, every time you access `vm.example`, the timestamp will be up-to-date. **However, note this only affects programmatic access inside JavaScript; data-bindings are still dependency-driven.** When you bind to a computed property in the template as `{% raw %}{{example}}{% endraw %}`, the DOM will only be updated when a reactive dependency has changed.
+Ogni volta che accedete a `vm.example`, la data cambierà sempre. **Attenzione però, questo aggiornamento affligge solo l'accesso programmatico interno in Javascript; il vincolo dei dati è sempre dipendente.** Quando una proprietà derivata, anche senza cache, viene utilizzata nel template tipo `{% raw %}{{example}}{% endraw %}`, tale elemento del DOM verrà aggiornato se e soltanto se le dipendenze della properità derivata cambiano stato.
