@@ -6,7 +6,7 @@ order: 19
 
 ## Angular
 
-Ci sono alcune ragioni per le quali è preferibile utilizzare Vue al posto di Angular, anche se non si There are a few reasons to use Vue over Angular, anche se potrebbero non essere valide per tutti:
+Ci sono alcune ragioni per le quali è preferibile utilizzare Vue al posto di Angular, anche se potrebbero non essere valide per tutti:
 
 - Vue.js è molto più semplice di Angular, sia in termini di API che di design. Puoi imparare praticamente tutto velocemente ed essere subito produttivo.
 
