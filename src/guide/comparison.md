@@ -1,24 +1,24 @@
 ---
-title: Comparison with Other Frameworks
+title: Confronto con altri Framework
 type: guide
 order: 19
 ---
 
 ## Angular
 
-There are a few reasons to use Vue over Angular, although they might not apply for everyone:
+Ci sono alcune ragioni per le quali è preferibile utilizzare Vue al posto di Angular, anche se non si There are a few reasons to use Vue over Angular, anche se potrebbero non essere valide per tutti:
 
-- Vue.js is much simpler than Angular, both in terms of API and design. You can learn almost everything about it really fast and get productive.
+- Vue.js è molto più semplice di Angular, sia in termini di API che di design. Puoi imparare praticamente tutto velocemente ed essere subito produttivo.
 
-- Vue.js is a more flexible, less opinionated solution. That allows you to structure your app the way you want it to be, instead of being forced to do everything the Angular way. It's only an interface layer so you can use it as a light feature in pages instead of a full blown SPA. It gives you bigger room to mix and match with other libraries, but you are also responsible for making more architectural decisions. For example, Vue.js' core doesn't come with routing or ajax functionalities by default, and usually assumes you are building the application using an external module bundler. This is probably the most important distinction.
+- Vue.js è una soluzione più flessibile e meno ostinata. Questo ti permette di strutturare la tua app come vuoi tu, invece di essere costretto a fare tutto alla maniera di Angular. È solo un livello d'interfaccia quindi puoi usarlo come una leggera funzionalità addizionale delle tue pagine, anziché come una SPA (Applicazione a Pagina Singola) in piena regola. Ti lascia più spazio per integrarsi con altre librerie, lasciandoti responsabile delle decisioni architetturali. Ad esempio, il nucleo di Vue.js non contiene di base funzionalità di routing o ajax, e generalmente assume che tu stia costruendo l'applicazione utilizzando un module bundler esterno. Questa è probabilmente la distinzione più importante.
 
-- Angular uses two-way binding between scopes. While Vue also supports explicit two-way bindings, it defaults to a one-way, parent-to-child data flow between components. Using one-way binding makes the flow of data easier to reason about in large apps.
+- Angular utilizza il two-way binding (legame a doppio senso) tra gli scope (ambiti). Anche Vue supporta il legame a doppio senso, ma il funzionamento predefinito è a senso unico, un flusso di dati genitore-figlio tra i componenti. Utilizzare il legame a senso unico permette di studiare un flusso di dati più agile nelle grosse applicazioni.
 
-- Vue.js has a clearer separation between directives and components. Directives are meant to encapsulate DOM manipulations only, while Components stand for a self-contained unit that has its own view and data logic. In Angular there's a lot of confusion between the two.
+- Vue.js separa in maniera più netta le direttive e i componenti. Le Direttive sono pensate per incapsulare solo le manipolazioni DOM, mentre i Componenti sono delle unità autosufficienti che hanno le loro proprie viste e logiche dati. In Angular c'è molta confusione tra le due.
 
-- Vue.js has better performance and is much, much easier to optimize, because it doesn't use dirty checking. Angular gets slow when there are a lot of watchers, because every time anything in the scope changes, all these watchers need to be re-evaluated again. Also, the digest cycle may have to run multiple times to "stabilize" if some watcher triggers another update. Angular users often have to resort to esoteric techniques to get around the digest cycle, and in some situations there's simply no way to optimize a scope with a large amount of watchers. Vue.js doesn't suffer from this at all because it uses a transparent dependency-tracking observing system with async queueing - all changes trigger independently unless they have explicit dependency relationships. The only optimization hint you'll ever need is the `track-by` param on `v-for` lists.
+- Vue.js ha migliori performance ed è molto, molto più semplice da ottimizzare, perché non utilizza il dirty checking (controllo sporco). Angular rallenta molto quando ci sono molti watcher (osservatori), perché ogni qualvolta qualcosa negli ambiti cambia, tutti quegli osservatori devono essere ricontrollati. Inoltre, il digest cycle viene eseguito più volte per "stabilizzare" se qualche osservatore innesca altri aggiornamenti. Gli utenti Angular devono spesso ricorrere a teniche poco ortodosse per aggirare il suddetto ciclo, ed in alcuni casi semplicemente non c'è modo di ottimizzare un ambito con grosse quantità di osservatori. Vue.js non soffre di questo problema affatto perché utilizza un sistema di tracciamento delle dipendenze con coda asincrona - tutte le modifiche si innescano indipendentemente a meno ché non abbiano esplicite relazioni di dipendenza. L'unico accenno di ottimizzazione del quale avrai mai bisogno è il parametro `track-by` nelle liste `v-for`.
 
-Interestingly, there are quite some similarities in how Angular 2 and Vue are addressing these Angular 1 issues.
+È interessante notare che ci sono abbastanza similitudini nel modo in cui Angular 2 e Vue affrontano questi problemi di Angular 1.
 
 ## React
 
