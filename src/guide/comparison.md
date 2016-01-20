@@ -1,75 +1,77 @@
 ---
-title: Comparison with Other Frameworks
+title: Confronto con altri Framework
 type: guide
 order: 19
 ---
 
 ## Angular
 
-There are a few reasons to use Vue over Angular, although they might not apply for everyone:
+Ci sono alcune ragioni per le quali è preferibile utilizzare Vue al posto di Angular, anche se potrebbero non essere valide per tutti:
 
-- Vue.js is much simpler than Angular, both in terms of API and design. You can learn almost everything about it really fast and get productive.
+- Vue.js è molto più semplice di Angular, sia in termini di API che di design. Puoi imparare praticamente tutto velocemente ed essere subito produttivo.
 
-- Vue.js is a more flexible, less opinionated solution. That allows you to structure your app the way you want it to be, instead of being forced to do everything the Angular way. It's only an interface layer so you can use it as a light feature in pages instead of a full blown SPA. It gives you bigger room to mix and match with other libraries, but you are also responsible for making more architectural decisions. For example, Vue.js' core doesn't come with routing or ajax functionalities by default, and usually assumes you are building the application using an external module bundler. This is probably the most important distinction.
+- Vue.js è una soluzione più flessibile e meno ostinata. Questo ti permette di strutturare la tua app come vuoi tu, invece di essere costretto a fare tutto alla maniera di Angular. È solo un livello d'interfaccia quindi puoi usarlo come una leggera funzionalità addizionale delle tue pagine, anziché come una SPA (Applicazione a Pagina Singola) in piena regola. Ti lascia più spazio per integrarsi con altre librerie, lasciandoti responsabile delle decisioni architetturali. Ad esempio, il nucleo di Vue.js non contiene di base funzionalità di routing o ajax, e generalmente assume che tu stia costruendo l'applicazione utilizzando un module bundler esterno. Questa è probabilmente la distinzione più importante.
 
-- Angular uses two-way binding between scopes. While Vue also supports explicit two-way bindings, it defaults to a one-way, parent-to-child data flow between components. Using one-way binding makes the flow of data easier to reason about in large apps.
+- Angular utilizza il two-way binding (legame a doppio senso) tra gli scope (ambiti). Anche Vue supporta il legame a doppio senso, ma il funzionamento predefinito è a senso unico, un flusso di dati genitore-figlio tra i componenti. Utilizzare il legame a senso unico permette di studiare un flusso di dati più agile nelle grosse applicazioni.
 
-- Vue.js has a clearer separation between directives and components. Directives are meant to encapsulate DOM manipulations only, while Components stand for a self-contained unit that has its own view and data logic. In Angular there's a lot of confusion between the two.
+- Vue.js separa in maniera più netta le direttive e i componenti. Le Direttive sono pensate per incapsulare solo le manipolazioni DOM, mentre i Componenti sono delle unità autosufficienti che hanno le loro proprie viste e logiche dati. In Angular c'è molta confusione tra le due.
 
-- Vue.js has better performance and is much, much easier to optimize, because it doesn't use dirty checking. Angular gets slow when there are a lot of watchers, because every time anything in the scope changes, all these watchers need to be re-evaluated again. Also, the digest cycle may have to run multiple times to "stabilize" if some watcher triggers another update. Angular users often have to resort to esoteric techniques to get around the digest cycle, and in some situations there's simply no way to optimize a scope with a large amount of watchers. Vue.js doesn't suffer from this at all because it uses a transparent dependency-tracking observing system with async queueing - all changes trigger independently unless they have explicit dependency relationships. The only optimization hint you'll ever need is the `track-by` param on `v-for` lists.
+- Vue.js ha migliori performance ed è molto, molto più semplice da ottimizzare, perché non utilizza il dirty checking (controllo sporco). Angular rallenta molto quando ci sono molti watcher (osservatori), perché ogni qualvolta qualcosa negli ambiti cambia, tutti quegli osservatori devono essere ricontrollati. Inoltre, il digest cycle viene eseguito più volte per "stabilizzare" se qualche osservatore innesca altri aggiornamenti. Gli utenti Angular devono spesso ricorrere a teniche poco ortodosse per aggirare il suddetto ciclo, ed in alcuni casi semplicemente non c'è modo di ottimizzare un ambito con grosse quantità di osservatori. Vue.js non soffre di questo problema affatto perché utilizza un sistema di tracciamento delle dipendenze con coda asincrona - tutte le modifiche si innescano indipendentemente a meno ché non abbiano esplicite relazioni di dipendenza. L'unico accenno di ottimizzazione del quale avrai mai bisogno è il parametro `track-by` nelle liste `v-for`.
 
-Interestingly, there are quite some similarities in how Angular 2 and Vue are addressing these Angular 1 issues.
+È interessante notare che ci sono abbastanza similitudini nel modo in cui Angular 2 e Vue affrontano questi problemi di Angular 1.
 
 ## React
 
-React and Vue.js do share a similarity in that they both provide reactive & composable View components. There are, of course, many differences as well.
+React e Vue.js condividono una somiglianza nel fatto che entrambi forniscono componenti delle Viste reattivi e componibili. Ci sono, certamente, anche molte differenze.
 
-First, the internal implementation is fundamentally different. React's rendering leverages the Virtual DOM - an in-memory representation of what the actual DOM should look like. When the state changes, React does a full re-render of the Virtual DOM, diffs it, and then patches the real DOM.
+Innanzitutto l'implementazione interna è fondamentalmente differente. Il render (calcolo) di React sfrutta il DOM Virtuale - una rappresentazione in memoria di come il DOM reale dovrebbe apparire. Quando uno stato cambia, React fa un completo ricalcolo del DOM Virtuale, ne confronta le differenze e quindi sistema il DOM reale.
 
-The virtual-DOM approach provides a functional way to describe your view at any point of time, which is really nice. Because it doesn't use observables and re-renders the entire app on every update, the view is by definition guaranteed to be in sync with the data. It also opens up possibilities to isomorphic JavaScript applications.
+L'approccio del DOM virtuale fornisce una maniera funzionale di descrivere la tua vista in qualsiasi punto nel tempo, che è davvero bello. A causa del fatto che non utilizza osservabili e ricalcola l'intera app ad ogni aggiornamento, la vista è per definizione assicurata essere in sincronia con i dati. Questo apre anche alla possibilità di applicazioni Javascript isomorfiche (che possono girare lato server e lato client).
 
-Instead of a Virtual DOM, Vue.js uses the actual DOM as the template and keeps references to actual nodes for data bindings. This limits Vue.js to environments where DOM is present. However, contrary to the common misconception that Virtual-DOM makes React faster than anything else, Vue.js actually out-performs React when it comes to hot updates, and requires almost no hand-tuned optimization. With React, you need to implement `shouldComponentUpdate` everywhere or use immutable data structures to achieve fully optimized re-renders.
+Invece di un DOM virtuale, Vue.js utilizza il DOM reale come template e mantiene i riferimenti ai nodi reali per il legame dei dati. Questo limita Vue.js ad ambienti nei quali il DOM è presente. Comunque, contrariamente alla comune idea sbagliata che il DOM virtuale renda React più veloce di chiunque altro, Vue.js effettivamente surclassa React quando si tratta di aggiornamenti istantanei, e richiede praticamente nessuna ottimizzazione manuale. Con React, hai bisogno di implementare `shouldComponentUpdate` dappertutto oppure utilizzare strutture immutabili per ottenere ricalcoli pienamente ottimizzati.
 
-API-wise, one issue with React (or JSX) is that the render function often involves a lot of logic, and ends up looking more like a piece of program (which in fact it is) rather than a visual representation of the interface. For some developers this is a bonus, but for designer/developer hybrids like me, having a template makes it much easier to think visually about the design and CSS. JSX mixed with JavaScript logic breaks that visual model I need to map the code to the design. In contrast, Vue.js pays the cost of a lightweight data-binding DSL so that we have a visually scannable template and with logic encapsulated into directives and filters.
+In ambiente API, un problema con React (o JSX) è che la funzione di calcolo spesso coinvolge molta logica, e finisce per assomigliare più ad un pezzo di codice (quale è in effetti) più che una rappresentazione visuale dell'interfaccia. Per alcuni sviluppatori questo è un bonus, ma per figure ibride designer/sviluppatori come me, avere un template rende più semplice pensare in maniera visuale al design ed ai CSS. JSX mischiato alla logica JavaSCript rompe quel modello visuale del quale ho bisogno per mappare il codice al design. Al contrario, Vue.js paga il prezzo di un DSL (Linguaggio Specifico di Dominio) di legame dati leggero così che si abbia un template visivamente scansionabile con la logica incapsulata in filtri e direttive.
 
-Another issue with React is that because DOM updates are completely delegated to the Virtual DOM, it's a bit tricky when you actually **want** to control the DOM yourself (although theoretically you can, you'd be essentially working against the library when you do that). For applications that needs ad-hoc custom DOM manipulations, especially animations with complex timing requirements, this can become a pretty annoying restriction. On this front, Vue.js allows for more flexibility and there are [multiple FWA/Awwwards winning sites](https://github.com/vuejs/vue/wiki/Projects-Using-Vue.js#interactive-experiences) built with Vue.js.
+Un altro problema con React è che, a causa del fatto che gli aggiornamenti del DOM sono completamente delegati al DOM virtuale, è un po' complesso quando hai **bisogno** di controllare il DOM direttamente (anche se teoricamente puoi, se lo fai stai essenzialmente remando contro il principio della libreria stessa). 
 
-Some additional notes:
+Per applicazioni che necessitano di manipolazioni DOM personalizzate ad-hoc, specialmente animazioni con particolari necessità di sincronizzazione, questa potrebbe risultare una restrizione particolarmente fastidiosa. Su questo fronte, Vue.js permette più flessibilità e ci sono [numerosi siti vincitori dei FWA/Awwwards](https://github.com/vuejs/vue/wiki/Projects-Using-Vue.js#interactive-experiences) costruiti con Vue.js.
 
-- The React team has very ambitious goals in making React a platform-agnostic UI development paradigm, while Vue is focused on providing a pragmatic solution for the web.
+Note addizionali:
 
-- React, due to its functional nature, plays very well with functional programming patterns. However it also introduces a higher learning barrier for junior developers and beginners. Vue is much easier to pick up and get productive with in this regard.
+- Il team di React ha obiettivi molto ambiziosi per rendere React un paradigma di sviluppo UI agnostico nei confronti delle piattaforme, mentre Vue è più orientato a fornire una soluzuione pragmatica per il web.
 
-- For large applications, the React community has been doing a lot of innovation in terms of state management solutions, e.g. Flux/Redux. Vue itself doesn't really address that problem (same for React core), but the state management patterns can be easily adopted for a similar architecture. I've seen users use Redux with Vue, and engineers at Optimizely have been using NuclearJS (their Flux dialect) with Vue as well.
+- React, a causa della sua natura funzionale, lavora molto bene con modelli di programmazione funzionali. Comunque ciò introduce anche un a curva di apprendimento più elevata per sviluppatori giovani e principianti. Vue è molto più semplice da apprendere e rendere produttivi a questo proposito.
 
-- The trend in React development is pushing you to put everything in JavaScript, including your CSS. There has been many CSS-in-JS solutions out there but all more or less have its own problems. And most importantly, it deviates from the standard CSS authoring experience and makes it very awkward to leverage existing work in the CSS community. Vue's [single file components](http://vuejs.org/guide/application.html#Single_File_Components) gives you component-encapsulated CSS while still allowing you to use your pre-processors of choice.
+- Per grandi applicazioni, la community di React ha fatto molto in termini di soluzioni di controllo dello stato, es. Flux/Redux. Vue da solo non mira risolvere quel problema (vale lo stesso per il nucleo di React), ma i modelli di gestione dello stato possono essere facilmente adottati per un'architettura simile. Ho visto utenti utilizzare Redux con Vue e similmente ingegneri ad Optimizely hanno usato NuclearJS (il loro dialetto Flux) con Vue stesso.
+
+- L'andamento nello sviluppo su React ti spinge ad inserire tutto nel JavaScript, inclusi i tuoi CSS. Ci sono state molte soluzioni CSS-in-JS qui fuori ma più o meno tutte hanno i loro problemi. E più importante, questo diverge dall'esperienza classica di produzione di CSS e rende molto scomodo sfruttare l'esistente lavoro della comunità CSS. I [componenti su file singolo](http://vuejs.org/guide/application.html#Single_File_Components) ti forniscono CSS incapsulato nei componenti permettendoti al contempo di utilizzare il tuo pre-processore preferito.
 
 ## Ember
 
-Ember is a full-featured framework that is designed to be highly opinionated. It provides a lot of established conventions, and once you are familiar enough with them, it can make you very productive. However, it also means the learning curve is high and the flexibility suffers. It's a trade-off when you try to pick between an opinionated framework and a library with a loosely coupled set of tools that work together. The latter gives you more freedom but also requires you to make more architectural decisions.
+Ember è un framework pienamente funzionale che è strutturato per essere altamente vincolato. Fornisce molte convenzioni assodate, e una volta che familiarizzi abbastanza con loro, puoi essere molto produttivo. Comunque, questo significa anche una curva di apprendimento più elevata e ne risente la flessibilità. È un compromesso quando devi scegliere tra un framework vincolato e una libreria con una serie di strumenti svincolati che hai bisogno lavorino assieme. L'ultimo ti dà più libertà ma richiede anche che tu prenda molte più decisioni architetturali.
 
-That said, it would probably make a better comparison between Vue.js core and Ember's templating and object model layer:
+Detto questo, potrai avere un confronto migliore tra il nocciolo di Vue.js e il sistema di template e il livello di object model di Ember:
 
-- Vue provides unobtrusive reactivity on plain JavaScript objects, and fully automatic computed properties. In Ember you need to wrap everything in Ember Objects and manually declare dependencies for computed properties.
+- Vue fornisce reattività non intrusiva su semplici, e proprietà computazionali pienamente automatiche. In Ember devi incapsulare tutto in Oggetti Ember e manualmente dichiarare le dipendenze per le proprietà computazionali.
 
-- Vue's template syntax harnesses the full power of JavaScript expressions, while Handlebars' expression and helper syntax is quite limited in comparison.
+- La sintassi di template di Vue imbriglia tutte le potenzialità delle espressioni JavaScript, mentre le espressioni di Handlebars e la sintassi degli helper è un po' limitata al confronto.
 
-- Performance wise, Vue outperforms Ember by a fair margin, even after the latest Glimmer engine update in Ember 2.0. Vue automatically batches updates, while in Ember you need to manually manage run loops in performance-critical situations.
+- Per quanto riguarda le performance, Vue surclassa Ember di un cospicuo margine, anche dopo l'ultimo update al motore Glimmer in Ember 2.0. Vue automatizza autonomamente gli aggiornamenti, mentre in Ember hai bisogno di eseguire manualmente i cicli d'esecuzione in situazioni critiche.
 
 ## Polymer
 
-Polymer is yet another Google-sponsored project and in fact was a source of inspiration for Vue.js as well. Vue.js' components can be loosely compared to Polymer's custom elements, and both provide a very similar development style. The biggest difference is that Polymer is built upon the latest Web Components features, and requires non-trivial polyfills to work (with degraded performance) in browsers that don't support those features natively. In contrast, Vue.js works without any dependencies down to IE9.
+Polymer è un altro progetto sponsorizzato da Google ed in effetti è stato fonte di ispirazione per Vue.js stesso. I componenti di Vue.js possono essere vagamente paragonati agli elementi personalizzati di Polymer, ed entrambi forniscono uno stile di sviluppo molto simile. La più grande differenza risiede nel fatto che Polymer è costruito sulle ultime caratteristiche dei Web Component, e richiede polyfill non semplici per poter funzionare (con ridotte performance) in browser che non supportano queste funzioni nativamente. Al contrario, Vue.js funziona senza alcuna dipendenza fino ad IE9.
 
-Also, in Polymer 1.0 the team has really made its data-binding system very limited in order to compensate for the performance. For example, the only expressions supported in Polymer templates are the boolean negation and single method calls. Its computed property implementation is also not very flexible.
+In più, in Polymer 1.0 il team has davvero reso il suo vincolo dei dati molto limitato, per compensare le performance. Ad esempio, l'unica espressione supportata nei teplate Polymer sono la negazione booleana e chiamate a metodi singoli. La sua implementazione di proprietà computazionali è anch'essa poco flessibile.
 
-Finally, when deploying to production, Polymer elements need to be bundled via a Polymer-specific tool called vulcanizer. In comparison, single file Vue components can leverage everything the Webpack ecosystem has to offer, and thus you can easily use ES6 and any CSS pre-processors you want in your Vue components.
+Concludendo, mandando in produzione, gli elementi Polyme devono essere incorporati tramite uno strumento specifico di Polymer chiamato Vulcanizer. Al confronto, i componenti su file singolo di Vue possono sfruttare tutto quello che l'ecosistema di Webpack ha da offrire, e dunque puoi facilmente utilizzare preprocessori ES6 e CSS che preferisci nei tuoi componenti.
 
 ## Riot
 
-Riot 2.0 provides a similar component-based development model (which is called a "tag" in Riot), with a minimal and beautifully designed API. I think Riot and Vue share a lot in design philosophies. However, despite being a bit heavier than Riot, Vue does offer some significant advantages over Riot:
+Riot 2.0 fornisce un modello di sviluppo a componenti molto simile (chiamato "tag" in Riot), con un'API minimale e magnificamente progettata. Penso che Vue e Riot condividano molto in filosofia di progetto. Comunque, pur essendo un po' più pesante di Riot, Vue offre importanti vantaggi su di esso:
 
-- True conditional rendering (Riot renders all if branches and simply show/hide them)
-- A far-more powerful router (Riot’s routing API is just way too minimal)
-- More mature tooling support (see webpack + vue-loader)
-- Transition effect system (Riot has none)
-- Better performance. (Riot in fact uses dirty checking rather than a virtual-dom, and thus suffers from the same performance issues with Angular.)
+- Vero ricalcolo condizionale (Riot calcola tutti i rami "if" e semplicemente li mostra/nasconde)
+- Un router molto più potente (L'api di routing di Riot è fin troppo minimale)
+- Un supporto agli strumenti più maturi (vedi webpack + vue-loader)
+- Sistema di effetti e transizioni (Riot non lo ha)
+- Migliori performance. (Riot in effetti usa il dirty checking al posto del virtual-dom, e quindi soffre delle stesse problematiche di performance di Angular)
