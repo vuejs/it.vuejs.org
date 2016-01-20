@@ -48,15 +48,15 @@ Note addizionali:
 
 ## Ember
 
-Ember is a full-featured framework that is designed to be highly opinionated. It provides a lot of established conventions, and once you are familiar enough with them, it can make you very productive. However, it also means the learning curve is high and the flexibility suffers. It's a trade-off when you try to pick between an opinionated framework and a library with a loosely coupled set of tools that work together. The latter gives you more freedom but also requires you to make more architectural decisions.
+Ember è un framework pienamente funzionale che è strutturato per essere altamente vincolato. Fornisce molte convenzioni assodate, e una volta che familiarizzi abbastanza con loro, puoi essere molto produttivo. Comunque, questo significa anche una curva di apprendimento più elevata e ne risente la flessibilità. È un compromesso quando devi scegliere tra un framework vincolato e una libreria con una serie di strumenti svincolati che hai bisogno lavorino assieme. L'ultimo ti dà più libertà ma richiede anche che tu prenda molte più decisioni architetturali.
 
-That said, it would probably make a better comparison between Vue.js core and Ember's templating and object model layer:
+Detto questo, potrai avere un confronto migliore tra il nocciolo di Vue.js e il sistema di template e il livello di object model di Ember:
 
-- Vue provides unobtrusive reactivity on plain JavaScript objects, and fully automatic computed properties. In Ember you need to wrap everything in Ember Objects and manually declare dependencies for computed properties.
+- Vue fornisce reattività non intrusiva su semplici, e proprietà computazionali pienamente automatiche. In Ember devi incapsulare tutto in Oggetti Ember e manualmente dichiarare le dipendenze per le proprietà computazionali.
 
-- Vue's template syntax harnesses the full power of JavaScript expressions, while Handlebars' expression and helper syntax is quite limited in comparison.
+- La sintassi di template di Vue imbriglia tutte le potenzialità delle espressioni JavaScript, mentre le espressioni di Handlebars e la sintassi degli helper è un po' limitata al confronto.
 
-- Performance wise, Vue outperforms Ember by a fair margin, even after the latest Glimmer engine update in Ember 2.0. Vue automatically batches updates, while in Ember you need to manually manage run loops in performance-critical situations.
+- Per quanto riguarda le performance, Vue surclassa Ember di un cospicuo margine, anche dopo l'ultimo update al motore Glimmer in Ember 2.0. Vue automatizza autonomamente gli aggiornamenti, mentre in Ember hai bisogno di eseguire manualmente i cicli d'esecuzione in situazioni critiche.
 
 ## Polymer
 
