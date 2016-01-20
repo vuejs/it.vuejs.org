@@ -68,10 +68,10 @@ Concludendo, mandando in produzione, gli elementi Polyme devono essere incorpora
 
 ## Riot
 
-Riot 2.0 provides a similar component-based development model (which is called a "tag" in Riot), with a minimal and beautifully designed API. I think Riot and Vue share a lot in design philosophies. However, despite being a bit heavier than Riot, Vue does offer some significant advantages over Riot:
+Riot 2.0 fornisce un modello di sviluppo a componenti molto simile (chiamato "tag" in Riot), con un'API minimale e magnificamente progettata. Penso che Vue e Riot condividano molto in filosofia di progetto. Comunque, pur essendo un po' più pesante di Riot, Vue offre importanti vantaggi su di esso:
 
-- True conditional rendering (Riot renders all if branches and simply show/hide them)
-- A far-more powerful router (Riot’s routing API is just way too minimal)
-- More mature tooling support (see webpack + vue-loader)
-- Transition effect system (Riot has none)
-- Better performance. (Riot in fact uses dirty checking rather than a virtual-dom, and thus suffers from the same performance issues with Angular.)
+- Vero ricalcolo condizionale (Riot calcola tutti i rami "if" e semplicemente li mostra/nasconde)
+- Un router molto più potente (L'api di routing di Riot è fin troppo minimale)
+- Un supporto agli strumenti più maturi (vedi webpack + vue-loader)
+- Sistema di effetti e transizioni (Riot non lo ha)
+- Migliori performance. (Riot in effetti usa il dirty checking al posto del virtual-dom, e quindi soffre delle stesse problematiche di performance di Angular)
