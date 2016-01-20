@@ -60,11 +60,11 @@ Detto questo, potrai avere un confronto migliore tra il nocciolo di Vue.js e il 
 
 ## Polymer
 
-Polymer is yet another Google-sponsored project and in fact was a source of inspiration for Vue.js as well. Vue.js' components can be loosely compared to Polymer's custom elements, and both provide a very similar development style. The biggest difference is that Polymer is built upon the latest Web Components features, and requires non-trivial polyfills to work (with degraded performance) in browsers that don't support those features natively. In contrast, Vue.js works without any dependencies down to IE9.
+Polymer è un altro progetto sponsorizzato da Google ed in effetti è stato fonte di ispirazione per Vue.js stesso. I componenti di Vue.js possono essere vagamente paragonati agli elementi personalizzati di Polymer, ed entrambi forniscono uno stile di sviluppo molto simile. La più grande differenza risiede nel fatto che Polymer è costruito sulle ultime caratteristiche dei Web Component, e richiede polyfill non semplici per poter funzionare (con ridotte performance) in browser che non supportano queste funzioni nativamente. Al contrario, Vue.js funziona senza alcuna dipendenza fino ad IE9.
 
-Also, in Polymer 1.0 the team has really made its data-binding system very limited in order to compensate for the performance. For example, the only expressions supported in Polymer templates are the boolean negation and single method calls. Its computed property implementation is also not very flexible.
+In più, in Polymer 1.0 il team has davvero reso il suo vincolo dei dati molto limitato, per compensare le performance. Ad esempio, l'unica espressione supportata nei teplate Polymer sono la negazione booleana e chiamate a metodi singoli. La sua implementazione di proprietà computazionali è anch'essa poco flessibile.
 
-Finally, when deploying to production, Polymer elements need to be bundled via a Polymer-specific tool called vulcanizer. In comparison, single file Vue components can leverage everything the Webpack ecosystem has to offer, and thus you can easily use ES6 and any CSS pre-processors you want in your Vue components.
+Concludendo, mandando in produzione, gli elementi Polyme devono essere incorporati tramite uno strumento specifico di Polymer chiamato Vulcanizer. Al confronto, i componenti su file singolo di Vue possono sfruttare tutto quello che l'ecosistema di Webpack ha da offrire, e dunque puoi facilmente utilizzare preprocessori ES6 e CSS che preferisci nei tuoi componenti.
 
 ## Riot
 
