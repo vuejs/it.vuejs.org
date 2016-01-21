@@ -1,56 +1,55 @@
 ---
-title: Custom Directives
+title: Direttive Personalizzate
 type: guide
 order: 14
 ---
 
-## Basics
+## Introduzione
 
-In addition to the default set of directives shipped in core, Vue.js also allows you to register custom directives. Custom directives provide a mechanism for mapping data changes to arbitrary DOM behavior.
+In aggiunta alle varie direttive disponibili di default, Vue.js vi permette di registrare direttive personalizzate. Le direttive personalizzate forniscono dei meccanismi per mappare i cambiamenti dei dati in base ai comportamenti del DOM.
 
-You can register a global custom directive with the `Vue.directive(id, definition)` method, passing in a **directive id** followed by a **definition object**. You can also register a local custom directive by including it in a component's `directives` option.
+Potete registrare direttive personalizzate tramite il metodo globale `Vue.directive(id, definition)`, passandogli un **identificativo** seguito da un **oggetto** che definisce la direttiva stessa. La registrazione delle direttive può essere fatta anche localmente ad un componente tramite l'opzione
+`directives`.
 
-### Hook Functions
+### Funzioni
 
-A definition object can provide several hook functions (all optional):
+L'oggetto che definisce una direttiva può implementare diverse funzioni di default (tutte facoltative):
 
-- **bind**: called only once, when the directive is first bound to the element.
+- **bind**: chiamata una sola volta, quando la direttiva è legata ad un elemento del DOM.
 
-- **update**: called for the first time immediately after `bind` with the initial value, then again whenever the binding value changes. The new value and the previous value are provided as the argument.
+- **update**: chiamata inzialmente subito dopo `bind` con il valore iniziale, successivamente viene chiamata ad ogni cambiamento dei dati. Gli argomenti sono il valore precedente e nuovo.
 
-- **unbind**: called only once, when the directive is unbound from the element.
+- **unbind**: chiamata una sola volta, quando la direttiva viene slegata dall elemento del DOM.
 
-**Example**
+**Esempio**
 
 ``` js
 Vue.directive('my-directive', {
   bind: function () {
-    // do preparation work
-    // e.g. add event listeners or expensive stuff
-    // that needs to be run only once
+    // preparazione della direttiva
+    // per esempio aggiungere degli eventi, o calcoli dispendiosi
+    // che hanno bisogno solo di una singola chiamata
   },
   update: function (newValue, oldValue) {
-    // do something based on the updated value
-    // this will also be called for the initial value
+    // Logica da implementare per quando si aggiorna il valore
   },
   unbind: function () {
-    // do clean up work
-    // e.g. remove event listeners added in bind()
+    // Di solito usata per fare pulizia
   }
 })
 ```
 
-Once registered, you can use it in Vue.js templates like this (remember to add the `v-` prefix):
+Una volta registrata la si può usare come una direttiva normalissima, (ricordatevi di aggiungere il prefisso `v-`):
 
 ``` html
 <div v-my-directive="someValue"></div>
 ```
 
-When you only need the `update` function, you can pass in a single function instead of the definition object:
+Quando vi serve solo la funzione `update`, potete usare questa scorciatoia:
 
 ``` js
 Vue.directive('my-directive', function (value) {
-  // this function will be used as update()
+  // Qui si implementa solo l'update
 })
 ```
 
