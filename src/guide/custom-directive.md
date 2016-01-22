@@ -53,22 +53,22 @@ Vue.directive('my-directive', function (value) {
 })
 ```
 
-### Directive Instance Properties
+### Proprietà di Istanza delle Direttive
 
-All the hook functions will be copied into the actual **directive object**, which you can access inside these functions as their `this` context. The directive object exposes some useful properties:
+Tutte le funzioni, i metodi, di base verranno copiati **nell oggetto della direttiva**, il quale permetterà l'accesso a tali metodi tramite il contesto `this`. Una direttiva istanziata espone alcune importanti ed utili proprietà:
 
-- **el**: the element the directive is bound to.
-- **vm**: the context ViewModel that owns this directive.
-- **expression**: the expression of the binding, excluding arguments and filters.
-- **arg**: the argument, if present.
-- **name**: the name of the directive, without the prefix.
-- **modifiers**: an object containing modifiers, if any.
-- **descriptor**: an object that contains the parsing result of the entire directive.
-- **params**: an object containing param attributes. [Explained below](#params).
+- **el**: l'elemento al quale la direttiva è legato, elemento del DOM.
+- **vm**: il contesto, il ViewModel, che gestisce la direttiva corrente.
+- **expression**: l'espressione usata per il vincolo dei dati, escludendo filtri ed argomenti.
+- **arg**: gli argomenti, se presenti.
+- **name**: il nome della direttiva, senza prefisso `v-`.
+- **modifiers**: un oggetto che contiene i modificatori di istanza, se ci sono.
+- **descriptor**: un oggetto che contiene il parse di tutta la direttiva.
+- **params**: un oggetto che contiene gli attributi. [Spigati più avanti](#params).
 
-<p class="tip">You should treat all these properties as read-only and never modify them. You can attach custom properties to the directive object too, but be careful not to accidentally overwrite existing internal ones.</p>
+<p class="tip">Dovreste veramente trattare tutte le proprietà come properità di sola lettura e mai modificarne lo stato. Potete creare nuove proprietà interne alla direttiva, prestate attenzione a non modificare lo stato delle altre.</p>
 
-An example of a custom directive using some of these properties:
+Un esempio di una direttiva personalizzata che usa qualche proprietà vista:
 
 ``` html
 <div id="demo" v-demo:hello.a.b="msg"></div>
@@ -77,7 +77,7 @@ An example of a custom directive using some of these properties:
 ``` js
 Vue.directive('demo', {
   bind: function () {
-    console.log('demo bound!')
+    console.log('demo legata!')
   },
   update: function (value) {
     this.el.innerHTML =
@@ -91,18 +91,18 @@ Vue.directive('demo', {
 var demo = new Vue({
   el: '#demo',
   data: {
-    msg: 'hello!'
+    msg: 'Ciao!'
   }
 })
 ```
 
-**Result**
+**Risultato**
 
 <div id="demo" v-demo:hello.a.b="msg"></div>
 <script>
 Vue.directive('demo', {
   bind: function () {
-    console.log('demo bound!')
+    console.log('demo legata!')
   },
   update: function (value) {
     this.el.innerHTML =
@@ -116,27 +116,27 @@ Vue.directive('demo', {
 var demo = new Vue({
   el: '#demo',
   data: {
-    msg: 'hello!'
+    msg: 'Ciao!'
   }
 })
 </script>
 
-### Object Literals
+### Oggetti Dettagliato
 
-If your directive needs multiple values, you can also pass in a JavaScript object literal. Remember, directives can take any valid JavaScript expression:
+Se la vostra direttiva personalizzata si aspetta più argomenti, potete passargli un oggetto dettagliato. Ricordatevi che le direttive accettano qualsiasi esperessione JavaScript valida:
 
 ``` html
-<div v-demo="{ color: 'white', text: 'hello!' }"></div>
+<div v-demo="{ color: 'white', text: 'ciao!' }"></div>
 ```
 
 ``` js
 Vue.directive('demo', function (value) {
   console.log(value.color) // "white"
-  console.log(value.text) // "hello!"
+  console.log(value.text) // "ciao!"
 })
 ```
 
-### Literal Modifier
+### Modificatore Literal
 
 When a directive is used with the literal modifier, its attribute value will be interpreted as a plain string and passed directly into the `update` method. The `update` method will also be called only once, because a plain string cannot be reactive.
 
@@ -151,34 +151,34 @@ Vue.directive('demo', function (value) {
 
 ### Element Directives
 
-In some cases, we may want our directive to be used in the form of a custom element rather than as an attribute. This is very similar to Angular's notion of "E" mode directives. Element directives provide a lighter-weight alternative to full-blown components (which are explained later in the guide). You can register a custom element directive like so:
+In alcuni casi, vorreste poter usare le vostre direttive personalizzate come elementi del DOM invece che come attributi di un elemento. Questo comportamento è molto simile alla nozione "E" delle direttive di Angular. Le direttive come elementi forniscono una struttura del DOM più pulita e leggibile, per registrare una direttiva come elemento dovete seguire questi semplici passaggi:
 
 ``` js
 Vue.elementDirective('my-directive', {
-  // same API as normal directives
+  // Stesse API di una direttiva normale
   bind: function () {
-    // manipulate this.el...
+    // manipola le proprietà
   }
 })
 ```
 
-Then, instead of:
+Poi invece di questo:
 
 ``` html
 <div v-my-directive></div>
 ```
 
-We can write:
+Potete scrivere questo:
 
 ``` html
 <my-directive></my-directive>
 ```
 
-Element directives cannot accept arguments or expressions, but it can read the element's attributes to determine its behavior.
+Le direttive come elementi non possono accettare argomenti ne espressioni, ma possono leggere i loro attributi per determinare eventuali comportamenti ed azioni.
 
-A big difference from normal directives is that element directives are **terminal**, which means once Vue encounters an element directive, it will completely skip that element - only the element directive itself will be able to manipulate that element and its children.
+La differenza più grossa rispetto alle direttive normali è che la direttiva come elemento è **finale** , il che significa che ogni volta che Vue incontra un elemento come direttiva, salterà completamente tale elemento - solo l elemento come direttiva è in grado di manipolare se stesso ed i suoi figli.
 
-## Advanced Options
+## Opzioni avanzate
 
 ### params
 
