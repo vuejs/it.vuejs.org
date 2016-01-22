@@ -180,23 +180,23 @@ La differenza più grossa rispetto alle direttive normali è che la direttiva co
 
 ## Opzioni avanzate
 
-### params
+### parametri
 
-Custom directive can provide a `params` array, and the Vue compiler will automatically extract these attributes on the element that the directive is bound to. Example:
+Le direttive personalizzate forniscon un interessante opzione chiamata `params`, la quale è un array e verrà interpretata da Vue come una lista di attributi da aggiungere all elemento al quale è legata la direttiva personalizzata. Per esempio:
 
 ``` html
-<div v-example a="hi"></div>
+<div v-example a="ciao"></div>
 ```
 ``` js
 Vue.directive('example', {
   params: ['a'],
   bind: function () {
-    console.log(this.params.a) // -> "hi"
+    console.log(this.params.a) // -> "ciao"
   }
 })
 ```
 
-This API also supports dynamic attributes. The `this.params[key]` value is automatically kept up-to-date. In addition, you can specify a callback when the value has changed:
+Le API supportano anche gli attributi dinamici. Il valore di `this.params[key]` viene automaticamente tenuto aggiornato. In aggiunta, puoi specificare una funzione per ogni cambiamento di stato:
 
 ``` html
 <div v-example v-bind:a="someValue"></div>
@@ -206,15 +206,15 @@ Vue.directive('example', {
   params: ['a'],
   paramWatchers: {
     a: function (val, oldVal) {
-      console.log('a changed!')
+      console.log('a è cambiato!')
     }
   }
 })
 ```
 
-### deep
+### in profondità
 
-If your custom directive is expected to be used on an Object, and it needs to trigger `update` when a nested property inside the object changes, you need to pass in `deep: true` in your directive definition.
+Se la vostra direttiva personalizzata si aspetta un oggetto, e deve sempre attivare la funzione `update` quando una proprietà interna all oggetto cambia, allora dovete attivare l'opzione `deep: true` internamente alla direttiva.
 
 ``` html
 <div v-my-directive="obj"></div>
@@ -224,8 +224,7 @@ If your custom directive is expected to be used on an Object, and it needs to tr
 Vue.directive('my-directive', {
   deep: true,
   update: function (obj) {
-    // will be called when nested properties in `obj`
-    // changes.
+    // verrà chiamato quando la proprietà obj cambia.
   }
 })
 ```
