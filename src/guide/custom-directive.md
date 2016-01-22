@@ -180,7 +180,7 @@ La differenza più grossa rispetto alle direttive normali è che la direttiva co
 
 ## Opzioni avanzate
 
-### parametri
+### params
 
 Le direttive personalizzate forniscon un interessante opzione chiamata `params`, la quale è un array e verrà interpretata da Vue come una lista di attributi da aggiungere all elemento al quale è legata la direttiva personalizzata. Per esempio:
 
@@ -212,7 +212,7 @@ Vue.directive('example', {
 })
 ```
 
-### in profondità
+### deep
 
 Se la vostra direttiva personalizzata si aspetta un oggetto, e deve sempre attivare la funzione `update` quando una proprietà interna all oggetto cambia, allora dovete attivare l'opzione `deep: true` internamente alla direttiva.
 
@@ -231,17 +231,16 @@ Vue.directive('my-directive', {
 
 ### twoWay
 
-If your directive expects to write data back to the Vue instance, you need to pass in `twoWay: true`. This option allows the use of `this.set(value)` inside the directive:
+Se la vostra direttiva si aspetta di scrivere dai dati all'istanza di Vue, dovete passare l'opzione `twoWay: true`. In questo modo permettete di usare `this.set(value)` internamente alla direttiva:
 
 ``` js
 Vue.directive('example', {
   twoWay: true,
   bind: function () {
     this.handler = function () {
-      // set data back to the vm.
-      // If the directive is bound as v-example="a.b.c",
-      // this will attempt to set `vm.a.b.c` with the
-      // given value.
+      // Passa i dati all'istanza
+      // Se la direttiva è legata nel tipo v-example="a.b.c",
+      // questo metodo cercherà di impostare `vm.a.b.c` con i valori passati
       this.set(this.el.value)
     }.bind(this)
     this.el.addEventListener('input', this.handler)
@@ -254,7 +253,7 @@ Vue.directive('example', {
 
 ### acceptStatement
 
-Passing in `acceptStatement:true` enables your custom directive to accept inline statements like `v-on` does:
+Se passate `acceptStatement:true` abiliterete la direttiva personalizzata ad accettare espressione su riga singola come fa `v-on`:
 
 ``` html
 <div v-my-directive="a++"></div>
@@ -264,17 +263,16 @@ Passing in `acceptStatement:true` enables your custom directive to accept inline
 Vue.directive('my-directive', {
   acceptStatement: true,
   update: function (fn) {
-    // the passed in value is a function which when called,
-    // will execute the "a++" statement in the owner vm's
-    // scope.
+    // In questo caso update riceverà l'espression a++ e verrà
+    // eseguita
   }
 })
 ```
 
-Use this wisely though, because in general you want to avoid side-effects in your templates.
+Usate questa funziona in modo saggio, generalmente dovreste evitare manipolazioni tramite template.
 
 ### priority
 
-You can optionally provide a priority number for your directive (defaults to 1000). A directive with a higher priority will be processed earlier than other directives on the same element. Directives with the same priority will be processed in the order they appear in the element's attribute list, although that order is not guaranteed to be consistent in different browsers.
+Potete aggiungere un numero di priorità per la vostra direttiva (di default è impostato a 1000). Una direttiva con una priorità più alta verrà processata prima delle altre dello stesso elemento. Le direttive con la priorità uguale, come quella di default, vengono processate in ordine di apparizione anche se l'ordine **non è garantito** per ogni browser.
 
-You can checkout the priorities for some built-in directives in the [API reference](/api/#Directives). Additionally, flow control directives `v-if` and `v-for` always have the highest priority in the compilation process.
+Potete controllare la priorità per delle direttive integrate in Vue.js tramite [La DOC delle API](/api/#Directives). In aggiunta, le direttive `v-if` e `v-for` hanno sempre la più alta priorità durante la fase di processazione del DOM.
