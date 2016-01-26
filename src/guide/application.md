@@ -124,9 +124,9 @@ L'architettura Flux è molto usata nelle applicazioni React. L'idea dietro Flux,
 
 ## Unit Testing
 
-Anything compatible with a module-based build system works. A recommendation is using the [Karma](http://karma-runner.github.io/0.12/index.html) test runner. It has a lot of community plugins, including support for [Webpack](https://github.com/webpack/karma-webpack) and [Browserify](https://github.com/Nikku/karma-browserify). For detailed setup, please refer to each project's respective documentation.
+Tutto ciò che è compatibile con un sistema a moduli funziona. Vue raccomanda l'utilizzo di [Karma](http://karma-runner.github.io/0.12/index.html) per i tests. Ha molti plugin sviluppati dalla community, incluso il suporto a [Webpack](https://github.com/webpack/karma-webpack) e [Browserify](https://github.com/Nikku/karma-browserify). Per maggiori informazioni su come impostare Karma, fate riferimento alla documentazione ufficiale del progetto.
 
-In terms of code structure for testing, the best practice is to export raw options / functions in your component modules. Consider this example:
+Per quanto riguarda la struttura del codice per i tests, di seguito ci sono alcune linee guida per testare un sistema con un componente singolo:
 
 ``` js
 // my-component.js
@@ -134,7 +134,7 @@ module.exports = {
   template: '<span>{{msg}}</span>',
   data: function () {
     return {
-      msg: 'hello!'
+      msg: 'Ciao!'
     }
   }
   created: function () {
@@ -143,7 +143,7 @@ module.exports = {
 }
 ```
 
-You can use that file in your entry module like this:
+Il componente può essere utilizzato in un istanza Vue:
 
 ``` js
 // main.js
@@ -157,12 +157,12 @@ var app = new Vue({
 })
 ```
 
-And you can test that module like this:
+Ed il test può essere scritto come segue:
 
 ``` js
 // Some Jasmine 2.0 tests
 describe('my-component', function () {
-  // require source module
+  // richiediamo il componente
   var myComponent = require('../src/my-component')
   it('should have a created hook', function () {
     expect(typeof myComponent.created).toBe('function')
@@ -175,17 +175,17 @@ describe('my-component', function () {
 })
 ```
 
-There are example Karma configurations for both [Webpack](https://github.com/vuejs/vue-loader-example/blob/master/build/karma.conf.js) and [Browserify](https://github.com/vuejs/vueify-example/blob/master/karma.conf.js).
+Ci sono esempi per configurare Karma sia con [Webpack](https://github.com/vuejs/vue-loader-example/blob/master/build/karma.conf.js) che con [Browserify](https://github.com/vuejs/vueify-example/blob/master/karma.conf.js).
 
-<p class="tip">Since Vue.js directives perform updates asynchronously, when you are asserting DOM state after changing the data, you will have to do so in a `Vue.nextTick` callback.</p>
+<p class="tip">Dato che le direttive di Vue.js vengono aggiornate in modo asincrono, quando fate delle affermazioni sullo stato del DOM assicuratevi di utilizzare `Vue.nextTick`.</p>
 
-## Deploying for Production
+## Distruibuzione in Produzione
 
-The minified standalone build of Vue.js has already stripped out all the warnings for you for a smaller file size, but when you are using tools like Browserify or Webpack to build Vue.js applications, you will need some additional configuration to achieve this.
+La versione compressa di Vue.js è già ridotta ai minimi termini, senza debug e di dimensioni veramente ridotte. Se utilizzate Browserify o Webpack per fare una build personalizzata allora vi serviranno alcune configurazioni per ottenre lo stesso risultato.
 
 ### Webpack
 
-Use Webpack's [DefinePlugin](http://webpack.github.io/docs/list-of-plugins.html#defineplugin) to indicate a production environment, so that warning blocks can be automatically dropped by UglifyJS during minification. Example config:
+E' consigliato l'uso di [DefinePlugin](http://webpack.github.io/docs/list-of-plugins.html#defineplugin) per indircare l'ambiente di produzione, così tutto il sistema di debug verrà automaticamente scartato da UglifyJS durante la compressione. Ecco un esempio di configurazione:
 
 ``` js
 var webpack = require('webpack')
@@ -210,12 +210,12 @@ module.exports = {
 
 ### Browserify
 
-Just run your bundling command with `NODE_ENV` set to `"production"`. Vue automatically applies [envify](https://github.com/hughsk/envify) transform to itself and makes warning blocks unreachable. For example:
+Potete semplicemente eseguire il comando con `NODE_ENV` su `"production"`. Vue automaticamente applicherà [envify](https://github.com/hughsk/envify) per trasformare se stesso e togliere blocchi di warning e debug. Un esempio:
 
 ``` bash
 NODE_ENV=production browserify -e main.js | uglifyjs -c -m > build.js
 ```
 
-## An App Example
+## Esempio di Applicazione
 
-The [Vue.js Hackernews Clone](https://github.com/vuejs/vue-hackernews) is an example application that uses Webpack + vue-loader for code organization, vue-router for routing, and HackerNews' official Firebase API as the backend. It's by no means a big application, but it demonstrates the combined usage of the concepts discussed on this page.
+Il [Clone di HackerNews in Vue.js](https://github.com/vuejs/vue-hackernews) è un esempio completo di applicazione che utilizza Webpack + vue-loader per l'organizzazione del codice, vue-router per il routing e le API ufficiali di HackerNews come server. Non è un applicazione complessa, ne esageratamente grande, ma è un utile dimostrazione di tutti i concetti discussi in questa pagina.
