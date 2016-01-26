@@ -8,27 +8,27 @@ La libreria principale di Vue.js è progettata per essere essenziale e flessibil
 
 L'ecosistema di Vue.js però fornisce anche degli strumenti indipendenti dalla libreria principale che ti permettono di costrutire applicazioni scalabile in Single Page. Questo tipo di desgin fa si che Vue.js ricada più sotto la categoria di framework piuttosto che di libreria javascript, ma questa è solo un introduzione al vastita di funzionalità di Vue.js; Più avanti andremo a vedeere nel dettaglio tutte le parti dello stack di Vue.js.
 
-## Modularization
+## Modularizzazione
 
-For large projects it's necessary to utilize a modularized build system to better organize your code. The recommended approach of doing so is by writing your source code in CommonJS or ES6 modules and bundle them using [Webpack](http://webpack.github.io/) or [Browserify](http://browserify.org/).
+Per una applicazione complessa, è necessario concepire ed organizzare il codice sfruttando il concetto di modularizzazione. L'approccio raccomandato è di scrivere il codice sfruttando i moduli ES6 e CommonJS e impachettarli tramite [Webpack](http://webpack.github.io/) o [Browserify](http://browserify.org/).
 
-Webpack and Browserify are more than just module bundlers, though. They both provide source transform APIs that allow you to transform your source code with other pre-processors. For example, you can write your code with future ES2015/2016 syntax using [babel-loader](https://github.com/babel/babel-loader) or [babelify](https://github.com/babel/babelify).
+Webpack e Browserify sono più di semplici gestori di moduli. Essi forniscono anche un valido sistema di APIs che vi permetterà di sfruttare pre-processori per il vostro codice JavaScript. Per esempio potete scrivere il vostro codice guardando al futuro con la sintassi ES2015/2016 usando [babel-loader](https://github.com/babel/babel-loader) o [babelify](https://github.com/babel/babelify).
 
-If you've never used them before, I highly recommend going through a few tutorials to get familiar with the concept of module bundlers, and start writing JavaScript using the latest ECMAScript features.
+Se non gli avete mai usati prima, è raccomandato iniziare a familiarizzare con questi strumenti, tramite tutorial e documentazioni, e partire direttamente a scrivere codice con le caratteristiche ECMAScript in mente.
 
-## Single File Components
+## Componenti su File Singolo
 
-In a typical Vue.js project we will be dividing our interface into many small components, and it would be nice to have each component encapsulate its CSS styles, template and JavaScript definition in the same place. As mentioned above, when using Webpack or Browserify, with proper source transforms we can write our components like this:
+In un progetto tipico di Vue.js, la nostra interfaccia sarà divisa in vari componenti, sarebbe carino poter incapsulare ogni componente in un file singolo dedicato contenente il CSS, il template HTML e la logica JavaScript. Come detto prima, se usate Webpack o Browserify, potrete scrivere i vostri componenti in questa maniera:
 
 <img src="/images/vue-component.png">
 
-If you are into pre-processors, you can even do this:
+E se usate dei pre processori potete addirittura scrivere:
 
 <img src="/images/vue-component-with-pre-processors.png">
 
-You can build these single-file Vue components with Webpack + [vue-loader](https://github.com/vuejs/vue-loader) or Browserify + [vueify](https://github.com/vuejs/vueify). It is recommended to use the Webpack setup because Webpack's loader API enables better file dependency tracking / caching and some advanced features that are not feasible with Browserify transforms.
+Potete costruire questi file singoli usando Webpack + [vue-loader](https://github.com/vuejs/vue-loader) oppure Browserify + [vueify](https://github.com/vuejs/vueify). Il team di Vue.js vi consiglia l'utilizzo di Webpack perchè è più facile tracciare le dipendenze tra i vari componenti rispetto a Browserify.forms.
 
-You can find examples of the build setups on GitHub:
+Potete trovare degli esempi di setup su Github:
 
 - [Webpack + vue-loader](https://github.com/vuejs/vue-loader-example)
 - [Browserify + vueify](https://github.com/vuejs/vueify-example)
