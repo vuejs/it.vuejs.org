@@ -35,11 +35,11 @@ Potete trovare degli esempi di setup su Github:
 
 ## Routing
 
-For Single Page Applications, it is recommended to use the [official vue-router library](https://github.com/vuejs/vue-router), which is currently in technical preview. For more details, please refer to vue-router's [documentation](http://vuejs.github.io/vue-router/).
+Per applicazioni a pagina singola è raccomandato l'utilizzo della [libreria ufficial vue-router](https://github.com/vuejs/vue-router), il quale è ancora in preview tecnica. Per maggiori dettagli potete consultare la [documentazione](http://vuejs.github.io/vue-router/).
 
-If you just need some very simple routing logic, you can also implement it by manually listening on `hashchange` and utilizing a dynamic component:
+Se avete bisogno di una logica più semplice di routing, potete anche implementare manualmente il tutto utilizzando `hashchange` e i componenti dinamici:
 
-**Example:**
+**Esempio:**
 
 ``` html
 <div id="app">
@@ -56,19 +56,19 @@ var app = new Vue({
     currentView: 'home'
   }
 })
-// Switching pages in your route handler:
+// Da qui cambiate le pagine:
 app.currentView = 'page1'
 ```
 
-With this mechanism it's also very easy to leverage external routing libraries such as [Page.js](https://github.com/visionmedia/page.js) or [Director](https://github.com/flatiron/director).
+Con questo tipo di approccio è anche facile utilizzare librerie esterne come [Page.js](https://github.com/visionmedia/page.js) o [Director](https://github.com/flatiron/director).
 
-## Communication with Server
+## Comunicaione con il Server
 
-All Vue instances can have their raw `$data` directly serialized with `JSON.stringify()` with no additional effort. The community has contributed the [vue-resource](https://github.com/vuejs/vue-resource) plugin, which provides an easy way to work with RESTful APIs. You can also use any Ajax library you like, e.g. `$.ajax` or [SuperAgent](https://github.com/visionmedia/superagent). Vue.js also plays nicely with no-backend services such as Firebase and Parse.
+Tutte le istanze Vue hanno la proprietà `$data` direttamente serializzata tramite `JSON.stringify()` senza dover far nulla manualmente. La community di Vue ha aiutato a sviluppare un plugin chiamato [vue-resource](https://github.com/vuejs/vue-resource), il quale fornisce un interfaccia semplice ed intuitiva per lavorare con l'architettura REST. Come con il routing, puoi utilizzare qualsiasi altra liberia come `$.ajax` oppure [SuperAgent](https://github.com/visionmedia/superagent). Vue.js può anche funzionare benissimo con servizi come Firebase o Parse.
 
-## State Management
+## Controllo dello Stato
 
-In large applications, state management often becomes complex due to multiple pieces of state scattered across many components and the interactions between them. It is often overlooked that the source of truth in Vue.js applications is the raw data object - a Vue instances simply proxies access to it. Therefore, if you have a piece of state that should be shared by multiple instances, you should avoid duplicating it and share it by identity:
+In una grossa applicazione, il controllo dello stato dei vari componenti diventa sempre più complesso al crescere dello scambio di eventi e proprietà tra i vari componenti. In Vue.js l'oggetto data è la fonte primaria, tutte le istanze di Vue semplicemente fungono come proxy a quella specifica fonte di dati perciò lo stesso stato è condiviso da più istanze di Vue, detto questo non ha senso duplicare la fonte di dati:
 
 ``` js
 var sourceOfTruth = {}
@@ -82,18 +82,18 @@ var vmB = new Vue({
 })
 ```
 
-Now whenever `sourceOfTruth` is mutated, both `vmA` and `vmB` will update their views automatically. Extending this idea further, we would arrive at the **store pattern**:
+Ora ogni volta che `sourceOfTruth` cambia, muta, sia `vmA` che `vmB` riceveranno gli aggiornamenti per le loro viste in automatico. Estendendo questa idea ancor di più si può arrivare al paradigma detto **store pattern**:
 
 ``` js
 var store = {
   state: {
-    message: 'Hello!'
+    message: 'Ciao!'
   },
   actionA: function () {
-    this.state.message = 'action A triggered'
+    this.state.message = 'Azione A attivata'
   },
   actionB: function () {
-    this.state.message = 'action B triggered'
+    this.state.message = 'Azione B attivata'
   }
 }
 
@@ -112,15 +112,15 @@ var vmB = new Vue({
 })
 ```
 
-Notice we are putting all actions that mutate the store's state inside the store itself. This type of centralized state management makes it easier to understand what type of mutations could happen to the state, and how are they triggered. Each component can still own and manage its private state.
+Da notare che stiamo inserendo tutte le azioni che mutano lo store, dentro lo store stesso. Questo permette di avere un controllo dello stato centralizzato e rende più facile capire quali tipi di cambiamento possono avvenire, come essi vengono attivati e cosa possono cambiare. Ogni componente può, successivamente, gestire il proprio stato privato in base alle informazioni dello stato condiviso.
 
 ![State Management](/images/state.png)
 
-One thing to take note is that you should never replace the original state object in your actions - the components and the store need to share reference to the same object in order for the mutations to be observed.
+Una cosa da notare è che non dovreste mai cambiare lo stato originale tramize le funzioni di un'istanza in particolare. Il componente e lo store devono condividere lo stesso oggetto in modo tale da poter sfruttare, ed osservare, i cambiamenti di stato.
 
-If we enforce a convention where components are never allowed to directly mutate state that belongs to a store, but should instead dispatch events that notify the store to perform actions, we've essentially arrived at the [Flux](https://facebook.github.io/flux/) architecture. The benefits of this convention is we can record all state mutations happening to the store, and on top of that we can implement advanced debugging helpers such as mutation logs, snapshots, history re-rolls etc.
+Se dovessi forzare questo cambio di stato, della proprietà nello store,  da parte dei componenti dovremmo implementare un sistema di eventi che notifichino tale azione e si arriverebbe dunque ad avere un architettura simile a quella che si trova su [Flux](https://facebook.github.io/flux/). I benefici di tale architettura sono il fatto che si possa tener traccia di tutti i cambiamenti da parte dei componenti, un debug avanzato, la possibilità di fare il revert di un cambiamento etc.
 
-The Flux architecture is commonly used in React applications. Turns out the core idea behind Flux can be quite simply achieved in Vue.js, thanks to the unobtrusive reactivity system. Do note what we demonstrated here is just an example to introduce the concept - you may not need it at all for simple scenarios, and you should adapt the pattern to fit the real needs of your application.
+L'architettura Flux è molto usata nelle applicazioni React. L'idea dietro Flux, comunque, è facilmente implementabile in Vue.js grazie al sistema di reattività non invasivo. Da notare che comunque quello dimostrato qui è solo un concetto, uno dei tanti scenari possibili, non è detto che vi debba servire a tutti i costi, dipende sempre da cosa state implementando.
 
 ## Unit Testing
 
