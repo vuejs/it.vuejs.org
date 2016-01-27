@@ -1,111 +1,111 @@
 ---
-type: api
+Type: api
 ---
 
-## Global Config
+## Configurazione Globale
 
-`Vue.config` is an object containing Vue's global configurations. You can modify its properties listed below before bootstrapping your application:
+`Vue.config` è un oggetto che contiene tutte le configurazioni di Vue. Potete modificare le sue proprietà, descritte di seguito, prima di inizializzare l'applicazione:
 
 ### debug
 
-- **Type:** `Boolean`
+- **Tipo:** `Booleano`
 
-- **Default:** `false`
+- **Predefinito:** `falso`
 
-- **Usage:**
+- **Utilizzo:**
 
   ``` js
   Vue.config.debug = true
   ```
 
-  When in debug mode, Vue will:
+  Quando siete in modalità debug, Vue potrà:
 
-  1. Print stack traces for all warnings.
+  1. Stampare la coda delle chiamate per tutti i Warnings.
 
-  2. Make all anchor nodes visible in the DOM as Comment nodes. This makes it easier to inspect the structure of the rendered result.
+  2. Rendere tutti i nodi del DOM visibili, questo rende più facile ispezionare la struttura.
 
-  <p class="tip">Debug mode is only available in development build.</p>
+  <p class="tip">La modalità debug è disponibile solo nella build di sviluppo.</p>
 
 ### delimiters
 
-- **Type:** `Array<String>`
+- **Tipo:** `Array<Stringa>`
 
-- **Default:** `{% raw %}["{{", "}}"]{% endraw %}`
+- **Predefinito:** `{% raw %}["{{", "}}"]{% endraw %}`
 
-- **Usage:**
+- **Utilizzo:**
 
   ``` js
-  // ES6 template string style
+  // Template ES6 per le stringhe
   Vue.config.delimiters = ['${', '}']
   ```
 
-  Change the plain text interpolation delimiters.
+  Permette di cambiare gli interpreti nel DOM.
 
 ### unsafeDelimiters
 
-- **Type:** `Array<String>`
+- **Tipo:** `Array<Stringa>`
 
-- **Default:** `{% raw %}["{{{", "}}}"]{% endraw %}`
+- **Predefinito:** `{% raw %}["{{{", "}}}"]{% endraw %}`
 
-- **Usage:**
+- **Utilizzo:**
 
   ``` js
-  // make it look more dangerous
+  // facciamolo diventare più pericoloso
   Vue.config.unsafeDelimiters = ['{!!', '!!}']
   ```
 
-  Change the raw HTML interpolation delimiters.
+  Permette di cambiare gli interpreti HTML nel DOM.
 
 ### silent
 
-- **Type:** `Boolean`
+- **Tipo:** `Booleano`
 
-- **Default:** `false`
+- **Predefinito:** `falso`
 
-- **Usage:**
+- **Utilizzo:**
 
   ``` js
   Vue.config.silent = true
   ```
 
-  Suppress all Vue.js logs and warnings.
+  Sopprime tutti i Warnings e Log di Vue.js.
 
 ### async
 
-- **Type:** `Boolean`
+- **Tipo:** `Booleano`
 
-- **Default:** `true`
+- **Predefinito:** `true`
 
-- **Usage:**
+- **Utilizzo:**
 
   ``` js
   Vue.config.async = false
   ```
 
-  When async mode is off, Vue will perform all DOM updates synchronously upon detecting data change. This may help with debugging in some scenarios, but could also cause degraded performance and affect the order in which watcher callbacks are called. **`async: false` is not recommended in production.**
+  Quando la modlità asincrona è spenta, Vue aggiornerà il DOM in modo asincrono quando i dati cambiano. Questo può aiutare a debuggare qualche situazione specifica ma può anche ridurre le prestazioni e cambiare il modo in qui i watchers vengono chiamati. **`async: false` non è raccomandato in produzione.**
 
 ### convertAllProperties
 
-- **Type:** `Boolean`
+- **Tipo:** `Booleano`
 
-- **Default:** `false`
+- **Predefinito:** `falso`
 
-- **Usage:**
+- **Utilizzo:**
 
   ``` js
   Vue.config.convertAllProperties = true
   ```
 
-  (Added in 1.0.8) Turning this option on will enable Vue to convert and observe objects that already contain getters/setters defined with `Object.defineProperty`. This is off by default because there is a small performance cost and this is not a commonly-needed feature.
+  (Aggiunto dalla v1.0.8) Impostando questa opzione su `true` abiliterà l'istanza di Vue a convertire ed osservare tutti gli oggetti che già contengono dei getters/setters definiti tramite `Object.defineProperty`. Questa opzione è impostata a `false` perchè ci possono essere delle piccole perdite in prestazioni.
 
-## Global API
+## API Globali
 
 ### Vue.extend( options )
 
-- **Arguments:**
+- **Argomenti:**
   - `{Object} options`
 
-- **Usage:**
+- **Utilizzo:**
 
   Create a "subclass" of the base Vue constructor. The argument should be an object containing component options.
 
@@ -142,10 +142,10 @@ type: api
 
 ### Vue.nextTick( callback )
 
-- **Arguments:**
+- **Argomenti:**
   - `{Functon} callback`
 
-- **Usage:**
+- **Utilizzo:**
 
   Defer the callback to be executed after the next DOM update cycle. Use it immediately after you've changed some data to wait for the DOM update.
 
@@ -162,14 +162,14 @@ type: api
 
 ### Vue.set( object, key, value )
 
-- **Arguments:**
+- **Argomenti:**
   - `{Object} object`
-  - `{String} key`
+  - `{Stringa} key`
   - `{*} value`
 
 - **Returns:** the set value.
 
-- **Usage:**
+- **Utilizzo:**
 
   Set a property on an object. If the object is reactive, ensure the property is created as a reactive property and trigger view updates. This is primarily used to get around the limitation that Vue cannot detect property additions.
 
@@ -177,11 +177,11 @@ type: api
 
 ### Vue.delete( object, key )
 
-- **Arguments:**
+- **Argomenti:**
   - `{Object} object`
-  - `{String} key`
+  - `{Stringa} key`
 
-- **Usage:**
+- **Utilizzo:**
 
   Delete a property on an object. If the object is reactive, ensure the deletion triggers view updates. This is primarily used to get around the limitation that Vue cannot detect property deletions, but you should rarely need to use it.
 
@@ -189,11 +189,11 @@ type: api
 
 ### Vue.directive( id, [definition] )
 
-- **Arguments:**
-  - `{String} id`
+- **Argomenti:**
+  - `{Stringa} id`
   - `{Function | Object} [definition]`
 
-- **Usage:**
+- **Utilizzo:**
 
   Register or retrieve a global directive.
 
@@ -218,11 +218,11 @@ type: api
 
 ### Vue.elementDirective( id, [definition] )
 
-- **Arguments:**
-  - `{String} id`
+- **Argomenti:**
+  - `{Stringa} id`
   - `{Object} [definition]`
 
-- **Usage:**
+- **Utilizzo:**
 
   Register or retrieve a global element directive.
 
@@ -242,11 +242,11 @@ type: api
 
 ### Vue.filter( id, [definition] )
 
-- **Arguments:**
-  - `{String} id`
+- **Argomenti:**
+  - `{Stringa} id`
   - `{Function | Object} [definition]`
 
-- **Usage:**
+- **Utilizzo:**
 
   Register or retrieve a global filter.
 
@@ -270,11 +270,11 @@ type: api
 
 ### Vue.component( id, [definition] )
 
-- **Arguments:**
-  - `{String} id`
+- **Argomenti:**
+  - `{Stringa} id`
   - `{Function | Object} [definition]`
 
-- **Usage:**
+- **Utilizzo:**
 
   Register or retrieve a global component.
 
@@ -293,11 +293,11 @@ type: api
 
 ### Vue.transition( id, [hooks] )
 
-- **Arguments:**
-  - `{String} id`
+- **Argomenti:**
+  - `{Stringa} id`
   - `{Object} [hooks]`
 
-- **Usage:**
+- **Utilizzo:**
 
   Register or retrieve a global transition hooks object.
 
@@ -316,13 +316,13 @@ type: api
 
 ### Vue.partial( id, [partial] )
 
-- **Arguments:**
-  - `{String} id`
-  - `{String} [partial]`
+- **Argomenti:**
+  - `{Stringa} id`
+  - `{Stringa} [partial]`
 
-- **Usage:**
+- **Utilizzo:**
 
-  Register or retrieve a global template partial string.
+  Register or retrieve a global template partial stringa.
 
   ``` js
   // register
@@ -336,11 +336,11 @@ type: api
 
 ### Vue.use( plugin, [options] )
 
-- **Arguments:**
+- **Argomenti:**
   - `{Object | Function} plugin`
   - `{Object} [options]`
 
-- **Usage:**
+- **Utilizzo:**
 
   Install a Vue.js plugin. If the plugin is an Object, it must expose an `install` method. If it is a function itself, it will be treated as the install method. The install method will be called with Vue as the argument.
 
@@ -348,10 +348,10 @@ type: api
 
 ### Vue.mixin( mixin )
 
-- **Arguments:**
+- **Argomenti:**
   - `{Object} mixin`
 
-- **Usage:**
+- **Utilizzo:**
 
   Apply a mixin globally, which affects every Vue instance created afterwards. This can be used by plugin authors to inject custom behavior into components. **Not recommended in application code**.
 
@@ -361,21 +361,21 @@ type: api
 
 ### data
 
-- **Type:** `Object | Function`
+- **Tipo:** `Object | Function`
 
 - **Restriction:** Only accepts `Function` when used in `Vue.extend()`.
 
 - **Details:**
 
-  The data object for the Vue instance. Vue.js will recursively convert its properties into getter/setters to make it "reactive". **The object must be plain**: native objects, existing getter/setters and prototype properties are ignored. It is not recommended to observe complex objects.
+  The data object for the Vue instance. Vue.js will recursively convert its properties into getter/setters to make it "reactive". **The object must be plain**: native objects, existing getter/setters and protoTipo properties are ignored. It is not recommended to observe complex objects.
 
   Once the instance is created, the original data object can be accessed as `vm.$data`. The Vue instance also proxies all the properties found on the data object.
 
   Properties that start with `_` or `$` will **not** be proxied on the Vue instance because they may conflict with Vue's internal properties and API methods. You will have to access them as `vm.$data._property`.
 
-  If required, a deep clone of the original object can be obtained by passing `vm.$data` through `JSON.parse(JSON.stringify(...))`.
+  If required, a deep clone of the original object can be obtained by passing `vm.$data` through `JSON.parse(JSON.stringaify(...))`.
 
-- **Example:**
+- **Esempio:**
 
   ``` js
   var data = { a: 1 }
@@ -399,13 +399,13 @@ type: api
 
 ### props
 
-- **Type:** `Array | Object`
+- **Tipo:** `Array | Object`
 
 - **Details:**
 
-  A list/hash of attributes that are exposed to accept data from the parent component. It has a simple Array-based syntax and an alternative Object-based syntax that allows advanced configurations such as type checking, custom validation and default values.
+  A list/hash of attributes that are exposed to accept data from the parent component. It has a simple Array-based syntax and an alternative Object-based syntax that allows advanced configurations such as Tipo checking, custom validation and Predefinito values.
 
-- **Example:**
+- **Esempio:**
 
   ``` js
   // simple syntax
@@ -416,11 +416,11 @@ type: api
   // object syntax with validation
   Vue.component('props-demo-advanced', {
     props: {
-      // just type check
+      // just Tipo check
       size: Number,
-      // type check plus other validations
+      // Tipo check plus other validations
       name: {
-        type: String,
+        Tipo: Stringa,
         required: true
       }
     }
@@ -431,13 +431,13 @@ type: api
 
 ### computed
 
-- **Type:** `Object`
+- **Tipo:** `Object`
 
 - **Details:**
 
   Computed properties to be mixed into the Vue instance. All getters and setters have their `this` context automatically bound to the Vue instance.
 
-- **Example:**
+- **Esempio:**
 
   ```js
   var vm = new Vue({
@@ -470,13 +470,13 @@ type: api
 
 ### methods
 
-- **Type:** `Object`
+- **Tipo:** `Object`
 
 - **Details:**
 
   Methods to be mixed into the Vue instance. You can access these methods directly on the VM instance, or use them in directive expressions. All methods will have their `this` context automatically bound to the Vue instance.
 
-- **Example:**
+- **Esempio:**
 
   ```js
   var vm = new Vue({
@@ -495,13 +495,13 @@ type: api
 
 ### watch
 
-- **Type:** `Object`
+- **Tipo:** `Object`
 
 - **Details:**
 
-  An object where keys are expressions to watch and values are the corresponding callbacks. The value can also be a string of a method name, or an Object that contains additional options. The Vue instance will call `$watch()` for each entry in the object at instantiation.
+  An object where keys are expressions to watch and values are the corresponding callbacks. The value can also be a stringa of a method name, or an Object that contains additional options. The Vue instance will call `$watch()` for each entry in the object at instantiation.
 
-- **Example:**
+- **Esempio:**
 
   ``` js
   var vm = new Vue({
@@ -512,7 +512,7 @@ type: api
       'a': function (val, oldVal) {
         console.log('new: %s, old: %s', val, oldVal)
       },
-      // string method name
+      // stringa method name
       'b': 'someMethod',
       // deep watcher
       'c': {
@@ -530,13 +530,13 @@ type: api
 
 ### el
 
-- **Type:** `String | HTMLElement | Function`
+- **Tipo:** `Stringa | HTMLElement | Function`
 
-- **Restriction:** only accepts type `Function` when used in `Vue.extend()`.
+- **Restriction:** only accepts Tipo `Function` when used in `Vue.extend()`.
 
 - **Details:**
 
-  Provide the Vue instance an existing DOM element to mount on. It can be a CSS selector string, an actual HTMLElement, or a function that returns an HTMLElement. Note that the provided element merely serves as a mounting point; it will be replaced if a template is also provided, unless `replace` is set to false. The resolved element will be accessible as `vm.$el`.
+  Provide the Vue instance an existing DOM element to mount on. It can be a CSS selector stringa, an actual HTMLElement, or a function that returns an HTMLElement. Note that the provided element merely serves as a mounting point; it will be replaced if a template is also provided, unless `replace` is set to falso. The resolved element will be accessible as `vm.$el`.
 
   When used in `Vue.extend`, a function must be provided so each instance gets a separately created element.
 
@@ -546,15 +546,15 @@ type: api
 
 ### template
 
-- **Type:** `String`
+- **Tipo:** `Stringa`
 
 - **Details:**
 
-  A string template to be used as the markup for the Vue instance. By default, the template will **replace** the mounted element. When the `replace` option is set to `false`, the template will be inserted into the mounted element instead. In both cases, any existing markup inside the mounted element will be ignored, unless content distribution slots are present in the template.
+  A stringa template to be used as the markup for the Vue instance. By Predefinito, the template will **replace** the mounted element. When the `replace` option is set to `falso`, the template will be inserted into the mounted element instead. In both cases, any existing markup inside the mounted element will be ignored, unless content distribution slots are present in the template.
 
-  If the string starts with `#` it will be used as a querySelector and use the selected element's innerHTML as the template string. This allows the use of the common `<script type="x-template">` trick to include templates.
+  If the stringa starts with `#` it will be used as a querySelector and use the selected element's innerHTML as the template stringa. This allows the use of the common `<script Tipo="x-template">` trick to include templates.
 
-  Note that under certain situations, for example when the template contains more than one top-level element, or contains only plain text, the instance will become a fragment instance - i.e. one that manages a list of nodes rather than a single node. Non flow-control directives on the mount point for fragment instances are ignored.
+  Note that under certain situations, for Esempio when the template contains more than one top-level element, or contains only plain text, the instance will become a fragment instance - i.e. one that manages a list of nodes rather than a single node. Non flow-control directives on the mount point for fragment instances are ignored.
 
 - **See also:**
   - [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
@@ -563,17 +563,17 @@ type: api
 
 ### replace
 
-- **Type:** `Boolean`  
+- **Tipo:** `Booleano`  
 
-- **Default:** `true`
+- **Predefinito:** `true`
 
 - **Restriction:** only respected if the **template** option is also present.
 
 - **Details:**
 
-  Determines whether to replace the element being mounted on with the template. If set to `false`, the template will overwrite the element's inner content without replacing the element itself.
+  Determines whether to replace the element being mounted on with the template. If set to `falso`, the template will overwrite the element's inner content without replacing the element itself.
 
-- **Example**:
+- **Esempio**:
 
   ``` html
   <div id="replace"></div>
@@ -592,7 +592,7 @@ type: api
   <p>replaced</p>
   ```
 
-  In comparison, when `replace` is set to `false`:
+  In comparison, when `replace` is set to `falso`:
 
   ``` html
   <div id="insert"></div>
@@ -601,7 +601,7 @@ type: api
   ``` js
   new Vue({
     el: '#insert',
-    replace: false,
+    replace: falso,
     template: '<p>inserted</p>'
   })
   ```
@@ -618,7 +618,7 @@ type: api
 
 ### created
 
-- **Type:** `Function`
+- **Tipo:** `Function`
 
 - **Details:**
 
@@ -628,7 +628,7 @@ type: api
 
 ### beforeCompile
 
-- **Type:** `Function`
+- **Tipo:** `Function`
 
 - **Details:**
 
@@ -638,7 +638,7 @@ type: api
 
 ### compiled
 
-- **Type:** `Function`
+- **Tipo:** `Function`
 
 - **Details:**
 
@@ -648,7 +648,7 @@ type: api
 
 ### ready
 
-- **Type:** `Function`
+- **Tipo:** `Function`
 
 - **Details:**
 
@@ -658,7 +658,7 @@ type: api
 
 ### attached
 
-- **Type:** `Function`
+- **Tipo:** `Function`
 
 - **Details:**
 
@@ -666,7 +666,7 @@ type: api
 
 ### detached
 
-- **Type:** `Function`
+- **Tipo:** `Function`
 
 - **Details:**
 
@@ -674,7 +674,7 @@ type: api
 
 ### beforeDestroy
 
-- **Type:** `Function`
+- **Tipo:** `Function`
 
 - **Details:**
 
@@ -684,7 +684,7 @@ type: api
 
 ### destroyed
 
-- **Type:** `Function`
+- **Tipo:** `Function`
 
 - **Details:**
 
@@ -698,7 +698,7 @@ type: api
 
 ### directives
 
-- **Type:** `Object`
+- **Tipo:** `Object`
 
 - **Details:**
 
@@ -710,7 +710,7 @@ type: api
 
 ### elementDirectives
 
-- **Type:** `Object`
+- **Tipo:** `Object`
 
 - **Details:**
 
@@ -722,7 +722,7 @@ type: api
 
 ### filters
 
-- **Type:** `Object`
+- **Tipo:** `Object`
 
 - **Details:**
 
@@ -734,7 +734,7 @@ type: api
 
 ### components
 
-- **Type:** `Object`
+- **Tipo:** `Object`
 
 - **Details:**
 
@@ -745,7 +745,7 @@ type: api
 
 ### transitions
 
-- **Type:** `Object`
+- **Tipo:** `Object`
 
 - **Details:**
 
@@ -756,11 +756,11 @@ type: api
 
 ### partials
 
-- **Type:** `Object`
+- **Tipo:** `Object`
 
 - **Details:**
 
-  A hash of partial strings to be made available to the Vue instance.
+  A hash of partial stringas to be made available to the Vue instance.
 
 - **See also:**
   - [Special Elements - partial](#partial)
@@ -769,7 +769,7 @@ type: api
 
 ### parent
 
-- **Type:** `Vue instance`
+- **Tipo:** `Vue instance`
 
 - **Details:**
 
@@ -779,13 +779,13 @@ type: api
 
 ### events
 
-- **Type:** `Object`
+- **Tipo:** `Object`
 
 - **Details:**
 
-  An object where keys are events to listen for and values are the corresponding callbacks. Note these are Vue events rather than DOM events. The value can also be a string of a method name. The Vue instance will call `$on()` for each entry in the object at instantiation.
+  An object where keys are events to listen for and values are the corresponding callbacks. Note these are Vue events rather than DOM events. The value can also be a stringa of a method name. The Vue instance will call `$on()` for each entry in the object at instantiation.
 
-- **Example:**
+- **Esempio:**
 
   ``` js
   var vm = new Vue({
@@ -796,7 +796,7 @@ type: api
       greeting: function (msg) {
         console.log(msg)
       },
-      // can also use a string for methods
+      // can also use a stringa for methods
       bye: 'sayGoodbye'
     },
     methods: {
@@ -815,7 +815,7 @@ type: api
 
 ### mixins
 
-- **Type:** `Array`
+- **Tipo:** `Array`
 
 - **Details:**
 
@@ -823,7 +823,7 @@ type: api
 
   Mixin hooks are called in the order they are provided, and called before the component's own hooks.
 
-- **Example:**
+- **Esempio:**
 
   ``` js
   var mixin = {
@@ -841,7 +841,7 @@ type: api
 
 ### name
 
-- **Type:** `String`
+- **Tipo:** `Stringa`
 
 - **Restriction:** only respected when used in `Vue.extend()`.
 
@@ -849,9 +849,9 @@ type: api
 
   Allow the component to recursively invoke itself in its template. Note that when a component is registered globally with `Vue.component()`, the global ID is automatically set as its name.
 
-  Another benefit of specifying a `name` option is console inspection. When inspecting an extended Vue component in the console, the default constructor name is `VueComponent`, which isn't very informative. By passing in an optional `name` option to `Vue.extend()`, you will get a better inspection output so that you know which component you are looking at. The string will be camelized and used as the component's constructor name.
+  Another benefit of specifying a `name` option is console inspection. When inspecting an extended Vue component in the console, the Predefinito constructor name is `VueComponent`, which isn't very informative. By passing in an optional `name` option to `Vue.extend()`, you will get a better inspection output so that you know which component you are looking at. The stringa will be camelized and used as the component's constructor name.
 
-- **Example:**
+- **Esempio:**
 
   ``` js
   var Ctor = Vue.extend({
@@ -874,7 +874,7 @@ type: api
 
 ### vm.$data
 
-- **Type:** `Object`
+- **Tipo:** `Object`
 
 - **Details:**
 
@@ -882,7 +882,7 @@ type: api
 
 ### vm.$el
 
-- **Type:** `HTMLElement`
+- **Tipo:** `HTMLElement`
 
 - **Read only**
 
@@ -892,7 +892,7 @@ type: api
 
 ### vm.$options
 
-- **Type:** `Object`
+- **Tipo:** `Object`
 
 - **Read only**
 
@@ -911,7 +911,7 @@ type: api
 
 ### vm.$parent
 
-- **Type:** `Vue instance`
+- **Tipo:** `Vue instance`
 
 - **Read only**
 
@@ -921,7 +921,7 @@ type: api
 
 ### vm.$root
 
-- **Type:** `Vue instance`
+- **Tipo:** `Vue instance`
 
 - **Read only**
 
@@ -931,7 +931,7 @@ type: api
 
 ### vm.$children
 
-- **Type:** `Array<Vue instance>`
+- **Tipo:** `Array<Vue instance>`
 
 - **Read only**
 
@@ -941,7 +941,7 @@ type: api
 
 ### vm.$refs
 
-- **Type:** `Object`
+- **Tipo:** `Object`
 
 - **Read only**
 
@@ -955,7 +955,7 @@ type: api
 
 ### vm.$els
 
-- **Type:** `Object`
+- **Tipo:** `Object`
 
 - **Read only**
 
@@ -969,22 +969,22 @@ type: api
 
 ### vm.$watch( expOrFn, callback, [options] )
 
-- **Arguments:**
-  - `{String | Function} expOrFn`
+- **Argomenti:**
+  - `{Stringa | Function} expOrFn`
   - `{Function} callback`
   - `{Object} [options]`
-    - `{Boolean} deep`
-    - `{Boolean} immediate`
+    - `{Booleano} deep`
+    - `{Booleano} immediate`
 
 - **Returns:** `{Function} unwatch`
 
-- **Usage:**
+- **Utilizzo:**
 
   Watch an expression or a computed function on the Vue instance for changes. The callback gets called with the new value and the old value. The expression can be a single keypath or any valid binding expressions.
 
 <p class="tip">Note: when mutating (rather than replacing) an Object or an Array, the old value will be the same as new value because they reference the same Object/Array. Vue doesn't keep a copy of the pre-mutate value.</p>
 
-- **Example:**
+- **Esempio:**
 
   ``` js
   // keypath
@@ -1041,14 +1041,14 @@ type: api
 
 ### vm.$get( expression )
 
-- **Arguments:**
-  - `{String} expression`
+- **Argomenti:**
+  - `{Stringa} expression`
 
-- **Usage:**
+- **Utilizzo:**
 
   Retrieve a value from the Vue instance given an expression. Expressions that throw errors will be suppressed and return `undefined`.
 
-- **Example:**
+- **Esempio:**
 
   ``` js
   var vm = new Vue({
@@ -1064,21 +1064,21 @@ type: api
 
 ### vm.$set( keypath, value )
 
-- **Arguments:**
-  - `{String} keypath`
+- **Argomenti:**
+  - `{Stringa} keypath`
   - `{*} value`
 
-- **Usage:**
+- **Utilizzo:**
 
   Set a data value on the Vue instance given a valid keypath. In most cases you should prefer setting properties using plain object syntax, e.g. `vm.a.b = 123`. This method is only needed in two scenarios:
 
-  1. When you have a keypath string and want to dynamically set the value using that keypath.
+  1. When you have a keypath stringa and want to dynamically set the value using that keypath.
 
   2. When you want to set a property that doesn't exist.
 
   If the path doesn't exist it will be recursively created and made reactive. If a new root-level reactive property is created due to a `$set` call, the Vue instance will be forced into a "digest cycle", during which all its watchers are re-evaluated.
 
-- **Example:**
+- **Esempio:**
 
   ``` js
   var vm = new Vue({
@@ -1102,39 +1102,39 @@ type: api
 
 ### vm.$delete( key )
 
-- **Arguments:**
-  - `{String} key`
+- **Argomenti:**
+  - `{Stringa} key`
 
-- **Usage:**
+- **Utilizzo:**
 
   Delete a root level property on the Vue instance (and also its `$data`). Forces a digest cycle. Not recommended.
 
 ### vm.$eval( expression )
 
-- **Arguments:**
-  - `{String} expression`
+- **Argomenti:**
+  - `{Stringa} expression`
 
-- **Usage:**
+- **Utilizzo:**
 
   Evaluate a valid binding expression on the current instance. The expression can also contain filters.
 
-- **Example:**
+- **Esempio:**
 
   ``` js
   // assuming vm.msg = 'hello'
   vm.$eval('msg | uppercase') // -> 'HELLO'
   ```
 
-### vm.$interpolate( templateString )
+### vm.$interpolate( templateStringa )
 
-- **Arguments:**
-  - `{String} templateString`
+- **Argomenti:**
+  - `{Stringa} templateStringa`
 
-- **Usage:**
+- **Utilizzo:**
 
-  Evaluate a piece of template string containing mustache interpolations. Note that this method simply performs string interpolation; attribute directives are ignored.
+  Evaluate a piece of template stringa containing mustache interpolations. Note that this method simply performs stringa interpolation; attribute directives are ignored.
 
-- **Example:**
+- **Esempio:**
 
   ``` js
   // assuming vm.msg = 'hello'
@@ -1143,10 +1143,10 @@ type: api
 
 ### vm.$log( [keypath] )
 
-- **Arguments:**
-  - `{String} [keypath]`
+- **Argomenti:**
+  - `{Stringa} [keypath]`
 
-- **Usage:**
+- **Utilizzo:**
 
   Log the current instance data as a plain object, which is more inspection-friendly than a bunch of getter/setters. Also accepts an optional key.
 
@@ -1159,15 +1159,15 @@ type: api
 
 ### vm.$on( event, callback )
 
-- **Arguments:**
-  - `{String} event`
+- **Argomenti:**
+  - `{Stringa} event`
   - `{Function} callback`
 
-- **Usage:**
+- **Utilizzo:**
 
-  Listen for a custom event on the current vm. Events can be triggered by `vm.$emit`, `vm.$dispatch` or `vm.$broadcast`. The callback will receive all the additional arguments passed into these event-triggering methods.
+  Listen for a custom event on the current vm. Events can be triggered by `vm.$emit`, `vm.$dispatch` or `vm.$broadcast`. The callback will receive all the additional Argomenti passed into these event-triggering methods.
 
-- **Example:**
+- **Esempio:**
 
   ``` js
   vm.$on('test', function (msg) {
@@ -1179,25 +1179,25 @@ type: api
 
 ### vm.$once( event, callback )
 
-- **Arguments:**
-  - `{String} event`
+- **Argomenti:**
+  - `{Stringa} event`
   - `{Function} callback`
 
-- **Usage:**
+- **Utilizzo:**
 
   Listen for a custom event, but only once. The listener will be removed once it triggers for the first time.
 
 ### vm.$off( [event, callback] )
 
-- **Arguments:**
-  - `{String} [event]`
+- **Argomenti:**
+  - `{Stringa} [event]`
   - `{Function} [callback]`
 
-- **Usage:**
+- **Utilizzo:**
 
   Remove event listener(s).
 
-  - If no arguments are provided, remove all event listeners;
+  - If no Argomenti are provided, remove all event listeners;
 
   - If only the event is provided, remove all listeners for that event;
 
@@ -1205,23 +1205,23 @@ type: api
 
 ### vm.$emit( event, [...args] )
 
-- **Arguments:**
-  - `{String} event`
+- **Argomenti:**
+  - `{Stringa} event`
   - `[...args]`
 
-  Trigger an event on the current instance. Any additional arguments will be passed into the listener's callback function.
+  Trigger an event on the current instance. Any additional Argomenti will be passed into the listener's callback function.
 
 ### vm.$dispatch( event, [...args] )
 
-- **Arguments:**
-  - `{String} event`
+- **Argomenti:**
+  - `{Stringa} event`
   - `[...args]`
 
-- **Usage:**
+- **Utilizzo:**
 
-  Dispatch an event, first triggering it on the instance itself, and then propagates upward along the parent chain. The propagation stops when it triggers a parent event listener, unless that listener returns `true`. Any additional arguments will be passed into the listener's callback function.
+  Dispatch an event, first triggering it on the instance itself, and then propagates upward along the parent chain. The propagation stops when it triggers a parent event listener, unless that listener returns `true`. Any additional Argomenti will be passed into the listener's callback function.
 
-- **Example:**
+- **Esempio:**
 
   ``` js
   // create a parent chain
@@ -1250,15 +1250,15 @@ type: api
 
 ### vm.$broadcast( event, [...args] )
 
-- **Arguments:**
-  - `{String} event`
+- **Argomenti:**
+  - `{Stringa} event`
   - `[...args]`
 
-- **Usage:**
+- **Utilizzo:**
 
   Broadcast an event that propagates downward to all descendants of the current instance. Since the descendants expand into multiple sub-trees, the event propagation will follow many different "paths". The propagation for each path will stop when a listener callback is fired along that path, unless the callback returns `true`.
 
-- **Example:**
+- **Esempio:**
 
   ``` js
   var parent = new Vue()
@@ -1289,68 +1289,68 @@ type: api
 
 ### vm.$appendTo( elementOrSelector, [callback] )
 
-- **Arguments:**
-  - `{Element | String} elementOrSelector`
+- **Argomenti:**
+  - `{Element | Stringa} elementOrSelector`
   - `{Function} [callback]`
 
 - **Returns:** `vm` - the instance itself
 
-- **Usage:**
+- **Utilizzo:**
 
-  Append the Vue instance's DOM element or fragment to target element. The target can be either an element or a querySelector string. This method will trigger transitions if present. The callback is fired after the transition has completed (or immediately if no transition has been triggered).
+  Append the Vue instance's DOM element or fragment to target element. The target can be either an element or a querySelector stringa. This method will trigger transitions if present. The callback is fired after the transition has completed (or immediately if no transition has been triggered).
 
 ### vm.$before( elementOrSelector, [callback] )
 
-- **Arguments:**
-  - `{Element | String} elementOrSelector`
+- **Argomenti:**
+  - `{Element | Stringa} elementOrSelector`
   - `{Function} [callback]`
 
 - **Returns:** `vm` - the instance itself
 
-- **Usage:**
+- **Utilizzo:**
 
-  Insert the Vue instance's DOM element or fragment before target element. The target can be either an element or a querySelector string. This method will trigger transitions if present. The callback is fired after the transition has completed (or immediately if no transition has been triggered).
+  Insert the Vue instance's DOM element or fragment before target element. The target can be either an element or a querySelector stringa. This method will trigger transitions if present. The callback is fired after the transition has completed (or immediately if no transition has been triggered).
 
 ### vm.$after( elementOrSelector, [callback] )
 
-- **Arguments:**
-  - `{Element | String} elementOrSelector`
+- **Argomenti:**
+  - `{Element | Stringa} elementOrSelector`
   - `{Function} [callback]`
 
 - **Returns:** `vm` - the instance itself
 
-- **Usage:**
+- **Utilizzo:**
 
-  Insert the Vue instance's DOM element or fragment after target element. The target can be either an element or a querySelector string. This method will trigger transitions if present. The callback is fired after the transition has completed (or immediately if no transition has been triggered).
+  Insert the Vue instance's DOM element or fragment after target element. The target can be either an element or a querySelector stringa. This method will trigger transitions if present. The callback is fired after the transition has completed (or immediately if no transition has been triggered).
 
 ### vm.$remove( [callback] )
 
-- **Arguments:**
+- **Argomenti:**
   - `{Function} [callback]`
 
 - **Returns:** `vm` - the instance itself
 
-- **Usage:**
+- **Utilizzo:**
 
   Remove the Vue instance's DOM element or fragment from the DOM. This method will trigger transitions if present. The callback is fired after the transition has completed (or immediately if no transition has been triggered).
 
 ### vm.$nextTick( callback )
 
-- **Arguments:**
+- **Argomenti:**
   - `{Function} [callback]`
 
-- **Usage:**
+- **Utilizzo:**
 
   Defer the callback to be executed after the next DOM update cycle. Use it immediately after you've changed some data to wait for the DOM update. This is the same as the global `Vue.nextTick`, except that the callback's `this` context is automatically bound to the instance calling this method.
 
-- **Example:**
+- **Esempio:**
 
   ``` js
   new Vue({
     // ...
     methods: {
       // ...
-      example: function () {
+      Esempio: function () {
         // modify data
         this.message = 'changed'
         // DOM is not updated yet
@@ -1372,20 +1372,20 @@ type: api
 
 ### vm.$mount( [elementOrSelector] )
 
-- **Arguments:**
-  - `{Element | String} [elementOrSelector]`
+- **Argomenti:**
+  - `{Element | Stringa} [elementOrSelector]`
 
 - **Returns:** `vm` - the instance itself
 
-- **Usage:**
+- **Utilizzo:**
 
   If a Vue instance didn't receive the `el` option at instantiation, it will be in "unmounted" state, without an associated DOM element or fragment. `vm.$mount()` can be used to manually start the mounting/compilation of an unmounted Vue instance.
 
-  If no argument is provided, the template will be created as an out-of-document fragment, and you will have to use other DOM instance methods to insert it into the document yourself. If `replace` option is set to `false`, then an empty `<div>` will be automatically created as the wrapper element.
+  If no argument is provided, the template will be created as an out-of-document fragment, and you will have to use other DOM instance methods to insert it into the document yourself. If `replace` option is set to `falso`, then an empty `<div>` will be automatically created as the wrapper element.
 
   Calling `$mount()` on an already mounted instance will have no effect. The method returns the instance itself so you can chain other instance methods after it.
 
-- **Example:**
+- **Esempio:**
 
   ``` js
   var MyComponent = Vue.extend({
@@ -1406,10 +1406,10 @@ type: api
 
 ### vm.$destroy( [remove] )
 
-- **Arguments:**
-  - `{Boolean} [remove] - default: false`
+- **Argomenti:**
+  - `{Booleano} [remove] - Predefinito: falso`
 
-- **Usage:**
+- **Utilizzo:**
 
   Completely destroy a vm. Clean up its connections with other existing vms, unbind all its directives, turn off all event listeners and, if the `remove` argument is true, remove its associated DOM element or fragment from the DOM.
 
@@ -1421,7 +1421,7 @@ type: api
 
 ### v-text
 
-- **Expects:** `String`
+- **Expects:** `Stringa`
 
 - **Details:**
 
@@ -1429,7 +1429,7 @@ type: api
 
   Internally, `{% raw %}{{ Mustache }}{% endraw %}` interpolations are also compiled as a `v-text` directive on a textNode. The directive form requires a wrapper element, but offers slightly better performance and avoids FOUC (Flash of Uncompiled Content).
 
-- **Example:**
+- **Esempio:**
 
   ``` html
   <span v-text="msg"></span>
@@ -1439,7 +1439,7 @@ type: api
 
 ### v-html
 
-- **Expects:** `String`
+- **Expects:** `Stringa`
 
 - **Details:**
 
@@ -1449,7 +1449,7 @@ type: api
 
   <p class="tip">Dynamically rendering arbitrary HTML on your website can be very dangerous because it can easily lead to [XSS attacks](https://en.wikipedia.org/wiki/Cross-site_scripting). Only use `v-html` on trusted content and **never** on user-provided content.</p>
 
-- **Example:**
+- **Esempio:**
 
   ``` html
   <div v-html="html"></div>
@@ -1461,7 +1461,7 @@ type: api
 
 - **Expects:** `*`
 
-- **Usage:**
+- **Utilizzo:**
 
   Conditionally render the element based on the truthy-ness of the expression value. The element and its contained data bindings / components are destroyed and re-constructed during toggles. If the element is a `<template>` element, its content will be extracted as the conditional block.
 
@@ -1471,7 +1471,7 @@ type: api
 
 - **Expects:** `*`
 
-- **Usage:**
+- **Utilizzo:**
 
   Toggle's the element's `display` CSS property based on the truthy-ness of the expression value. Triggers transitions if present.
 
@@ -1483,7 +1483,7 @@ type: api
 
 - **Restriction:** previous sibling element must have `v-if` or `v-show`.
 
-- **Usage:**
+- **Utilizzo:**
 
   Denote the "else block" for `v-if` and `v-show`.
 
@@ -1500,7 +1500,7 @@ type: api
 
 ### v-for
 
-- **Expects:** `Array | Object | Number | String`
+- **Expects:** `Array | Object | Number | Stringa`
 
 - **Param Attributes:**
   - [`track-by`](/guide/list.html#track-by)
@@ -1508,7 +1508,7 @@ type: api
   - [`enter-stagger`](/guide/transitions.html#Staggering_Transitions)
   - [`leave-stagger`](/guide/transitions.html#Staggering_Transitions)
 
-- **Usage:**
+- **Utilizzo:**
 
   Render the element or template block multiple times based on the source data. The expression must use the special syntax to provide an alias for the current element being iterated on:
 
@@ -1525,7 +1525,7 @@ type: api
   <div v-for="(key, val) in object"></div>
   ```
 
-  The detailed usage for `v-for` is explained in the guide section linked below.
+  The detailed Utilizzo for `v-for` is explained in the guide section linked below.
 
 - **See also:** [List Rendering](/guide/list.html).
 
@@ -1539,20 +1539,20 @@ type: api
 
 - **Modifiers:**
   - `.stop` - call `event.stopPropagation()`.
-  - `.prevent` - call `event.preventDefault()`.
+  - `.prevent` - call `event.preventPredefinito()`.
   - `.{keyCode | keyAlias}` - only trigger handler on certain keys.
 
-- **Usage:**
+- **Utilizzo:**
 
-  Attaches an event listener to the element. The event type is denoted by the argument. The expression can either be a method name or an inline statement, or simply omitted when there are modifiers present.
+  Attaches an event listener to the element. The event Tipo is denoted by the argument. The expression can either be a method name or an inline statement, or simply omitted when there are modifiers present.
 
   When used on a normal element, it listens to **native DOM events** only. When used on a custom element component, it also listens to **custom events** emitted on that child component.
 
   When listening to native DOM events, the method receives the native event as the only argument. If using inline statement, the statement has access to the special `$event` property: `v-on:click="handle('ok', $event)"`.
 
-  **1.0.11+** When listening the custom events, inline statements have access to the special `$arguments` property, which is an array of the additional arguments passed to the child components' `$emit` call.
+  **1.0.11+** When listening the custom events, inline statements have access to the special `$Argomenti` property, which is an array of the additional Argomenti passed to the child components' `$emit` call.
 
-- **Example:**
+- **Esempio:**
 
   ``` html
   <!-- method handler -->
@@ -1567,10 +1567,10 @@ type: api
   <!-- stop propagation -->
   <button @click.stop="doThis"></button>
 
-  <!-- prevent default -->
+  <!-- prevent Predefinito -->
   <button @click.prevent="doThis"></button>
 
-  <!-- prevent default without expression -->
+  <!-- prevent Predefinito without expression -->
   <form @submit.prevent></form>
 
   <!-- chain modifiers -->
@@ -1589,7 +1589,7 @@ type: api
   <my-component @my-event="handleThis"></my-component>
 
   <!-- inline statement -->
-  <my-component @my-event="handleThis(123, $arguments)"></my-component>
+  <my-component @my-event="handleThis(123, $Argomenti)"></my-component>
   ```
 
 - **See also:** [Methods and Event Handling](/guide/events.html)
@@ -1606,17 +1606,17 @@ type: api
   - `.sync` - make the binding two-way. Only respected for prop bindings.
   - `.once` - make the binding one-time. Only respected for prop bindings.
 
-- **Usage:**
+- **Utilizzo:**
 
   Dynamically bind one or more attributes, or a component prop to an expression.
 
-  When used to bind the `class` or `style` attribute, it supports additional value types such as Array or Objects. See linked guide section below for more details.
+  When used to bind the `class` or `style` attribute, it supports additional value Tipos such as Array or Objects. See linked guide section below for more details.
 
-  When used for prop binding, the prop must be properly declared in the child component. Prop bindings can specify a different binding type using one of the modifiers.
+  When used for prop binding, the prop must be properly declared in the child component. Prop bindings can specify a different binding Tipo using one of the modifiers.
 
   When used without an argument, can be used to bind an object containing attribute name-value pairs. Note in this mode `class` and `style` does not support Array or Objects.
 
-- **Example:**
+- **Esempio:**
 
   ``` html
   <!-- bind an attribute -->
@@ -1652,7 +1652,7 @@ type: api
 
 ### v-model
 
-- **Expects:** varies based on input type
+- **Expects:** varies based on input Tipo
 
 - **Limited to:**
   - `<input>`
@@ -1664,9 +1664,9 @@ type: api
   - [`number`](/guide/forms.html#number)
   - [`debounce`](/guide/forms.html#debounce)
 
-- **Usage:**
+- **Utilizzo:**
 
-  Create a two-way binding on a form input element. For detailed usage, see guide section linked below.
+  Create a two-way binding on a form input element. For detailed Utilizzo, see guide section linked below.
 
 - **See also:** [Form Input Bindings](/guide/forms.html)
 
@@ -1678,7 +1678,7 @@ type: api
 
 - **Argument:** `id (required)`
 
-- **Usage:**
+- **Utilizzo:**
 
   Register a reference to a child component on its parent for direct access. Does not expect an expression. Must provide an argument as the id to register with. The component instance will be accessible on its parent's `$refs` object.
 
@@ -1686,9 +1686,9 @@ type: api
 
 - **Note:**
 
-  Because HTML is case-insensitive, camelCase usage like `v-ref:someRef` will be converted to all lowercase. You can use `v-ref:some-ref` which properly sets `this.$refs.someRef`.
+  Because HTML is case-insensitive, camelCase Utilizzo like `v-ref:someRef` will be converted to all lowercase. You can use `v-ref:some-ref` which properly sets `this.$refs.someRef`.
 
-- **Example:**
+- **Esempio:**
 
   ``` html
   <comp v-ref:child></comp>
@@ -1720,15 +1720,15 @@ type: api
 
 - **Argument:** `id (required)`
 
-- **Usage:**
+- **Utilizzo:**
 
   Register a reference to a DOM element on its owner Vue instance's `$els` object for easier access.
 
 - **Note:**
 
-  Because HTML is case-insensitive, camelCase usage like `v-el:someEl` will be converted to all lowercase. You can use `v-el:some-el` which properly sets `this.$els.someEl`.
+  Because HTML is case-insensitive, camelCase Utilizzo like `v-el:someEl` will be converted to all lowercase. You can use `v-el:some-el` which properly sets `this.$els.someEl`.
 
-- **Example:**
+- **Esempio:**
 
   ``` html
   <span v-el:msg>hello</span>
@@ -1743,11 +1743,11 @@ type: api
 
 - **Does not expect expression**
 
-- **Usage**
+- **Utilizzo**
 
   Skip compilation for this element and all its children. You can use this for displaying raw mustache tags. Skipping large numbers of nodes with no directives on them can also speed up compilation.
 
-- **Example:**
+- **Esempio:**
 
   ``` html
   <span v-pre>{{ this will not be compiled }}</span>
@@ -1757,11 +1757,11 @@ type: api
 
 - **Does not expect expression**
 
-- **Usage:**
+- **Utilizzo:**
 
   This directive will remain on the element until the associated Vue instance finishes compilation. Combined with CSS rules such as `[v-cloak] { display: none }`, this directive can be used to hide un-compiled mustache bindings until the Vue instance is ready.
 
-- **Example:**
+- **Esempio:**
 
   ``` css
   [v-cloak] {
@@ -1788,7 +1788,7 @@ type: api
   - [`keep-alive`](/guide/components.html#keep-alive)
   - [`transition-mode`](/guide/components.html#transition-mode)
 
-- **Usage:**
+- **Utilizzo:**
 
   Alternative syntax for invoking components. Primarily used for dynamic components with the `is` attribute:
 
@@ -1805,13 +1805,13 @@ type: api
 - **Attributes:**
   - `name`
 
-- **Usage:**
+- **Utilizzo:**
 
   `<slot>` elements serve as content distribution outlets in component templates. The slot element itself will be replaced.
 
   A slot with the `name` attribute is called a named slot. A named slot will distribute content with a `slot` attribute that matches its name.
 
-  For detailed usage, see the guide section linked below.
+  For detailed Utilizzo, see the guide section linked below.
 
 - **See also:** [Content Distribution with Slots](/guide/components.html#Content_Distribution_with_Slots)
 
@@ -1820,11 +1820,11 @@ type: api
 - **Attributes:**
   - `name`
 
-- **Usage:**
+- **Utilizzo:**
 
   `<partial>` elements serve as outlets for registered template partials. Partial contents are also compiled by Vue when inserted. The `<partial>` element itself will be replaced. It requires a `name` attribute which will be used to resolve the partial's content.
 
-- **Example:**
+- **Esempio:**
 
   ``` js
   // registering a partial
@@ -1847,7 +1847,7 @@ type: api
 
 ### capitalize
 
-- **Example:**
+- **Esempio:**
 
   ``` html
   {{ msg | capitalize }}
@@ -1857,7 +1857,7 @@ type: api
 
 ### uppercase
 
-- **Example:**
+- **Esempio:**
 
   ``` html
   {{ msg | uppercase }}
@@ -1867,7 +1867,7 @@ type: api
 
 ### lowercase
 
-- **Example:**
+- **Esempio:**
 
   ``` html
   {{ msg | lowercase }}
@@ -1877,10 +1877,10 @@ type: api
 
 ### currency
 
-- **Arguments:**
-  - `{String} [symbol] - default: '$'`
+- **Argomenti:**
+  - `{Stringa} [symbol] - Predefinito: '$'`
 
-- **Example:**
+- **Esempio:**
 
   ``` html
   {{ amount | currency }}
@@ -1898,14 +1898,14 @@ type: api
 
 ### pluralize
 
-- **Arguments:**
-  - `{String} single, [double, triple, ...]`
+- **Argomenti:**
+  - `{Stringa} single, [double, triple, ...]`
 
-- **Usage:**
+- **Utilizzo:**
 
-  Pluralizes the argument based on the filtered value. When there is exactly one argument, plural forms simply add an "s" at the end. When there are more than one argument, the arguments will be used as array of strings corresponding to the single, double, triple ... forms of the word to be pluralized. When the number to be pluralized exceeds the length of the arguments, it will use the last entry in the array.
+  Pluralizes the argument based on the filtered value. When there is exactly one argument, plural forms simply add an "s" at the end. When there are more than one argument, the Argomenti will be used as array of stringas corresponding to the single, double, triple ... forms of the word to be pluralized. When the number to be pluralized exceeds the length of the Argomenti, it will use the last entry in the array.
 
-- **Example:**
+- **Esempio:**
 
   ``` html
   {{count}} {{count | pluralize 'item'}}
@@ -1928,14 +1928,14 @@ type: api
 
 ### json
 
-- **Arguments:**
-  - `{Number} [indent] - default: 2`
+- **Argomenti:**
+  - `{Number} [indent] - Predefinito: 2`
 
-- **Usage:**
+- **Utilizzo:**
 
-  Output the result of calling `JSON.stringify()` on the value instead of outputting the `toString()` value (e.g. `[object Object]`).
+  Output the result of calling `JSON.stringaify()` on the value instead of outputting the `toStringa()` value (e.g. `[object Object]`).
 
-- **Example:**
+- **Esempio:**
 
   Print an object with 4-space indent:
 
@@ -1947,14 +1947,14 @@ type: api
 
 - **Limited to:** directives that expect `Function` values, e.g. `v-on`
 
-- **Arguments:**
-  - `{Number} [wait] - default: 300`
+- **Argomenti:**
+  - `{Number} [wait] - Predefinito: 300`
 
-- **Usage:**
+- **Utilizzo:**
 
-  Wrap the handler to debounce it for `x` milliseconds, where `x` is the argument. Default wait time is 300ms. A debounced handler will be delayed until at least `x` ms has passed after the call moment; if the handler is called again before the delay period, the delay period is reset to `x` ms.
+  Wrap the handler to debounce it for `x` milliseconds, where `x` is the argument. Predefinito wait time is 300ms. A debounced handler will be delayed until at least `x` ms has passed after the call moment; if the handler is called again before the delay period, the delay period is reset to `x` ms.
 
-- **Example:**
+- **Esempio:**
 
   ``` html
   <input @keyup="onKeyup | debounce 500">
@@ -1964,11 +1964,11 @@ type: api
 
 - **Limited to:** directives that expect `Array` values, e.g. `v-for`
 
-- **Arguments:**
+- **Argomenti:**
   - `{Number} limit`
   - `{Number} [offset]`
 
-- **Usage:**
+- **Utilizzo:**
 
   Limit the array to the first N items, as specified by the argument. An optional second argument can be provided to set a starting offset.
 
@@ -1984,35 +1984,35 @@ type: api
 
 - **Limited to:** directives that expect `Array` values, e.g. `v-for`
 
-- **Arguments:**
-  - `{String | Function} targetStringOrFunction`
+- **Argomenti:**
+  - `{Stringa | Function} targetStringaOrFunction`
   - `"in" (optional delimiter)`
-  - `{String} [...searchKeys]`
+  - `{Stringa} [...searchKeys]`
 
-- **Usage:**
+- **Utilizzo:**
 
-  Return a filtered version of the source Array. The first argument can either be a string or a function.
+  Return a filtered version of the source Array. The first argument can either be a stringa or a function.
 
-  When the first argument is a string, it will be used as the target string to search for in each element of the Array:
+  When the first argument is a stringa, it will be used as the target stringa to search for in each element of the Array:
 
   ``` html
   <div v-for="item in items | filterBy 'hello'">
   ```
 
-  In the above example, only items that contain the target string `"hello"` will be displayed.
+  In the above Esempio, only items that contain the target stringa `"hello"` will be displayed.
 
-  If the item is an object, the filter will recursively search every nested property of the object for the target string. To narrow down the search scope, additional search keys can be specified:
+  If the item is an object, the filter will recursively search every nested property of the object for the target stringa. To narrow down the search scope, additional search keys can be specified:
 
   ``` html
   <div v-for="user in users | filterBy 'Jack' in 'name'">
   ```
 
-  In the above example, the filter will only search for `"Jack"` in the `name` field of each user object. **It is a good idea to always limit the search scope for better performance.**
+  In the above Esempio, the filter will only search for `"Jack"` in the `name` field of each user object. **It is a good idea to always limit the search scope for better performance.**
 
-  The examples above are using static arguments - we can, of course, use dynamic arguments as target string or search keys. Combined with `v-model` we can easily implement type-ahead filtering:
+  The Esempios above are using static Argomenti - we can, of course, use dynamic Argomenti as target stringa or search keys. Combined with `v-model` we can easily implement Tipo-ahead filtering:
 
   ``` html
-  <div id="filter-by-example">
+  <div id="filter-by-Esempio">
     <input v-model="name">
     <ul>
       <li v-for="user in users | filterBy name in 'name'">
@@ -2024,7 +2024,7 @@ type: api
 
   ``` js
   new Vue({
-    el: '#filter-by-example',
+    el: '#filter-by-Esempio',
     data: {
       name: '',
       users: [
@@ -2037,7 +2037,7 @@ type: api
   ```
 
   {% raw %}
-  <div id="filter-by-example" class="demo">
+  <div id="filter-by-Esempio" class="demo">
     <input v-model="name">
     <ul>
       <li v-for="user in users | filterBy name in 'name'">
@@ -2047,7 +2047,7 @@ type: api
   </div>
   <script>
   new Vue({
-    el: '#filter-by-example',
+    el: '#filter-by-Esempio',
     data: {
       name: '',
       users: [{ name: 'Bruce' }, { name: 'Chuck' }, { name: 'Jackie' }]
@@ -2056,7 +2056,7 @@ type: api
   </script>
   {% endraw %}
 
-- **Additional Examples:**
+- **Additional Esempios:**
 
   Multiple search keys:
 
@@ -2081,17 +2081,17 @@ type: api
 
 - **Limited to:** directives that expect `Array` values, e.g. `v-for`
 
-- **Arguments:**
-  - `{String} sortKey`
-  - `{String} [order] - default: 1`
+- **Argomenti:**
+  - `{Stringa} sortKey`
+  - `{Stringa} [order] - Predefinito: 1`
 
-- **Usage:**
+- **Utilizzo:**
 
   Return a sorted version of the source Array. The `sortKey` is the key to use for the sorting. The optional `order` argument specifies whether the result should be in ascending (`order >= 0`) or descending (`order < 0`) order.
 
   For arrays of primitive values, any truthy `sortKey` will work.
 
-- **Example:**
+- **Esempio:**
 
   Sort users by name:
 
@@ -2126,7 +2126,7 @@ type: api
   Dynamic sort order:
 
   ``` html
-  <div id="orderby-example">
+  <div id="orderby-Esempio">
     <button @click="order = order * -1">Reverse Sort Order</button>
     <ul>
       <li v-for="user in users | orderBy 'name' order">
@@ -2138,7 +2138,7 @@ type: api
 
   ``` js
   new Vue({
-    el: '#orderby-example',
+    el: '#orderby-Esempio',
     data: {
       order: 1,
       users: [{ name: 'Bruce' }, { name: 'Chuck' }, { name: 'Jackie' }]
@@ -2147,7 +2147,7 @@ type: api
   ```
 
   {% raw %}
-  <div id="orderby-example" class="demo">
+  <div id="orderby-Esempio" class="demo">
     <button @click="order = order * -1">Reverse Sort Order</button>
     <ul>
       <li v-for="user in users | orderBy 'name' order">
@@ -2157,7 +2157,7 @@ type: api
   </div>
   <script>
   new Vue({
-    el: '#orderby-example',
+    el: '#orderby-Esempio',
     data: {
       order: 1,
       users: [{ name: 'Bruce' }, { name: 'Chuck' }, { name: 'Jackie' }]
