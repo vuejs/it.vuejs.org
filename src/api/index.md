@@ -82,7 +82,7 @@ Type: api
   Vue.config.async = false
   ```
 
-  Quando la modlità asincrona è spenta, Vue aggiornerà il DOM in modo asincrono quando i dati cambiano. Questo può aiutare a debuggare qualche situazione specifica ma può anche ridurre le prestazioni e cambiare il modo in qui i watchers vengono chiamati. **`async: false` non è raccomandato in produzione.**
+  Quando la modlità asincrona è spenta, Vue aggiornerà il DOM in modo asincrono quando i dati cambiano. Questo può aiutare a debuggare qualche situazione specifica ma può anche ridurre le prestazioni e cambiare il modo in cui i watchers vengono chiamati. **`async: false` non è raccomandato in produzione.**
 
 ### convertAllProperties
 
@@ -100,27 +100,27 @@ Type: api
 
 ## API Globali
 
-### Vue.extend( options )
+### Vue.extend( opzioni )
 
 - **Argomenti:**
-  - `{Object} options`
+  - `{Object} opzioni`
 
 - **Utilizzo:**
 
-  Create a "subclass" of the base Vue constructor. The argument should be an object containing component options.
+  Crea una "subclasse" del costruttore di base di Vue. L'argomento passato dovrebbe essere un set di opzioni del componente stesso.
 
-  The special cases to note here are `el` and `data` options - they must be functions when used with `Vue.extend()`.
+  Da notare che le opzioni `el` e `data` devono essere delle funzioni, se usate con `Vue.extend()`.
 
   ``` html
   <div id="mount-point"></div>
   ```
 
   ``` js
-  // create reusable constructor
+  // Creiamo il costruttore che si utilizza più volte
   var Profile = Vue.extend({
-    template: '<p>{{firstName}} {{lastName}} aka {{alias}}</p>'
+    template: '<p>{{firstName}} {{lastName}} detto anche {{alias}}</p>'
   })
-  // create an instance of Profile
+  // creiao l'istanza del profilo
   var profile = new Profile({
     data: {
       firstName: 'Walter',
@@ -128,17 +128,17 @@ Type: api
       alias: 'Heisenberg'
     }  
   })
-  // mount it on an element
+  // montiamo il tutto su un elemento
   profile.$mount('#mount-point')
   ```
 
-  Will result in:
+  Il risultato sarà:
 
   ``` html
-  <p>Walter White aka Heisenberg</p>
+  <p>Walter White detto anche Heisenberg</p>
   ```
 
-- **See also:** [Components](/guide/components.html)
+- **Vedi anche:** [Componenti](/guide/components.html)
 
 ### Vue.nextTick( callback )
 
@@ -158,7 +158,7 @@ Type: api
   })
   ```
 
-- **See also:** [Async Update Queue](/guide/reactivity.html#Async_Update_Queue)
+- **Vedi anche:** [Async Update Queue](/guide/reactivity.html#Async_Update_Queue)
 
 ### Vue.set( object, key, value )
 
@@ -173,7 +173,7 @@ Type: api
 
   Set a property on an object. If the object is reactive, ensure the property is created as a reactive property and trigger view updates. This is primarily used to get around the limitation that Vue cannot detect property additions.
 
-- **See also:** [Reactivity in Depth](/guide/reactivity.html)
+- **Vedi anche:** [Reactivity in Depth](/guide/reactivity.html)
 
 ### Vue.delete( object, key )
 
@@ -185,7 +185,7 @@ Type: api
 
   Delete a property on an object. If the object is reactive, ensure the deletion triggers view updates. This is primarily used to get around the limitation that Vue cannot detect property deletions, but you should rarely need to use it.
 
-- **See also:** [Reactivity in Depth](/guide/reactivity.html)
+- **Vedi anche:** [Reactivity in Depth](/guide/reactivity.html)
 
 ### Vue.directive( id, [definition] )
 
@@ -214,7 +214,7 @@ Type: api
   var myDirective = Vue.directive('my-directive')
   ```
 
-- **See also:** [Custom Directives](/guide/custom-directive.html)
+- **Vedi anche:** [Custom Directives](/guide/custom-directive.html)
 
 ### Vue.elementDirective( id, [definition] )
 
@@ -238,7 +238,7 @@ Type: api
   var myDirective = Vue.elementDirective('my-element')
   ```
 
-- **See also:** [Element Directives](/guide/custom-directive.html#Element_Directives)
+- **Vedi anche:** [Element Directives](/guide/custom-directive.html#Element_Directives)
 
 ### Vue.filter( id, [definition] )
 
@@ -266,7 +266,7 @@ Type: api
   var myFilter = Vue.filter('my-filter')
   ```
 
-- **See also:** [Custom Filter](/guide/custom-filter.html)
+- **Vedi anche:** [Custom Filter](/guide/custom-filter.html)
 
 ### Vue.component( id, [definition] )
 
@@ -282,14 +282,14 @@ Type: api
   // register an extended constructor
   Vue.component('my-component', Vue.extend({ /* ... */}))
 
-  // register an options object (automatically call Vue.extend)
+  // register an opzioni object (automatically call Vue.extend)
   Vue.component('my-component', { /* ... */ })
 
   // retrive a registered component (always return constructor)
   var MyComponent = Vue.component('my-component')
   ```
 
-- **See also:** [Components](/guide/components.html).
+- **Vedi anche:** [Components](/guide/components.html).
 
 ### Vue.transition( id, [hooks] )
 
@@ -312,7 +312,7 @@ Type: api
   var fadeTransition = Vue.transition('fade')
   ```
 
-- **See also:** [Transitions](/guide/transitions.html).
+- **Vedi anche:** [Transitions](/guide/transitions.html).
 
 ### Vue.partial( id, [partial] )
 
@@ -332,19 +332,19 @@ Type: api
   var myPartial = Vue.partial('my-partial')
   ```
 
-- **See also:** [Special Elements - &lt;partial&gt;](#partial).
+- **Vedi anche:** [Special Elements - &lt;partial&gt;](#partial).
 
-### Vue.use( plugin, [options] )
+### Vue.use( plugin, [opzioni] )
 
 - **Argomenti:**
   - `{Object | Function} plugin`
-  - `{Object} [options]`
+  - `{Object} [opzioni]`
 
 - **Utilizzo:**
 
   Install a Vue.js plugin. If the plugin is an Object, it must expose an `install` method. If it is a function itself, it will be treated as the install method. The install method will be called with Vue as the argument.
 
-- **See also:** [Plugins](/guide/plugins.html).
+- **Vedi anche:** [Plugins](/guide/plugins.html).
 
 ### Vue.mixin( mixin )
 
@@ -355,7 +355,7 @@ Type: api
 
   Apply a mixin globally, which affects every Vue instance created afterwards. This can be used by plugin authors to inject custom behavior into components. **Not recommended in application code**.
 
-- **See also:** [Global Mixins](/guide/mixins.html#Global_Mixin)
+- **Vedi anche:** [Global Mixins](/guide/mixins.html#Global_Mixin)
 
 ## Options / Data
 
@@ -395,7 +395,7 @@ Type: api
   })
   ```
 
-- **See also:** [Reactivity in Depth](/guide/reactivity.html).
+- **Vedi anche:** [Reactivity in Depth](/guide/reactivity.html).
 
 ### props
 
@@ -427,7 +427,7 @@ Type: api
   })
   ```
 
-- **See also:** [Props](/guide/components.html#Props)
+- **Vedi anche:** [Props](/guide/components.html#Props)
 
 ### computed
 
@@ -464,7 +464,7 @@ Type: api
   vm.aDouble // -> 4
   ```
 
-- **See also:**
+- **Vedi anche:**
   - [Computed Properties](/guide/computed.html)
   - [Reactivity in Depth: Inside Computed Properties](/guide/reactivity.html#Inside_Computed_Properties)
 
@@ -491,7 +491,7 @@ Type: api
   vm.a // 2
   ```
 
-- **See also:** [Methods and Event Handling](/guide/events.html)
+- **Vedi anche:** [Methods and Event Handling](/guide/events.html)
 
 ### watch
 
@@ -499,7 +499,7 @@ Type: api
 
 - **Details:**
 
-  An object where keys are expressions to watch and values are the corresponding callbacks. The value can also be a stringa of a method name, or an Object that contains additional options. The Vue instance will call `$watch()` for each entry in the object at instantiation.
+  An object where keys are expressions to watch and values are the corresponding callbacks. The value can also be a stringa of a method name, or an Object that contains additional opzioni. The Vue instance will call `$watch()` for each entry in the object at instantiation.
 
 - **Esempio:**
 
@@ -524,7 +524,7 @@ Type: api
   vm.a = 2 // -> new: 2, old: 1
   ```
 
-- **See also:** [Instance Methods - vm.$watch](#vm-watch)
+- **Vedi anche:** [Instance Methods - vm.$watch](#vm-watch)
 
 ## Options / DOM
 
@@ -542,7 +542,7 @@ Type: api
 
   If this option is available at instantiation, the instance will immediately enter compilation; otherwise, the user will have to explicitly call `vm.$mount()` to manually start the compilation.
 
-- **See also:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
 
 ### template
 
@@ -556,7 +556,7 @@ Type: api
 
   Note that under certain situations, for Esempio when the template contains more than one top-level element, or contains only plain text, the instance will become a fragment instance - i.e. one that manages a list of nodes rather than a single node. Non flow-control directives on the mount point for fragment instances are ignored.
 
-- **See also:**
+- **Vedi anche:**
   - [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
   - [Content Distribution](/guide/components.html#Content_Distribution_with_Slots)
   - [Fragment Instance](/guide/components.html#Fragment_Instance)
@@ -622,9 +622,9 @@ Type: api
 
 - **Details:**
 
-  Called synchronously after the instance is created. At this stage, the instance has finished processing the options which means the following have been set up: data observation, computed properties, methods, watch/event callbacks. However, DOM compilation has not been started, and the `$el` property will not be available yet.
+  Called synchronously after the instance is created. At this stage, the instance has finished processing the opzioni which means the following have been set up: data observation, computed properties, methods, watch/event callbacks. However, DOM compilation has not been started, and the `$el` property will not be available yet.
 
-- **See also:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
 
 ### beforeCompile
 
@@ -634,7 +634,7 @@ Type: api
 
   Called right before the compilation starts.
 
-- **See also:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
 
 ### compiled
 
@@ -644,7 +644,7 @@ Type: api
 
   Called after the compilation is finished. At this stage all directives have been linked so data changes will trigger DOM updates. However, `$el` is not guaranteed to have been inserted into the document yet.
 
-- **See also:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
 
 ### ready
 
@@ -654,7 +654,7 @@ Type: api
 
   Called after compilation **and** the `$el` is **inserted into the document for the first time**, i.e. right after the first `attached` hook. Note this insertion must be executed via Vue (with methods like `vm.$appendTo()` or as a result of a directive update) to trigger the `ready` hook.
 
-- **See also:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
 
 ### attached
 
@@ -680,7 +680,7 @@ Type: api
 
   Called right before a Vue instance is destroyed. At this stage the instance is still fully functional.
 
-- **See also:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
 
 ### destroyed
 
@@ -692,7 +692,7 @@ Type: api
 
   Note if there is a leaving transition, the `destroyed` hook is called **after** the transition has finished.
 
-- **See also:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
 
 ## Options / Assets
 
@@ -704,7 +704,7 @@ Type: api
 
   A hash of directives to be made available to the Vue instance.
 
-- **See also:**
+- **Vedi anche:**
   - [Custom Directives](/guide/custom-directive.html)
   - [Assets Naming Convention](/guide/components.html#Assets_Naming_Convention)
 
@@ -716,7 +716,7 @@ Type: api
 
   A hash of element directives to be made available to the Vue instance.
 
-- **See also:**
+- **Vedi anche:**
   - [Element Directives](/guide/custom-directive.html#Element_Directives)
   - [Assets Naming Convention](/guide/components.html#Assets_Naming_Convention)
 
@@ -728,7 +728,7 @@ Type: api
 
   A hash of filters to be made available to the Vue instance.
 
-- **See also:**
+- **Vedi anche:**
   - [Custom Filters](/guide/custom-filter.html)
   - [Assets Naming Convention](/guide/components.html#Assets_Naming_Convention)
 
@@ -740,7 +740,7 @@ Type: api
 
   A hash of components to be made available to the Vue instance.
 
-- **See also:**
+- **Vedi anche:**
   - [Components](/guide/components.html)
 
 ### transitions
@@ -751,7 +751,7 @@ Type: api
 
   A hash of transitions to be made available to the Vue instance.
 
-- **See also:**
+- **Vedi anche:**
   - [Transitions](/guide/transitions.html)
 
 ### partials
@@ -762,7 +762,7 @@ Type: api
 
   A hash of partial stringas to be made available to the Vue instance.
 
-- **See also:**
+- **Vedi anche:**
   - [Special Elements - partial](#partial)
 
 ## Options / Misc
@@ -775,7 +775,7 @@ Type: api
 
   Specify the parent instance for the instance to be created. Establishes a parent-child relationship between the two. The parent will be accessible as `this.$parent` for the child, and the child will be pushed into the parent's `$children` array.
 
-- **See also:** [Parent-Child Communication](/guide/components.html#Parent-Child_Communication)
+- **Vedi anche:** [Parent-Child Communication](/guide/components.html#Parent-Child_Communication)
 
 ### events
 
@@ -809,7 +809,7 @@ Type: api
   vm.$emit('bye')             // -> goodbye!
   ```
 
-- **See also:**
+- **Vedi anche:**
   - [Instance Methods - Events](#Instance_Methods_/_Events)
   - [Parent-Child Communication](/guide/components.html#Parent-Child_Communication)
 
@@ -819,7 +819,7 @@ Type: api
 
 - **Details:**
 
-  The `mixins` option accepts an array of mixin objects. These mixin objects can contain instance options just like normal instance objects, and they will be merged against the eventual options using the same option merging logic in `Vue.extend()`. e.g. If your mixin contains a created hook and the component itself also has one, both functions will be called.
+  The `mixins` option accepts an array of mixin objects. These mixin objects can contain instance opzioni just like normal instance objects, and they will be merged against the eventual opzioni using the same option merging logic in `Vue.extend()`. e.g. If your mixin contains a created hook and the component itself also has one, both functions will be called.
 
   Mixin hooks are called in the order they are provided, and called before the component's own hooks.
 
@@ -837,7 +837,7 @@ Type: api
   // -> 2
   ```
 
-- **See also:** [Mixins](/guide/mixins.html)
+- **Vedi anche:** [Mixins](/guide/mixins.html)
 
 ### name
 
@@ -890,7 +890,7 @@ Type: api
 
   The DOM element that the Vue instance is managing. Note that for [Fragment Instances](/guide/components.html#Fragment_Instance), `vm.$el` will return an anchor node that indicates the starting position of the fragment.
 
-### vm.$options
+### vm.$opzioni
 
 - **Tipo:** `Object`
 
@@ -898,13 +898,13 @@ Type: api
 
 - **Details:**
 
-  The instantiation options used for the current Vue instance. This is useful when you want to include custom properties in the options:
+  The instantiation opzioni used for the current Vue instance. This is useful when you want to include custom properties in the opzioni:
 
   ``` js
   new Vue({
     customOption: 'foo',
     created: function () {
-      console.log(this.$options.customOption) // -> 'foo'
+      console.log(this.$opzioni.customOption) // -> 'foo'
     }
   })
   ```
@@ -949,7 +949,7 @@ Type: api
 
   An object that holds child components that have `v-ref` registered.
 
-- **See also:**
+- **Vedi anche:**
   - [Child Component Refs](/guide/components.html#Child_Component_Refs)
   - [v-ref](#v-ref).
 
@@ -963,16 +963,16 @@ Type: api
 
   An object that holds DOM elements that have `v-el` registered.
 
-- **See also:** [v-el](#v-el).
+- **Vedi anche:** [v-el](#v-el).
 
 ## Instance Methods / Data
 
-### vm.$watch( expOrFn, callback, [options] )
+### vm.$watch( expOrFn, callback, [opzioni] )
 
 - **Argomenti:**
   - `{Stringa | Function} expOrFn`
   - `{Function} callback`
-  - `{Object} [options]`
+  - `{Object} [opzioni]`
     - `{Booleano} deep`
     - `{Booleano} immediate`
 
@@ -1018,7 +1018,7 @@ Type: api
 
 - **Option: deep**
 
-  To also detect nested value changes inside Objects, you need to pass in `deep: true` in the options argument. Note that you don't need to do so to listen for Array mutations.
+  To also detect nested value changes inside Objects, you need to pass in `deep: true` in the opzioni argument. Note that you don't need to do so to listen for Array mutations.
 
   ``` js
   vm.$watch('someObject', callback, {
@@ -1098,7 +1098,7 @@ Type: api
   vm.c // ->
   ```
 
-- **See also:** [Reactivity in Depth](/guide/reactivity.html)
+- **Vedi anche:** [Reactivity in Depth](/guide/reactivity.html)
 
 ### vm.$delete( key )
 
@@ -1246,7 +1246,7 @@ Type: api
   // true in its callback
   ```
 
-- **See also:** [Parent-Child Communication](/guide/components.html#Parent-Child_Communication)
+- **Vedi anche:** [Parent-Child Communication](/guide/components.html#Parent-Child_Communication)
 
 ### vm.$broadcast( event, [...args] )
 
@@ -1364,7 +1364,7 @@ Type: api
   })
   ```
 
-- **See also:**
+- **Vedi anche:**
   - [Vue.nextTick](#Vue-nextTick)
   - [Async Update Queue](/guide/reactivity.html#Async_Update_Queue)
 
@@ -1402,7 +1402,7 @@ Type: api
   new MyComponent().$mount().$appendTo('#container')
   ```
 
-- **See also:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
 
 ### vm.$destroy( [remove] )
 
@@ -1415,7 +1415,7 @@ Type: api
 
   Triggers the `beforeDestroy` and `destroyed` hooks.
 
-- **See also:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
 
 ## Directives
 
@@ -1465,7 +1465,7 @@ Type: api
 
   Conditionally render the element based on the truthy-ness of the expression value. The element and its contained data bindings / components are destroyed and re-constructed during toggles. If the element is a `<template>` element, its content will be extracted as the conditional block.
 
-- **See also:** [Conditional Rendering](/guide/conditional.html)
+- **Vedi anche:** [Conditional Rendering](/guide/conditional.html)
 
 ### v-show
 
@@ -1475,7 +1475,7 @@ Type: api
 
   Toggle's the element's `display` CSS property based on the truthy-ness of the expression value. Triggers transitions if present.
 
-- **See also:** [Conditional Rendering - v-show](/guide/conditional.html#v-show)
+- **Vedi anche:** [Conditional Rendering - v-show](/guide/conditional.html#v-show)
 
 ### v-else
 
@@ -1496,7 +1496,7 @@ Type: api
   </div>
   ```
 
-- **See also:** [Conditional Rendering - v-else](/guide/conditional.html#v-else)
+- **Vedi anche:** [Conditional Rendering - v-else](/guide/conditional.html#v-else)
 
 ### v-for
 
@@ -1527,7 +1527,7 @@ Type: api
 
   The detailed Utilizzo for `v-for` is explained in the guide section linked below.
 
-- **See also:** [List Rendering](/guide/list.html).
+- **Vedi anche:** [List Rendering](/guide/list.html).
 
 ### v-on
 
@@ -1592,7 +1592,7 @@ Type: api
   <my-component @my-event="handleThis(123, $Argomenti)"></my-component>
   ```
 
-- **See also:** [Methods and Event Handling](/guide/events.html)
+- **Vedi anche:** [Methods and Event Handling](/guide/events.html)
 
 ### v-bind
 
@@ -1646,7 +1646,7 @@ Type: api
   <my-component :prop.once="someThing"></my-component>
   ```
 
-- **See also:**
+- **Vedi anche:**
   - [Class and Style Bindings](/guide/class-and-style.html)
   - [Component Props](/guide/components.html#Props)
 
@@ -1668,7 +1668,7 @@ Type: api
 
   Create a two-way binding on a form input element. For detailed Utilizzo, see guide section linked below.
 
-- **See also:** [Form Input Bindings](/guide/forms.html)
+- **Vedi anche:** [Form Input Bindings](/guide/forms.html)
 
 ### v-ref
 
@@ -1712,7 +1712,7 @@ Type: api
   this.$refs.list
   ```
 
-- **See also:** [Child Component Refs](/guide/components.html#Child_Component_Refs)
+- **Vedi anche:** [Child Component Refs](/guide/components.html#Child_Component_Refs)
 
 ### v-el
 
@@ -1798,7 +1798,7 @@ Type: api
   <component :is="componentId"></component>
   ```
 
-- **See also:** [Dynamic Components](/guide/components.html#Dynamic_Components)
+- **Vedi anche:** [Dynamic Components](/guide/components.html#Dynamic_Components)
 
 ### slot
 
@@ -1813,7 +1813,7 @@ Type: api
 
   For detailed Utilizzo, see the guide section linked below.
 
-- **See also:** [Content Distribution with Slots](/guide/components.html#Content_Distribution_with_Slots)
+- **Vedi anche:** [Content Distribution with Slots](/guide/components.html#Content_Distribution_with_Slots)
 
 ### partial
 
