@@ -365,7 +365,7 @@ Type: api
 
 - **Restriction:** Only accepts `Funzione` when used in `Vue.extend()`.
 
-- **Details:**
+- **Dettagli:**
 
   The data oggetto for the Vue instance. Vue.js will recursively convert its properties into getter/setters to make it "reactive". **The oggetto must be plain**: native oggettos, existing getter/setters and protoTipo properties are ignored. It is not recommended to observe complex oggettos.
 
@@ -401,7 +401,7 @@ Type: api
 
 - **Tipo:** `Array | Oggetto`
 
-- **Details:**
+- **Dettagli:**
 
   A list/hash of attributes that are exposed to accept data from the parent component. It has a simple Array-based syntax and an alternative Oggetto-based syntax that allows advanced configurations such as Tipo checking, custom validation and Predefinito valores.
 
@@ -433,7 +433,7 @@ Type: api
 
 - **Tipo:** `Oggetto`
 
-- **Details:**
+- **Dettagli:**
 
   Computed properties to be mixed into the Vue instance. All getters and setters have their `this` context automatically bound to the Vue instance.
 
@@ -472,7 +472,7 @@ Type: api
 
 - **Tipo:** `Oggetto`
 
-- **Details:**
+- **Dettagli:**
 
   Methods to be mixed into the Vue instance. You can access these methods directly on the VM instance, or use them in directive expressions. All methods will have their `this` context automatically bound to the Vue instance.
 
@@ -497,7 +497,7 @@ Type: api
 
 - **Tipo:** `Oggetto`
 
-- **Details:**
+- **Dettagli:**
 
   An oggetto where chiaves are expressions to watch and valores are the corresponding callbacks. The valore can also be a stringa of a method name, or an Oggetto that contains additional opzioni. The Vue instance will call `$watch()` for each entry in the oggetto at instantiation.
 
@@ -534,7 +534,7 @@ Type: api
 
 - **Restriction:** only accepts Tipo `Funzione` when used in `Vue.extend()`.
 
-- **Details:**
+- **Dettagli:**
 
   Provide the Vue instance an existing DOM element to mount on. It can be a CSS selector stringa, an actual HTMLElement, or a function that returns an HTMLElement. Note that the provided element merely serves as a mounting point; it will be replaced if a template is also provided, unless `replace` is set to falso. The resolved element will be accessible as `vm.$el`.
 
@@ -548,7 +548,7 @@ Type: api
 
 - **Tipo:** `Stringa`
 
-- **Details:**
+- **Dettagli:**
 
   A stringa template to be used as the markup for the Vue instance. By Predefinito, the template will **replace** the mounted element. When the `replace` option is set to `falso`, the template will be inserted into the mounted element instead. In both cases, any existing markup inside the mounted element will be ignored, unless content distribution slots are present in the template.
 
@@ -569,7 +569,7 @@ Type: api
 
 - **Restriction:** only respected if the **template** option is also present.
 
-- **Details:**
+- **Dettagli:**
 
   Determines whether to replace the element being mounted on with the template. If set to `falso`, the template will overwrite the element's inner content without replacing the element itself.
 
@@ -616,11 +616,21 @@ Type: api
 
 ## Options / Lifecycle Hooks
 
+### init
+
+ - **Tipo:** `Funzione`
+
+ - **Dettagli:**
+
+   Called synchronously after the instance has already been initialized, but not has started processing the options and the data for set up the scope.
+
+ - **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
+
 ### created
 
 - **Tipo:** `Funzione`
 
-- **Details:**
+- **Dettagli:**
 
   Called synchronously after the instance is created. At this stage, the instance has finished processing the opzioni which means the following have been set up: data observation, computed properties, methods, watch/event callbacks. However, DOM compilation has not been started, and the `$el` property will not be available yet.
 
@@ -630,7 +640,7 @@ Type: api
 
 - **Tipo:** `Funzione`
 
-- **Details:**
+- **Dettagli:**
 
   Called right before the compilation starts.
 
@@ -640,7 +650,7 @@ Type: api
 
 - **Tipo:** `Funzione`
 
-- **Details:**
+- **Dettagli:**
 
   Called after the compilation is finished. At this stage all directives have been linked so data changes will trigger DOM updates. However, `$el` is not guaranteed to have been inserted into the document yet.
 
@@ -650,7 +660,7 @@ Type: api
 
 - **Tipo:** `Funzione`
 
-- **Details:**
+- **Dettagli:**
 
   Called after compilation **and** the `$el` is **inserted into the document for the first time**, i.e. right after the first `attached` hook. Note this insertion must be executed via Vue (with methods like `vm.$appendTo()` or as a result of a directive update) to trigger the `ready` hook.
 
@@ -660,7 +670,7 @@ Type: api
 
 - **Tipo:** `Funzione`
 
-- **Details:**
+- **Dettagli:**
 
   Called when `vm.$el` is attached to DOM by a directive or a VM instance method such as `$appendTo()`. Direct manipulation of `vm.$el` will **not** trigger this hook.
 
@@ -668,7 +678,7 @@ Type: api
 
 - **Tipo:** `Funzione`
 
-- **Details:**
+- **Dettagli:**
 
   Called when `vm.$el` is removed from the DOM by a directive or a VM instance method. Direct manipulation of `vm.$el` will **not** trigger this hook.
 
@@ -676,7 +686,7 @@ Type: api
 
 - **Tipo:** `Funzione`
 
-- **Details:**
+- **Dettagli:**
 
   Called right before a Vue instance is destroyed. At this stage the instance is still fully functional.
 
@@ -686,7 +696,7 @@ Type: api
 
 - **Tipo:** `Funzione`
 
-- **Details:**
+- **Dettagli:**
 
   Called after a Vue instance has been destroyed. When this hook is called, all bindings and directives of the Vue instance have been unbound and all child Vue instances have also been destroyed.
 
@@ -700,7 +710,7 @@ Type: api
 
 - **Tipo:** `Oggetto`
 
-- **Details:**
+- **Dettagli:**
 
   A hash of directives to be made available to the Vue instance.
 
@@ -712,7 +722,7 @@ Type: api
 
 - **Tipo:** `Oggetto`
 
-- **Details:**
+- **Dettagli:**
 
   A hash of element directives to be made available to the Vue instance.
 
@@ -724,7 +734,7 @@ Type: api
 
 - **Tipo:** `Oggetto`
 
-- **Details:**
+- **Dettagli:**
 
   A hash of filters to be made available to the Vue instance.
 
@@ -736,7 +746,7 @@ Type: api
 
 - **Tipo:** `Oggetto`
 
-- **Details:**
+- **Dettagli:**
 
   A hash of components to be made available to the Vue instance.
 
@@ -747,7 +757,7 @@ Type: api
 
 - **Tipo:** `Oggetto`
 
-- **Details:**
+- **Dettagli:**
 
   A hash of transitions to be made available to the Vue instance.
 
@@ -758,7 +768,7 @@ Type: api
 
 - **Tipo:** `Oggetto`
 
-- **Details:**
+- **Dettagli:**
 
   A hash of partial stringas to be made available to the Vue instance.
 
@@ -771,7 +781,7 @@ Type: api
 
 - **Tipo:** `Vue instance`
 
-- **Details:**
+- **Dettagli:**
 
   Specify the parent instance for the instance to be created. Establishes a parent-child relationship between the two. The parent will be accessible as `this.$parent` for the child, and the child will be pushed into the parent's `$children` array.
 
@@ -781,7 +791,7 @@ Type: api
 
 - **Tipo:** `Oggetto`
 
-- **Details:**
+- **Dettagli:**
 
   An oggetto where chiaves are events to listen for and valores are the corresponding callbacks. Note these are Vue events rather than DOM events. The valore can also be a stringa of a method name. The Vue instance will call `$on()` for each entry in the oggetto at instantiation.
 
@@ -817,7 +827,7 @@ Type: api
 
 - **Tipo:** `Array`
 
-- **Details:**
+- **Dettagli:**
 
   The `mixins` option accepts an array of mixin oggettos. These mixin oggettos can contain instance opzioni just like normal instance oggettos, and they will be merged against the eventual opzioni using the same option merging logic in `Vue.extend()`. e.g. If your mixin contains a created hook and the component itself also has one, both functions will be called.
 
@@ -845,7 +855,7 @@ Type: api
 
 - **Restriction:** only respected when used in `Vue.extend()`.
 
-- **Details:**
+- **Dettagli:**
 
   Allow the component to recursively invoke itself in its template. Note that when a component is registraed globally with `Vue.component()`, the global ID is automatically set as its name.
 
@@ -876,7 +886,7 @@ Type: api
 
 - **Tipo:** `Oggetto`
 
-- **Details:**
+- **Dettagli:**
 
   The data oggetto that the Vue instance is observing. You can swap it with a new oggetto. The Vue instance proxies access to the properties on its data oggetto.
 
@@ -886,7 +896,7 @@ Type: api
 
 - **Read only**
 
-- **Details:**
+- **Dettagli:**
 
   The DOM element that the Vue instance is managing. Note that for [Fragment Instances](/guide/components.html#Fragment_Instance), `vm.$el` will return an anchor node that indicates the starting position of the fragment.
 
@@ -896,7 +906,7 @@ Type: api
 
 - **Read only**
 
-- **Details:**
+- **Dettagli:**
 
   The instantiation opzioni used for the current Vue instance. This is useful when you want to include custom properties in the opzioni:
 
@@ -915,7 +925,7 @@ Type: api
 
 - **Read only**
 
-- **Details:**
+- **Dettagli:**
 
   The parent instance, if the current instance has one.
 
@@ -925,7 +935,7 @@ Type: api
 
 - **Read only**
 
-- **Details:**
+- **Dettagli:**
 
   The root Vue instance of the current component tree. If the current instance has no parents this valore will be itself.
 
@@ -935,7 +945,7 @@ Type: api
 
 - **Read only**
 
-- **Details:**
+- **Dettagli:**
 
   The direct child components of the current instance.
 
@@ -945,7 +955,7 @@ Type: api
 
 - **Read only**
 
-- **Details:**
+- **Dettagli:**
 
   An oggetto that holds child components that have `v-ref` registraed.
 
@@ -959,7 +969,7 @@ Type: api
 
 - **Read only**
 
-- **Details:**
+- **Dettagli:**
 
   An oggetto that holds DOM elements that have `v-el` registraed.
 
@@ -1423,7 +1433,7 @@ Type: api
 
 - **Expects:** `Stringa`
 
-- **Details:**
+- **Dettagli:**
 
   Updates the element's `textContent`.
 
@@ -1441,7 +1451,7 @@ Type: api
 
 - **Expects:** `Stringa`
 
-- **Details:**
+- **Dettagli:**
 
   Updates the element's `innerHTML`. The contents are inserted as plain HTML - data bindings are ignored. If you need to reuse template pieces, you should use [partials](#partial).
 
