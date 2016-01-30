@@ -139,6 +139,17 @@ Per risolvere questo problema, Vue.js fornisce degli **Modificatori di Eventi** 
 <form v-on:submit.prevent></form>
 ```
 
+Nella versione v1.0.16 sono stati aggiunti due mofidicatori:
+
+``` html
+<!-- Usate la modalità cattura per aggiungere un event listenere -->
+<div v-on:click.capture="doThis">...</div>
+
+<!-- Attivate l'evento solo se event.target è l'elemento stesso -->
+<!-- per esempio non viene attivato da un componente figlio-->
+<div v-on:click.self="doThat">...</div>
+```
+
 ## Modificatorio per i Tasti
 
 Quando si ascolta per degli eventi dalla tastiera, abbiamo bisogno di sapere quale tasto è stato premuto. Vue.js offre un modificatore per `v-on` per quando si ascoltano gli eventi da tastiera:
