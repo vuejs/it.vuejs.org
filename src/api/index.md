@@ -1,5 +1,5 @@
 ---
-Type: api
+type: api
 ---
 
 ## Configurazione Globale
@@ -276,20 +276,20 @@ Type: api
 
 - **Utilizzo:**
 
-  Register or retrieve a global component.
+  Registra o restituisce un componente istanziato globalmente.
 
   ``` js
-  // registra an extended constructor
+  // registra un componente tramite un costruttore
   Vue.component('my-component', Vue.extend({ /* ... */}))
 
-  // registra an opzioni oggetto (automatically call Vue.extend)
+  // registra un componente tramite un oggetto, il quale chiamerà automaticamente Vue.extend
   Vue.component('my-component', { /* ... */ })
 
-  // retrive a registraed component (always return constructor)
+  // restituisce un componente, se il componente con quel nome esiste
   var MyComponent = Vue.component('my-component')
   ```
 
-- **Vedi anche:** [Components](/guide/components.html).
+- **Vedi anche:** [Componenti](/guide/components.html).
 
 ### Vue.transition( id, [hooks] )
 
@@ -299,20 +299,20 @@ Type: api
 
 - **Utilizzo:**
 
-  Register or retrieve a global transition hooks oggetto.
+  Registra o restituisce un hook per le transizioni istanziato globalmente.
 
   ``` js
-  // registra
+  // registra una nuova transizione
   Vue.transition('fade', {
-    enter: function () {},
+
     leave: function () {}
   })
 
-  // retrieve registraed hooks
+  // Restituisce un hook registrato, se il nome esiste
   var fadeTransition = Vue.transition('fade')
   ```
 
-- **Vedi anche:** [Transitions](/guide/transitions.html).
+- **Vedi anche:** [Transizioni](/guide/transitions.html).
 
 ### Vue.partial( id, [partial] )
 
@@ -322,17 +322,17 @@ Type: api
 
 - **Utilizzo:**
 
-  Register or retrieve a global template partial stringa.
+  Registra o restituisce un template parziale, implementato inline.
 
   ``` js
-  // registra
+  // registra il template
   Vue.partial('my-partial', '<div>Hi</div>')
 
-  // retrieve registraed partial
+  // restituisce il template
   var myPartial = Vue.partial('my-partial')
   ```
 
-- **Vedi anche:** [Special Elements - &lt;partial&gt;](#partial).
+- **Vedi anche:** [Elementi Speciali - &lt;parziali&gt;](#partial).
 
 ### Vue.use( plugin, [opzioni] )
 
@@ -342,9 +342,9 @@ Type: api
 
 - **Utilizzo:**
 
-  Install a Vue.js plugin. If the plugin is an Oggetto, it must expose an `install` method. If it is a function itself, it will be treated as the install method. The install method will be called with Vue as the argument.
+  Installate un plugin Vue.js. Se il plugin è un oggetto istanziato, esso esporrà un metodo `install`. Se il plugin è una funzione di per sè, allora verrà trattata come metodo di install. Il metodo install verrà chiamato con Vue come argomento.
 
-- **Vedi anche:** [Plugins](/guide/plugins.html).
+- **Vedi anche:** [I Plugins](/guide/plugins.html).
 
 ### Vue.mixin( mixin )
 
@@ -353,11 +353,11 @@ Type: api
 
 - **Utilizzo:**
 
-  Apply a mixin globally, which affects every Vue instance created afterwards. This can be used by plugin authors to inject custom behavior into components. **Not recommended in application code**.
+  Applica un mixin a livello globale, il quale influenzerà tutte le istanze create successivamente. Questo metodo può essere usato dagli autori del plugin per iniettare comportamenti personalizzati dentro ai componenti. **NON è raccomandato l'utilizzo in produzione**.
 
-- **Vedi anche:** [Global Mixins](/guide/mixins.html#Global_Mixin)
+- **Vedi anche:** [Mixins Globali](/guide/mixins.html#Global_Mixin)
 
-## Options / Data
+## Opzioni / Dati
 
 ### data
 
