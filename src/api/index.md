@@ -100,7 +100,7 @@ type: api
 
 ## API Globali
 
-### Vue.extend( opzioni )
+<h3 id="Vue-extend">Vue.extend( opzioni )</h3>
 
 - **Argomenti:**
   - `{Oggetto} opzioni`
@@ -140,14 +140,14 @@ type: api
 
 - **Vedi anche:** [Componenti](/guide/components.html)
 
-### Vue.nextTick( callback )
+<h3 id="Vue-nextTick">Vue.nextTick( funzione )</h3>
 
 - **Argomenti:**
-  - `{Functon} callback`
+  - `{Funzione} funzione`
 
 - **Utilizzo:**
 
-  Ritarda il callback perchè venga eseguito al ciclo successivo di update del DOM. Da usare immediatamente dopo un cambiamento dei dati per aspettare l'aggiornamento del DOM.
+  Ritarda la funzione perchè venga eseguita al ciclo successivo di update del DOM. Da usare immediatamente dopo un cambiamento dei dati per aspettare l'aggiornamento del DOM.
 
   ``` js
   // Modifica del dato
@@ -160,7 +160,7 @@ type: api
 
 - **Vedi anche:** [Coda di aggiornamenti Asincrona](/guide/reactivity.html#Async_Update_Queue)
 
-### Vue.set( oggetto, chiave, valore )
+<h3 id="Vue-set">Vue.set( oggetto, chiave, valore )</h3>
 
 - **Argomenti:**
   - `{Oggetto} oggetto`
@@ -175,7 +175,7 @@ type: api
 
 - **Vedi anche:** [Reattività nel Dettaglio](/guide/reactivity.html)
 
-### Vue.delete( oggetto, chiave )
+<h3 id="Vue-delete">Vue.delete( oggetto, chiave )</h3>
 
 - **Argomenti:**
   - `{Oggetto} oggetto`
@@ -187,7 +187,7 @@ type: api
 
 - **Vedi anche:** [Reattività nel Dettaglio](/guide/reactivity.html)
 
-### Vue.directive( id, [definizione] )
+<h3 id="Vue-directive">Vue.directive( id, [definizione] )</h3>
 
 - **Argomenti:**
   - `{Stringa} id`
@@ -216,7 +216,7 @@ type: api
 
 - **Vedi anche:** [Direttive Personalizzate](/guide/custom-directive.html)
 
-### Vue.elementDirective( id, [definizione] )
+<h3 id="Vue-elementDirective">Vue.elementDirective( id, [definizione] )</h3>
 
 - **Argomenti:**
   - `{Stringa} id`
@@ -228,19 +228,19 @@ type: api
 
   ``` js
   // registra
-  Vue.elementDirective('my-element', {
+  Vue.elementDirective('my-elemento', {
     bind: function () {},
     // Gli elementi direttiva non usano `update`
     unbind: function () {}
   })
 
   // getter, restituisce la definizione se registrata
-  var myDirective = Vue.elementDirective('my-element')
+  var myDirective = Vue.elementDirective('my-elemento')
   ```
 
 - **Vedi anche:** [Element Directives](/guide/custom-directive.html#Element_Directives)
 
-### Vue.filter( id, [definizione] )
+<h3 id="Vue-filter">Vue.filter( id, [definizione] )</h3>
 
 - **Argomenti:**
   - `{Stringa} id`
@@ -268,7 +268,7 @@ type: api
 
 - **Vedi anche:** [Filtri personalizzati](/guide/custom-filter.html)
 
-### Vue.component( id, [definizione] )
+<h3 id="Vue-component">Vue.component( id, [definizione] )</h3>
 
 - **Argomenti:**
   - `{Stringa} id`
@@ -291,7 +291,7 @@ type: api
 
 - **Vedi anche:** [Componenti](/guide/components.html).
 
-### Vue.transition( id, [hooks] )
+<h3 id="Vue-transition">Vue.transition( id, [hooks] )</h3>
 
 - **Argomenti:**
   - `{Stringa} id`
@@ -314,7 +314,7 @@ type: api
 
 - **Vedi anche:** [Transizioni](/guide/transitions.html).
 
-### Vue.partial( id, [partial] )
+<h3 id="Vue-partial">Vue.partial( id, [partial] )</h3>
 
 - **Argomenti:**
   - `{Stringa} id`
@@ -334,7 +334,7 @@ type: api
 
 - **Vedi anche:** [Elementi Speciali - &lt;parziali&gt;](#partial).
 
-### Vue.use( plugin, [opzioni] )
+<h3 id="Vue-use">Vue.use( plugin, [opzioni] )</h3>
 
 - **Argomenti:**
   - `{Oggetto | Funzione} plugin`
@@ -346,7 +346,7 @@ type: api
 
 - **Vedi anche:** [I Plugins](/guide/plugins.html).
 
-### Vue.mixin( mixin )
+<h3 id="Vue-mixin">Vue.mixin( opzioni )</h3>
 
 - **Argomenti:**
   - `{Oggetto} mixin`
@@ -499,7 +499,7 @@ type: api
 
 - **Dettagli:**
 
-  An oggetto where chiaves are expressions to watch and valores are the corresponding callbacks. The valore can also be a stringa of a method name, or an Oggetto that contains additional opzioni. The Vue instance will call `$watch()` for each entry in the oggetto at instantiation.
+  An oggetto where chiaves are expressions to watch and valores are the corresponding funzioni. The valore can also be a stringa of a method name, or an Oggetto that contains additional opzioni. The Vue instance will call `$watch()` for each entry in the oggetto at instantiation.
 
 - **Esempio:**
 
@@ -536,9 +536,9 @@ type: api
 
 - **Dettagli:**
 
-  Provide the Vue instance an existing DOM element to mount on. It can be a CSS selector stringa, an actual HTMLElement, or a function that returns an HTMLElement. Note that the provided element merely serves as a mounting point; it will be replaced if a template is also provided, unless `replace` is set to falso. The resolved element will be accessible as `vm.$el`.
+  Provide the Vue instance an existing DOM elemento to mount on. It can be a CSS selector stringa, an actual HTMLElement, or a function that returns an HTMLElement. Note that the provided elemento merely serves as a mounting point; it will be replaced if a template is also provided, unless `replace` is set to falso. The resolved elemento will be accessible as `vm.$el`.
 
-  When used in `Vue.extend`, a function must be provided so each instance gets a separately created element.
+  When used in `Vue.extend`, a function must be provided so each instance gets a separately created elemento.
 
   If this option is available at instantiation, the instance will immediately enter compilation; otherwise, the user will have to explicitly call `vm.$mount()` to manually start the compilation.
 
@@ -550,11 +550,11 @@ type: api
 
 - **Dettagli:**
 
-  A stringa template to be used as the markup for the Vue instance. By Predefinito, the template will **replace** the mounted element. When the `replace` option is set to `falso`, the template will be inserted into the mounted element instead. In both cases, any existing markup inside the mounted element will be ignored, unless content distribution slots are present in the template.
+  A stringa template to be used as the markup for the Vue instance. By Predefinito, the template will **replace** the mounted elemento. When the `replace` option is set to `falso`, the template will be inserted into the mounted elemento instead. In both cases, any existing markup inside the mounted elemento will be ignored, unless content distribution slots are present in the template.
 
-  If the stringa starts with `#` it will be used as a querySelector and use the selected element's innerHTML as the template stringa. This allows the use of the common `<script Tipo="x-template">` trick to include templates.
+  If the stringa starts with `#` it will be used as a querySelettore and use the selected elemento's innerHTML as the template stringa. This allows the use of the common `<script Tipo="x-template">` trick to include templates.
 
-  Note that under certain situations, for Esempio when the template contains more than one top-level element, or contains only plain text, the instance will become a fragment instance - i.e. one that manages a list of nodes rather than a single node. Non flow-control directives on the mount point for fragment instances are ignored.
+  Note that under certain situations, for Esempio when the template contains more than one top-level elemento, or contains only plain text, the instance will become a fragment instance - i.e. one that manages a list of nodes rather than a single node. Non flow-control directives on the mount point for fragment instances are ignored.
 
 - **Vedi anche:**
   - [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
@@ -571,7 +571,7 @@ type: api
 
 - **Dettagli:**
 
-  Determines whether to replace the element being mounted on with the template. If set to `falso`, the template will overwrite the element's inner content without replacing the element itself.
+  Determines whether to replace the elemento being mounted on with the template. If set to `falso`, the template will overwrite the elemento's inner content without replacing the elemento itself.
 
 - **Esempio**:
 
@@ -622,7 +622,7 @@ type: api
 
  - **Dettagli:**
 
-   Called synchronously after the instance has already been initialized, but not has started processing the options and the data for set up the scope.
+   Called synchronously after the instance has already been initialized, but not has started processing the opzioni and the data for set up the scope.
 
  - **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
 
@@ -632,7 +632,7 @@ type: api
 
 - **Dettagli:**
 
-  Called synchronously after the instance is created. At this stage, the instance has finished processing the opzioni which means the following have been set up: data observation, computed properties, methods, watch/event callbacks. However, DOM compilation has not been started, and the `$el` property will not be available yet.
+  Called synchronously after the instance is created. At this stage, the instance has finished processing the opzioni which means the following have been set up: data observation, computed properties, methods, watch/evento funzioni. However, DOM compilation has not been started, and the `$el` property will not be available yet.
 
 - **Vedi anche:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
 
@@ -724,7 +724,7 @@ type: api
 
 - **Dettagli:**
 
-  A hash of element directives to be made available to the Vue instance.
+  A hash of elemento directives to be made available to the Vue instance.
 
 - **Vedi anche:**
   - [Element Directives](/guide/custom-directive.html#Element_Directives)
@@ -787,13 +787,13 @@ type: api
 
 - **Vedi anche:** [Parent-Child Communication](/guide/components.html#Parent-Child_Communication)
 
-### events
+### eventi
 
 - **Tipo:** `Oggetto`
 
 - **Dettagli:**
 
-  An oggetto where chiaves are events to listen for and valores are the corresponding callbacks. Note these are Vue events rather than DOM events. The valore can also be a stringa of a method name. The Vue instance will call `$on()` for each entry in the oggetto at instantiation.
+  An oggetto where chiaves are eventi to listen for and valores are the corresponding funzioni. Note these are Vue eventi rather than DOM eventi. The valore can also be a stringa of a method name. The Vue instance will call `$on()` for each entry in the oggetto at instantiation.
 
 - **Esempio:**
 
@@ -829,7 +829,7 @@ type: api
 
 - **Dettagli:**
 
-  The `mixins` option accepts an array of mixin oggettos. These mixin oggettos can contain instance opzioni just like normal instance oggettos, and they will be merged against the eventual opzioni using the same option merging logic in `Vue.extend()`. e.g. If your mixin contains a created hook and the component itself also has one, both functions will be called.
+  The `mixins` option accepts an array of mixin oggettos. These mixin oggettos can contain instance opzioni just like normal instance oggettos, and they will be merged against the eventoual opzioni using the same option merging logic in `Vue.extend()`. e.g. If your mixin contains a created hook and the component itself also has one, both functions will be called.
 
   Mixin hooks are called in the order they are provided, and called before the component's own hooks.
 
@@ -898,7 +898,7 @@ type: api
 
 - **Dettagli:**
 
-  The DOM element that the Vue instance is managing. Note that for [Fragment Instances](/guide/components.html#Fragment_Instance), `vm.$el` will return an anchor node that indicates the starting position of the fragment.
+  The DOM elemento that the Vue instance is managing. Note that for [Fragment Instances](/guide/components.html#Fragment_Instance), `vm.$el` will return an anchor node that indicates the starting position of the fragment.
 
 ### vm.$opzioni
 
@@ -971,17 +971,17 @@ type: api
 
 - **Dettagli:**
 
-  An oggetto that holds DOM elements that have `v-el` registraed.
+  An oggetto that holds DOM elementi that have `v-el` registraed.
 
 - **Vedi anche:** [v-el](#v-el).
 
 ## Instance Methods / Data
 
-### vm.$watch( expOrFn, callback, [opzioni] )
+<h3 id="vm-watch">vm.$watch( expOFn, funzione, [opzioni] )</h3>
 
 - **Argomenti:**
-  - `{Stringa | Funzione} expOrFn`
-  - `{Funzione} callback`
+  - `{Stringa | Funzione} expOFn`
+  - `{Funzione} funzione`
   - `{Oggetto} [opzioni]`
     - `{Booleano} deep`
     - `{Booleano} immediate`
@@ -990,7 +990,7 @@ type: api
 
 - **Utilizzo:**
 
-  Watch an expression or a computed function on the Vue instance for changes. The callback gets called with the new valore and the old valore. The expression can be a single chiavepath or any valid binding expressions.
+  Watch an expression or a computed function on the Vue instance for changes. The funzione gets called with the new valore and the old valore. The expression can be a single chiavepath or any valid binding expressions.
 
 <p class="tip">Note: when mutating (rather than replacing) an Oggetto or an Array, the old valore will be the same as new valore because they reference the same Oggetto/Array. Vue doesn't keep a copy of the pre-mutate valore.</p>
 
@@ -1018,7 +1018,7 @@ type: api
   )
   ```
 
-  `vm.$watch` returns an unwatch function that stops firing the callback:
+  `vm.$watch` returns an unwatch function that stops firing the funzione:
 
   ``` js
   var unwatch = vm.$watch('a', cb)
@@ -1031,25 +1031,25 @@ type: api
   To also detect nested valore changes inside Oggettos, you need to pass in `deep: true` in the opzioni argument. Note that you don't need to do so to listen for Array mutations.
 
   ``` js
-  vm.$watch('someOggetto', callback, {
+  vm.$watch('someOggetto', funzione, {
     deep: true
   })
   vm.someOggetto.nestedValue = 123
-  // callback is fired
+  // funzione is fired
   ```
 
 - **Option: immediate**
 
-  Passing in `immediate: true` in the option will trigger the callback immediately with the current valore of the expression:
+  Passing in `immediate: true` in the option will trigger the funzione immediately with the current valore of the expression:
 
   ``` js
-  vm.$watch('a', callback, {
+  vm.$watch('a', funzione, {
     immediate: true
   })
-  // callback is fired immediately with current valore of `a`
+  // funzione is fired immediately with current valore of `a`
   ```
 
-### vm.$get( expression )
+<h3 id="vm-get">vm.$get( expression )</h3>
 
 - **Argomenti:**
   - `{Stringa} expression`
@@ -1072,7 +1072,7 @@ type: api
   vm.$get('a.b + 1') // -> 2
   ```
 
-### vm.$set( chiavepath, valore )
+<h3 id="vm-set">vm.$set( chiavepath, valore )</h3>
 
 - **Argomenti:**
   - `{Stringa} chiavepath`
@@ -1110,7 +1110,7 @@ type: api
 
 - **Vedi anche:** [Reactivity in Depth](/guide/reactivity.html)
 
-### vm.$delete( chiave )
+<h3 id="vm-delete">vm.$delete(vchiave )</h3>
 
 - **Argomenti:**
   - `{Stringa} chiave`
@@ -1119,7 +1119,7 @@ type: api
 
   Delete a root level property on the Vue instance (and also its `$data`). Forces a digest cycle. Not recommended.
 
-### vm.$eval( expression )
+<h3 id="vm-eval">vm.$eval( expression )</h3>
 
 - **Argomenti:**
   - `{Stringa} expression`
@@ -1135,7 +1135,7 @@ type: api
   vm.$eval('msg | uppercase') // -> 'HELLO'
   ```
 
-### vm.$interpolate( templateStringa )
+<h3 id="vm-interpolate">vm.$interpolate( templateStringa )</h3>
 
 - **Argomenti:**
   - `{Stringa} templateStringa`
@@ -1151,7 +1151,7 @@ type: api
   vm.$interpolate('{{msg}} world!') // -> 'hello world!'
   ```
 
-### vm.$log( [chiavepath] )
+<h3 id="vm-log">vm.$log( [chiavepath] )</h3>
 
 - **Argomenti:**
   - `{Stringa} [chiavepath]`
@@ -1167,15 +1167,15 @@ type: api
 
 ## Instance Methods / Events
 
-### vm.$on( event, callback )
+<h3 id="vm-on">vm.$on( evento, funzione )</h3>
 
 - **Argomenti:**
-  - `{Stringa} event`
-  - `{Funzione} callback`
+  - `{Stringa} evento`
+  - `{Funzione} funzione`
 
 - **Utilizzo:**
 
-  Listen for a custom event on the current vm. Events can be triggered by `vm.$emit`, `vm.$dispatch` or `vm.$broadcast`. The callback will receive all the additional Argomenti passed into these event-triggering methods.
+  Listen for a custom evento on the current vm. Events can be triggered by `vm.$emit`, `vm.$dispatch` or `vm.$broadcast`. The funzione will receive all the additional Argomenti passed into these evento-triggering methods.
 
 - **Esempio:**
 
@@ -1187,49 +1187,49 @@ type: api
   // -> "hi"
   ```
 
-### vm.$once( event, callback )
+<h3 id="vm-once">vm.$once( evento, funzione )</h3>
 
 - **Argomenti:**
-  - `{Stringa} event`
-  - `{Funzione} callback`
+  - `{Stringa} evento`
+  - `{Funzione} funzione`
 
 - **Utilizzo:**
 
-  Listen for a custom event, but only once. The listener will be removed once it triggers for the first time.
+  Listen for a custom evento, but only once. The listener will be removed once it triggers for the first time.
 
-### vm.$off( [event, callback] )
+<h3 id="vm-off">vm.$off( [evento, funzione] )</h3>
 
 - **Argomenti:**
-  - `{Stringa} [event]`
-  - `{Funzione} [callback]`
+  - `{Stringa} [evento]`
+  - `{Funzione} [funzione]`
 
 - **Utilizzo:**
 
-  Remove event listener(s).
+  Remove evento listener(s).
 
-  - If no Argomenti are provided, remove all event listeners;
+  - If no Argomenti are provided, remove all evento listeners;
 
-  - If only the event is provided, remove all listeners for that event;
+  - If only the evento is provided, remove all listeners for that evento;
 
-  - If both event and callback are given, remove the listener for that specific callback only.
+  - If both evento and funzione are given, remove the listener for that specific funzione only.
 
-### vm.$emit( event, [...args] )
-
-- **Argomenti:**
-  - `{Stringa} event`
-  - `[...args]`
-
-  Trigger an event on the current instance. Any additional Argomenti will be passed into the listener's callback function.
-
-### vm.$dispatch( event, [...args] )
+<h3 id="vm-emit">vm.$emit( evento, [...argomenti] )</h3>
 
 - **Argomenti:**
-  - `{Stringa} event`
-  - `[...args]`
+  - `{Stringa} evento`
+  - `[...argomenti]`
+
+  Trigger an evento on the current instance. Any additional Argomenti will be passed into the listener's funzione function.
+
+<h3 id="vm-dispatch">vm.$dispatch( evento, [...argomenti] )</h3>
+
+- **Argomenti:**
+  - `{Stringa} evento`
+  - `[...argomenti]`
 
 - **Utilizzo:**
 
-  Dispatch an event, first triggering it on the instance itself, and then propagates upward along the parent chain. The propagation stops when it triggers a parent event listener, unless that listener returns `true`. Any additional Argomenti will be passed into the listener's callback function.
+  Dispatch an evento, first triggering it on the instance itself, and then propagates upward along the parent chain. The propagation stops when it triggers a parent evento listener, unless that listener returns `true`. Any additional Argomenti will be passed into the listener's funzione function.
 
 - **Esempio:**
 
@@ -1253,20 +1253,20 @@ type: api
   // -> "child2 notified"
   // -> "child1 notified"
   // parent is NOT notified, because child1 didn't return
-  // true in its callback
+  // true in its funzione
   ```
 
 - **Vedi anche:** [Parent-Child Communication](/guide/components.html#Parent-Child_Communication)
 
-### vm.$broadcast( event, [...args] )
+<h3 id="vm-broadcast">vm.$broadcast( evento, [...argomenti] )</h3>
 
 - **Argomenti:**
-  - `{Stringa} event`
-  - `[...args]`
+  - `{Stringa} evento`
+  - `[...argomenti]`
 
 - **Utilizzo:**
 
-  Broadcast an event that propagates downward to all descendants of the current instance. Since the descendants expand into multiple sub-trees, the event propagation will follow many different "paths". The propagation for each path will stop when a listener callback is fired along that path, unless the callback returns `true`.
+  Broadcast an evento that propagates downward to all descendants of the current instance. Since the descendants expand into multiple sub-trees, the evento propagation will follow many different "paths". The propagation for each path will stop when a listener funzione is fired along that path, unless the funzione returns `true`.
 
 - **Esempio:**
 
@@ -1292,66 +1292,66 @@ type: api
   // -> "child1 notified"
   // -> "child2 notified"
   // child3 is NOT notified, because child2 didn't return
-  // true in its callback
+  // true in its funzione
   ```
 
 ## Instance Methods / DOM
 
-### vm.$appendTo( elementOrSelector, [callback] )
+<h3 id="vm-appendTo">vm.$appendTo( elementoOSelettore, [funzione] )</h3>
 
 - **Argomenti:**
-  - `{Element | Stringa} elementOrSelector`
-  - `{Funzione} [callback]`
+  - `{Element | Stringa} elementoOSelettore`
+  - `{Funzione} [funzione]`
 
 - **Restituisce:** `vm` - the instance itself
 
 - **Utilizzo:**
 
-  Append the Vue instance's DOM element or fragment to target element. The target can be either an element or a querySelector stringa. This method will trigger transitions if present. The callback is fired after the transition has completed (or immediately if no transition has been triggered).
+  Append the Vue instance's DOM elemento or fragment to target elemento. The target can be either an elemento or a querySelettore stringa. This method will trigger transitions if present. The funzione is fired after the transition has completed (or immediately if no transition has been triggered).
 
-### vm.$before( elementOrSelector, [callback] )
+<h3 id="vm-before">vm.$before( elementoOSelettore, [funzione] )</h3>
 
 - **Argomenti:**
-  - `{Element | Stringa} elementOrSelector`
-  - `{Funzione} [callback]`
+  - `{Element | Stringa} elementoOSelettore`
+  - `{Funzione} [funzione]`
 
 - **Restituisce:** `vm` - the instance itself
 
 - **Utilizzo:**
 
-  Insert the Vue instance's DOM element or fragment before target element. The target can be either an element or a querySelector stringa. This method will trigger transitions if present. The callback is fired after the transition has completed (or immediately if no transition has been triggered).
+  Insert the Vue instance's DOM elemento or fragment before target elemento. The target can be either an elemento or a querySelettore stringa. This method will trigger transitions if present. The funzione is fired after the transition has completed (or immediately if no transition has been triggered).
 
-### vm.$after( elementOrSelector, [callback] )
+<h3 id="vm-after">vm.$after( elementoOSelettore, [funzione] )</h3>
 
 - **Argomenti:**
-  - `{Element | Stringa} elementOrSelector`
-  - `{Funzione} [callback]`
+  - `{Element | Stringa} elementoOSelettore`
+  - `{Funzione} [funzione]`
 
 - **Restituisce:** `vm` - the instance itself
 
 - **Utilizzo:**
 
-  Insert the Vue instance's DOM element or fragment after target element. The target can be either an element or a querySelector stringa. This method will trigger transitions if present. The callback is fired after the transition has completed (or immediately if no transition has been triggered).
+  Insert the Vue instance's DOM elemento or fragment after target elemento. The target can be either an elemento or a querySelettore stringa. This method will trigger transitions if present. The funzione is fired after the transition has completed (or immediately if no transition has been triggered).
 
-### vm.$remove( [callback] )
+<h3 id="vm-remove">vm.$remove( [funzione] )</h3>
 
 - **Argomenti:**
-  - `{Funzione} [callback]`
+  - `{Funzione} [funzione]`
 
 - **Restituisce:** `vm` - the instance itself
 
 - **Utilizzo:**
 
-  Remove the Vue instance's DOM element or fragment from the DOM. This method will trigger transitions if present. The callback is fired after the transition has completed (or immediately if no transition has been triggered).
+  Remove the Vue instance's DOM elemento or fragment from the DOM. This method will trigger transitions if present. The funzione is fired after the transition has completed (or immediately if no transition has been triggered).
 
-### vm.$nextTick( callback )
+<h3 id="vm-nextTick">vm.$nextTick( funzione )</h3>
 
 - **Argomenti:**
-  - `{Funzione} [callback]`
+  - `{Funzione} [funzione]`
 
 - **Utilizzo:**
 
-  Defer the callback to be executed after the next DOM update cycle. Use it immediately after you've changed some data to wait for the DOM update. This is the same as the global `Vue.nextTick`, except that the callback's `this` context is automatically bound to the instance calling this method.
+  Defer the funzione to be executed after the next DOM update cycle. Use it immediately after you've changed some data to wait for the DOM update. This is the same as the global `Vue.nextTick`, except that the funzione's `this` context is automatically bound to the instance calling this method.
 
 - **Esempio:**
 
@@ -1380,18 +1380,18 @@ type: api
 
 ## Instance Methods / Lifecycle
 
-### vm.$mount( [elementOrSelector] )
+<h3 id="vm-mount">vm.$mount( [elementoOSelettore] )</h3>
 
 - **Argomenti:**
-  - `{Element | Stringa} [elementOrSelector]`
+  - `{Element | Stringa} [elementoOSelettore]`
 
 - **Restituisce:** `vm` - the instance itself
 
 - **Utilizzo:**
 
-  If a Vue instance didn't receive the `el` option at instantiation, it will be in "unmounted" state, without an associated DOM element or fragment. `vm.$mount()` can be used to manually start the mounting/compilation of an unmounted Vue instance.
+  If a Vue instance didn't receive the `el` option at instantiation, it will be in "unmounted" state, without an associated DOM elemento or fragment. `vm.$mount()` can be used to manually start the mounting/compilation of an unmounted Vue instance.
 
-  If no argument is provided, the template will be created as an out-of-document fragment, and you will have to use other DOM instance methods to insert it into the document yourself. If `replace` option is set to `falso`, then an empty `<div>` will be automatically created as the wrapper element.
+  If no argument is provided, the template will be created as an out-of-document fragment, and you will have to use other DOM instance methods to insert it into the document yourself. If `replace` option is set to `falso`, then an empty `<div>` will be automatically created as the wrapper elemento.
 
   Calling `$mount()` on an already mounted instance will have no effect. The method returns the instance itself so you can chain other instance methods after it.
 
@@ -1414,14 +1414,14 @@ type: api
 
 - **Vedi anche:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
 
-### vm.$destroy( [remove] )
+<h3 id="vm-destroy">vm.$destroy( [remove] )</h3>
 
 - **Argomenti:**
   - `{Booleano} [remove] - Predefinito: falso`
 
 - **Utilizzo:**
 
-  Completely destroy a vm. Clean up its connections with other existing vms, unbind all its directives, turn off all event listeners and, if the `remove` argument is true, remove its associated DOM element or fragment from the DOM.
+  Completely destroy a vm. Clean up its connections with other existing vms, unbind all its directives, turn off all evento listeners and, if the `remove` argument is true, remove its associated DOM elemento or fragment from the DOM.
 
   Triggers the `beforeDestroy` and `destroyed` hooks.
 
@@ -1435,9 +1435,9 @@ type: api
 
 - **Dettagli:**
 
-  Updates the element's `textContent`.
+  Updates the elemento's `textContent`.
 
-  Internally, `{% raw %}{{ Mustache }}{% endraw %}` interpolations are also compiled as a `v-text` directive on a textNode. The directive form requires a wrapper element, but offers slightly better performance and avoids FOUC (Flash of Uncompiled Content).
+  Internally, `{% raw %}{{ Mustache }}{% endraw %}` interpolations are also compiled as a `v-text` directive on a textNode. The directive form requires a wrapper elemento, but offers slightly better performance and avoids FOUC (Flash of Uncompiled Content).
 
 - **Esempio:**
 
@@ -1453,9 +1453,9 @@ type: api
 
 - **Dettagli:**
 
-  Updates the element's `innerHTML`. The contents are inserted as plain HTML - data bindings are ignored. If you need to reuse template pieces, you should use [partials](#partial).
+  Updates the elemento's `innerHTML`. The contents are inserted as plain HTML - data bindings are ignored. If you need to reuse template pieces, you should use [partials](#partial).
 
-  Internally, `{% raw %}{{{ Mustache }}}{% endraw %}` interpolations are also compiled as a `v-html` directive using anchor nodes. The directive form requires a wrapper element, but offers slightly better performance and avoids FOUC (Flash of Uncompiled Content).
+  Internally, `{% raw %}{{{ Mustache }}}{% endraw %}` interpolations are also compiled as a `v-html` directive using anchor nodes. The directive form requires a wrapper elemento, but offers slightly better performance and avoids FOUC (Flash of Uncompiled Content).
 
   <p class="tip">Dynamically rendering arbitrary HTML on your website can be very dangerous because it can easily lead to [XSS attacks](https://en.wikipedia.org/wiki/Cross-site_scripting). Only use `v-html` on trusted content and **never** on user-provided content.</p>
 
@@ -1473,7 +1473,7 @@ type: api
 
 - **Utilizzo:**
 
-  Conditionally render the element based on the truthy-ness of the expression valore. The element and its contained data bindings / components are destroyed and re-constructed during toggles. If the element is a `<template>` element, its content will be extracted as the conditional block.
+  Conditionally render the elemento based on the truthy-ness of the expression valore. The elemento and its contained data bindings / components are destroyed and re-constructed during toggles. If the elemento is a `<template>` elemento, its content will be extracted as the conditional block.
 
 - **Vedi anche:** [Conditional Rendering](/guide/conditional.html)
 
@@ -1483,7 +1483,7 @@ type: api
 
 - **Utilizzo:**
 
-  Toggle's the element's `display` CSS property based on the truthy-ness of the expression valore. Triggers transitions if present.
+  Toggle's the elemento's `display` CSS property based on the truthy-ness of the expression valore. Triggers transitions if present.
 
 - **Vedi anche:** [Conditional Rendering - v-show](/guide/conditional.html#v-show)
 
@@ -1491,7 +1491,7 @@ type: api
 
 - **Does not expect expression**
 
-- **Restriction:** previous sibling element must have `v-if` or `v-show`.
+- **Restriction:** previous sibling elemento must have `v-if` or `v-show`.
 
 - **Utilizzo:**
 
@@ -1520,7 +1520,7 @@ type: api
 
 - **Utilizzo:**
 
-  Render the element or template block multiple times based on the source data. The expression must use the special syntax to provide an alias for the current element being iterated on:
+  Render the elemento or template block multiple times based on the source data. The expression must use the special syntax to provide an alias for the current elemento being iterated on:
 
   ``` html
   <div v-for="item in items">
@@ -1545,24 +1545,24 @@ type: api
 
 - **Expects:** `Funzione | Inline Statement`
 
-- **Argument:** `event (required)`
+- **Argument:** `evento (required)`
 
 - **Modifiers:**
   - `.stop` - call `event.stopPropagation()`.
-  - `.prevent` - call `event.preventPredefinito()`.
-  - `.capture` - add event listener in capture mode.
-  - `.self` - only trigger handler if event was dispatched from this element.
+  - `.prevent` - call `event.preventDefault()`.
+  - `.capture` - add evento listener in capture mode.
+  - `.self` - only trigger handler if evento was dispatched from this elemento.
   - `.{chiaveCode | chiaveAlias}` - only trigger handler on certain chiaves.
 
 - **Utilizzo:**
 
-  Attaches an event listener to the element. The event Tipo is denoted by the argument. The expression can either be a method name or an inline statement, or simply omitted when there are modifiers present.
+  Attaches an evento listener to the elemento. The evento Tipo is denoted by the argument. The expression can either be a method name or an inline statement, or simply omitted when there are modifiers present.
 
-  When used on a normal element, it listens to **native DOM events** only. When used on a custom element component, it also listens to **custom events** emitted on that child component.
+  When used on a normal elemento, it listens to **native DOM eventi** only. When used on a custom elemento component, it also listens to **custom eventi** emitted on that child component.
 
-  When listening to native DOM events, the method receives the native event as the only argument. If using inline statement, the statement has access to the special `$event` property: `v-on:click="handle('ok', $event)"`.
+  When listening to native DOM eventi, the method receives the native evento as the only argument. If using inline statement, the statement has access to the special `$evento` property: `v-on:click="handle('ok', $evento)"`.
 
-  **1.0.11+** When listening the custom events, inline statements have access to the special `$Argomenti` property, which is an array of the additional Argomenti passed to the child components' `$emit` call.
+  **1.0.11+** When listening the custom eventi, inline statements have access to the special `$Argomenti` property, which is an array of the additional Argomenti passed to the child components' `$emit` call.
 
 - **Esempio:**
 
@@ -1571,7 +1571,7 @@ type: api
   <button v-on:click="doThis"></button>
 
   <!-- inline statement -->
-  <button v-on:click="doThat('hello', $event)"></button>
+  <button v-on:click="doThat('hello', $evento)"></button>
 
   <!-- shorthand -->
   <button @click="doThis"></button>
@@ -1595,7 +1595,7 @@ type: api
   <input @chiaveup.13="onEnter">
   ```
 
-  Listening to custom events on a child component (the handler is called when "my-event" is emitted on the child):
+  Listening to custom eventi on a child component (the handler is called when "my-evento" is emitted on the child):
 
   ``` html
   <my-component @my-event="handleThis"></my-component>
@@ -1612,7 +1612,7 @@ type: api
 
 - **Expects:** `* (with argument) | Oggetto (without argument)`
 
-- **Argument:** `attrOrProp (optional)`
+- **Argument:** `attrOProp (optional)`
 
 - **Modifiers:**
   - `.sync` - make the binding two-way. Only respected for prop bindings.
@@ -1679,7 +1679,7 @@ type: api
 
 - **Utilizzo:**
 
-  Create a two-way binding on a form input element. For detailed Utilizzo, see guide section linked below.
+  Create a two-way binding on a form input elemento. For detailed Utilizzo, see guide section linked below.
 
 - **Vedi anche:** [Form Input Bindings](/guide/forms.html)
 
@@ -1735,7 +1735,7 @@ type: api
 
 - **Utilizzo:**
 
-  Register a reference to a DOM element on its owner Vue instance's `$els` oggetto for easier access.
+  Register a reference to a DOM elemento on its owner Vue instance's `$els` oggetto for easier access.
 
 - **Note:**
 
@@ -1758,7 +1758,7 @@ type: api
 
 - **Utilizzo**
 
-  Skip compilation for this element and all its children. You can use this for displaying raw mustache tags. Skipping large numbers of nodes with no directives on them can also speed up compilation.
+  Skip compilation for this elemento and all its children. You can use this for displaying raw mustache tags. Skipping large numbers of nodes with no directives on them can also speed up compilation.
 
 - **Esempio:**
 
@@ -1772,7 +1772,7 @@ type: api
 
 - **Utilizzo:**
 
-  This directive will remain on the element until the associated Vue instance finishes compilation. Combined with CSS rules such as `[v-cloak] { display: none }`, this directive can be used to hide un-compiled mustache bindings until the Vue instance is ready.
+  This directive will remain on the elemento until the associated Vue instance finishes compilation. Combined with CSS rules such as `[v-cloak] { display: none }`, this directive can be used to hide un-compiled mustache bindings until the Vue instance is ready.
 
 - **Esempio:**
 
@@ -1820,7 +1820,7 @@ type: api
 
 - **Utilizzo:**
 
-  `<slot>` elements serve as content distribution outlets in component templates. The slot element itself will be replaced.
+  `<slot>` elementi serve as content distribution outlets in component templates. The slot elemento itself will be replaced.
 
   A slot with the `name` attribute is called a named slot. A named slot will distribute content with a `slot` attribute that matches its name.
 
@@ -1835,7 +1835,7 @@ type: api
 
 - **Utilizzo:**
 
-  `<partial>` elements serve as outlets for registraed template partials. Partial contents are also compiled by Vue when inserted. The `<partial>` element itself will be replaced. It requires a `name` attribute which will be used to resolve the partial's content.
+  `<partial>` elementi serve as outlets for registraed template partials. Partial contents are also compiled by Vue when inserted. The `<partial>` elemento itself will be replaced. It requires a `name` attribute which will be used to resolve the partial's content.
 
 - **Esempio:**
 
@@ -1998,7 +1998,7 @@ type: api
 - **Limited to:** directives that expect `Array` valores, e.g. `v-for`
 
 - **Argomenti:**
-  - `{Stringa | Funzione} targetStringaOrFunzione`
+  - `{Stringa | Funzione} targetStringaOFunzione`
   - `"in" (optional delimiter)`
   - `{Stringa} [...searchKeys]`
 
@@ -2006,7 +2006,7 @@ type: api
 
   Return a filtered version of the source Array. The first argument can either be a stringa or a function.
 
-  When the first argument is a stringa, it will be used as the target stringa to search for in each element of the Array:
+  When the first argument is a stringa, it will be used as the target stringa to search for in each elemento of the Array:
 
   ``` html
   <div v-for="item in items | filterBy 'hello'">
