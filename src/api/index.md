@@ -363,11 +363,13 @@ type: api
 
 - **Tipo:** `Oggetto | Funzione`
 
-- **Restriction:** Only accepts `Funzione` when used in `Vue.extend()`.
+- **Restriction:** Only accepts `Function` when used in a component definition.
 
 - **Dettagli:**
 
   The data oggetto for the Vue instance. Vue.js will recursively convert its properties into getter/setters to make it "reactive". **The oggetto must be plain**: native oggettos, existing getter/setters and protoTipo properties are ignored. It is not recommended to observe complex oggettos.
+  
+  When defining a **component**, `data` must be declared as a function that returns the initial data object, because there will be many instances created using the same definition. If we still use a plain object for `data`, that same object will be **shared by reference** across all instance created! By providing a `data` function, every time a new instance is created, we can simply call it to return a fresh copy of the initial data.
 
   Once the instance is created, the original data oggetto can be accessed as `vm.$data`. The Vue instance also proxies all the properties found on the data oggetto.
 
@@ -532,7 +534,7 @@ type: api
 
 - **Tipo:** `Stringa | HTMLElement | Funzione`
 
-- **Restriction:** only accepts Tipo `Funzione` when used in `Vue.extend()`.
+- **Restriction:** only accepts type `Function` when used in a component definition.
 
 - **Dettagli:**
 
