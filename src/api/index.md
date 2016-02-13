@@ -363,33 +363,35 @@ type: api
 
 - **Tipo:** `Oggetto | Funzione`
 
-- **Restriction:** Only accepts `Function` when used in a component definition.
+- **Restrizioni:** Accetta una funzione quando è utilizzato all interno di una definizione di un componente.
 
 - **Dettagli:**
 
-  The data oggetto for the Vue instance. Vue.js will recursively convert its properties into getter/setters to make it "reactive". **The oggetto must be plain**: native oggettos, existing getter/setters and protoTipo properties are ignored. It is not recommended to observe complex oggettos.
-  
-  When defining a **component**, `data` must be declared as a function that returns the initial data object, because there will be many instances created using the same definition. If we still use a plain object for `data`, that same object will be **shared by reference** across all instance created! By providing a `data` function, every time a new instance is created, we can simply call it to return a fresh copy of the initial data.
+  Quando viene passato alla proprietà data di Vue.js, quest'ultimo cercherà di convertire, in modo ricorsivo, tutte le proprietà in getter/setter in modo da renderle "reattive".
+  **L'oggetto dev'essere nativo**: eventuali getter/setter già presenti verranno ignorati. Non è raccomandato osservare oggetti complessi.
 
-  Once the instance is created, the original data oggetto can be accessed as `vm.$data`. The Vue instance also proxies all the properties found on the data oggetto.
+  Quando definite un **componente**, la proprietà `data` dev'essere dichiarata come funzione la quale restituisce l'oggetto finale, questo perchè vi possono essere più istanze dello stesso componente.
+  Se non facessimo così ogni istanza del componente **avrebbe una proprietà data condivisa** tra tutte le istanze del componente stesso. Con la funzione, invece, ogni istanza avrà sempre una copia diversa della proprietà data.
 
-  Properties that start with `_` or `$` will **not** be proxied on the Vue instance because they may conflict with Vue's internal properties and API methods. You will have to access them as `vm.$data._property`.
+  Una volta che l'istanza è creata, l'oggetto originale potrà essere utilizzato tramite `vm.$data`. L'istanza di Vue farà anche da Proxy per tutte le proprietà trovate nell'ogetto data.
 
-  If required, a deep clone of the original oggetto can be obtained by passing `vm.$data` through `JSON.parse(JSON.stringaify(...))`.
+  Le proprietà che iniziano con `_` o `$` **non verranno** incluse nel sistema di Proxy di Vue.js perchè potrebbero dare problemi con alcuni metodi interni di Vue stesso. Potrete comunque accedervi tramite `vm.$data._property`.
+
+  Se avete bisogno di un clone fedele dell oggetto originale, potete ottenerlo usando `vm.$data` tramite `JSON.parse(JSON.stringify(...))`.
 
 - **Esempio:**
 
   ``` js
   var data = { a: 1 }
 
-  // direct instance creation
+  // Creazione di un istanza
   var vm = new Vue({
     data: data
   })
   vm.a // -> 1
-  vm.$data === data // -> true
+  vm.$data === data // -> vero
 
-  // must use function when in Vue.extend()
+  // utilizzo tramite funzione
   var Component = Vue.extend({
     data: function () {
       return { a: 1 }
@@ -397,7 +399,7 @@ type: api
   })
   ```
 
-- **Vedi anche:** [Reactivity in Depth](/guide/reactivity.html).
+- **Vedi anche:** [Reattività nel dettaglio](/guide/reactivity.html).
 
 ### props
 
@@ -405,22 +407,23 @@ type: api
 
 - **Dettagli:**
 
-  A list/hash of attributes that are exposed to accept data from the parent component. It has a simple Array-based syntax and an alternative Oggetto-based syntax that allows advanced configurations such as Tipo checking, custom validation and Predefinito valores.
+  Una lista di possibili attributi pubblici che vengono utilizzati per accettare dati dal componente padre nel DOM.
+  Ha la sintassi tipica di un Array, ma può essere anche un Oggetto nel caso si vogliano passare configurazioni più complesse, come il controllo del tipo di dato e/o eventuali validazioni.
 
 - **Esempio:**
 
   ``` js
-  // simple syntax
+  // sintassi semplice
   Vue.component('props-demo-simple', {
     props: ['size', 'myMessage']
   })
 
-  // oggetto syntax with validation
+  // sintassi ad oggetto
   Vue.component('props-demo-advanced', {
     props: {
-      // just Tipo check
+      // controllo sul tipo di dato
       size: Number,
-      // Tipo check plus other validations
+      // controllo sul tipo di dato più validazione
       name: {
         Tipo: Stringa,
         required: true
@@ -437,7 +440,7 @@ type: api
 
 - **Dettagli:**
 
-  Computed properties to be mixed into the Vue instance. All getters and setters have their `this` context automatically bound to the Vue instance.
+  L'oggetto computed contiene tutte le proprietà derivate che dipendono da altre proprietà. Il contesto interno di computed è sempre legato all'istanza di Vue corrente.
 
 - **Esempio:**
 
@@ -445,11 +448,11 @@ type: api
   var vm = new Vue({
     data: { a: 1 },
     computed: {
-      // get only, just need a function
+      // solo getter
       aDouble: function () {
         return this.a * 2
       },
-      // both get and set
+      // anche setter
       aPlus: {
         get: function () {
           return this.a + 1
@@ -467,8 +470,8 @@ type: api
   ```
 
 - **Vedi anche:**
-  - [Computed Properties](/guide/computed.html)
-  - [Reactivity in Depth: Inside Computed Properties](/guide/reactivity.html#Inside_Computed_Properties)
+  - [Proprietà Derivate](/guide/computed.html)
+  - [Reattività in Dettaglio: Le Properità Derivate](/guide/reactivity.html#Inside_Computed_Properties)
 
 ### methods
 
@@ -476,7 +479,8 @@ type: api
 
 - **Dettagli:**
 
-  Methods to be mixed into the Vue instance. You can access these methods directly on the VM instance, or use them in directive expressions. All methods will have their `this` context automatically bound to the Vue instance.
+  Methods è un oggetto che contiene nuove funzioni che possono essere usate dall'istanza corrente di Vue. Questi metodi possono essere usanti anche internamente al DOM, sottoforma di espressioni.
+  Tutti i metodi creati dentro Methods avranno `this` puntato all'istanza di Vue.
 
 - **Esempio:**
 
@@ -493,7 +497,7 @@ type: api
   vm.a // 2
   ```
 
-- **Vedi anche:** [Methods and Event Handling](/guide/events.html)
+- **Vedi anche:** [Gestione dei Metodi ed Eventi](/guide/events.html)
 
 ### watch
 
@@ -501,7 +505,9 @@ type: api
 
 - **Dettagli:**
 
-  An oggetto where chiaves are expressions to watch and valores are the corresponding funzioni. The valore can also be a stringa of a method name, or an Oggetto that contains additional opzioni. The Vue instance will call `$watch()` for each entry in the oggetto at instantiation.
+  Watch contiene delle funzioni dove la chiave è l'espressione da osservare ed il corpo della funzione è il valore di tale chiave.
+  La funzione può essere anche una stringa che punta ad un Metodo interno alla proprietà Methods vista precedentemente oppure un oggetto che contiene un handler, la funzione, e la "profondità" del watch stesso.
+  L'istanza di Vue chiamerà `$watch()` per ogni chiave in data al momento dell'istanziazione.
 
 - **Esempio:**
 
@@ -514,9 +520,9 @@ type: api
       'a': function (val, oldVal) {
         console.log('new: %s, old: %s', val, oldVal)
       },
-      // stringa method name
+      // Metodo come stringa
       'b': 'someMethod',
-      // deep watcher
+      // Oggetto
       'c': {
         handler: function (val, oldVal) { /* ... */ },
         deep: true
@@ -526,7 +532,7 @@ type: api
   vm.a = 2 // -> new: 2, old: 1
   ```
 
-- **Vedi anche:** [Instance Methods - vm.$watch](#vm-watch)
+- **Vedi anche:** [Metodi di Istanza - vm.$watch](#vm-watch)
 
 ## Options / DOM
 
@@ -534,7 +540,7 @@ type: api
 
 - **Tipo:** `Stringa | HTMLElement | Funzione`
 
-- **Restriction:** only accepts type `Function` when used in a component definition.
+- **Restrizioni:** only accepts type `Function` when used in a component definition.
 
 - **Dettagli:**
 
@@ -569,7 +575,7 @@ type: api
 
 - **Predefinito:** `true`
 
-- **Restriction:** only respected if the **template** option is also present.
+- **Restrizioni:** only respected if the **template** option is also present.
 
 - **Dettagli:**
 
@@ -855,7 +861,7 @@ type: api
 
 - **Tipo:** `Stringa`
 
-- **Restriction:** only respected when used in `Vue.extend()`.
+- **Restrizioni:** only respected when used in `Vue.extend()`.
 
 - **Dettagli:**
 
@@ -1493,7 +1499,7 @@ type: api
 
 - **Does not expect expression**
 
-- **Restriction:** previous sibling elemento must have `v-if` or `v-show`.
+- **Restrizioni:** previous sibling elemento must have `v-if` or `v-show`.
 
 - **Utilizzo:**
 
