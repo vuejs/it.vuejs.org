@@ -579,11 +579,11 @@ type: api
 
 - **Predefinito:** `true`
 
-- **Restrizioni:** only respected if the **template** option is also present.
+- **Restrizioni:** Viene presa in considerazione solo se **template** è presente.
 
 - **Dettagli:**
 
-  Determines whether to replace the elemento being mounted on with the template. If set to `falso`, the template will overwrite the elemento's inner content without replacing the elemento itself.
+  Determina se rimpiazzare l'elemento al quale l'istanza è legata con il template fornito. Se è impostata su `false`, il template sostituirà il contenuto HTML dell elemento al quale l'istanza è stata legata e non il tuo markup totale.
 
 - **Esempio**:
 
@@ -598,13 +598,13 @@ type: api
   })
   ```
 
-  Will result in:
+  Risulterà in:
 
   ``` html
   <p>replaced</p>
   ```
 
-  In comparison, when `replace` is set to `falso`:
+  Quando `replace` è su `false`:
 
   ``` html
   <div id="insert"></div>
@@ -618,7 +618,7 @@ type: api
   })
   ```
 
-  Will result in:
+  Risulterà in:
 
   ``` html
   <div id="insert">
