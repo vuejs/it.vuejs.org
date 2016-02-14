@@ -566,7 +566,7 @@ type: api
   Se la stringa inizia con `#` verrà usata come `querySelector` e verrà presa in considerazione tutta la porzione di HTML interna al template.
   Questo permette l'uso del comune tag `<script Tipo="x-template">`.
 
-  Note that under certain situations, for Esempio when the template contains more than one top-level elemento, or contains only plain text, the instance will become a Istanza Frammentata - i.e. one that manages a list of nodes rather than a single node. Non flow-control directives on the mount point for Istanza Frammentatas are ignored.
+  Da notare che in alcune situazioni, per esempio quando il template contiene un altro template di alto livello o del semplice testo, l'istanza create diventerà un Istanza Frammentata.
 
 - **Vedi anche:**
   - [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
