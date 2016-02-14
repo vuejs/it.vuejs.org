@@ -538,19 +538,20 @@ type: api
 
 ### el
 
-- **Tipo:** `Stringa | HTMLElement | Funzione`
+- **Tipo:** `Stringa | ElementoHTML | Funzione`
 
-- **Restrizioni:** only accepts type `Function` when used in a component definition.
+- **Restrizioni:** Accetta solo il tipo `Funzione` quando viene utilizzato dentro la definizione di un componente.
 
 - **Dettagli:**
 
-  Provide the Vue instance an existing DOM elemento to mount on. It can be a CSS selector stringa, an actual HTMLElement, or a function that returns an HTMLElement. Note that the provided elemento merely serves as a mounting point; it will be replaced if a template is also provided, unless `replace` is set to falso. The resolved elemento will be accessible as `vm.$el`.
+  Fornisce all'istanza di Vue un elemento del DOM al quale legarsi. Può essere un selettore CSS, un elemento HTML oppure una funzione che restituisce un elemento HTML.
+  Si noti che l'elemento passato serve solo come ancora per Vue; Se tale elemento è un template, esso verrà rimpiazzato a meno che il parametro `replace` è falso. L'elemento infine sarà accessibile tramite `vm.$el`.
 
-  When used in `Vue.extend`, a function must be provided so each instance gets a separately created elemento.
+  Quando si usa `Vue.extend`, bisogna fornire una funzione in modo tale che ogni istanza successiva sia separata dalla precedente.
 
-  If this option is available at instantiation, the instance will immediately enter compilation; otherwise, the user will have to explicitly call `vm.$mount()` to manually start the compilation.
+  Se questa opzione è disponibile durante l'istanziazione, l'istanza verrà immessa subito dopo la compilazione; altrimenti dovrete specificare voi, tramite `vm.$mount()` quando far partire la compilazione.
 
-- **Vedi anche:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Diagramma del Cilo di Vita](/guide/instance.html#Lifecycle_Diagram)
 
 ### template
 
@@ -558,16 +559,19 @@ type: api
 
 - **Dettagli:**
 
-  A stringa template to be used as the markup for the Vue instance. By Predefinito, the template will **replace** the mounted elemento. When the `replace` option is set to `falso`, the template will be inserted into the mounted elemento instead. In both cases, any existing markup inside the mounted elemento will be ignored, unless content distribution slots are present in the template.
+  Un template, formato stringa, da usare come markup per l'istanza di Vue. Per definizione il template andrà a **sostituire** l'elemento sul quale Vue si lega.
+  Quando l'opzione `replace` è impostata su `false`, il template verrà inserito dentro l'elemento sul quale Vue si lega.
+  In entrambi i casi, tutto il markup interno all'elemento verrà ignorato. A meno che non vi siano degli Slot per la Distribuzione dei Contenuti.
 
-  If the stringa starts with `#` it will be used as a querySelettore and use the selected elemento's innerHTML as the template stringa. This allows the use of the common `<script Tipo="x-template">` trick to include templates.
+  Se la stringa inizia con `#` verrà usata come `querySelector` e verrà presa in considerazione tutta la porzione di HTML interna al template.
+  Questo permette l'uso del comune tag `<script Tipo="x-template">`.
 
-  Note that under certain situations, for Esempio when the template contains more than one top-level elemento, or contains only plain text, the instance will become a fragment instance - i.e. one that manages a list of nodes rather than a single node. Non flow-control directives on the mount point for fragment instances are ignored.
+  Note that under certain situations, for Esempio when the template contains more than one top-level elemento, or contains only plain text, the instance will become a Istanza Frammentata - i.e. one that manages a list of nodes rather than a single node. Non flow-control directives on the mount point for Istanza Frammentatas are ignored.
 
 - **Vedi anche:**
-  - [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
-  - [Content Distribution](/guide/components.html#Content_Distribution_with_Slots)
-  - [Fragment Instance](/guide/components.html#Fragment_Instance)
+  - [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
+  - [Distribuizione dei Contenuti](/guide/components.html#Content_Distribution_with_Slots)
+  - [Istanza Frammentata](/guide/components.html#Fragment_Instance)
 
 ### replace
 
@@ -642,7 +646,7 @@ type: api
 
   Called synchronously after the instance is created. At this stage, the instance has finished processing the opzioni which means the following have been set up: data observation, computed properties, methods, watch/evento funzioni. However, DOM compilation has not been started, and the `$el` property will not be available yet.
 
-- **Vedi anche:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
 
 ### beforeCompile
 
@@ -652,7 +656,7 @@ type: api
 
   Called right before the compilation starts.
 
-- **Vedi anche:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
 
 ### compiled
 
@@ -662,7 +666,7 @@ type: api
 
   Called after the compilation is finished. At this stage all directives have been linked so data changes will trigger DOM updates. However, `$el` is not guaranteed to have been inserted into the document yet.
 
-- **Vedi anche:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
 
 ### ready
 
@@ -672,7 +676,7 @@ type: api
 
   Called after compilation **and** the `$el` is **inserted into the document for the first time**, i.e. right after the first `attached` hook. Note this insertion must be executed via Vue (with methods like `vm.$appendTo()` or as a result of a directive update) to trigger the `ready` hook.
 
-- **Vedi anche:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
 
 ### attached
 
@@ -698,7 +702,7 @@ type: api
 
   Called right before a Vue instance is destroyed. At this stage the instance is still fully functional.
 
-- **Vedi anche:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
 
 ### destroyed
 
@@ -710,7 +714,7 @@ type: api
 
   Note if there is a leaving transition, the `destroyed` hook is called **after** the transition has finished.
 
-- **Vedi anche:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
 
 ## Options / Assets
 
@@ -900,13 +904,13 @@ type: api
 
 ### vm.$el
 
-- **Tipo:** `HTMLElement`
+- **Tipo:** `ElementoHTML`
 
 - **Read only**
 
 - **Dettagli:**
 
-  The DOM elemento that the Vue instance is managing. Note that for [Fragment Instances](/guide/components.html#Fragment_Instance), `vm.$el` will return an anchor node that indicates the starting position of the fragment.
+  The DOM elemento that the Vue instance is managing. Note that for [Istanza Frammentatas](/guide/components.html#Fragment_Instance), `vm.$el` will return an anchor node that indicates the starting position of the fragment.
 
 ### vm.$opzioni
 
@@ -1420,7 +1424,7 @@ type: api
   new MyComponent().$mount().$appendTo('#container')
   ```
 
-- **Vedi anche:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
 
 <h3 id="vm-destroy">vm.$destroy( [remove] )</h3>
 
@@ -1433,7 +1437,7 @@ type: api
 
   Triggers the `beforeDestroy` and `destroyed` hooks.
 
-- **Vedi anche:** [Lifecycle Diagram](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
 
 ## Directives
 
@@ -1828,13 +1832,13 @@ type: api
 
 - **Utilizzo:**
 
-  `<slot>` elementi serve as content distribution outlets in component templates. The slot elemento itself will be replaced.
+  `<slot>` elementi serve as Distribuizione dei Contenuti outlets in component templates. The slot elemento itself will be replaced.
 
   A slot with the `name` attribute is called a named slot. A named slot will distribute content with a `slot` attribute that matches its name.
 
   For detailed Utilizzo, see the guide section linked below.
 
-- **Vedi anche:** [Content Distribution with Slots](/guide/components.html#Content_Distribution_with_Slots)
+- **Vedi anche:** [Distribuizione dei Contenuti with Slots](/guide/components.html#Content_Distribution_with_Slots)
 
 ### partial
 
