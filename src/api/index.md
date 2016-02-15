@@ -534,7 +534,7 @@ type: api
 
 - **Vedi anche:** [Metodi di Istanza - vm.$watch](#vm-watch)
 
-## Options / DOM
+## Opzioni / DOM
 
 ### el
 
@@ -626,7 +626,7 @@ type: api
   </div>
   ```
 
-## Options / Lifecycle Hooks
+## Opzioni / Funzioni per il Ciclo di Vita
 
 ### init
 
@@ -634,7 +634,7 @@ type: api
 
  - **Dettagli:**
 
-   Called synchronously after the instance has already been initialized, but not has started processing the opzioni and the data for set up the scope.
+   Questa funzione viene chiamata in moto sincrono dopo l'istanziazione ma prima di aver processare qualsiasi properità dell'istanza.
 
  - **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
 
@@ -644,7 +644,9 @@ type: api
 
 - **Dettagli:**
 
-  Called synchronously after the instance is created. At this stage, the instance has finished processing the opzioni which means the following have been set up: data observation, computed properties, methods, watch/evento funzioni. However, DOM compilation has not been started, and the `$el` property will not be available yet.
+  Questa funzione viene chiamata in modo sincrono dopo che l'istanza di Vue viene creata. In questo statio, l'istanza ha già finito di processare le properità e le opzioni, il che significa 
+  che le seguenti caratteristiche sono già state istanziate: Osservazione dei dati, Proprietà derivate, Metodi, Sistema di watching ed Eventi.
+  In questo stadio manca solo la compilazione del DOM e l'elemento `$el` non è ancora disponibile.
 
 - **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
 
@@ -654,7 +656,7 @@ type: api
 
 - **Dettagli:**
 
-  Called right before the compilation starts.
+  Questa funzione viene chiamata prima che la compilazione inizi.
 
 - **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
 
@@ -664,7 +666,8 @@ type: api
 
 - **Dettagli:**
 
-  Called after the compilation is finished. At this stage all directives have been linked so data changes will trigger DOM updates. However, `$el` is not guaranteed to have been inserted into the document yet.
+  Questa funzione viene chiamata dopo che la compilazione è finita. In questo stadio tutte le direttive sono state linkate ai dati e scateneranno gli eventi di aggiornamento del DOM.
+  Comunque sia ancora non è disponibile la proprietà `$el`.
 
 - **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
 
@@ -674,7 +677,8 @@ type: api
 
 - **Dettagli:**
 
-  Called after compilation **and** the `$el` is **inserted into the document for the first time**, i.e. right after the first `attached` hook. Note this insertion must be executed via Vue (with methods like `vm.$appendTo()` or as a result of a directive update) to trigger the `ready` hook.
+  Questa funzione viene chiamata dopo che la compilazione **e** la proprietà `$el` è **stata inserita nel documento per le prima volta**,
+  per esempio subito dopo la funzione `attached`.
 
 - **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
 
@@ -684,7 +688,7 @@ type: api
 
 - **Dettagli:**
 
-  Called when `vm.$el` is attached to DOM by a directive or a VM instance method such as `$appendTo()`. Direct manipulation of `vm.$el` will **not** trigger this hook.
+  Questa funzione viene chiamata quando la properità `vm.$el` è stata legata al DOM tramite una direttiva oppure tramite un metodo di Vue come `$appendTo()`. Direct manipulation of `vm.$el` will **not** trigger this hook.
 
 ### detached
 
@@ -692,7 +696,8 @@ type: api
 
 - **Dettagli:**
 
-  Called when `vm.$el` is removed from the DOM by a directive or a VM instance method. Direct manipulation of `vm.$el` will **not** trigger this hook.
+  Questa funzione viene chiamata quando la properità `vm.$el` viene rimossa dal DOM tramite una direttiva oppure tramite un metodo dell'istanza di Vue.
+  La manipolazione diretta di `vm.$el` **non** attiverà questa funzione.
 
 ### beforeDestroy
 
@@ -700,7 +705,7 @@ type: api
 
 - **Dettagli:**
 
-  Called right before a Vue instance is destroyed. At this stage the instance is still fully functional.
+  Questa funzione viene chiamata proprio prima che l'istanza di Vue venga distrutta. In questo stadio l'istanza è ancora funzionante al 100%.
 
 - **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
 
@@ -710,13 +715,13 @@ type: api
 
 - **Dettagli:**
 
-  Called after a Vue instance has been destroyed. When this hook is called, all bindings and directives of the Vue instance have been unbound and all child Vue instances have also been destroyed.
+  Questa funzione viene chiamata quando l'istanza di Vue è stata distrutta. Al momento della chiamata, tutte le direttive ed i vincoli dei dati sono stati rimossi e l'istanza stessa distrutta.
 
-  Note if there is a leaving transition, the `destroyed` hook is called **after** the transition has finished.
+  Da notare che se vi è una transizione in corso la funzione `destroyed` viene chiamata **dopo** che la transizione è finita.
 
 - **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
 
-## Options / Assets
+## Opzioni / Assets
 
 ### directives
 
@@ -787,7 +792,7 @@ type: api
 - **Vedi anche:**
   - [Special Elements - partial](#partial)
 
-## Options / Misc
+## Opzioni / Misc
 
 ### parent
 
