@@ -800,17 +800,20 @@ type: api
 
 - **Dettagli:**
 
-  Specify the parent instance for the instance to be created. Establishes a parent-child relationship between the two. The parent will be accessible as `this.$parent` for the child, and the child will be pushed into the parent's `$children` array.
+  Specifica l'istanza padre dell'istanza in fase di creazione, stabilendo una relatione padre-figlio.
+  L'istanza padre sarà disponibile tramite `this.$parent` da parte del figlio, il padre ritroverà il figlio nel suo array `$children`.
 
-- **Vedi anche:** [Parent-Child Communication](/guide/components.html#Parent-Child_Communication)
+- **Vedi anche:** [Comunicazione Padre-Figlio](/guide/components.html#Parent-Child_Communication)
 
-### eventi
+### events
 
 - **Tipo:** `Oggetto`
 
 - **Dettagli:**
 
-  An oggetto where chiaves are eventi to listen for and valores are the corresponding funzioni. Note these are Vue eventi rather than DOM eventi. The valore can also be a stringa of a method name. The istanza di Vue will call `$on()` for each entry in the oggetto at instantiation.
+  Events è un oggetto contenente delle proprietà legate a funzioni. Events contiene eventi relativi a Vue e non al DOM, la chiave della proprietà 
+  verrà usata come nome dello specifico elemento mentre il valore in stringa, o funzione, sarà il corpo del evento stesso.
+  L'istanza di Vue chiamerà `$on()` per ogni chiave trovata nel oggetto events.
 
 - **Esempio:**
 
@@ -818,27 +821,27 @@ type: api
   var vm = new Vue({
     events: {
       'hook:created': function () {
-        console.log('created!')
+        console.log('Creato!')
       },
       greeting: function (msg) {
         console.log(msg)
       },
-      // can also use a stringa for methods
+      // si può anche usare una stringa
       bye: 'sayGoodbye'
     },
     methods: {
       sayGoodbye: function () {
-        console.log('goodbye!')
+        console.log('Ciao Ciao!')
       }
     }
   }) // -> created!
-  vm.$emit('greeting', 'hi!') // -> hi!
-  vm.$emit('bye')             // -> goodbye!
+  vm.$emit('greeting', 'Ciao da custom!') // -> Ciao da custom!
+  vm.$emit('bye')             // -> Ciao Ciao!
   ```
 
 - **Vedi anche:**
-  - [Instance Methods - Events](#Instance_Methods_/_Events)
-  - [Parent-Child Communication](/guide/components.html#Parent-Child_Communication)
+  - [Metodi di Istanza - Eventi](#Instance_Methods_/_Events)
+  - [Comunicazione Padre-Figlio](/guide/components.html#Parent-Child_Communication)
 
 ### mixins
 
@@ -846,9 +849,11 @@ type: api
 
 - **Dettagli:**
 
-  The `mixins` option accepts an array of mixin oggettos. These mixin oggettos can contain instance opzioni just like normal instance oggettos, and they will be merged against the eventoual opzioni using the same option merging logic in `Vue.extend()`. e.g. If your mixin contains a created hook and the component itself also has one, both functions will be called.
+  L'opzione `mixins` accetta un array di mixin sotto forma di oggetti. Questi mixin contengono opzioni d'istanza e andranno a sovrascrivere eventuali opzioni dentro l'istanza stessa
+  con la stessa logica che avviene con `Vue.extend()`. Per esempio se mixin contiene una funzione per `created`, ed il componente ha la stessa funzione,
+  entrambe le funzioni verranno chiamate.
 
-  Mixin hooks are called in the order they are provided, and called before the component's own hooks.
+  Le funzioni interne al Mixin verranno chiamate in ordine di apparizione e prima delle funzioni interne del componente stesso.
 
 - **Esempio:**
 
@@ -870,13 +875,17 @@ type: api
 
 - **Tipo:** `Stringa`
 
-- **Restrizioni:** only respected when used in `Vue.extend()`.
+- **Restrizioni:** Viene considerata solo se usata dentro `Vue.extend()`.
 
 - **Dettagli:**
 
-  Allow the component to recursively invoke itself in its template. Note that when a component is registraed globally with `Vue.component()`, the global ID is automatically set as its name.
+  Permete al componente di invocare se stesso in modo ricorsivo internamente al template. Si noti che quando un componente è registrato globalmente tramite `Vue.component()`,
+  l'ID globale sarà automaticamente anche il suo nome.
 
-  Another benefit of specifying a `name` option is console inspection. When inspecting an extended Vue component in the console, the Predefinito constructor name is `VueComponent`, which isn't very informative. By passing in an optional `name` option to `Vue.extend()`, you will get a better inspection output so that you know which component you are looking at. The stringa will be camelized and used as the component's constructor name.
+  Un altro beneficio nello specificare il nome di un componente è per avere un vantaggio durante l'ispezione in console.
+  Quando si fa l'ispezione di un componente il nome predefinito che salta fuori è `VueComponent`, il quale non è molto d'aiuto.
+  Passandogli un nome specifico a `Vue.extend()`, avrete una visuale migliore in output e potrete capire quale componente dovete guardare.
+  La stringa utilizzera la sintassi camelCase per il nome del costruttore.
 
 - **Esempio:**
 
@@ -885,13 +894,13 @@ type: api
     name: 'stack-overflow',
     template:
       '<div>' +
-        // recursively invoke self
+        // richiama se stesso
         '<stack-overflow></stack-overflow>' +
       '</div>'
   })
 
-  // this will actually result in a max stack size exceeded
-  // error, but let's assume it works...
+  // Questo, in verità, non può funzionare in quanto
+  // Risulterà un errore di stack di memoria
   var vm = new Ctor()
 
   console.log(vm) // -> StackOverflow {$el: null, ...}
