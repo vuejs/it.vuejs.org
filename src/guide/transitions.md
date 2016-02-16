@@ -245,6 +245,9 @@ Esempio: (senza i prefissi CSS per le regole)
 ```
 
 ``` css
+.bounce-transition {
+  display: inline-block; /* otherwise scale animation won't work */
+}
 .bounce-enter {
   animation: bounce-in .5s;
 }
@@ -283,6 +286,9 @@ Esempio: (senza i prefissi CSS per le regole)
 </div>
 
 <style>
+   .bounce-transition {
+     display: inline-block;
+   }
   .bounce-enter {
     -webkit-animation: bounce-in .5s;
     animation: bounce-in .5s;
@@ -293,52 +299,58 @@ Esempio: (senza i prefissi CSS per le regole)
   }
   @keyframes bounce-in {
     0% {
-      transform: scale(0);
       -webkit-transform: scale(0);
+      transform: scale(0);
     }
     50% {
-      transform: scale(1.5);
       -webkit-transform: scale(1.5);
+      transform: scale(1.5);
     }
     100% {
-      transform: scale(1);
       -webkit-transform: scale(1);
+      transform: scale(1);
     }
   }
   @keyframes bounce-out {
     0% {
-      transform: scale(1);
       -webkit-transform: scale(1);
+      transform: scale(1);
     }
     50% {
-      transform: scale(1.5);
       -webkit-transform: scale(1.5);
+      transform: scale(1.5);
     }
     100% {
-      transform: scale(0);
       -webkit-transform: scale(0);
+      transform: scale(0);
     }
   }
   @-webkit-keyframes bounce-in {
     0% {
       -webkit-transform: scale(0);
+      transform: scale(0);
     }
     50% {
       -webkit-transform: scale(1.5);
+      transform: scale(1.5);
     }
     100% {
       -webkit-transform: scale(1);
+      transform: scale(1);
     }
   }
   @-webkit-keyframes bounce-out {
     0% {
       -webkit-transform: scale(1);
+      transform: scale(1);
     }
     50% {
       -webkit-transform: scale(1.5);
+      transform: scale(1.5);
     }
     100% {
       -webkit-transform: scale(0);
+      transform: scale(0);
     }
   }
 </style>
@@ -393,7 +405,7 @@ Ora si può utilizzare con l'attributo `transition`, senza problemi:
 E' possibile creare transizioni a fari utilizzando `transition` assieme `v-for`. Potete anche utilizzare gli attributi `stagger`, `enter-stagger` o `leave-stagger` per specificare come gestire le fasi:
 
 ``` html
-<div v-for="list" transition stagger="100"></div>
+<div v-for="item in list" transition="stagger" stagger="100"></div>
 ```
 
 Oppure, potete sfruttare gli hook `stagger`, `enterStagger` o `leaveStagger` per un controllo migliore:
