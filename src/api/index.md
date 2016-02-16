@@ -729,7 +729,7 @@ type: api
 
 - **Dettagli:**
 
-  A hash of directives to be made available to the Vue instance.
+  Un hash delle direttive disponibile dall'istanza di Vue.
 
 - **Vedi anche:**
   - [Custom Directives](/guide/custom-directive.html)
@@ -741,7 +741,7 @@ type: api
 
 - **Dettagli:**
 
-  A hash of elemento directives to be made available to the Vue instance.
+  Un Hash degli elementi delle direttive disponibile dall'istanza di Vue.
 
 - **Vedi anche:**
   - [Element Directives](/guide/custom-directive.html#Element_Directives)
@@ -753,7 +753,7 @@ type: api
 
 - **Dettagli:**
 
-  A hash of filters to be made available to the Vue instance.
+  Un Hash dei filtri disponibili dall'istanza di Vue.
 
 - **Vedi anche:**
   - [Custom Filters](/guide/custom-filter.html)
@@ -765,7 +765,7 @@ type: api
 
 - **Dettagli:**
 
-  A hash of components to be made available to the Vue instance.
+  Un hash dei componenti disponibili dall'istanza di Vue.
 
 - **Vedi anche:**
   - [Components](/guide/components.html)
@@ -776,7 +776,7 @@ type: api
 
 - **Dettagli:**
 
-  A hash of transitions to be made available to the Vue instance.
+  Un hash delle transizioni disponibili dall'instanza di Vue.
 
 - **Vedi anche:**
   - [Transitions](/guide/transitions.html)
@@ -787,7 +787,7 @@ type: api
 
 - **Dettagli:**
 
-  A hash of partial stringas to be made available to the Vue instance.
+  Un hash dei template parziali disponibili dall'istanza di Vue.
 
 - **Vedi anche:**
   - [Special Elements - partial](#partial)
@@ -796,7 +796,7 @@ type: api
 
 ### parent
 
-- **Tipo:** `Vue instance`
+- **Tipo:** `istanza di Vue`
 
 - **Dettagli:**
 
@@ -810,7 +810,7 @@ type: api
 
 - **Dettagli:**
 
-  An oggetto where chiaves are eventi to listen for and valores are the corresponding funzioni. Note these are Vue eventi rather than DOM eventi. The valore can also be a stringa of a method name. The Vue instance will call `$on()` for each entry in the oggetto at instantiation.
+  An oggetto where chiaves are eventi to listen for and valores are the corresponding funzioni. Note these are Vue eventi rather than DOM eventi. The valore can also be a stringa of a method name. The istanza di Vue will call `$on()` for each entry in the oggetto at instantiation.
 
 - **Esempio:**
 
@@ -905,7 +905,7 @@ type: api
 
 - **Dettagli:**
 
-  The data oggetto that the Vue instance is observing. You can swap it with a new oggetto. The Vue instance proxies access to the properties on its data oggetto.
+  The data oggetto that the istanza di Vue is observing. You can swap it with a new oggetto. The istanza di Vue proxies access to the properties on its data oggetto.
 
 ### vm.$el
 
@@ -915,7 +915,7 @@ type: api
 
 - **Dettagli:**
 
-  The DOM elemento that the Vue instance is managing. Note that for [Istanza Frammentatas](/guide/components.html#Fragment_Instance), `vm.$el` will return an anchor node that indicates the starting position of the fragment.
+  The DOM elemento that the istanza di Vue is managing. Note that for [Istanza Frammentatas](/guide/components.html#Fragment_Instance), `vm.$el` will return an anchor node that indicates the starting position of the fragment.
 
 ### vm.$opzioni
 
@@ -925,7 +925,7 @@ type: api
 
 - **Dettagli:**
 
-  The instantiation opzioni used for the current Vue instance. This is useful when you want to include custom properties in the opzioni:
+  The instantiation opzioni used for the current istanza di Vue. This is useful when you want to include custom properties in the opzioni:
 
   ``` js
   new Vue({
@@ -938,7 +938,7 @@ type: api
 
 ### vm.$parent
 
-- **Tipo:** `Vue instance`
+- **Tipo:** `istanza di Vue`
 
 - **Read only**
 
@@ -948,17 +948,17 @@ type: api
 
 ### vm.$root
 
-- **Tipo:** `Vue instance`
+- **Tipo:** `istanza di Vue`
 
 - **Read only**
 
 - **Dettagli:**
 
-  The root Vue instance of the current component tree. If the current instance has no parents this valore will be itself.
+  The root istanza di Vue of the current component tree. If the current instance has no parents this valore will be itself.
 
 ### vm.$children
 
-- **Tipo:** `Array<Vue instance>`
+- **Tipo:** `Array<istanza di Vue>`
 
 - **Read only**
 
@@ -1007,7 +1007,7 @@ type: api
 
 - **Utilizzo:**
 
-  Watch an expression or a computed function on the Vue instance for changes. The funzione gets called with the new valore and the old valore. The expression can be a single chiavepath or any valid binding expressions.
+  Watch an expression or a computed function on the istanza di Vue for changes. The funzione gets called with the new valore and the old valore. The expression can be a single chiavepath or any valid binding expressions.
 
 <p class="tip">Note: when mutating (rather than replacing) an Oggetto or an Array, the old valore will be the same as new valore because they reference the same Oggetto/Array. Vue doesn't keep a copy of the pre-mutate valore.</p>
 
@@ -1073,7 +1073,7 @@ type: api
 
 - **Utilizzo:**
 
-  Retrieve a valore from the Vue instance given an expression. Expressions that throw errors will be suppressed and return `undefined`.
+  Retrieve a valore from the istanza di Vue given an expression. Expressions that throw errors will be suppressed and return `undefined`.
 
 - **Esempio:**
 
@@ -1097,13 +1097,13 @@ type: api
 
 - **Utilizzo:**
 
-  Set a data valore on the Vue instance given a valid chiavepath. In most cases you should prefer setting properties using plain oggetto syntax, e.g. `vm.a.b = 123`. This method is only needed in two scenarios:
+  Set a data valore on the istanza di Vue given a valid chiavepath. In most cases you should prefer setting properties using plain oggetto syntax, e.g. `vm.a.b = 123`. This method is only needed in two scenarios:
 
   1. When you have a chiavepath stringa and want to dynamically set the valore using that chiavepath.
 
   2. When you want to set a property that doesn't exist.
 
-  If the path doesn't exist it will be recursively created and made reactive. If a new root-level reactive property is created due to a `$set` call, the Vue instance will be forced into a "digest cycle", during which all its watchers are re-evaluated.
+  If the path doesn't exist it will be recursively created and made reactive. If a new root-level reactive property is created due to a `$set` call, the istanza di Vue will be forced into a "digest cycle", during which all its watchers are re-evaluated.
 
 - **Esempio:**
 
@@ -1134,7 +1134,7 @@ type: api
 
 - **Utilizzo:**
 
-  Delete a root level property on the Vue instance (and also its `$data`). Forces a digest cycle. Not recommended.
+  Delete a root level property on the istanza di Vue (and also its `$data`). Forces a digest cycle. Not recommended.
 
 <h3 id="vm-eval">vm.$eval( expression )</h3>
 
@@ -1324,7 +1324,7 @@ type: api
 
 - **Utilizzo:**
 
-  Append the Vue instance's DOM elemento or fragment to target elemento. The target can be either an elemento or a querySelettore stringa. This method will trigger transitions if present. The funzione is fired after the transition has completed (or immediately if no transition has been triggered).
+  Append the istanza di Vue's DOM elemento or fragment to target elemento. The target can be either an elemento or a querySelettore stringa. This method will trigger transitions if present. The funzione is fired after the transition has completed (or immediately if no transition has been triggered).
 
 <h3 id="vm-before">vm.$before( elementoOSelettore, [funzione] )</h3>
 
@@ -1336,7 +1336,7 @@ type: api
 
 - **Utilizzo:**
 
-  Insert the Vue instance's DOM elemento or fragment before target elemento. The target can be either an elemento or a querySelettore stringa. This method will trigger transitions if present. The funzione is fired after the transition has completed (or immediately if no transition has been triggered).
+  Insert the istanza di Vue's DOM elemento or fragment before target elemento. The target can be either an elemento or a querySelettore stringa. This method will trigger transitions if present. The funzione is fired after the transition has completed (or immediately if no transition has been triggered).
 
 <h3 id="vm-after">vm.$after( elementoOSelettore, [funzione] )</h3>
 
@@ -1348,7 +1348,7 @@ type: api
 
 - **Utilizzo:**
 
-  Insert the Vue instance's DOM elemento or fragment after target elemento. The target can be either an elemento or a querySelettore stringa. This method will trigger transitions if present. The funzione is fired after the transition has completed (or immediately if no transition has been triggered).
+  Insert the istanza di Vue's DOM elemento or fragment after target elemento. The target can be either an elemento or a querySelettore stringa. This method will trigger transitions if present. The funzione is fired after the transition has completed (or immediately if no transition has been triggered).
 
 <h3 id="vm-remove">vm.$remove( [funzione] )</h3>
 
@@ -1359,7 +1359,7 @@ type: api
 
 - **Utilizzo:**
 
-  Remove the Vue instance's DOM elemento or fragment from the DOM. This method will trigger transitions if present. The funzione is fired after the transition has completed (or immediately if no transition has been triggered).
+  Remove the istanza di Vue's DOM elemento or fragment from the DOM. This method will trigger transitions if present. The funzione is fired after the transition has completed (or immediately if no transition has been triggered).
 
 <h3 id="vm-nextTick">vm.$nextTick( funzione )</h3>
 
@@ -1406,7 +1406,7 @@ type: api
 
 - **Utilizzo:**
 
-  If a Vue instance didn't receive the `el` option at instantiation, it will be in "unmounted" state, without an associated DOM elemento or fragment. `vm.$mount()` can be used to manually start the mounting/compilation of an unmounted Vue instance.
+  If a istanza di Vue didn't receive the `el` option at instantiation, it will be in "unmounted" state, without an associated DOM elemento or fragment. `vm.$mount()` can be used to manually start the mounting/compilation of an unmounted istanza di Vue.
 
   If no argument is provided, the template will be created as an out-of-document fragment, and you will have to use other DOM instance methods to insert it into the document yourself. If `replace` option is set to `falso`, then an empty `<div>` will be automatically created as the wrapper elemento.
 
@@ -1752,7 +1752,7 @@ type: api
 
 - **Utilizzo:**
 
-  Register a reference to a DOM elemento on its owner Vue instance's `$els` oggetto for easier access.
+  Register a reference to a DOM elemento on its owner istanza di Vue's `$els` oggetto for easier access.
 
 - **Note:**
 
@@ -1789,7 +1789,7 @@ type: api
 
 - **Utilizzo:**
 
-  This directive will remain on the elemento until the associated Vue instance finishes compilation. Combined with CSS rules such as `[v-cloak] { display: none }`, this directive can be used to hide un-compiled mustache bindings until the Vue instance is ready.
+  This directive will remain on the elemento until the associated istanza di Vue finishes compilation. Combined with CSS rules such as `[v-cloak] { display: none }`, this directive can be used to hide un-compiled mustache bindings until the istanza di Vue is ready.
 
 - **Esempio:**
 
