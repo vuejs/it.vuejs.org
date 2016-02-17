@@ -497,7 +497,7 @@ type: api
   vm.a // 2
   ```
 
-- **Vedi anche:** [Gestione dei Metodi ed Eventi](/guide/events.html)
+- **Vedi anche:** [Gestione dei Metodi ed Eventi](/guide/Eventi.html)
 
 ### watch
 
@@ -805,21 +805,21 @@ type: api
 
 - **Vedi anche:** [Comunicazione Padre-Figlio](/guide/components.html#Parent-Child_Communication)
 
-### events
+### Eventi
 
 - **Tipo:** `Oggetto`
 
 - **Dettagli:**
 
-  Events è un oggetto contenente delle proprietà legate a funzioni. Events contiene eventi relativi a Vue e non al DOM, la chiave della proprietà 
+  Eventi è un oggetto contenente delle proprietà legate a funzioni. Eventi contiene eventi relativi a Vue e non al DOM, la chiave della proprietà 
   verrà usata come nome dello specifico elemento mentre il valore in stringa, o funzione, sarà il corpo del evento stesso.
-  L'istanza di Vue chiamerà `$on()` per ogni chiave trovata nel oggetto events.
+  L'istanza di Vue chiamerà `$on()` per ogni chiave trovata nel oggetto Eventi.
 
 - **Esempio:**
 
   ``` js
   var vm = new Vue({
-    events: {
+    Eventi: {
       'hook:created': function () {
         console.log('Creato!')
       },
@@ -840,7 +840,7 @@ type: api
   ```
 
 - **Vedi anche:**
-  - [Metodi di Istanza - Eventi](#Instance_Methods_/_Events)
+  - [Metodi di Istanza - Eventi](#Instance_Methods_/_Eventi)
   - [Comunicazione Padre-Figlio](/guide/components.html#Parent-Child_Communication)
 
 ### mixins
@@ -941,7 +941,7 @@ type: api
 
   ``` js
   new Vue({
-    customOption: 'foo',
+    customOpzione: 'foo',
     created: function () {
       console.log(this.$options.customOption) // -> 'foo'
     }
@@ -1004,12 +1004,12 @@ type: api
 
 - **Vedi anche:** [v-el](#v-el).
 
-## Instance Methods / Data
+## Metodi di Istanza / Data
 
-<h3 id="vm-watch">vm.$watch( expOFn, funzione, [opzioni] )</h3>
+<h3 id="vm-watch">vm.$watch( espressioneOFunzione, funzione, [opzioni] )</h3>
 
 - **Argomenti:**
-  - `{Stringa | Funzione} expOFn`
+  - `{Stringa | Funzione} espressioneOFunzione`
   - `{Funzione} funzione`
   - `{Oggetto} [opzioni]`
     - `{Booleano} deep`
@@ -1019,73 +1019,78 @@ type: api
 
 - **Utilizzo:**
 
-  Watch an expression or a computed function on the istanza di Vue for changes. The funzione gets called with the new valore and the old valore. The expression can be a single chiavepath or any valid binding expressions.
+  Osserva, `watch`, un espressione oppure una funzione dell'istanza di Vue in attesa di cambiamenti.
+  Se qualche cambiamento viene rilevate la funzione riceverà il vecchio valore ed il nuovo valore.
+  L'espressione può essere di tipo chiave-valore o una stringa logica.
 
-<p class="tip">Note: when mutating (rather than replacing) an Oggetto or an Array, the old valore will be the same as new valore because they reference the same Oggetto/Array. Vue doesn't keep a copy of the pre-mutate valore.</p>
+<p class="tip">Si noti: quando si modifica (invece di rimpazzare) un Oggetto od un Array, il vecchio valore coinciderà con quello nuovo perchè le referenze sono le stesse.
+Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Esempio:**
 
   ``` js
-  // chiavepath
+  // chiave valore
   vm.$watch('a.b.c', function (newVal, oldVal) {
-    // do something
+    // esecuzione
   })
 
-  // expression
+  // espressione
   vm.$watch('a + b', function (newVal, oldVal) {
-    // do something
+    // esecuzione
   })
 
-  // function
+  // funzione
   vm.$watch(
     function () {
       return this.a + this.b
     },
     function (newVal, oldVal) {
-      // do something
+      // esecuzione
     }
   )
   ```
 
-  `vm.$watch` returns an unwatch function that stops firing the funzione:
+  `vm.$watch` restituisce una funzione non osservata che permette di fermare l'evento:
 
   ``` js
   var unwatch = vm.$watch('a', cb)
-  // later, teardown the watcher
+  // successivamente blocchiamo l'evento di watching
   unwatch()
   ```
 
-- **Option: deep**
+- **Opzione: deep**
 
-  To also detect nested valore changes inside Oggettos, you need to pass in `deep: true` in the opzioni argument. Note that you don't need to do so to listen for Array mutations.
+   Per osservare, ed individuare, cambiamenti interni al oggetto, dovete passare l'opzione `deep: true` come argomento di watch..
+   Note that you don't need to do so to listen for Array mutations.
 
   ``` js
-  vm.$watch('someOggetto', funzione, {
+  vm.$watch('oggetto', funzione, {
     deep: true
   })
-  vm.someOggetto.nestedValue = 123
-  // funzione is fired
+  vm.oggetto.nestedValue = 123
+  // La funzione viene richiamata
   ```
 
-- **Option: immediate**
+- **Opzione: immediate**
 
-  Passing in `immediate: true` in the option will trigger the funzione immediately with the current valore of the expression:
+  Passando al watch l'opzione `immediate: true` essa attiverà la funzione del watch immediatamente anche con il valore iniziale:
 
   ``` js
   vm.$watch('a', funzione, {
     immediate: true
   })
-  // funzione is fired immediately with current valore of `a`
+  // il Watch viene attivato immediatamente con il valore corrente di `a`
   ```
 
-<h3 id="vm-get">vm.$get( expression )</h3>
+<h3 id="vm-get">vm.$get( espressione )</h3>
 
 - **Argomenti:**
-  - `{Stringa} expression`
+  - `{Stringa} espressione`
 
 - **Utilizzo:**
 
-  Retrieve a valore from the istanza di Vue given an expression. Expressions that throw errors will be suppressed and return `undefined`.
+  Restituisce un valore dall'istanza di Vue tramite l'espressione passata.
+  Eventuali errori interni all'espressione passata risulterano in un `undefined`.
 
 - **Esempio:**
 
@@ -1101,21 +1106,23 @@ type: api
   vm.$get('a.b + 1') // -> 2
   ```
 
-<h3 id="vm-set">vm.$set( chiavepath, valore )</h3>
+<h3 id="vm-set">vm.$set( chiave, valore )</h3>
 
 - **Argomenti:**
-  - `{Stringa} chiavepath`
+  - `{Stringa} chiave`
   - `{*} valore`
 
 - **Utilizzo:**
 
-  Set a data valore on the istanza di Vue given a valid chiavepath. In most cases you should prefer setting properties using plain oggetto syntax, e.g. `vm.a.b = 123`. This method is only needed in two scenarios:
+  Imposta un valore di una determinata chiave nell'istanza di Vue.
+  In molti casi è preferibile impostare le proprietà tramite l'oggetto stesso, per esempio `vm.a.b = 123`. Questo metodo è utile per due scenari in particolare:
 
-  1. When you have a chiavepath stringa and want to dynamically set the valore using that chiavepath.
+  1. Quando il valore è impostato dinamicamente e la chiave è una stringa.
 
-  2. When you want to set a property that doesn't exist.
+  2. Quando si vuole creare una coppia chiave-valore che non esisteva in precedenza.
 
-  If the path doesn't exist it will be recursively created and made reactive. If a new root-level reactive property is created due to a `$set` call, the istanza di Vue will be forced into a "digest cycle", during which all its watchers are re-evaluated.
+  Se la chiave non esiste verrà creatà ed impostata in modo che sia reattiva.
+  Se la chiave viene impostata in un istanza di Vue che è anche root di componenti tutti i componenti attiveranno un watcher di default per la nuova chiave.
 
 - **Esempio:**
 
@@ -1128,73 +1135,73 @@ type: api
     }
   })
 
-  // set an existing path
+  // imposta un nuovo valore
   vm.$set('a.b', 2)
   vm.a.b // -> 2
 
-  // set a non-existent path, will force digest
+  // crea una nuova coppia chiave valore
   vm.$set('c', 3)
   vm.c // ->
   ```
 
-- **Vedi anche:** [Reactivity in Depth](/guide/reactivity.html)
+- **Vedi anche:** [Reattività nel Dettaglio](/guide/reactivity.html)
 
-<h3 id="vm-delete">vm.$delete(vchiave )</h3>
+<h3 id="vm-delete">vm.$delete(chiave)</h3>
 
 - **Argomenti:**
   - `{Stringa} chiave`
 
 - **Utilizzo:**
 
-  Delete a root level property on the istanza di Vue (and also its `$data`). Forces a digest cycle. Not recommended.
+  Elimina una chiave tra le proprietà dell'istanza di Vue. Non raccomandato come uso quotidiano.
 
-<h3 id="vm-eval">vm.$eval( expression )</h3>
+<h3 id="vm-eval">vm.$eval( espressione )</h3>
 
 - **Argomenti:**
-  - `{Stringa} expression`
+  - `{Stringa} espressione`
 
 - **Utilizzo:**
 
-  Evaluate a valid binding expression on the current instance. The expression can also contain filters.
+  Questo metodo valuterà l'espressione passata, l'espressione può anche contenere dei filtri.
 
 - **Esempio:**
 
   ``` js
-  // assuming vm.msg = 'hello'
+  // sia vm.msg = 'hello'
   vm.$eval('msg | uppercase') // -> 'HELLO'
   ```
 
-<h3 id="vm-interpolate">vm.$interpolate( templateStringa )</h3>
+<h3 id="vm-interpolate">vm.$interpolate( template )</h3>
 
 - **Argomenti:**
-  - `{Stringa} templateStringa`
+  - `{Stringa} template`
 
 - **Utilizzo:**
 
-  Evaluate a piece of template stringa containing mustache interpolations. Note that this method simply performs stringa interpolation; attribute directives are ignored.
+  Questo metodo valuta un pezzo di template, ed eventuale stringhe passate, che contiene la sintassi "a baffi", con le graffe.
 
 - **Esempio:**
 
   ``` js
-  // assuming vm.msg = 'hello'
+  // sia vm.msg = 'hello'
   vm.$interpolate('{{msg}} world!') // -> 'hello world!'
   ```
 
-<h3 id="vm-log">vm.$log( [chiavepath] )</h3>
+<h3 id="vm-log">vm.$log( [chiave] )</h3>
 
 - **Argomenti:**
-  - `{Stringa} [chiavepath]`
+  - `{Stringa} [chiave]`
 
 - **Utilizzo:**
 
-  Log the current instance data as a plain oggetto, which is more inspection-friendly than a bunch of getter/setters. Also accepts an optional chiave.
+  Esegue un log della chiave passata. Se non viene passata nessuna chiave verrà effettuato il log dell'intera istanza di Vue.
 
   ``` js
-  vm.$log() // logs entire ViewModel data
-  vm.$log('item') // logs vm.item
+  vm.$log() // log intera istanza
+  vm.$log('item') // log vm.item
   ```
 
-## Instance Methods / Events
+## Metodi di Istanza / Eventi
 
 <h3 id="vm-on">vm.$on( evento, funzione )</h3>
 
@@ -1204,7 +1211,7 @@ type: api
 
 - **Utilizzo:**
 
-  Listen for a custom evento on the current vm. Events can be triggered by `vm.$emit`, `vm.$dispatch` or `vm.$broadcast`. The funzione will receive all the additional Argomenti passed into these evento-triggering methods.
+  Listen for a custom evento on the current vm. Eventi can be triggered by `vm.$emit`, `vm.$dispatch` or `vm.$broadcast`. The funzione will receive all the additional Argomenti passed into these evento-triggering methods.
 
 - **Esempio:**
 
@@ -1324,7 +1331,7 @@ type: api
   // true in its funzione
   ```
 
-## Instance Methods / DOM
+## Metodi di Istanza / DOM
 
 <h3 id="vm-appendTo">vm.$appendTo( elementoOSelettore, [funzione] )</h3>
 
@@ -1407,7 +1414,7 @@ type: api
   - [Vue.nextTick](#Vue-nextTick)
   - [Async Update Queue](/guide/reactivity.html#Async_Update_Queue)
 
-## Instance Methods / Lifecycle
+## Metodi di Istanza / Lifecycle
 
 <h3 id="vm-mount">vm.$mount( [elementoOSelettore] )</h3>
 
@@ -1420,9 +1427,9 @@ type: api
 
   If a istanza di Vue didn't receive the `el` option at instantiation, it will be in "unmounted" state, without an associated DOM elemento or fragment. `vm.$mount()` can be used to manually start the mounting/compilation of an unmounted istanza di Vue.
 
-  If no argument is provided, the template will be created as an out-of-document fragment, and you will have to use other DOM instance methods to insert it into the document yourself. If `replace` option is set to `falso`, then an empty `<div>` will be automatically created as the wrapper elemento.
+  If no argument is provided, the template will be created as an out-of-document fragment, and you will have to use other DOM Metodi di Istanza to insert it into the document yourself. If `replace` option is set to `falso`, then an empty `<div>` will be automatically created as the wrapper elemento.
 
-  Calling `$mount()` on an already mounted instance will have no effect. The method returns the instance itself so you can chain other instance methods after it.
+  Calling `$mount()` on an already mounted instance will have no effect. The method returns the instance itself so you can chain other Metodi di Istanza after it.
 
 - **Esempio:**
 
@@ -1502,7 +1509,7 @@ type: api
 
 - **Utilizzo:**
 
-  Conditionally render the elemento based on the truthy-ness of the expression valore. The elemento and its contained data bindings / components are destroyed and re-constructed during toggles. If the elemento is a `<template>` elemento, its content will be extracted as the conditional block.
+  Conditionally render the elemento based on the truthy-ness of the espressione valore. The elemento and its contained data bindings / components are destroyed and re-constructed during toggles. If the elemento is a `<template>` elemento, its content will be extracted as the conditional block.
 
 - **Vedi anche:** [Conditional Rendering](/guide/conditional.html)
 
@@ -1512,13 +1519,13 @@ type: api
 
 - **Utilizzo:**
 
-  Toggle's the elemento's `display` CSS property based on the truthy-ness of the expression valore. Triggers transitions if present.
+  Toggle's the elemento's `display` CSS property based on the truthy-ness of the espressione valore. Triggers transitions if present.
 
 - **Vedi anche:** [Conditional Rendering - v-show](/guide/conditional.html#v-show)
 
 ### v-else
 
-- **Does not expect expression**
+- **Does not expect espressione**
 
 - **Restrizioni:** previous sibling elemento must have `v-if` or `v-show`.
 
@@ -1549,7 +1556,7 @@ type: api
 
 - **Utilizzo:**
 
-  Render the elemento or template block multiple times based on the source data. The expression must use the special syntax to provide an alias for the current elemento being iterated on:
+  Render the elemento or template block multiple times based on the source data. The espressione must use the special syntax to provide an alias for the current elemento being iterated on:
 
   ``` html
   <div v-for="item in items">
@@ -1585,7 +1592,7 @@ type: api
 
 - **Utilizzo:**
 
-  Attaches an evento listener to the elemento. The evento Tipo is denoted by the argument. The expression can either be a method name or an inline statement, or simply omitted when there are modifiers present.
+  Attaches an evento listener to the elemento. The evento Tipo is denoted by the argument. The espressione can either be a method name or an inline statement, or simply omitted when there are modifiers present.
 
   When used on a normal elemento, it listens to **native DOM eventi** only. When used on a custom elemento component, it also listens to **custom eventi** emitted on that child component.
 
@@ -1611,7 +1618,7 @@ type: api
   <!-- prevent Predefinito -->
   <button @click.prevent="doThis"></button>
 
-  <!-- prevent Predefinito without expression -->
+  <!-- prevent Predefinito without espressione -->
   <form @submit.prevent></form>
 
   <!-- chain modifiers -->
@@ -1633,7 +1640,7 @@ type: api
   <my-component @my-event="handleThis(123, $Argomenti)"></my-component>
   ```
 
-- **Vedi anche:** [Methods and Event Handling](/guide/events.html)
+- **Vedi anche:** [Methods and Event Handling](/guide/Eventi.html)
 
 ### v-bind
 
@@ -1650,7 +1657,7 @@ type: api
 
 - **Utilizzo:**
 
-  Dynamically bind one or more attributes, or a component prop to an expression.
+  Dynamically bind one or more attributes, or a component prop to an espressione.
 
   When used to bind the `class` or `style` attribute, it supports additional valore Tipos such as Array or Oggettos. See linked guide section below for more details.
 
@@ -1714,7 +1721,7 @@ type: api
 
 ### v-ref
 
-- **Does not expect expression**
+- **Does not expect espressione**
 
 - **Limited to:** child components
 
@@ -1722,7 +1729,7 @@ type: api
 
 - **Utilizzo:**
 
-  Register a reference to a child component on its parent for direct access. Does not expect an expression. Must provide an argument as the id to registra with. The component instance will be accessible on its parent's `$refs` oggetto.
+  Register a reference to a child component on its parent for direct access. Does not expect an espressione. Must provide an argument as the id to registra with. The component instance will be accessible on its parent's `$refs` oggetto.
 
   When used on a component together with `v-for`, the registraed valore will be an Array containing all the child component instances corresponding to the Array they are bound to. If the data source for `v-for` is an Oggetto, the registraed valore will be an Oggetto containing chiave-instance pairs mirroring the source Oggetto.
 
@@ -1758,7 +1765,7 @@ type: api
 
 ### v-el
 
-- **Does not expect expression**
+- **Does not expect espressione**
 
 - **Argument:** `id (required)`
 
@@ -1783,7 +1790,7 @@ type: api
 
 ### v-pre
 
-- **Does not expect expression**
+- **Does not expect espressione**
 
 - **Utilizzo**
 
@@ -1797,7 +1804,7 @@ type: api
 
 ### v-cloak
 
-- **Does not expect expression**
+- **Does not expect espressione**
 
 - **Utilizzo:**
 
