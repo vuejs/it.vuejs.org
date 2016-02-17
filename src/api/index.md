@@ -906,7 +906,7 @@ type: api
   console.log(vm) // -> StackOverflow {$el: null, ...}
   ```
 
-## Instance Properties
+## Proprietà d'Istanza
 
 ### vm.$data
 
@@ -914,33 +914,36 @@ type: api
 
 - **Dettagli:**
 
-  The data oggetto that the istanza di Vue is observing. You can swap it with a new oggetto. The istanza di Vue proxies access to the properties on its data oggetto.
+  L'oggetto data contiene gli elementi che l'istanza Vue sta osservando, è possibile intercambiare questo oggetto.
+  L'istanza di Vue farà da Proxy per tutte le proprietà del oggetto data.
 
 ### vm.$el
 
 - **Tipo:** `ElementoHTML`
 
-- **Read only**
+- **Sola Lettura**
 
 - **Dettagli:**
 
-  The DOM elemento that the istanza di Vue is managing. Note that for [Istanza Frammentatas](/guide/components.html#Fragment_Instance), `vm.$el` will return an anchor node that indicates the starting position of the fragment.
+  L elemento del DOM al quale l'istanza di Vue è legata. Da notare che nel caso della [Istanza Frammentata](/guide/components.html#Fragment_Instance), la proprietà `vm.$el`
+  restituirà la posizione di ancoraggio iniziale del frammento.
 
-### vm.$opzioni
+### vm.$options
 
 - **Tipo:** `Oggetto`
 
-- **Read only**
+- **Sola Lettura**
 
 - **Dettagli:**
 
-  The instantiation opzioni used for the current istanza di Vue. This is useful when you want to include custom properties in the opzioni:
+  Questo oggetto contiene tutte le opzioni dell'istanza corrente di Vue.
+  Molto interessante come proprietà quando si vogliono aggiungere e/o personalizzare le opzioni di istanza.
 
   ``` js
   new Vue({
     customOption: 'foo',
     created: function () {
-      console.log(this.$opzioni.customOption) // -> 'foo'
+      console.log(this.$options.customOption) // -> 'foo'
     }
   })
   ```
@@ -949,55 +952,55 @@ type: api
 
 - **Tipo:** `istanza di Vue`
 
-- **Read only**
+- **Sola Lettura**
 
 - **Dettagli:**
 
-  The parent instance, if the current instance has one.
+  L'istanza padre, se esiste.
 
 ### vm.$root
 
 - **Tipo:** `istanza di Vue`
 
-- **Read only**
+- **Sola Lettura**
 
 - **Dettagli:**
 
-  The root istanza di Vue of the current component tree. If the current instance has no parents this valore will be itself.
+  L'istanza di root dell albero corrente dei componenti. Se l'istanza è l'istanza di root allora questa opzione restituirà come valore l'istanza stessa.
 
 ### vm.$children
 
-- **Tipo:** `Array<istanza di Vue>`
+- **Tipo:** `Array<Istanza di Vue>`
 
-- **Read only**
+- **Sola Lettura**
 
 - **Dettagli:**
 
-  The direct child components of the current instance.
+  Il figlio più prossimo dell'istanza di Vue corrente.
 
 ### vm.$refs
 
 - **Tipo:** `Oggetto`
 
-- **Read only**
+- **Sola Lettura**
 
 - **Dettagli:**
 
-  An oggetto that holds child components that have `v-ref` registraed.
+  Questa proprietà contiene un oggetto con tutti i figli che hanno `v-ref` registrato.
 
 - **Vedi anche:**
-  - [Child Component Refs](/guide/components.html#Child_Component_Refs)
+  - [Componenti Figli e v-Ref](/guide/components.html#Child_Component_Refs)
   - [v-ref](#v-ref).
 
 ### vm.$els
 
 - **Tipo:** `Oggetto`
 
-- **Read only**
+- **Sola Lettura**
 
 - **Dettagli:**
 
-  An oggetto that holds DOM elementi that have `v-el` registraed.
+  Un oggetto che contiene tutti gli elementi del DOM che hanno `v-el` registrato.
 
 - **Vedi anche:** [v-el](#v-el).
 
