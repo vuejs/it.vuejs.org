@@ -4,7 +4,7 @@ type: api
 
 ## Configurazione Globale
 
-`Vue.config` è un oggetto che contiene tutte le configurazioni di Vue. Potete modificare le sue proprietà, descritte di seguito, prima di inizializzare l'applicazione:
+`Vue.config` è un oggetto il quale contiene tutte le configurazioni di Vue. Potete modificare le sue proprietà, descritte di seguito, prima di inizializzare l'applicazione:
 
 ### debug
 
