@@ -1211,7 +1211,9 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Listen for a custom evento on the current vm. Eventi can be triggered by `vm.$emit`, `vm.$dispatch` or `vm.$broadcast`. The funzione will receive all the additional Argomenti passed into these evento-triggering methods.
+  Ascolta per qualsiasi tipo di evento personalizzato interno all'istanza di Vue.
+  Gli eventi possono essere attivati tramite `vm.$emit`, `vm.$dispatch` o `vm.$broadcast`.
+  La funzione riceverà tutti gli argomenti passati ad una di queste funzioni sopra elencate.
 
 - **Esempio:**
 
@@ -1231,7 +1233,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Listen for a custom evento, but only once. The listener will be removed once it triggers for the first time.
+  Ascolta per un evento personalizzato, ma solo una volta. Il funzionamento è uguale a `vm.$on`.
 
 <h3 id="vm-off">vm.$off( [evento, funzione] )</h3>
 
@@ -1241,13 +1243,13 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Remove evento listener(s).
+  Rimuove l'evento/gli eventi.
 
-  - If no Argomenti are provided, remove all evento listeners;
+  - Se nessun argomento viene passato, rimuove tutti gli eventi;
 
-  - If only the evento is provided, remove all listeners for that evento;
+  - Se viene passato solo l'evento come argomento, rimuoverà tale evento;
 
-  - If both evento and funzione are given, remove the listener for that specific funzione only.
+  - Se viene passato l'evento ed la funzione, allora rimuvoerà l'evento di quella specifica funzione soltanto.
 
 <h3 id="vm-emit">vm.$emit( evento, [...argomenti] )</h3>
 
@@ -1255,7 +1257,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   - `{Stringa} evento`
   - `[...argomenti]`
 
-  Trigger an evento on the current instance. Any additional Argomenti will be passed into the listener's funzione function.
+  Attiva manualmente un evento nell'istanza corrente di Vue. Tutti gli argomenti verranno passati alla funzione dell evento.
 
 <h3 id="vm-dispatch">vm.$dispatch( evento, [...argomenti] )</h3>
 
@@ -1265,7 +1267,8 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Dispatch an evento, first triggering it on the instance itself, and then propagates upward along the parent chain. The propagation stops when it triggers a parent evento listener, unless that listener returns `true`. Any additional Argomenti will be passed into the listener's funzione function.
+  Esegue l'evento specificato. Prima attiva l'evento sull'istanza corrente, poi propaga l'azione su tutta la catena di padri sopra di lui.
+  La propagazione si ferma quanto si arriva alla root del evento. Tutti gli argomenti verranno passati alla funzione del evento.
 
 - **Esempio:**
 
@@ -1276,23 +1279,22 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   var child2 = new Vue({ parent: child1 })
 
   parent.$on('test', function () {
-    console.log('parent notified')
+    console.log('padre notificato')
   })
   child1.$on('test', function () {
-    console.log('child1 notified')
+    console.log('primo figlio notificato')
   })
   child2.$on('test', function () {
-    console.log('child2 notified')
+    console.log('secondo figlio notificato')
   })
 
   child2.$dispatch('test')
-  // -> "child2 notified"
-  // -> "child1 notified"
-  // parent is NOT notified, because child1 didn't return
-  // true in its funzione
+  // -> "secondo figlio notificato"
+  // -> "primo figlio notificato"
+  // Il padre non viene notificato perchè il primo figlio non ha return true.
   ```
 
-- **Vedi anche:** [Parent-Child Communication](/guide/components.html#Parent-Child_Communication)
+- **Vedi anche:** [Comuniccazione Padre-Figlio](/guide/components.html#Parent-Child_Communication)
 
 <h3 id="vm-broadcast">vm.$broadcast( evento, [...argomenti] )</h3>
 
@@ -1302,33 +1304,33 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Broadcast an evento that propagates downward to all descendants of the current instance. Since the descendants expand into multiple sub-trees, the evento propagation will follow many different "paths". The propagation for each path will stop when a listener funzione is fired along that path, unless the funzione returns `true`.
+  Trasmette un evento che si propaga a tutti i discendenti. Dato che i discendenti possono espandersi in più rami di discendenza, l'evento seguirà tutti questi rami.
+  L'evento di fermerà quando troverà la prima implementazione utile, se essa restituisce `true` allora continuerà.
 
 - **Esempio:**
 
   ``` js
   var parent = new Vue()
-  // child1 and child2 are siblings
+  // Figlio uno e due sono "fratelli"
   var child1 = new Vue({ parent: parent })
   var child2 = new Vue({ parent: parent })
-  // child3 is nested under child2
+  // Figlio3 è interno al due
   var child3 = new Vue({ parent: child2 })
 
   child1.$on('test', function () {
-    console.log('child1 notified')
+    console.log('Figlio 1 notificato')
   })
   child2.$on('test', function () {
-    console.log('child2 notified')
+    console.log('Figlio 2 notificato')
   })
   child3.$on('test', function () {
-    console.log('child3 notified')
+    console.log('Figlio 3 notificato')
   })
 
   parent.$broadcast('test')
-  // -> "child1 notified"
-  // -> "child2 notified"
-  // child3 is NOT notified, because child2 didn't return
-  // true in its funzione
+  // -> "Figlio 1 notificato"
+  // -> "Figlio 2 notificato"
+  // Figlio3 non viene notificato perchè figlio2 non restituisce true.
   ```
 
 ## Metodi di Istanza / DOM
@@ -1339,11 +1341,12 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   - `{Element | Stringa} elementoOSelettore`
   - `{Funzione} [funzione]`
 
-- **Restituisce:** `vm` - the instance itself
+- **Restituisce:** `vm` - se stesso come istanza
 
 - **Utilizzo:**
 
-  Append the istanza di Vue's DOM elemento or fragment to target elemento. The target can be either an elemento or a querySelettore stringa. This method will trigger transitions if present. The funzione is fired after the transition has completed (or immediately if no transition has been triggered).
+  Appende l'istanza di Vue ad un Elemento del DOM o selettore specificato. L'obiettivo può essere un elemento HTML oppure un elemento preso tramite QuerySelector
+  Questo metodo attiverà anche l'eventuale transizione. La viene richiamata dopo la transizione, o immediatamente se essa non è presente.
 
 <h3 id="vm-before">vm.$before( elementoOSelettore, [funzione] )</h3>
 
@@ -1351,7 +1354,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   - `{Element | Stringa} elementoOSelettore`
   - `{Funzione} [funzione]`
 
-- **Restituisce:** `vm` - the instance itself
+- **Restituisce:** `vm` - se stesso come istanza
 
 - **Utilizzo:**
 
@@ -1363,7 +1366,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   - `{Element | Stringa} elementoOSelettore`
   - `{Funzione} [funzione]`
 
-- **Restituisce:** `vm` - the instance itself
+- **Restituisce:** `vm` - se stesso come istanza
 
 - **Utilizzo:**
 
@@ -1374,7 +1377,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 - **Argomenti:**
   - `{Funzione} [funzione]`
 
-- **Restituisce:** `vm` - the instance itself
+- **Restituisce:** `vm` - se stesso come istanza
 
 - **Utilizzo:**
 
@@ -1421,7 +1424,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 - **Argomenti:**
   - `{Element | Stringa} [elementoOSelettore]`
 
-- **Restituisce:** `vm` - the instance itself
+- **Restituisce:** `vm` - se stesso come istanza
 
 - **Utilizzo:**
 
