@@ -10,7 +10,7 @@ type: api
 
 - **Tipo:** `Booleano`
 
-- **Predefinito:** `falso`
+- **Predefinito:** `false`
 
 - **Utilizzo:**
 
@@ -60,7 +60,7 @@ type: api
 
 - **Tipo:** `Booleano`
 
-- **Predefinito:** `falso`
+- **Predefinito:** `false`
 
 - **Utilizzo:**
 
@@ -88,7 +88,7 @@ type: api
 
 - **Tipo:** `Booleano`
 
-- **Predefinito:** `falso`
+- **Predefinito:** `false`
 
 - **Utilizzo:**
 
@@ -1167,8 +1167,8 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 - **Esempio:**
 
   ``` js
-  // sia vm.msg = 'hello'
-  vm.$eval('msg | uppercase') // -> 'HELLO'
+  // sia vm.msg = 'Ciao'
+  vm.$eval('msg | uppercase') // -> 'Ciao'
   ```
 
 <h3 id="vm-interpolate">vm.$interpolate( template )</h3>
@@ -1183,8 +1183,8 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 - **Esempio:**
 
   ``` js
-  // sia vm.msg = 'hello'
-  vm.$interpolate('{{msg}} world!') // -> 'hello world!'
+  // sia vm.msg = 'Ciao'
+  vm.$interpolate('{{msg}} world!') // -> 'Ciao world!'
   ```
 
 <h3 id="vm-log">vm.$log( [chiave] )</h3>
@@ -1417,7 +1417,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   - [Vue.nextTick](#Vue-nextTick)
   - [Async Update Queue](/guide/reactivity.html#Async_Update_Queue)
 
-## Metodi di Istanza / Lifecycle
+## Metodi di Istanza / Ciclo di Vita
 
 <h3 id="vm-mount">vm.$mount( [elementoOSelettore] )</h3>
 
@@ -1428,26 +1428,28 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  If a istanza di Vue didn't receive the `el` option at instantiation, it will be in "unmounted" state, without an associated DOM elemento or fragment. `vm.$mount()` can be used to manually start the mounting/compilation of an unmounted istanza di Vue.
+  Se l'istanza di Vue non riceve `el` come opzioni durante l'istanziazione, verrà messa in uno stato di "unmounted", senza un'associazione con il DOM.
+  `vm.$mount()` può essere usato per montare manualmente l'istanza di Vue al DOM.
 
-  If no argument is provided, the template will be created as an out-of-document fragment, and you will have to use other DOM Metodi di Istanza to insert it into the document yourself. If `replace` option is set to `falso`, then an empty `<div>` will be automatically created as the wrapper elemento.
+  Se non vengono passati argomenti, l'istanza verrà montata come parte esterna al DOM e dovrete usare altri metodi per specificare l'elemento al quale si lega come root.
+  Se l'opzione `replace` è impostata su `falsa`, allora un `<div>` vuoto verrà automaticamente creato per contenre l'elemento.
 
-  Calling `$mount()` on an already mounted instance will have no effect. The method returns the instance itself so you can chain other Metodi di Istanza after it.
+  Chiamare `$mount()` su un'istanza già mondata sul DOM non avrà nessun effetto. Il metodo restituisce l'istanza in se, si possono concatenare altri metodi dopo.
 
 - **Esempio:**
 
   ``` js
   var MyComponent = Vue.extend({
-    template: '<div>Hello!</div>'
+    template: '<div>Ciao!</div>'
   })
 
-  // create and mount to #app (will replace #app)
+  // Creiamo il componente e montiamolo su #app (rimpiazzerà #app)
   new MyComponent().$mount('#app')
 
-  // the above is the same as:
+  // Si può anche creare così, è uguale.
   new MyComponent({ el: '#app' })
 
-  // or, compile off-document and append afterwards:
+  // Compiliamo l'istanza e l'appendiamo successivamente.
   new MyComponent().$mount().$appendTo('#container')
   ```
 
@@ -1456,13 +1458,13 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 <h3 id="vm-destroy">vm.$destroy( [remove] )</h3>
 
 - **Argomenti:**
-  - `{Booleano} [remove] - Predefinito: falso`
+  - `{Booleano} [remove] - Predefinito: `false`
 
 - **Utilizzo:**
 
-  Completely destroy a vm. Clean up its connections with other existing vms, unbind all its directives, turn off all evento listeners and, if the `remove` argument is true, remove its associated DOM elemento or fragment from the DOM.
+  Distrugget completamente una vm. Ripulisce qualsiasi connessione con altre vm, slega tutte le direttive, eventi e se l'argomento `remove` è vero, rimuove l'elemento DOM associato.
 
-  Triggers the `beforeDestroy` and `destroyed` hooks.
+  Questo metodo attiva `beforeDestroy` e `destroyed` come eventi.
 
 - **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
 
@@ -1610,7 +1612,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   <button v-on:click="doThis"></button>
 
   <!-- inline statement -->
-  <button v-on:click="doThat('hello', $evento)"></button>
+  <button v-on:click="doThat('Ciao', $evento)"></button>
 
   <!-- shorthand -->
   <button @click="doThis"></button>
@@ -1783,11 +1785,11 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 - **Esempio:**
 
   ``` html
-  <span v-el:msg>hello</span>
+  <span v-el:msg>Ciao</span>
   <span v-el:other-msg>world</span>
   ```
   ``` js
-  this.$els.msg.textContent // -> "hello"
+  this.$els.msg.textContent // -> "Ciao"
   this.$els.otherMsg.textContent // -> "world"
   ```
 
@@ -2048,10 +2050,10 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   When the first argument is a stringa, it will be used as the target stringa to search for in each elemento of the Array:
 
   ``` html
-  <div v-for="item in items | filterBy 'hello'">
+  <div v-for="item in items | filterBy 'Ciao'">
   ```
 
-  In the above Esempio, only items that contain the target stringa `"hello"` will be displayed.
+  In the above Esempio, only items that contain the target stringa `"Ciao"` will be displayed.
 
   If the item is an oggetto, the filter will recursively search every nested property of the oggetto for the target stringa. To narrow down the search scope, additional search chiaves can be specified:
 
