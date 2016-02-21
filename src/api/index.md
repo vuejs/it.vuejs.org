@@ -224,7 +224,7 @@ type: api
 
 - **Utilizzo:**
 
-  Registra o restituisce un Element Directives globale.
+  Registra o restituisce un Element Direttive globale.
 
   ``` js
   // registra
@@ -238,7 +238,7 @@ type: api
   var myDirective = Vue.elementDirective('my-elemento')
   ```
 
-- **Vedi anche:** [Element Directives](/guide/custom-directive.html#Element_Directives)
+- **Vedi anche:** [Element Direttive](/guide/custom-directive.html#Element_Direttive)
 
 <h3 id="Vue-filter">Vue.filter( id, [definizione] )</h3>
 
@@ -422,7 +422,7 @@ type: api
   Vue.component('props-demo-advanced', {
     props: {
       // controllo sul tipo di dato
-      size: Number,
+      size: Numero,
       // controllo sul tipo di dato più validazione
       name: {
         Tipo: Stringa,
@@ -723,7 +723,7 @@ type: api
 
 ## Opzioni / Assets
 
-### directives
+### Direttive
 
 - **Tipo:** `Oggetto`
 
@@ -732,10 +732,10 @@ type: api
   Un hash delle direttive disponibile dall'istanza di Vue.
 
 - **Vedi anche:**
-  - [Custom Directives](/guide/custom-directive.html)
+  - [Custom Direttive](/guide/custom-directive.html)
   - [Assets Naming Convention](/guide/components.html#Assets_Naming_Convention)
 
-### elementDirectives
+### elementDirettive
 
 - **Tipo:** `Oggetto`
 
@@ -744,7 +744,7 @@ type: api
   Un Hash degli elementi delle direttive disponibile dall'istanza di Vue.
 
 - **Vedi anche:**
-  - [Element Directives](/guide/custom-directive.html#Element_Directives)
+  - [Element Direttive](/guide/custom-directive.html#Element_Direttive)
   - [Assets Naming Convention](/guide/components.html#Assets_Naming_Convention)
 
 ### filters
@@ -1358,7 +1358,10 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Insert the istanza di Vue's DOM elemento or fragment before target elemento. The target can be either an elemento or a querySelettore stringa. This method will trigger transitions if present. The funzione is fired after the transition has completed (or immediately if no transition has been triggered).
+  Inserisce l'istanza di Vue prima dell elemento specificato.
+  L'obiettivo può essere sia un elemento oppure una stringa del tipo `QuerySelector`.
+  Questo metodo attiva le transizioni se presenti e specificate.
+  La funzione viene attivata dopo che la transizione è completata, o subito se non vi è transizione.
 
 <h3 id="vm-after">vm.$after( elementoOSelettore, [funzione] )</h3>
 
@@ -1370,7 +1373,8 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Insert the istanza di Vue's DOM elemento or fragment after target elemento. The target can be either an elemento or a querySelettore stringa. This method will trigger transitions if present. The funzione is fired after the transition has completed (or immediately if no transition has been triggered).
+  Inserisce l'istanza di Vue dopo l'elemento DOM specificato, oppure la stringa `QuerySelector` specificata.
+  Questo metodo può attivare le transizioni se presenti. La funzione viene attiata dopo che la transizione è completata, o subito se la transizione non è presente.
 
 <h3 id="vm-remove">vm.$remove( [funzione] )</h3>
 
@@ -1381,7 +1385,8 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Remove the istanza di Vue's DOM elemento or fragment from the DOM. This method will trigger transitions if present. The funzione is fired after the transition has completed (or immediately if no transition has been triggered).
+  Rimuove l'istanza di Vue dal elemento DOM specificato. Questa funzione attiverà la transizione dedicata se presente.
+  La funzione viene attivata dopo che la transizione è completata, o subito se non vi è transizione specificata.
 
 <h3 id="vm-nextTick">vm.$nextTick( funzione )</h3>
 
@@ -1390,7 +1395,9 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Defer the funzione to be executed after the next DOM update cycle. Use it immediately after you've changed some data to wait for the DOM update. This is the same as the global `Vue.nextTick`, except that the funzione's `this` context is automatically bound to the instance calling this method.
+  Ritarda l'esecuzione della funzione al prossimo tick del ciclo di aggiornamento del DOM.
+  Se questo metodo viene usato subito dopo l'aggiornamento di un dato, si potrà notare come il DOM venga aggiornato con ritardo.
+  Questo metodo funziona esattamente come il metodo globale `Vue.nextTick`, l'unica differenza è che `this` è automaticamente legato all'istanza di Vue corrente.
 
 - **Esempio:**
 
@@ -1400,12 +1407,12 @@ Vue non tiene una copia dei valori pre-modifica.</p>
     methods: {
       // ...
       Esempio: function () {
-        // modify data
+        // modifica un dato
         this.message = 'changed'
-        // DOM is not updated yet
+        // DOM non è aggiornato
         this.$nextTick(function () {
-          // DOM is now updated
-          // `this` is bound to the current instance
+          // DOM dom viene aggiornato
+          // `this` si riferisce all'istanza corrente di Vue
           this.doSomethingElse()
         })
       }
@@ -1415,7 +1422,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Vedi anche:**
   - [Vue.nextTick](#Vue-nextTick)
-  - [Async Update Queue](/guide/reactivity.html#Async_Update_Queue)
+  - [Coda di Aggiornamento Asincrona](/guide/reactivity.html#Async_Update_Queue)
 
 ## Metodi di Istanza / Ciclo di Vita
 
@@ -1468,11 +1475,11 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
 
-## Directives
+## Direttive
 
 ### v-text
 
-- **Expects:** `Stringa`
+- **Si Aspetta:** `Stringa`
 
 - **Dettagli:**
 
@@ -1484,13 +1491,13 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
   ``` html
   <span v-text="msg"></span>
-  <!-- same as -->
+  <!-- è uguale a -->
   <span>{{msg}}</span>
   ```
 
 ### v-html
 
-- **Expects:** `Stringa`
+- **Si Aspetta:** `Stringa`
 
 - **Dettagli:**
 
@@ -1504,13 +1511,13 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
   ``` html
   <div v-html="html"></div>
-  <!-- same as -->
+  <!-- è uguale a -->
   <div>{{{html}}}</div>
   ```
 
 ### v-if
 
-- **Expects:** `*`
+- **Si Aspetta:** `*`
 
 - **Utilizzo:**
 
@@ -1520,7 +1527,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### v-show
 
-- **Expects:** `*`
+- **Si Aspetta:** `*`
 
 - **Utilizzo:**
 
@@ -1530,7 +1537,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### v-else
 
-- **Does not expect espressione**
+- **Non si aspetta un espressione**
 
 - **Restrizioni:** previous sibling elemento must have `v-if` or `v-show`.
 
@@ -1551,9 +1558,9 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### v-for
 
-- **Expects:** `Array | Oggetto | Number | Stringa`
+- **Si Aspetta:** `Array | Oggetto | Numero | Stringa`
 
-- **Param Attributes:**
+- **Attributi parametrici:**
   - [`track-by`](/guide/list.html#track-by)
   - [`stagger`](/guide/transitions.html#Staggering_Transitions)
   - [`enter-stagger`](/guide/transitions.html#Staggering_Transitions)
@@ -1582,13 +1589,13 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### v-on
 
-- **Shorthand:** `@`
+- **Scorciatoia:** `@`
 
-- **Expects:** `Funzione | Inline Statement`
+- **Si Aspetta:** `Funzione | Inline Statement`
 
-- **Argument:** `evento (required)`
+- **Argomento:** `evento (required)`
 
-- **Modifiers:**
+- **Modificatori:**
   - `.stop` - call `event.stopPropagation()`.
   - `.prevent` - call `event.preventDefault()`.
   - `.capture` - add evento listener in capture mode.
@@ -1597,11 +1604,11 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Attaches an evento listener to the elemento. The evento Tipo is denoted by the argument. The espressione can either be a method name or an inline statement, or simply omitted when there are modifiers present.
+  Attaches an evento listener to the elemento. The evento Tipo is denoted by the Argomento. The espressione can either be a method name or an inline statement, or simply omitted when there are Modificatori present.
 
   When used on a normal elemento, it listens to **native DOM eventi** only. When used on a custom elemento component, it also listens to **custom eventi** emitted on that child component.
 
-  When listening to native DOM eventi, the method receives the native evento as the only argument. If using inline statement, the statement has access to the special `$evento` property: `v-on:click="handle('ok', $evento)"`.
+  When listening to native DOM eventi, the method receives the native evento as the only Argomento. If using inline statement, the statement has access to the special `$evento` property: `v-on:click="handle('ok', $evento)"`.
 
   **1.0.11+** When listening the custom eventi, inline statements have access to the special `$Argomenti` property, which is an array of the additional Argomenti passed to the child components' `$emit` call.
 
@@ -1614,7 +1621,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   <!-- inline statement -->
   <button v-on:click="doThat('Ciao', $evento)"></button>
 
-  <!-- shorthand -->
+  <!-- Scorciatoia -->
   <button @click="doThis"></button>
 
   <!-- stop propagation -->
@@ -1626,7 +1633,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   <!-- prevent Predefinito without espressione -->
   <form @submit.prevent></form>
 
-  <!-- chain modifiers -->
+  <!-- chain Modificatori -->
   <button @click.stop.prevent="doThis"></button>
 
   <!-- chiave modifier using chiaveAlias -->
@@ -1649,26 +1656,26 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### v-bind
 
-- **Shorthand:** `:`
+- **Scorciatoia:** `:`
 
-- **Expects:** `* (with argument) | Oggetto (without argument)`
+- **Si Aspetta:** `* (with Argomento) | Oggetto (without Argomento)`
 
-- **Argument:** `attrOProp (optional)`
+- **Argomento:** `attrOProp (optional)`
 
-- **Modifiers:**
+- **Modificatori:**
   - `.sync` - make the binding two-way. Only respected for prop bindings.
   - `.once` - make the binding one-time. Only respected for prop bindings.
-  - `.camel` - convert the attribute name to camelCase when setting it. Only respected for normal attributes. Used for binding camelCase SVG attributes.
+  - `.camel` - convert the attribute name to camelCase when setting it. Only respected for normal Attributi. Used for binding camelCase SVG Attributi.
 
 - **Utilizzo:**
 
-  Dynamically bind one or more attributes, or a component prop to an espressione.
+  Dynamically bind one or more Attributi, or a component prop to an espressione.
 
   When used to bind the `class` or `style` attribute, it supports additional valore Tipos such as Array or Oggettos. See linked guide section below for more details.
 
-  When used for prop binding, the prop must be properly declared in the child component. Prop bindings can specify a different binding Tipo using one of the modifiers.
+  When used for prop binding, the prop must be properly declared in the child component. Prop bindings can specify a different binding Tipo using one of the Modificatori.
 
-  When used without an argument, can be used to bind an oggetto containing attribute name-valore pairs. Note in this mode `class` and `style` does not support Array or Oggettos.
+  When used without an Argomento, can be used to bind an oggetto containing attribute name-valore pairs. Note in this mode `class` and `style` does not support Array or Oggettos.
 
 - **Esempio:**
 
@@ -1676,7 +1683,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   <!-- bind an attribute -->
   <img v-bind:src="imageSrc">
 
-  <!-- shorthand -->
+  <!-- Scorciatoia -->
   <img :src="imageSrc">
 
   <!-- class binding -->
@@ -1687,7 +1694,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   <div :style="{ fontSize: size + 'px' }"></div>
   <div :style="[styleOggettoA, styleOggettoB]"></div>
 
-  <!-- binding an oggetto of attributes -->
+  <!-- binding an oggetto of Attributi -->
   <div v-bind="{ id: someProp, 'other-attr': otherProp }"></div>
 
   <!-- prop binding. "prop" must be declared in my-component. -->
@@ -1706,16 +1713,16 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### v-model
 
-- **Expects:** varies based on input Tipo
+- **Si Aspetta:** varies based on input Tipo
 
-- **Limited to:**
+- **Limitato a:**
   - `<input>`
   - `<select>`
   - `<textarea>`
 
-- **Param Attributes:**
+- **Attributi parametrici:**
   - [`lazy`](/guide/forms.html#lazy)
-  - [`number`](/guide/forms.html#number)
+  - [`Numero`](/guide/forms.html#Numero)
   - [`debounce`](/guide/forms.html#debounce)
 
 - **Utilizzo:**
@@ -1726,15 +1733,15 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### v-ref
 
-- **Does not expect espressione**
+- **Non si aspetta un espressione**
 
-- **Limited to:** child components
+- **Limitato a:** child components
 
-- **Argument:** `id (required)`
+- **Argomento:** `id (required)`
 
 - **Utilizzo:**
 
-  Register a reference to a child component on its parent for direct access. Does not expect an espressione. Must provide an argument as the id to registra with. The component instance will be accessible on its parent's `$refs` oggetto.
+  Register a reference to a child component on its parent for direct access. Does not expect an espressione. Must provide an Argomento as the id to registra with. The component instance will be accessible on its parent's `$refs` oggetto.
 
   When used on a component together with `v-for`, the registraed valore will be an Array containing all the child component instances corresponding to the Array they are bound to. If the data source for `v-for` is an Oggetto, the registraed valore will be an Oggetto containing chiave-instance pairs mirroring the source Oggetto.
 
@@ -1770,9 +1777,9 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### v-el
 
-- **Does not expect espressione**
+- **Non si aspetta un espressione**
 
-- **Argument:** `id (required)`
+- **Argomento:** `id (required)`
 
 - **Utilizzo:**
 
@@ -1795,11 +1802,11 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### v-pre
 
-- **Does not expect espressione**
+- **Non si aspetta un espressione**
 
 - **Utilizzo**
 
-  Skip compilation for this elemento and all its children. You can use this for displaying raw mustache tags. Skipping large numbers of nodes with no directives on them can also speed up compilation.
+  Skip compilation for this elemento and all its children. You can use this for displaying raw mustache tags. Skipping large Numeros of nodes with no Direttive on them can also speed up compilation.
 
 - **Esempio:**
 
@@ -1809,7 +1816,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### v-cloak
 
-- **Does not expect espressione**
+- **Non si aspetta un espressione**
 
 - **Utilizzo:**
 
@@ -1835,10 +1842,10 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### component
 
-- **Attributes:**
+- **Attributi:**
   - `is`
 
-- **Param Attributes:**
+- **Attributi parametrici:**
   - [`keep-alive`](/guide/components.html#keep-alive)
   - [`transition-mode`](/guide/components.html#transition-mode)
 
@@ -1856,7 +1863,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### slot
 
-- **Attributes:**
+- **Attributi:**
   - `name`
 
 - **Utilizzo:**
@@ -1871,7 +1878,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### partial
 
-- **Attributes:**
+- **Attributi:**
   - `name`
 
 - **Utilizzo:**
@@ -1893,7 +1900,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   <!-- renders partial with id === vm.partialId -->
   <partial v-bind:name="partialId"></partial>
 
-  <!-- dynamic partial using v-bind shorthand -->
+  <!-- dynamic partial using v-bind Scorciatoia -->
   <partial :name="partialId"></partial>
   ```
 
@@ -1957,7 +1964,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Pluralizes the argument based on the filtered valore. When there is exactly one argument, plural forms simply add an "s" at the end. When there are more than one argument, the Argomenti will be used as array of stringas corresponding to the single, double, triple ... forms of the word to be pluralized. When the number to be pluralized exceeds the length of the Argomenti, it will use the last entry in the array.
+  Pluralizes the Argomento based on the filtered valore. When there is exactly one Argomento, plural forms simply add an "s" at the end. When there are more than one Argomento, the Argomenti will be used as array of stringas corresponding to the single, double, triple ... forms of the word to be pluralized. When the Numero to be pluralized exceeds the length of the Argomenti, it will use the last entry in the array.
 
 - **Esempio:**
 
@@ -1983,7 +1990,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 ### json
 
 - **Argomenti:**
-  - `{Number} [indent] - Predefinito: 2`
+  - `{Numero} [indent] - Predefinito: 2`
 
 - **Utilizzo:**
 
@@ -1999,14 +2006,14 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### debounce
 
-- **Limited to:** directives that expect `Funzione` valores, e.g. `v-on`
+- **Limitato a:** Direttive that expect `Funzione` valores, e.g. `v-on`
 
 - **Argomenti:**
-  - `{Number} [wait] - Predefinito: 300`
+  - `{Numero} [wait] - Predefinito: 300`
 
 - **Utilizzo:**
 
-  Wrap the handler to debounce it for `x` milliseconds, where `x` is the argument. Predefinito wait time is 300ms. A debounced handler will be delayed until at least `x` ms has passed after the call moment; if the handler is called again before the delay period, the delay period is reset to `x` ms.
+  Wrap the handler to debounce it for `x` milliseconds, where `x` is the Argomento. Predefinito wait time is 300ms. A debounced handler will be delayed until at least `x` ms has passed after the call moment; if the handler is called again before the delay period, the delay period is reset to `x` ms.
 
 - **Esempio:**
 
@@ -2016,15 +2023,15 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### limitBy
 
-- **Limited to:** directives that expect `Array` valores, e.g. `v-for`
+- **Limitato a:** Direttive that expect `Array` valores, e.g. `v-for`
 
 - **Argomenti:**
-  - `{Number} limit`
-  - `{Number} [offset]`
+  - `{Numero} limit`
+  - `{Numero} [offset]`
 
 - **Utilizzo:**
 
-  Limit the array to the first N items, as specified by the argument. An optional second argument can be provided to set a starting offset.
+  Limit the array to the first N items, as specified by the Argomento. An optional second Argomento can be provided to set a starting offset.
 
   ``` html
   <!-- only display first 10 items -->
@@ -2036,7 +2043,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### filterBy
 
-- **Limited to:** directives that expect `Array` valores, e.g. `v-for`
+- **Limitato a:** Direttive that expect `Array` valores, e.g. `v-for`
 
 - **Argomenti:**
   - `{Stringa | Funzione} targetStringaOFunzione`
@@ -2045,9 +2052,9 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Return a filtered version of the source Array. The first argument can either be a stringa or a function.
+  Return a filtered version of the source Array. The first Argomento can either be a stringa or a function.
 
-  When the first argument is a stringa, it will be used as the target stringa to search for in each elemento of the Array:
+  When the first Argomento is a stringa, it will be used as the target stringa to search for in each elemento of the Array:
 
   ``` html
   <div v-for="item in items | filterBy 'Ciao'">
@@ -2118,7 +2125,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   <li v-for="user in users | filterBy searchText in 'name' 'phone'"></li>
   ```
 
-  Multiple search chiaves with a dynamic Array argument:
+  Multiple search chiaves with a dynamic Array Argomento:
 
   ``` html
   <!-- fields = ['fieldA', 'fieldB'] -->
@@ -2133,7 +2140,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### orderBy
 
-- **Limited to:** directives that expect `Array` valores, e.g. `v-for`
+- **Limitato a:** Direttive that expect `Array` valores, e.g. `v-for`
 
 - **Argomenti:**
   - `{Stringa} sortKey`
@@ -2141,7 +2148,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Return a sorted version of the source Array. The `sortKey` is the chiave to use for the sorting. The optional `order` argument specifies whether the result should be in ascending (`order >= 0`) or descending (`order < 0`) order.
+  Return a sorted version of the source Array. The `sortKey` is the chiave to use for the sorting. The optional `order` Argomento specifies whether the result should be in ascending (`order >= 0`) or descending (`order < 0`) order.
 
   For arrays of primitive valores, any truthy `sortKey` will work.
 
@@ -2171,7 +2178,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
   ``` html
   <ul>
-    <li v-for="n in numbers | orderBy true">
+    <li v-for="n in Numeros | orderBy true">
       {{ n }}
     </li>
   </ul>
