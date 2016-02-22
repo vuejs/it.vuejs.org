@@ -1469,7 +1469,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Distrugget completamente una vm. Ripulisce qualsiasi connessione con altre vm, slega tutte le direttive, eventi e se l'argomento `remove` è vero, rimuove l'elemento DOM associato.
+  Distrugge completamente una vm. Ripulisce qualsiasi connessione con altre vm, slega tutte le direttive, eventi e se l'argomento `remove` è vero, rimuove l'elemento DOM associato.
 
   Questo metodo attiva `beforeDestroy` e `destroyed` come eventi.
 
@@ -1483,9 +1483,10 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Dettagli:**
 
-  Updates the elemento's `textContent`.
+  Aggiorna il testo dell'elemento nel quale viene utilizzato. Il testo viene aggiornao tramite `textContent`.
 
-  Internally, `{% raw %}{{ Mustache }}{% endraw %}` interpolations are also compiled as a `v-text` directive on a textNode. The directive form requires a wrapper elemento, but offers slightly better performance and avoids FOUC (Flash of Uncompiled Content).
+  Internamente, l'interpolazione `{% raw %}{{ Mustache }}{% endraw %}` viene compilata come direttiva `v-text`. 
+  La direttiva è un pelino più performance della sua controparte ad interpolazione.
 
 - **Esempio:**
 
@@ -1501,11 +1502,14 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Dettagli:**
 
-  Updates the elemento's `innerHTML`. The contents are inserted as plain HTML - data bindings are ignored. If you need to reuse template pieces, you should use [partials](#partial).
+  Aggiorna il contenuto HTML, tramite `innerHTML` dell elemento.
+  I binding del contenuto HTML verranno ignorati, se avete bisogno di riutilizzare pezzi di template allora avete bisogno dei [parziali](#partial).
 
-  Internally, `{% raw %}{{{ Mustache }}}{% endraw %}` interpolations are also compiled as a `v-html` directive using anchor nodes. The directive form requires a wrapper elemento, but offers slightly better performance and avoids FOUC (Flash of Uncompiled Content).
+  Internamente l'interpolazione del tipo `{% raw %}{{{ Mustache }}}{% endraw %}` viene compilata come uan direttiva `v-html`.
+  La direttiva è un pelino più performance della sua controparte ad interpolazione.
 
-  <p class="tip">Dynamically rendering arbitrary HTML on your website can be very dangerous because it can easily lead to [XSS attacks](https://en.wikipedia.org/wiki/Cross-site_scripting). Only use `v-html` on trusted content and **never** on user-provided content.</p>
+  <p class="tip">Renderizzare HTML in modo dinamico può essere pericoloso perchè potete essere soggetti ad [Attacchi XSS](https://it.wikipedia.org/wiki/Cross-site_scripting).
+  Usate `v-html` solo su contenuto che ritenete sicuro e **MAI** su contenuto fornito dagli utenti.</p>
 
 - **Esempio:**
 
@@ -1521,9 +1525,11 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Conditionally render the elemento based on the truthy-ness of the espressione valore. The elemento and its contained data bindings / components are destroyed and re-constructed during toggles. If the elemento is a `<template>` elemento, its content will be extracted as the conditional block.
+  Renderizza l'elemento se e soltanto se la condizione viene soddisfatta.
+  Il blocco che contiene i componenti ed i vincoli dei dati interno a questa direttiva vengono ricostruiti ogni volta.
+  Se la direttiva è inserita in un `<template>` tutto il suo contenuto sarà soggetto alla condizione di esistente del if.
 
-- **Vedi anche:** [Conditional Rendering](/guide/conditional.html)
+- **Vedi anche:** [Rendering Condizionale](/guide/conditional.html)
 
 ### v-show
 
