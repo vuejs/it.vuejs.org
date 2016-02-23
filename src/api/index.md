@@ -426,7 +426,7 @@ type: api
       // controllo sul tipo di dato più validazione
       name: {
         Tipo: Stringa,
-        required: true
+        richiesto: true
       }
     }
   })
@@ -473,21 +473,21 @@ type: api
   - [Proprietà Derivate](/guide/computed.html)
   - [Reattività in Dettaglio: Le Properità Derivate](/guide/reactivity.html#Inside_Computed_Properties)
 
-### methods
+### metodos
 
 - **Tipo:** `Oggetto`
 
 - **Dettagli:**
 
-  Methods è un oggetto che contiene nuove funzioni che possono essere usate dall'istanza corrente di Vue. Questi metodi possono essere usanti anche internamente al DOM, sottoforma di espressioni.
-  Tutti i metodi creati dentro Methods avranno `this` puntato all'istanza di Vue.
+  metodos è un oggetto che contiene nuove funzioni che possono essere usate dall'istanza corrente di Vue. Questi metodi possono essere usanti anche internamente al DOM, sottoforma di espressioni.
+  Tutti i metodi creati dentro metodos avranno `this` puntato all'istanza di Vue.
 
 - **Esempio:**
 
   ```js
   var vm = new Vue({
     data: { a: 1 },
-    methods: {
+    metodos: {
       plus: function () {
         this.a++
       }
@@ -506,7 +506,7 @@ type: api
 - **Dettagli:**
 
   Watch contiene delle funzioni dove la chiave è l'espressione da osservare ed il corpo della funzione è il valore di tale chiave.
-  La funzione può essere anche una stringa che punta ad un Metodo interno alla proprietà Methods vista precedentemente oppure un oggetto che contiene un handler, la funzione, e la "profondità" del watch stesso.
+  La funzione può essere anche una stringa che punta ad un Metodo interno alla proprietà metodos vista precedentemente oppure un oggetto che contiene un handler, la funzione, e la "profondità" del watch stesso.
   L'istanza di Vue chiamerà `$watch()` per ogni chiave in data al momento dell'istanziazione.
 
 - **Esempio:**
@@ -521,7 +521,7 @@ type: api
         console.log('new: %s, old: %s', val, oldVal)
       },
       // Metodo come stringa
-      'b': 'someMethod',
+      'b': 'somemetodo',
       // Oggetto
       'c': {
         handler: function (val, oldVal) { /* ... */ },
@@ -829,7 +829,7 @@ type: api
       // si può anche usare una stringa
       bye: 'sayGoodbye'
     },
-    methods: {
+    metodos: {
       sayGoodbye: function () {
         console.log('Ciao Ciao!')
       }
@@ -840,7 +840,7 @@ type: api
   ```
 
 - **Vedi anche:**
-  - [Metodi di Istanza - Eventi](#Instance_Methods_/_Eventi)
+  - [Metodi di Istanza - Eventi](#Instance_metodos_/_Eventi)
   - [Comunicazione Padre-Figlio](/guide/components.html#Parent-Child_Communication)
 
 ### mixins
@@ -1404,7 +1404,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   ``` js
   new Vue({
     // ...
-    methods: {
+    metodos: {
       // ...
       Esempio: function () {
         // modifica un dato
@@ -1537,30 +1537,30 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Toggle's the elemento's `display` CSS property based on the truthy-ness of the espressione valore. Triggers transitions if present.
+  Attiva o Disattiva la visualizzazione di un elemento tramite proprietà CSS, se vi è una transizione essa verrà eseguita.
 
-- **Vedi anche:** [Conditional Rendering - v-show](/guide/conditional.html#v-show)
+- **Vedi anche:** [Rendering Condizionale - v-show](/guide/conditional.html#v-show)
 
 ### v-else
 
 - **Non si aspetta un espressione**
 
-- **Restrizioni:** previous sibling elemento must have `v-if` or `v-show`.
+- **Restrizioni:** Il fratello più stretto, in termini di DOM, deve avere `v-if` o `v-show`.
 
 - **Utilizzo:**
 
-  Denote the "else block" for `v-if` and `v-show`.
+  Blocco HTML alternativo a `v-if` o `v-show`.
 
   ``` html
   <div v-if="Math.random() > 0.5">
-    Sorry
+    Scusa
   </div>
   <div v-else>
-    Not sorry
+    Non mi scuso
   </div>
   ```
 
-- **Vedi anche:** [Conditional Rendering - v-else](/guide/conditional.html#v-else)
+- **Vedi anche:** [Rendering Condizionale - v-else](/guide/conditional.html#v-else)
 
 ### v-for
 
@@ -1574,7 +1574,8 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Render the elemento or template block multiple times based on the source data. The espressione must use the special syntax to provide an alias for the current elemento being iterated on:
+  Renderizza il blocco di elementi, o template, più volte in base ai dati che riceve.
+  L'espressione contenente i dati deve rispettare una sintassi corretta in modo tale che avvenga la giusta iterazione:
 
   ``` html
   <div v-for="item in items">
@@ -1582,50 +1583,52 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   </div>
   ```
 
-  Alternatively, you can also specify an alias for the index (or the chiave if used on an Oggetto):
+  Si può specificare un nome alternativo per l'index del ciclo for, per esempio se si ha a che fare con una collezione di oggetti:
 
   ``` html
   <div v-for="(index, item) in items"></div>
-  <div v-for="(chiave, val) in oggetto"></div>
+  <div v-for="(chiave, val) in collections"></div>
   ```
 
-  The detailed Utilizzo for `v-for` is explained in the guide section linked below.
+  L'utilizzo dettagliato di `v-for` è spiegato nel link seguente.
 
-- **Vedi anche:** [List Rendering](/guide/list.html).
+- **Vedi anche:** [Rendering delle Liste](/guide/list.html).
 
 ### v-on
 
 - **Scorciatoia:** `@`
 
-- **Si Aspetta:** `Funzione | Inline Statement`
+- **Si Aspetta:** `Funzione | Espressione Inline`
 
-- **Argomento:** `evento (required)`
+- **Argomento:** `evento (richiesto)`
 
 - **Modificatori:**
-  - `.stop` - call `event.stopPropagation()`.
-  - `.prevent` - call `event.preventDefault()`.
-  - `.capture` - add evento listener in capture mode.
-  - `.self` - only trigger handler if evento was dispatched from this elemento.
-  - `.{chiaveCode | chiaveAlias}` - only trigger handler on certain chiaves.
+  - `.stop` - chiama `event.stopPropagation()`.
+  - `.prevent` - chiama `event.preventDefault()`.
+  - `.capture` - Aggiunge l'evento alla modalità di cattura.
+  - `.self` - viene attivato solo se l'elemento viene chiamato dall'elemento stesso.
+  - `.{codice del carattere | chiave del carattere}` - attiva l'evento solo ad una determinata chiave.
 
 - **Utilizzo:**
 
-  Attaches an evento listener to the elemento. The evento Tipo is denoted by the Argomento. The espressione can either be a method name or an inline statement, or simply omitted when there are Modificatori present.
+  Allega un evento ad un elemento del DOM. L'evento è l'argomento di questa direttiva.
+  L'espressione può essere anche il corpo del evento stesso oppure il nome, in stringa, del evento nell'istanza di Vue. 
 
-  When used on a normal elemento, it listens to **native DOM eventi** only. When used on a custom elemento component, it also listens to **custom eventi** emitted on that child component.
+  Quando si usano gli **eventi nativi del DOM** Vue gli ascolterà tutti. Se invece si usano eventi personalizzati andranno ascoltati dall'istanza di Vue.
 
-  When listening to native DOM eventi, the method receives the native evento as the only Argomento. If using inline statement, the statement has access to the special `$evento` property: `v-on:click="handle('ok', $evento)"`.
+  Per quanto riguarda gli eventi nativi del DOM, il metodo che gestisce l'evento riceverà l'evento stesso come unico argomento.
+  Se si usa l'espressione inline allora si avrà accesso alla proprietà speciale `$event`, per esempio: `v-on:click="handle('ok', $event)"`.
 
-  **1.0.11+** When listening the custom eventi, inline statements have access to the special `$Argomenti` property, which is an array of the additional Argomenti passed to the child components' `$emit` call.
+  **1.0.11+** Quando si ascoltano gli eventi personalizzati, l'espressione inline avrà accesso anche ad una properità speciale chiamata `$arguments` la quale è un array di tutti gli argomenti passati.
 
 - **Esempio:**
 
   ``` html
-  <!-- method handler -->
+  <!-- metodo -->
   <button v-on:click="doThis"></button>
 
-  <!-- inline statement -->
-  <button v-on:click="doThat('Ciao', $evento)"></button>
+  <!-- Espressione Inline -->
+  <button v-on:click="doThat('Ciao', $event)"></button>
 
   <!-- Scorciatoia -->
   <button @click="doThis"></button>
@@ -1633,32 +1636,32 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   <!-- stop propagation -->
   <button @click.stop="doThis"></button>
 
-  <!-- prevent Predefinito -->
+  <!-- prevent default -->
   <button @click.prevent="doThis"></button>
 
-  <!-- prevent Predefinito without espressione -->
+  <!-- prevent default senza espressione -->
   <form @submit.prevent></form>
 
-  <!-- chain Modificatori -->
+  <!-- catena di modificatori -->
   <button @click.stop.prevent="doThis"></button>
 
-  <!-- chiave modifier using chiaveAlias -->
-  <input @chiaveup.enter="onEnter">
+  <!-- pressione di un tasto più modificatore -->
+  <input @keyup.enter="onEnter">
 
-  <!-- chiave modifier using chiaveCode -->
-  <input @chiaveup.13="onEnter">
+  <!-- pressione di un tasto con il codice -->
+  <input @keyup.13="onEnter">
   ```
 
-  Listening to custom eventi on a child component (the handler is called when "my-evento" is emitted on the child):
+  Ascoltare gli eventi personalizzati su un componente personalizzato è possibile:
 
   ``` html
   <my-component @my-event="handleThis"></my-component>
 
-  <!-- inline statement -->
-  <my-component @my-event="handleThis(123, $Argomenti)"></my-component>
+  <!-- Espressione Inline -->
+  <my-component @my-event="handleThis(123, $arguments)"></my-component>
   ```
 
-- **Vedi anche:** [Methods and Event Handling](/guide/Eventi.html)
+- **Vedi anche:** [Gestione degli Eventi](/guide/Eventi.html)
 
 ### v-bind
 
@@ -1675,7 +1678,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Dynamically bind one or more Attributi, or a component prop to an espressione.
+  Dynamichiamay bind one or more Attributi, or a component prop to an espressione.
 
   When used to bind the `class` or `style` attribute, it supports additional valore Tipos such as Array or Oggettos. See linked guide section below for more details.
 
@@ -1743,7 +1746,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Limitato a:** child components
 
-- **Argomento:** `id (required)`
+- **Argomento:** `id (richiesto)`
 
 - **Utilizzo:**
 
@@ -1785,7 +1788,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Non si aspetta un espressione**
 
-- **Argomento:** `id (required)`
+- **Argomento:** `id (richiesto)`
 
 - **Utilizzo:**
 
@@ -1876,7 +1879,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
   `<slot>` elementi serve as Distribuizione dei Contenuti outlets in component templates. The slot elemento itself will be replaced.
 
-  A slot with the `name` attribute is called a named slot. A named slot will distribute content with a `slot` attribute that matches its name.
+  A slot with the `name` attribute is chiamaed a named slot. A named slot will distribute content with a `slot` attribute that matches its name.
 
   For detailed Utilizzo, see the guide section linked below.
 
@@ -2000,7 +2003,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Output the result of calling `JSON.stringaify()` on the valore instead of outputting the `toStringa()` valore (e.g. `[oggetto Oggetto]`).
+  Output the result of chiamaing `JSON.stringaify()` on the valore instead of outputting the `toStringa()` valore (e.g. `[oggetto Oggetto]`).
 
 - **Esempio:**
 
@@ -2019,12 +2022,12 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Wrap the handler to debounce it for `x` milliseconds, where `x` is the Argomento. Predefinito wait time is 300ms. A debounced handler will be delayed until at least `x` ms has passed after the call moment; if the handler is called again before the delay period, the delay period is reset to `x` ms.
+  Wrap the handler to debounce it for `x` milliseconds, where `x` is the Argomento. Predefinito wait time is 300ms. A debounced handler will be delayed until at least `x` ms has passed after the chiama moment; if the handler is chiamaed again before the delay period, the delay period is reset to `x` ms.
 
 - **Esempio:**
 
   ``` html
-  <input @chiaveup="onKeyup | debounce 500">
+  <input @keyup="onKeyup | debounce 500">
   ```
 
 ### limitBy
