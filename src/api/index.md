@@ -1667,62 +1667,63 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Scorciatoia:** `:`
 
-- **Si Aspetta:** `* (with Argomento) | Oggetto (without Argomento)`
+- **Si Aspetta:** `* (con Argomenti) | Oggetto (senza Argomenti)`
 
-- **Argomento:** `attrOProp (optional)`
+- **Argomento:** `attributo o Espressione (facoltativo)`
 
 - **Modificatori:**
-  - `.sync` - make the binding two-way. Only respected for prop bindings.
-  - `.once` - make the binding one-time. Only respected for prop bindings.
-  - `.camel` - convert the attribute name to camelCase when setting it. Only respected for normal Attributi. Used for binding camelCase SVG Attributi.
+  - `.sync` - Rendere il vincolo a due vie, rispettato sui legami di proprietà.
+  - `.once` - Effettua il vincolo una volta sola.
+  - `.camel` - Converte il nome dell attributo in camelCase, rispettato dagli attributi convenzionali.
 
 - **Utilizzo:**
 
-  Dynamichiamay bind one or more Attributi, or a component prop to an espressione.
+  Lega uno o più attributi ad un componente o elemento del DOM.
 
-  When used to bind the `class` or `style` attribute, it supports additional valore Tipos such as Array or Oggettos. See linked guide section below for more details.
+  Quando utilizzato per legare gli attributi `class` o `style` supporta più valori come un array o un oggetto.
 
-  When used for prop binding, the prop must be properly declared in the child component. Prop bindings can specify a different binding Tipo using one of the Modificatori.
+  Quando si lega un prop ad un componente, tale componente dev'essere esplicitamente dichiarato nei props del componente stesso.
 
-  When used without an Argomento, can be used to bind an oggetto containing attribute name-valore pairs. Note in this mode `class` and `style` does not support Array or Oggettos.
+  Quando si usa senza argomenti si può variarne l'utilizzo sfruttando un oggetto chiave-valore al posto di un argomento.
+  Nota bene, il bind di classi e stili non supporta Array o Oggetti.
 
 - **Esempio:**
 
   ``` html
-  <!-- bind an attribute -->
+  <!-- lega un attributo -->
   <img v-bind:src="imageSrc">
 
   <!-- Scorciatoia -->
   <img :src="imageSrc">
 
-  <!-- class binding -->
+  <!-- lega delle classi -->
   <div :class="{ red: isRed }"></div>
   <div :class="[classA, classB]"></div>
 
-  <!-- style binding -->
+  <!-- lega lo stile -->
   <div :style="{ fontSize: size + 'px' }"></div>
   <div :style="[styleOggettoA, styleOggettoB]"></div>
 
-  <!-- binding an oggetto of Attributi -->
+  <!-- lega un oggetto con proprietà-->
   <div v-bind="{ id: someProp, 'other-attr': otherProp }"></div>
 
-  <!-- prop binding. "prop" must be declared in my-component. -->
+  <!-- lega il componente usanto i prop, precedentemente dichiarato nel componente stesso. -->
   <my-component :prop="someThing"></my-component>
 
-  <!-- two-way prop binding -->
+  <!-- prop a due vie -->
   <my-component :prop.sync="someThing"></my-component>
 
-  <!-- one-time prop binding -->
+  <!-- prop singolo -->
   <my-component :prop.once="someThing"></my-component>
   ```
 
 - **Vedi anche:**
-  - [Class and Style Bindings](/guide/class-and-style.html)
-  - [Component Props](/guide/components.html#Props)
+  - [Vincoli delle Classi e dello Stile](/guide/class-and-style.html)
+  - [Props dei Componenti](/guide/components.html#Props)
 
 ### v-model
 
-- **Si Aspetta:** varies based on input Tipo
+- **Si Aspetta:** Dipende dal tipo di elemento.
 
 - **Limitato a:**
   - `<input>`
@@ -1731,14 +1732,14 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Attributi parametrici:**
   - [`lazy`](/guide/forms.html#lazy)
-  - [`Numero`](/guide/forms.html#Numero)
+  - [`number`](/guide/forms.html#number)
   - [`debounce`](/guide/forms.html#debounce)
 
 - **Utilizzo:**
 
-  Create a two-way binding on a form input elemento. For detailed Utilizzo, see guide section linked below.
+  Crea un vincolo a due vie tra un elemento, tipicamente un input di un form, e un dato di dell'istanza di Vue.
 
-- **Vedi anche:** [Form Input Bindings](/guide/forms.html)
+- **Vedi anche:** [Vincolo sugli input dei Form](/guide/forms.html)
 
 ### v-ref
 
@@ -1752,7 +1753,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
   Register a reference to a child component on its parent for direct access. Does not expect an espressione. Must provide an Argomento as the id to registra with. The component instance will be accessible on its parent's `$refs` oggetto.
 
-  When used on a component together with `v-for`, the registraed valore will be an Array containing all the child component instances corresponding to the Array they are bound to. If the data source for `v-for` is an Oggetto, the registraed valore will be an Oggetto containing chiave-instance pairs mirroring the source Oggetto.
+  When used on a component together con `v-for`, the registraed valore will be an Array containing all the child component instances corresponding to the Array they are bound to. If the data source for `v-for` is an Oggetto, the registraed valore will be an Oggetto containing chiave-instance pairs mirroring the source Oggetto.
 
 - **Note:**
 
@@ -1771,7 +1772,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   this.$refs.someChild
   ```
 
-  With `v-for`:
+  con `v-for`:
 
   ``` html
   <comp v-ref:list v-for="item in list"></comp>
@@ -1815,7 +1816,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo**
 
-  Skip compilation for this elemento and all its children. You can use this for displaying raw mustache tags. Skipping large Numeros of nodes with no Direttive on them can also speed up compilation.
+  Skip compilation for this elemento and all its children. You can use this for displaying raw mustache tags. Skipping large Numeros of nodes con no Direttive on them can also speed up compilation.
 
 - **Esempio:**
 
@@ -1829,7 +1830,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  This directive will remain on the elemento until the associated istanza di Vue finishes compilation. Combined with CSS rules such as `[v-cloak] { display: none }`, this directive can be used to hide un-compiled mustache bindings until the istanza di Vue is ready.
+  This directive will remain on the elemento until the associated istanza di Vue finishes compilation. Combined con CSS rules such as `[v-cloak] { display: none }`, this directive can be used to hide un-compiled mustache bindings until the istanza di Vue is ready.
 
 - **Esempio:**
 
@@ -1860,7 +1861,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Alternative syntax for invoking components. Primarily used for dynamic components with the `is` attribute:
+  Alternative syntax for invoking components. Primarily used for dynamic components con the `is` attribute:
 
   ``` html
   <!-- a dynamic component controlled by -->
@@ -1879,11 +1880,11 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
   `<slot>` elementi serve as Distribuizione dei Contenuti outlets in component templates. The slot elemento itself will be replaced.
 
-  A slot with the `name` attribute is chiamaed a named slot. A named slot will distribute content with a `slot` attribute that matches its name.
+  A slot con the `name` attribute is chiamaed a named slot. A named slot will distribute content con a `slot` attribute that matches its name.
 
   For detailed Utilizzo, see the guide section linked below.
 
-- **Vedi anche:** [Distribuizione dei Contenuti with Slots](/guide/components.html#Content_Distribution_with_Slots)
+- **Vedi anche:** [Distribuizione dei Contenuti con Slots](/guide/components.html#Content_Distribution_with_Slots)
 
 ### partial
 
@@ -1906,7 +1907,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   <partial name="my-partial"></partial>
 
   <!-- a dynamic partial -->
-  <!-- renders partial with id === vm.partialId -->
+  <!-- renders partial con id === vm.partialId -->
   <partial v-bind:name="partialId"></partial>
 
   <!-- dynamic partial using v-bind Scorciatoia -->
@@ -2007,7 +2008,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Esempio:**
 
-  Print an oggetto with 4-space indent:
+  Print an oggetto con 4-space indent:
 
   ``` html
   <pre>{{ nestedOggetto | json 4 }}</pre>
@@ -2040,7 +2041,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Limit the array to the first N items, as specified by the Argomento. An optional second Argomento can be provided to set a starting offset.
+  Limit the array to the first N items, as specified by the Argomento. An facoltativo second Argomento can be provided to set a starting offset.
 
   ``` html
   <!-- only display first 10 items -->
@@ -2056,7 +2057,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Argomenti:**
   - `{Stringa | Funzione} targetStringaOFunzione`
-  - `"in" (optional delimiter)`
+  - `"in" (facoltativo delimiter)`
   - `{Stringa} [...searchKeys]`
 
 - **Utilizzo:**
@@ -2079,7 +2080,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
   In the above Esempio, the filter will only search for `"Jack"` in the `name` field of each user oggetto. **It is a good idea to always limit the search scope for better performance.**
 
-  The Esempios above are using static Argomenti - we can, of course, use dynamic Argomenti as target stringa or search chiaves. Combined with `v-model` we can easily implement Tipo-ahead filtering:
+  The Esempios above are using static Argomenti - we can, of course, use dynamic Argomenti as target stringa or search chiaves. Combined con `v-model` we can easily implement Tipo-ahead filtering:
 
   ``` html
   <div id="filter-by-Esempio">
@@ -2134,7 +2135,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   <li v-for="user in users | filterBy searchText in 'name' 'phone'"></li>
   ```
 
-  Multiple search chiaves with a dynamic Array Argomento:
+  Multiple search chiaves con a dynamic Array Argomento:
 
   ``` html
   <!-- fields = ['fieldA', 'fieldB'] -->
@@ -2157,7 +2158,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Return a sorted version of the source Array. The `sortKey` is the chiave to use for the sorting. The optional `order` Argomento specifies whether the result should be in ascending (`order >= 0`) or descending (`order < 0`) order.
+  Return a sorted version of the source Array. The `sortKey` is the chiave to use for the sorting. The facoltativo `order` Argomento specifies whether the result should be in ascending (`order >= 0`) or descending (`order < 0`) order.
 
   For arrays of primitive valores, any truthy `sortKey` will work.
 
