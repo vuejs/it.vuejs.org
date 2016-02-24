@@ -1745,19 +1745,22 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Non si aspetta un espressione**
 
-- **Limitato a:** child components
+- **Limitato a:** componenti figli
 
 - **Argomento:** `id (richiesto)`
 
 - **Utilizzo:**
 
-  Register a reference to a child component on its parent for direct access. Does not expect an espressione. Must provide an Argomento as the id to registra with. The component instance will be accessible on its parent's `$refs` oggetto.
+  Registra una referenza ad un componente figlio per un accesso diretto da parte del padre.
+  Questo attributo non si aspetta un espressione ma ben sì il nome del componente da referenziare.
+  L'istanza del componente figlio sarà disponibile tramite l'oggetto `$refs`.
 
-  When used on a component together con `v-for`, the registraed valore will be an Array containing all the child component instances corresponding to the Array they are bound to. If the data source for `v-for` is an Oggetto, the registraed valore will be an Oggetto containing chiave-instance pairs mirroring the source Oggetto.
+  Quando viene usato assieme a `v-for`, il valore registrato sarà un array contenente tutti i componenti figli.
+  Se l'origine dei dati di `v-for` è in oggetto, quest'ultimo dovrà essere una combinazione di chiavi-istanze per ogni componente che si vuole referenziare.
 
 - **Note:**
 
-  Because HTML is case-insensitive, camelCase Utilizzo like `v-ref:someRef` will be converted to all lowercase. You can use `v-ref:some-ref` which properly sets `this.$refs.someRef`.
+  Dato che HTML è case-insensitive, la sintassi camelCase verrà convertita tutta in lowercase. Potete usare `v-ref:some-ref` la quale verrà propriamente impostata come `this.$refs.someRef`.
 
 - **Esempio:**
 
@@ -1767,7 +1770,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   ```
 
   ``` js
-  // access from parent:
+  // accesso dal padre:
   this.$refs.child
   this.$refs.someChild
   ```
@@ -1779,11 +1782,11 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   ```
 
   ``` js
-  // this will be an array in parent
+  // questo risulterà un array
   this.$refs.list
   ```
 
-- **Vedi anche:** [Child Component Refs](/guide/components.html#Child_Component_Refs)
+- **Vedi anche:** [Referenze Padre-Figlio](/guide/components.html#Child_Component_Refs)
 
 ### v-el
 
@@ -1793,11 +1796,11 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Register a reference to a DOM elemento on its owner istanza di Vue's `$els` oggetto for easier access.
+  Registra la refernze al DOM per determinare il proprietario dell'istanza di Vue e del oggetto `$els`.
 
 - **Note:**
 
-  Because HTML is case-insensitive, camelCase Utilizzo like `v-el:someEl` will be converted to all lowercase. You can use `v-el:some-el` which properly sets `this.$els.someEl`.
+  Dato che HTML è case-insensitive, la sintassi camelCase verrà convertita tutta in lowercase. Potete usare `v-el:some-el` la quale verrà convertita in `this.$els.someEl`.
 
 - **Esempio:**
 
@@ -1816,12 +1819,13 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo**
 
-  Skip compilation for this elemento and all its children. You can use this for displaying raw mustache tags. Skipping large Numeros of nodes con no Direttive on them can also speed up compilation.
+  Salta la compilazione del elemento corrente e dei suoi figli
+  Usato per debug principalmente o per visualizzare codice sorgente interno alle graffe.
 
 - **Esempio:**
 
   ``` html
-  <span v-pre>{{ this will not be compiled }}</span>
+  <span v-pre>{{ Questo non verrà compilato 1 + 1}}</span>
   ```
 
 ### v-cloak
@@ -1830,7 +1834,8 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  This directive will remain on the elemento until the associated istanza di Vue finishes compilation. Combined con CSS rules such as `[v-cloak] { display: none }`, this directive can be used to hide un-compiled mustache bindings until the istanza di Vue is ready.
+  Questa direttiva rimarrà sul elemento finchè l'istanza di Vue non termina la sua compilazione
+  Combinato con regole CSS del tipo `[v-cloak] { display: none }`, questa direttiva è utile per nascondere la sintassi ancora non compilata nel DOM affinchè si dia all'istanza di Vue il tempo di prepararsi.
 
 - **Esempio:**
 
@@ -1846,7 +1851,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   </div>
   ```
 
-  The `<div>` will not be visible until the compilation is done.
+  L elemento `<div>` non sarà visibile finch la compilazione di Vue non è terminata.
 
 ## Special Elements
 
