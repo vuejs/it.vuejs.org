@@ -74,7 +74,7 @@ vm.$watch('a', function (newVal, oldVal) {
 })
 ```
 
-Consulta le API per una lista completa di tutte le proprietà e metodi disponibili.
+Consulta le [API](/api) per una lista completa di tutte le proprietà e metodi disponibili.
 
 ## Ciclo di Vita dell'istanza
 
