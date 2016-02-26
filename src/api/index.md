@@ -1853,7 +1853,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
   L elemento `<div>` non sarà visibile finch la compilazione di Vue non è terminata.
 
-## Special Elements
+## Elementi Speciali
 
 ### component
 
@@ -1866,15 +1866,15 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Alternative syntax for invoking components. Primarily used for dynamic components con the `is` attribute:
+  Sintassi alternativa per invocare dei componenti. Usata principalmente per componenti dinamici:
 
   ``` html
-  <!-- a dynamic component controlled by -->
-  <!-- the `componentId` property on the vm -->
+  <!-- Un componente dinamico controllato dalla -->
+  <!-- proprietà `componentId` dentro la VM -->
   <component :is="componentId"></component>
   ```
 
-- **Vedi anche:** [Dynamic Components](/guide/components.html#Dynamic_Components)
+- **Vedi anche:** [Componenti Dinamici](/guide/components.html#Dynamic_Components)
 
 ### slot
 
@@ -1883,11 +1883,11 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  `<slot>` elementi serve as Distribuizione dei Contenuti outlets in component templates. The slot elemento itself will be replaced.
+  L elemento `<slot>` servce a distribuire componenti. L elemento in se verrà rimpiazzato dal componente stesso.
 
-  A slot con the `name` attribute is chiamaed a named slot. A named slot will distribute content con a `slot` attribute that matches its name.
+  Uno slot che ha `name` come attributo viene detto "Slot nominativo" e verrà sostituito con un componente che ha lo stesso nome dello slot.
 
-  For detailed Utilizzo, see the guide section linked below.
+  Per maggiori dettagli su come funzionano gli slot utilizzate il link sotto,
 
 - **Vedi anche:** [Distribuizione dei Contenuti con Slots](/guide/components.html#Content_Distribution_with_Slots)
 
@@ -1898,24 +1898,26 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  `<partial>` elementi serve as outlets for registraed template partials. Partial contents are also compiled by Vue when inserted. The `<partial>` elemento itself will be replaced. It requires a `name` attribute which will be used to resolve the partial's content.
+  Gli elementi `<partial>` servono a registrato porzioni di template riutilizzabili.
+  I parziali vengono interpretati da Vue e rimpiazzati con il template che essi contengono. L elemento in se verrà rimpiazzato.
+  Per funzionare a dovere, un parziale ha bisogno di un attributo chiamato `name` il quale identifica il contenuto del parziale stesso.
 
 - **Esempio:**
 
   ``` js
-  // registraing a partial
-  Vue.partial('my-partial', '<p>This is a partial! {{msg}}</p>')
+  // Registra un parziale
+  Vue.partial('my-partial', '<p>Parziale inizializzato! {{msg}}</p>')
   ```
 
   ``` html
-  <!-- a static partial -->
+  <!-- parziale statico-->
   <partial name="my-partial"></partial>
 
-  <!-- a dynamic partial -->
-  <!-- renders partial con id === vm.partialId -->
+  <!-- parziale dinamico -->
+  <!-- renderizza qualsiasi parziale che soddisfa id === vm.partialId -->
   <partial v-bind:name="partialId"></partial>
 
-  <!-- dynamic partial using v-bind Scorciatoia -->
+  <!-- parziale dinamico tramite la scorciatoia -->
   <partial :name="partialId"></partial>
   ```
 
