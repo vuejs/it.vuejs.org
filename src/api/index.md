@@ -1921,7 +1921,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   <partial :name="partialId"></partial>
   ```
 
-## Filters
+## Filtri
 
 ### capitalize
 
@@ -1956,7 +1956,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 ### currency
 
 - **Argomenti:**
-  - `{Stringa} [symbol] - Predefinito: '$'`
+  - `{Stringa} [simbolo] - Predefinito: '$'`
 
 - **Esempio:**
 
@@ -1966,7 +1966,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
   *12345 => $12,345.00*
 
-  Use a different symbol:
+  Con un simbolo diverso:
 
   ``` html
   {{ amount | currency '£' }}
@@ -1977,11 +1977,15 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 ### pluralize
 
 - **Argomenti:**
-  - `{Stringa} single, [double, triple, ...]`
+  - `{Stringa} singolare, [doppia, tripla, ...]`
 
 - **Utilizzo:**
 
-  Pluralizes the Argomento based on the filtered valore. When there is exactly one Argomento, plural forms simply add an "s" at the end. When there are more than one Argomento, the Argomenti will be used as array of stringas corresponding to the single, double, triple ... forms of the word to be pluralized. When the Numero to be pluralized exceeds the length of the Argomenti, it will use the last entry in the array.
+  Rende una stringa plurale. Quando c'è solo un argomento tenterà di aggiungere una sola `s` alla fine.
+  Quando ci sono più argomenti questi ultimi verranno utilizzati per le varie forme plurali necessarie.
+  Quando il numero di argomenti eccede le forme plurali, verrà utilizzata sempre l'ultima forma fornita.
+  
+  <p class="tip">Pluralize funziona solo per la lingua inglese..</p>
 
 - **Esempio:**
 
@@ -1996,7 +2000,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   {{date}}{{date | pluralize 'st' 'nd' 'rd' 'th'}}
   ```
 
-  Will result in:
+  Risulterà in:
 
   *1 => '1st'*  
   *2 => '2nd'*
@@ -2007,30 +2011,31 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 ### json
 
 - **Argomenti:**
-  - `{Numero} [indent] - Predefinito: 2`
+  - `{Numero} [identazione] - Predefinito: 2`
 
 - **Utilizzo:**
 
-  Output the result of chiamaing `JSON.stringaify()` on the valore instead of outputting the `toStringa()` valore (e.g. `[oggetto Oggetto]`).
+  Visualizza il risultato della chiamata a `JSON.stringaify()` sul valore passato come argomento.
 
 - **Esempio:**
 
-  Print an oggetto con 4-space indent:
+  Stampa un oggetto con 4 punti di identazione:
 
   ``` html
-  <pre>{{ nestedOggetto | json 4 }}</pre>
+  <pre>{{ Oggetto | json 4 }}</pre>
   ```
 
 ### debounce
 
-- **Limitato a:** Direttive that expect `Funzione` valores, e.g. `v-on`
+- **Limitato a:** Questa direttiva di aspetta una funzione da richiamare come su `v-on`.
 
 - **Argomenti:**
-  - `{Numero} [wait] - Predefinito: 300`
+  - `{Numero} [tempo] - Predefinito: 300`
 
 - **Utilizzo:**
 
-  Wrap the handler to debounce it for `x` milliseconds, where `x` is the Argomento. Predefinito wait time is 300ms. A debounced handler will be delayed until at least `x` ms has passed after the chiama moment; if the handler is chiamaed again before the delay period, the delay period is reset to `x` ms.
+  Aggiunge un delay ad un evento per del DOM legato ad un determinato elemento, inoltre si possono specificare i millisecodi, come argomento, per un eventuale ritardo più prolungato.
+  Di default il delay è a 300ms.
 
 - **Esempio:**
 
@@ -2040,7 +2045,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### limitBy
 
-- **Limitato a:** Direttive that expect `Array` valores, e.g. `v-for`
+- **Limitato a:** Questa direttiva di aspetta un argomento ed è preceduta da `v-for`
 
 - **Argomenti:**
   - `{Numero} limit`
@@ -2048,49 +2053,52 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Utilizzo:**
 
-  Limit the array to the first N items, as specified by the Argomento. An facoltativo second Argomento can be provided to set a starting offset.
+  Limita l'iterazione con l'array ad un numero di elementi specificato.
+  Si può specificare un secondo argomento che viene usato come punto di partenza, offset, per l'iterazione.
 
   ``` html
-  <!-- only display first 10 items -->
+  <!-- Visualizza i primi 10 elementi -->
   <div v-for="item in items | limitBy 10"></div>
 
-  <!-- display items 5 to 15 -->
+  <!-- visualizza gli elementi dal 5 al 15 -->
   <div v-for="item in items | limitBy 10 5"></div>
   ```
 
 ### filterBy
 
-- **Limitato a:** Direttive that expect `Array` valores, e.g. `v-for`
+- **Limitato a:** Si aspetta un array e una direttiva `v-for`
 
 - **Argomenti:**
-  - `{Stringa | Funzione} targetStringaOFunzione`
-  - `"in" (facoltativo delimiter)`
-  - `{Stringa} [...searchKeys]`
+  - `{Stringa | Funzione} Target iniziale`
+  - `"in" (facoltativo, limitatore)`
+  - `{Stringa} [chiave di ricerca]`
 
 - **Utilizzo:**
 
-  Return a filtered version of the source Array. The first Argomento can either be a stringa or a function.
+  Restituisce una versione filtrata, alterata, dell'array originale passato tramite `v-for`. Il primo argomento può essere una stringa o una funzione.
 
-  When the first Argomento is a stringa, it will be used as the target stringa to search for in each elemento of the Array:
+  Quando il primo argomento è una stringa, viene usata come target per la ricerca nell'array
 
   ``` html
   <div v-for="item in items | filterBy 'Ciao'">
   ```
 
-  In the above Esempio, only items that contain the target stringa `"Ciao"` will be displayed.
+  In questo caso solo gli elementi contenenti `"Ciao"` verranno visualizzati.
 
-  If the item is an oggetto, the filter will recursively search every nested property of the oggetto for the target stringa. To narrow down the search scope, additional search chiaves can be specified:
-
+  Se gli elementi ciclati sono degli oggetti, il filtro cercherà di essere più ricorsivo possibile.
+  Per evitare che si scorra tutto l'oggetto si può utilizzare una chiave come terzo parametro del filtro.
+  
   ``` html
   <div v-for="user in users | filterBy 'Jack' in 'name'">
   ```
 
-  In the above Esempio, the filter will only search for `"Jack"` in the `name` field of each user oggetto. **It is a good idea to always limit the search scope for better performance.**
+  In questo esempio il filtro viene applicato solo a tutti i campi `name` degli oggetti in users. **E' sempre una buona idea limitare il filtro per questione di prestazioni.**
 
-  The Esempios above are using static Argomenti - we can, of course, use dynamic Argomenti as target stringa or search chiaves. Combined con `v-model` we can easily implement Tipo-ahead filtering:
+  Gli esempi visti fin'ora usavano il primo argomento in modo statico. Questa non è l'unica possibilità difatti possiamo anche usare una variabiile per creare
+  una specie di filtro dinamico per una lista combinando il tutto con la direttiva `v-model`.
 
   ``` html
-  <div id="filter-by-Esempio">
+  <div id="esempio-filter-by">
     <input v-model="name">
     <ul>
       <li v-for="user in users | filterBy name in 'name'">
@@ -2102,7 +2110,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
   ``` js
   new Vue({
-    el: '#filter-by-Esempio',
+    el: '#esempio-filter-by',
     data: {
       name: '',
       users: [
@@ -2115,7 +2123,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   ```
 
   {% raw %}
-  <div id="filter-by-Esempio" class="demo">
+  <div id="esempio-filter-by" class="demo">
     <input v-model="name">
     <ul>
       <li v-for="user in users | filterBy name in 'name'">
@@ -2125,7 +2133,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   </div>
   <script>
   new Vue({
-    el: '#filter-by-Esempio',
+    el: '#esempio-filter-by',
     data: {
       name: '',
       users: [{ name: 'Bruce' }, { name: 'Chuck' }, { name: 'Jackie' }]
@@ -2134,22 +2142,22 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   </script>
   {% endraw %}
 
-- **Additional Esempios:**
+- **Altri Esempi:**
 
-  Multiple search chiaves:
+  Utilizzando più chiavi di filtro:
 
   ``` html
   <li v-for="user in users | filterBy searchText in 'name' 'phone'"></li>
   ```
 
-  Multiple search chiaves con a dynamic Array Argomento:
+  Chiavi multiple con argomento dinamico:
 
   ``` html
   <!-- fields = ['fieldA', 'fieldB'] -->
   <div v-for="user in users | filterBy searchText in fields">
   ```
 
-  Use a custom filter function:
+  Funzione personalizzata di filtro:
 
   ``` html
   <div v-for="user in users | filterBy myCustomFilterFunzione">
@@ -2157,21 +2165,23 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### orderBy
 
-- **Limitato a:** Direttive that expect `Array` valores, e.g. `v-for`
+- **Limitato a:** Si aspetta un array passato dalla direttiva `v-for`
 
 - **Argomenti:**
-  - `{Stringa} sortKey`
+  - `{Stringa} chiave di ordinamento`
   - `{Stringa} [order] - Predefinito: 1`
 
 - **Utilizzo:**
 
-  Return a sorted version of the source Array. The `sortKey` is the chiave to use for the sorting. The facoltativo `order` Argomento specifies whether the result should be in ascending (`order >= 0`) or descending (`order < 0`) order.
+  Restituisce una versione riordinata dell'array di origine.
+  La chiave di ordinamento è obbligatoria per specificare come ordinare l'array.
+  Il secondo argomento è facoltativo ed indica il tipo di ordine `ascendente` (`order >= 0`) o `discendente` (`order < 0`).
 
-  For arrays of primitive valores, any truthy `sortKey` will work.
+  Per gli array primitivi qualsiasi chiave potrebbe funzionare.
 
 - **Esempio:**
 
-  Sort users by name:
+  Orginare gli utenti per nome:
 
   ``` html
   <ul>
@@ -2181,7 +2191,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   </ul>
   ```
 
-  In descending order:
+  Ordinare gli utenti per ordine decrescente:
 
   ``` html
   <ul>
@@ -2191,21 +2201,21 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   </ul>
   ```
 
-  Sort primitive valores:
+  Ordinare i numeri per valore primitivo:
 
   ``` html
   <ul>
-    <li v-for="n in Numeros | orderBy true">
+    <li v-for="n in numbers | orderBy true">
       {{ n }}
     </li>
   </ul>
   ```
 
-  Dynamic sort order:
+  Ordinamento dinamico:
 
   ``` html
-  <div id="orderby-Esempio">
-    <button @click="order = order * -1">Reverse Sort Order</button>
+  <div id="esempio-orderBy">
+    <button @click="order = order * -1">Cambia l'ordine</button>
     <ul>
       <li v-for="user in users | orderBy 'name' order">
         {{ user.name }}
@@ -2216,7 +2226,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
   ``` js
   new Vue({
-    el: '#orderby-Esempio',
+    el: '#esempio-orderBy',
     data: {
       order: 1,
       users: [{ name: 'Bruce' }, { name: 'Chuck' }, { name: 'Jackie' }]
@@ -2225,8 +2235,8 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   ```
 
   {% raw %}
-  <div id="orderby-Esempio" class="demo">
-    <button @click="order = order * -1">Reverse Sort Order</button>
+  <div id="esempio-orderBy" class="demo">
+    <button @click="order = order * -1">Cambia l'ordine</button>
     <ul>
       <li v-for="user in users | orderBy 'name' order">
         {{ user.name }}
@@ -2235,7 +2245,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   </div>
   <script>
   new Vue({
-    el: '#orderby-Esempio',
+    el: '#esempio-orderBy',
     data: {
       order: 1,
       users: [{ name: 'Bruce' }, { name: 'Chuck' }, { name: 'Jackie' }]
