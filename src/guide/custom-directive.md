@@ -212,6 +212,10 @@ Vue.directive('example', {
 })
 ```
 
+<p class="tip">Da notare che si deve usare la sintassi camel-case `paramWatchers`, quasi si hanno attributi scritti in kebab-case.
+Per esempio, se avete definisto l'attributo come `disabilita-effetto`, dovrete utilizzare `disabilitaEffetto` nel `paramsWatchers`.</p>
+
+
 ### deep
 
 Se la vostra direttiva personalizzata si aspetta un oggetto, e deve sempre attivare la funzione `update` quando una proprietà interna all oggetto cambia, allora dovete attivare l'opzione `deep: true` internamente alla direttiva.
