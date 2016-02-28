@@ -4,6 +4,13 @@ type: guide
 order: 12
 ---
 
+## Che cos'è un componente?
+
+In componente è la caratteristica più interessante di Vue.js, ed è anche lo strumento più potente.
+I componenti aiutano ad estendere il classico DOM HTML con dei blocchi di codice riutilizzabile
+In altre parole, i componenti sono elementi personalizzati, contenenti un template HTML,  che Vue.js compila e renderizza come elementi del DOM.
+In alcuni cassi essi possono apparire come elementi nativi HTML con un attributo speciale chiamato `is`.
+
 ## Utilizzare i Componenti
 
 ### Registrazione
