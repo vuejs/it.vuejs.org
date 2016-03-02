@@ -84,20 +84,6 @@ type: api
 
   Quando la modlità asincrona è spenta, Vue aggiornerà il DOM in modo asincrono quando i dati cambiano. Questo può aiutare a debuggare qualche situazione specifica ma può anche ridurre le prestazioni e cambiare il modo in cui i watchers vengono chiamati. **`async: false` non è raccomandato in produzione.**
 
-### convertAllProperties
-
-- **Tipo:** `Booleano`
-
-- **Predefinito:** `false`
-
-- **Utilizzo:**
-
-  ``` js
-  Vue.config.convertAllProperties = true
-  ```
-
-  (Aggiunto dalla v1.0.8) Impostando questa opzione su `true` abiliterà l'istanza di Vue a convertire ed osservare tutti gli oggetti che già contengono dei getters/setters definiti tramite `Oggetto.defineProperty`. Questa opzione è impostata a `false` perchè ci possono essere delle piccole perdite in prestazioni.
-
 ## API Globali
 
 <h3 id="Vue-extend">Vue.extend( opzioni )</h3>
@@ -1576,13 +1562,16 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
   Renderizza il blocco di elementi, o template, più volte in base ai dati che riceve.
   L'espressione contenente i dati deve rispettare una sintassi corretta in modo tale che avvenga la giusta iterazione:
-
+  Potete usare due tipi di alias per l'iterazione `(in|of)`
+  
   ``` html
+  <!-- Equivale a item of items !-->
   <div v-for="item in items">
     {{ item.text }}
   </div>
   ```
-
+  
+  **Nota** l'utilizzo di `of` è valido solo con versioni di Vue uguali o superiori alla `v1.0.17`.
   Si può specificare un nome alternativo per l'index del ciclo for, per esempio se si ha a che fare con una collezione di oggetti:
 
   ``` html

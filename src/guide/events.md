@@ -181,7 +181,14 @@ Ecco una lista completa di tutti gli alias:
 - left
 - right
 
-In aggiunta, gli alias per le lettere singole sono supportati dalla versione 1.0.8 in poi.
+**1.0.8+:** Aliases a lettera singola sono supportati.
+
+**1.0.17+:** Potete create i vostri alias personalizzati
+
+``` js
+// enable @keyup.f1
+Vue.directive('on').keyCodes.f1 = 112
+```
 
 ## Perchè ascoltare gli eventi via HTML?
 

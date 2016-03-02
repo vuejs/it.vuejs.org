@@ -116,6 +116,13 @@ Alternativamente, potete specificare un nome alternativo per il vostro indice:
 </div>
 ```
 
+A partire dalla v1.0.17 potete anche utilizzare `of` al posto di `in`,
+il che rende la sintassi più simile ai cicli di iterazione nativi in JavaScript:
+
+``` html
+<div v-for="item of items"></div>
+```
+
 ## Template v-for
 
 Si può utilizzare il markup HTML `<template>`, come lo si usava con `v-if`, per renderizzare un blocco DOM in un unico `v-for`:
