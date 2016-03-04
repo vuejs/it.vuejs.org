@@ -107,6 +107,9 @@ new Vue({
 // -> "Ciao!"
 ```
 
+<p class="tip">Utilizzate i Mixin Global con parsimonia, perchè essi influenzeranno qualsiasi istanza di Vue presente comprese librerie di terze parti.
+Nella maggior parte dei casi I Mixin Globali andrebbero usati solo per gestire delle opzioni, come nell esempio sopra.</p>
+
 ## Strategia di fusione tra Opzioni personalizzate
 
 Quando un opzione personalizzata viene fusa con un altra, viene semplicemente sovrascritta. Se volete gestire la strategia di fusione dovete implementare `Vue.config.optionMergeStrategies`:
