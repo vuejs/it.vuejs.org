@@ -11,7 +11,7 @@ L'utilizzo dei Mixins è un modo flessibile per distribuire contenuto riutilizza
 Esempio:
 
 ``` js
-// Definiamo un offetto mixin
+// Definiamo un oggetto mixin
 var myMixin = {
   created: function () {
     this.hello()

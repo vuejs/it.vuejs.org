@@ -31,7 +31,7 @@ var exampleData = {
   name: 'Vue.js'
 }
 
-// Creiamo un istanza Vue, anche detta ViewModel,
+// Creiamo un'istanza Vue, anche detta ViewModel,
 // che collega la Vista al Modello
 var exampleVM = new Vue({
   el: '#example-1',
@@ -100,7 +100,7 @@ Il Sistema a Componenti è un altro concetto fondamentale in Vue.js, perché è 
 
 ![Albero a Componenti](/images/components.png)
 
-Difatti qualsiasi tipo di applicazione costruita con Vue.js verrà formata esattamente come visto - un albero di componenti. Parleremo più nel dettaglio dei componenti durante il corso di questa guida ma per ora ecco un esempio molto astratto di come assomigli un interfaccia costruita con i componenti:
+Difatti qualsiasi tipo di applicazione costruita con Vue.js verrà formata esattamente come visto - un albero di componenti. Parleremo più nel dettaglio dei componenti durante il corso di questa guida ma per ora ecco un esempio molto astratto di come assomigli un'interfaccia costruita con i componenti:
 
 ``` html
 <div id="app">
@@ -118,4 +118,4 @@ Come avrete notato i componenti di Vue.js sono molto simili ai **Componenti Pers
 
 2. I componenti Vue.js forniscono delle caratteristiche importanti che non si trovano nei classici componenti, le più importanti sono il flusso dei dati tra vari componenti, comunicazione tra componenti totalmente personalizzata, transizioni ad effetto per il cambio di componenti.
 
-Il Sistema a Componenti è un aspetto fondamentale quando si vogliono costruire Applicazioni su Larga scale con Vue.js. Inoltre l'ecostistema di Vue.js fornisce vari strumenti di supporto, librerie, che possono essere messe assieme per creare un ecosistema molto più simile ad un framework completo.
+Il Sistema a Componenti è un aspetto fondamentale quando si vogliono costruire Applicazioni su Larga scale con Vue.js. Inoltre l'ecostistema di Vue.js fornisce vari strumenti di supporto, librerie, che possono essere messe assieme per creare un'ecosistema molto più simile ad un framework completo.

@@ -67,7 +67,7 @@ Vue.use(VueRouter)
 
 - [vue-validator](https://github.com/vuejs/vue-validator): Un plugin per la validazione dei form.
 
-- [vue-devtools](https://github.com/vuejs/vue-devtools): Un estensione per Chrome devtools per fare debug delle applicazioni Vue.js.
+- [vue-devtools](https://github.com/vuejs/vue-devtools): Un'estensione per Chrome devtools per fare debug delle applicazioni Vue.js.
 
 - [vue-touch](https://github.com/vuejs/vue-touch): Aggiungi movimenti touch sfruttando Hammer.js
 

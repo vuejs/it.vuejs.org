@@ -357,7 +357,7 @@ Quando una validazione fallisce, Vue si rifiuterà di impostare il valore, e lan
 
 ### La Catena dei Padri
 
-Un componente figlio ha accesso al componente padre tramite l'utilizzo di `this.$parent`. Un istanza Vue è disponibile a tutti i componenti e i loro discendenti tramite `this.$root`. Ogni padre ha un Array di componenti figli in un array `this.$children`.
+Un componente figlio ha accesso al componente padre tramite l'utilizzo di `this.$parent`. Un'istanza Vue è disponibile a tutti i componenti e i loro discendenti tramite `this.$root`. Ogni padre ha un Array di componenti figli in un array `this.$children`.
 
 Anche se questa logica rendere virtualmente possibile l'accesso alla catena dei padri da parte di un eventuale figlio, è vivamente sconsigliata e, invece, dovreste sempre passare i dati in modo esplicito tramite i prop. In aggiunta al discorso, è una cattiva abitudine quella di mutare lo stato di un componente padre da parte di un figlio per i seguenti motivi:
 
@@ -367,7 +367,7 @@ Anche se questa logica rendere virtualmente possibile l'accesso alla catena dei 
 
 ### Eventi Personalizzati
 
-Tutte le istanze di Vue implementano un interfaccia per facilitare la comunicazione tra gli eventi di ogni componente. Questo sistema di eventi è indipendente dal sitema degli eventi legati al DOM e lavora in modo differente.
+Tutte le istanze di Vue implementano un'interfaccia per facilitare la comunicazione tra gli eventi di ogni componente. Questo sistema di eventi è indipendente dal sitema degli eventi legati al DOM e lavora in modo differente.
 
 Tutte le istanze di Vue possono:
 
@@ -680,7 +680,7 @@ Vue.component('activate-example', {
 })
 ```
 
-Da notare che questo `activate` viene chiamato solo durante il cambio di componenti o al primo richiamo del componente stesso. Non viene chiamato se viene inserito all interno di un istanza Vue.
+Da notare che questo `activate` viene chiamato solo durante il cambio di componenti o al primo richiamo del componente stesso. Non viene chiamato se viene inserito all interno di un'istanza Vue.
 
 ### `transition-mode`
 
@@ -772,7 +772,7 @@ La motivazione dietro tutto cioè è che non si vuole legare strettamente il com
 
 ### Authoring dei Componenti Riutilizzabili
 
-Quando si effettua authoring dei componenti, è buona cosa tenere a mente quando si vuole riutilizzare tale componente altrove. A volte può capitare di avere dei componenti poco riutilizzabili ma tenete a mente che è sempre meglio esporre un interfaccia API pulita e chiara per ogni componente.
+Quando si effettua authoring dei componenti, è buona cosa tenere a mente quando si vuole riutilizzare tale componente altrove. A volte può capitare di avere dei componenti poco riutilizzabili ma tenete a mente che è sempre meglio esporre un'interfaccia API pulita e chiara per ogni componente.
 
 Le API per un componente in Vue.js si suddividono sostanzialmente in tre parti - props, eventi e slots:
 

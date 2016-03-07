@@ -6,7 +6,7 @@ order: 18
 
 La libreria principale di Vue.js è progettata per essere essenziale e flessibile - ciò è dato dal fatto che si prende cura sullo del view layer senza obbligare lo sviluppatore a qualsivoglia architettura. Questa caratteristica avvantaggi sicuramente l'introduzione di Vue.js in progetti già avviati ma potrebbe essere un problema per chi comincia un progetto da zero.
 
-L'ecosistema di Vue.js però fornisce anche degli strumenti indipendenti dalla libreria principale che ti permettono di costrutire applicazioni scalabile in Single Page. Questo tipo di desgin fa si che Vue.js ricada più sotto la categoria di framework piuttosto che di libreria javascript, ma questa è solo un introduzione al vastita di funzionalità di Vue.js; Più avanti andremo a vedeere nel dettaglio tutte le parti dello stack di Vue.js.
+L'ecosistema di Vue.js però fornisce anche degli strumenti indipendenti dalla libreria principale che ti permettono di costrutire applicazioni scalabile in Single Page. Questo tipo di desgin fa si che Vue.js ricada più sotto la categoria di framework piuttosto che di libreria javascript, ma questa è solo un'introduzione al vastita di funzionalità di Vue.js; Più avanti andremo a vedeere nel dettaglio tutte le parti dello stack di Vue.js.
 
 ## Modularizzazione
 
@@ -65,7 +65,7 @@ Con questo tipo di approccio è anche facile utilizzare librerie esterne come [P
 
 ## Comunicaione con il Server
 
-Tutte le istanze Vue hanno la proprietà `$data` direttamente serializzata tramite `JSON.stringify()` senza dover far nulla manualmente. La community di Vue ha aiutato a sviluppare un plugin chiamato [vue-resource](https://github.com/vuejs/vue-resource), il quale fornisce un interfaccia semplice ed intuitiva per lavorare con l'architettura REST. Come con il routing, puoi utilizzare qualsiasi altra liberia come `$.ajax` oppure [SuperAgent](https://github.com/visionmedia/superagent). Vue.js può anche funzionare benissimo con servizi come Firebase o Parse.
+Tutte le istanze Vue hanno la proprietà `$data` direttamente serializzata tramite `JSON.stringify()` senza dover far nulla manualmente. La community di Vue ha aiutato a sviluppare un plugin chiamato [vue-resource](https://github.com/vuejs/vue-resource), il quale fornisce un'interfaccia semplice ed intuitiva per lavorare con l'architettura REST. Come con il routing, puoi utilizzare qualsiasi altra liberia come `$.ajax` oppure [SuperAgent](https://github.com/visionmedia/superagent). Vue.js può anche funzionare benissimo con servizi come Firebase o Parse.
 
 ## Controllo dello Stato
 
@@ -119,7 +119,7 @@ Da notare che stiamo inserendo tutte le azioni che mutano lo store, dentro lo st
 
 Una cosa da notare è che non dovreste mai cambiare lo stato originale tramize le funzioni di un'istanza in particolare. Il componente e lo store devono condividere lo stesso oggetto in modo tale da poter sfruttare, ed osservare, i cambiamenti di stato.
 
-Se dovessi forzare questo cambio di stato, della proprietà nello store,  da parte dei componenti dovremmo implementare un sistema di eventi che notifichino tale azione e si arriverebbe dunque ad avere un architettura simile a quella che si trova su [Flux](https://facebook.github.io/flux/). I benefici di tale architettura sono il fatto che si possa tener traccia di tutti i cambiamenti da parte dei componenti, un debug avanzato, la possibilità di fare il revert di un cambiamento etc.
+Se dovessi forzare questo cambio di stato, della proprietà nello store,  da parte dei componenti dovremmo implementare un sistema di eventi che notifichino tale azione e si arriverebbe dunque ad avere un'architettura simile a quella che si trova su [Flux](https://facebook.github.io/flux/). I benefici di tale architettura sono il fatto che si possa tener traccia di tutti i cambiamenti da parte dei componenti, un debug avanzato, la possibilità di fare il revert di un cambiamento etc.
 
 L'architettura Flux è molto usata nelle applicazioni React. L'idea dietro Flux, comunque, è facilmente implementabile in Vue.js grazie al sistema di reattività non invasivo. Da notare che comunque quello dimostrato qui è solo un concetto, uno dei tanti scenari possibili, non è detto che vi debba servire a tutti i costi, dipende sempre da cosa state implementando.
 
@@ -144,7 +144,7 @@ module.exports = {
 }
 ```
 
-Il componente può essere utilizzato in un istanza Vue:
+Il componente può essere utilizzato in un'istanza Vue:
 
 ``` js
 // main.js
@@ -219,4 +219,4 @@ NODE_ENV=production browserify -e main.js | uglifyjs -c -m > build.js
 
 ## Esempio di Applicazione
 
-Il [Clone di HackerNews in Vue.js](https://github.com/vuejs/vue-hackernews) è un esempio completo di applicazione che utilizza Webpack + vue-loader per l'organizzazione del codice, vue-router per il routing e le API ufficiali di HackerNews come server. Non è un applicazione complessa, ne esageratamente grande, ma è un utile dimostrazione di tutti i concetti discussi in questa pagina.
+Il [Clone di HackerNews in Vue.js](https://github.com/vuejs/vue-hackernews) è un esempio completo di applicazione che utilizza Webpack + vue-loader per l'organizzazione del codice, vue-router per il routing e le API ufficiali di HackerNews come server. Non è un'applicazione complessa, ne esageratamente grande, ma è un'utile dimostrazione di tutti i concetti discussi in questa pagina.

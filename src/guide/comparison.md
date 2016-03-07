@@ -32,7 +32,7 @@ Invece di un DOM virtuale, Vue.js utilizza il DOM reale come template e mantiene
 
 In ambiente API, un problema con React (o JSX) è che la funzione di calcolo spesso coinvolge molta logica, e finisce per assomigliare più ad un pezzo di codice (quale è in effetti) più che una rappresentazione visuale dell'interfaccia. Per alcuni sviluppatori questo è un bonus, ma per figure ibride designer/sviluppatori come me, avere un template rende più semplice pensare in maniera visuale al design ed ai CSS. JSX mischiato alla logica JavaSCript rompe quel modello visuale del quale ho bisogno per mappare il codice al design. Al contrario, Vue.js paga il prezzo di un DSL (Linguaggio Specifico di Dominio) di legame dati leggero così che si abbia un template visivamente scansionabile con la logica incapsulata in filtri e direttive.
 
-Un altro problema con React è che, a causa del fatto che gli aggiornamenti del DOM sono completamente delegati al DOM virtuale, è un po' complesso quando hai **bisogno** di controllare il DOM direttamente (anche se teoricamente puoi, se lo fai stai essenzialmente remando contro il principio della libreria stessa). 
+Un altro problema con React è che, a causa del fatto che gli aggiornamenti del DOM sono completamente delegati al DOM virtuale, è un po' complesso quando hai **bisogno** di controllare il DOM direttamente (anche se teoricamente puoi, se lo fai stai essenzialmente remando contro il principio della libreria stessa).
 
 Per applicazioni che necessitano di manipolazioni DOM personalizzate ad-hoc, specialmente animazioni con particolari necessità di sincronizzazione, questa potrebbe risultare una restrizione particolarmente fastidiosa. Su questo fronte, Vue.js permette più flessibilità e ci sono [numerosi siti vincitori dei FWA/Awwwards](https://github.com/vuejs/vue/wiki/Projects-Using-Vue.js#interactive-experiences) costruiti con Vue.js.
 
@@ -40,7 +40,7 @@ Note addizionali:
 
 - Il team di React ha obiettivi molto ambiziosi per rendere React un paradigma di sviluppo UI agnostico nei confronti delle piattaforme, mentre Vue è più orientato a fornire una soluzuione pragmatica per il web.
 
-- React, a causa della sua natura funzionale, lavora molto bene con modelli di programmazione funzionali. Comunque ciò introduce anche un a curva di apprendimento più elevata per sviluppatori giovani e principianti. Vue è molto più semplice da apprendere e rendere produttivi a questo proposito.
+- React, a causa della sua natura funzionale, lavora molto bene con modelli di programmazione funzionali. Comunque ciò introduce anche una curva di apprendimento più elevata per sviluppatori giovani e principianti. Vue è molto più semplice da apprendere e rendere produttivi a questo proposito.
 
 - Per grandi applicazioni, la community di React ha fatto molto in termini di soluzioni di controllo dello stato, es. Flux/Redux. Vue da solo non mira risolvere quel problema (vale lo stesso per il nucleo di React), ma i modelli di gestione dello stato possono essere facilmente adottati per un'architettura simile. Vue ha il suo unico sistema di gestione degli stati chiamato [Vuex](https://github.com/vuejs/vuex), ed è anche possibile [usare Redux con Vue](https://github.com/egoist/revue).
 

@@ -42,7 +42,7 @@ Visto che `v-if` è una direttiva, ha bisogno di essere legata ad un elemento de
 
 ## v-show
 
-Un altra opzione per il rendering condizionato è la direttiva `v-show`. L'utilizzo è molto simile:
+Un'altra opzione per il rendering condizionato è la direttiva `v-show`. L'utilizzo è molto simile:
 
 ``` html
 <h1 v-show="ok">Hello!</h1>
