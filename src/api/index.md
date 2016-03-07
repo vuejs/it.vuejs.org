@@ -370,7 +370,7 @@ type: api
   ``` js
   var data = { a: 1 }
 
-  // Creazione di un istanza
+  // Creazione di un'istanza
   var vm = new Vue({
     data: data
   })
@@ -552,7 +552,7 @@ type: api
   Se la stringa inizia con `#` verrà usata come `querySelector` e verrà presa in considerazione tutta la porzione di HTML interna al template.
   Questo permette l'uso del comune tag `<script Tipo="x-template">`.
 
-  Da notare che in alcune situazioni, per esempio quando il template contiene un altro template di alto livello o del semplice testo, l'istanza create diventerà un Istanza Frammentata.
+  Da notare che in alcune situazioni, per esempio quando il template contiene un altro template di alto livello o del semplice testo, l'istanza create diventerà un'Istanza Frammentata.
 
 - **Vedi anche:**
   - [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
@@ -630,7 +630,7 @@ type: api
 
 - **Dettagli:**
 
-  Questa funzione viene chiamata in modo sincrono dopo che l'istanza di Vue viene creata. In questo statio, l'istanza ha già finito di processare le properità e le opzioni, il che significa 
+  Questa funzione viene chiamata in modo sincrono dopo che l'istanza di Vue viene creata. In questo statio, l'istanza ha già finito di processare le properità e le opzioni, il che significa
   che le seguenti caratteristiche sono già state istanziate: Osservazione dei dati, Proprietà derivate, Metodi, Sistema di watching ed Eventi.
   In questo stadio manca solo la compilazione del DOM e l'elemento `$el` non è ancora disponibile.
 
@@ -797,7 +797,7 @@ type: api
 
 - **Dettagli:**
 
-  Eventi è un oggetto contenente delle proprietà legate a funzioni. Eventi contiene eventi relativi a Vue e non al DOM, la chiave della proprietà 
+  Eventi è un oggetto contenente delle proprietà legate a funzioni. Eventi contiene eventi relativi a Vue e non al DOM, la chiave della proprietà
   verrà usata come nome dello specifico elemento mentre il valore in stringa, o funzione, sarà il corpo del evento stesso.
   L'istanza di Vue chiamerà `$on()` per ogni chiave trovata nel oggetto Eventi.
 
@@ -1108,7 +1108,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   2. Quando si vuole creare una coppia chiave-valore che non esisteva in precedenza.
 
   Se la chiave non esiste verrà creatà ed impostata in modo che sia reattiva.
-  Se la chiave viene impostata in un istanza di Vue che è anche root di componenti tutti i componenti attiveranno un watcher di default per la nuova chiave.
+  Se la chiave viene impostata in un'istanza di Vue che è anche root di componenti tutti i componenti attiveranno un watcher di default per la nuova chiave.
 
 - **Esempio:**
 
@@ -1471,7 +1471,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
   Aggiorna il testo dell'elemento nel quale viene utilizzato. Il testo viene aggiornao tramite `textContent`.
 
-  Internamente, l'interpolazione `{% raw %}{{ Mustache }}{% endraw %}` viene compilata come direttiva `v-text`. 
+  Internamente, l'interpolazione `{% raw %}{{ Mustache }}{% endraw %}` viene compilata come direttiva `v-text`.
   La direttiva è un pelino più performance della sua controparte ad interpolazione.
 
 - **Esempio:**
@@ -1563,14 +1563,14 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   Renderizza il blocco di elementi, o template, più volte in base ai dati che riceve.
   L'espressione contenente i dati deve rispettare una sintassi corretta in modo tale che avvenga la giusta iterazione:
   Potete usare due tipi di alias per l'iterazione `(in|of)`
-  
+
   ``` html
   <!-- Equivale a item of items !-->
   <div v-for="item in items">
     {{ item.text }}
   </div>
   ```
-  
+
   **Nota** l'utilizzo di `of` è valido solo con versioni di Vue uguali o superiori alla `v1.0.17`.
   Si può specificare un nome alternativo per l'index del ciclo for, per esempio se si ha a che fare con una collezione di oggetti:
 
@@ -1601,7 +1601,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 - **Utilizzo:**
 
   Allega un evento ad un elemento del DOM. L'evento è l'argomento di questa direttiva.
-  L'espressione può essere anche il corpo del evento stesso oppure il nome, in stringa, del evento nell'istanza di Vue. 
+  L'espressione può essere anche il corpo del evento stesso oppure il nome, in stringa, del evento nell'istanza di Vue.
 
   Quando si usano gli **eventi nativi del DOM** Vue gli ascolterà tutti. Se invece si usano eventi personalizzati andranno ascoltati dall'istanza di Vue.
 
@@ -1732,7 +1732,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### v-ref
 
-- **Non si aspetta un espressione**
+- **Non si aspetta un'espressione**
 
 - **Limitato a:** componenti figli
 
@@ -1741,7 +1741,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 - **Utilizzo:**
 
   Registra una referenza ad un componente figlio per un accesso diretto da parte del padre.
-  Questo attributo non si aspetta un espressione ma ben sì il nome del componente da referenziare.
+  Questo attributo non si aspetta un'espressione ma ben sì il nome del componente da referenziare.
   L'istanza del componente figlio sarà disponibile tramite l'oggetto `$refs`.
 
   Quando viene usato assieme a `v-for`, il valore registrato sarà un array contenente tutti i componenti figli.
@@ -1779,7 +1779,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### v-el
 
-- **Non si aspetta un espressione**
+- **Non si aspetta un'espressione**
 
 - **Argomento:** `id (richiesto)`
 
@@ -1804,7 +1804,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### v-pre
 
-- **Non si aspetta un espressione**
+- **Non si aspetta un'espressione**
 
 - **Utilizzo**
 
@@ -1819,7 +1819,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 ### v-cloak
 
-- **Non si aspetta un espressione**
+- **Non si aspetta un'espressione**
 
 - **Utilizzo:**
 
@@ -1973,7 +1973,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   Rende una stringa plurale. Quando c'è solo un argomento tenterà di aggiungere una sola `s` alla fine.
   Quando ci sono più argomenti questi ultimi verranno utilizzati per le varie forme plurali necessarie.
   Quando il numero di argomenti eccede le forme plurali, verrà utilizzata sempre l'ultima forma fornita.
-  
+
   <p class="tip">Pluralize funziona solo per la lingua inglese..</p>
 
 - **Esempio:**
@@ -2076,7 +2076,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
   Se gli elementi ciclati sono degli oggetti, il filtro cercherà di essere più ricorsivo possibile.
   Per evitare che si scorra tutto l'oggetto si può utilizzare una chiave come terzo parametro del filtro.
-  
+
   ``` html
   <div v-for="user in users | filterBy 'Jack' in 'name'">
   ```

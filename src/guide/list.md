@@ -162,7 +162,7 @@ example1.items = example1.items.filter(function (item) {
 })
 ```
 
-Potrete pensare che in questo modo Vue.js debba renderizzare di nuovo l'intera lista per aggiornare il DOM - fortunatamente non è così. Vue.js implementa della logica euristica per massimizzare il riutilizzo degli elementi nel DOM, perciò rimpiazzare un Array con un altro che contiene gli stessi elementi è un operazione molto efficente.
+Potrete pensare che in questo modo Vue.js debba renderizzare di nuovo l'intera lista per aggiornare il DOM - fortunatamente non è così. Vue.js implementa della logica euristica per massimizzare il riutilizzo degli elementi nel DOM, perciò rimpiazzare un Array con un altro che contiene gli stessi elementi è un'operazione molto efficente.
 
 ### track-by
 

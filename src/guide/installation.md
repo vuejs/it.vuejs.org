@@ -30,7 +30,7 @@ Alcuni ambienti, come il Google Chrome Apps, obbligano l'utilizzo delle CSP (Con
 
 ## NPM
 
-NPM è il sistema di installazione consigliato quando si costruiscono applicazioni di modeste dimensioni con Vue.js. Si accoppia in modo ottimale con i comuni moduli di CommonJS come, per esempio, [Webpack](http://webpack.github.io/) oppure [Browserify](http://browserify.org/). Vue.js inoltre fornisce uno strumento di accompagnamento per l'authoring di [Componenti a file Singolo](application.html#Single_File_Components).
+NPM è il sistema di installazione consigliato quando si costruiscono applicazioni di grosse dimensioni con Vue.js. Si accoppia in modo ottimale con i comuni moduli di CommonJS come, per esempio, [Webpack](http://webpack.github.io/) oppure [Browserify](http://browserify.org/). Vue.js inoltre fornisce uno strumento di accompagnamento per l'authoring di [Componenti a file Singolo](application.html#Single_File_Components).
 
 ``` bash
 # Ultima version stabile
@@ -41,12 +41,12 @@ $ npm install vue@csp
 
 ## CLI
 
-Vue.js fornisce anche un'interfaccia [CLI ufficiale](https://github.com/vuejs/vue-cli) per una creazione rapida di Applicazioni a Pagina Singola. Questa interfaccia fornisce un interessante e veloce feedback per un flusso di lavoro moderno e dinamico. Vi aiuterà a impostare nuove applicazioni in pochi minuti tramite hot-reload e auto costruzione delle versioni da pubblicare di Vue.js:
+Vue.js fornisce anche un'interfaccia [CLI ufficiale](https://github.com/vuejs/vue-cli) per una creazione rapida di Applicazioni a Pagina Singola. Questa interfaccia fornisce un interessante e veloce feedback per un flusso di lavoro moderno e dinamico. Vi aiuterà a impostare nuove applicazioni in pochi minuti tramite hot-reload, pulizia del codice al salvataggio e auto costruzione delle versioni da pubblicare di Vue.js:
 
 ``` bash
 # installate vue-cli
 $ npm install -g vue-cli
-# creare un nuovo progetto usanto "webpack" come scheletro
+# create un nuovo progetto usando "webpack" come scheletro
 $ vue init webpack my-project
 # installate le dipendenze e siete pronti a partire!
 $ cd my-project
@@ -56,7 +56,7 @@ $ npm run dev
 
 ## Versione per lo Sviluppo
 
-**Attenzione**: Il pacchetto CommonJS distribuito via NPM (`vue.common.js`) **non è** checked into source control, perciò per usare l'ultima versione del codice sorgente di Vue.js dovrete ricompilarlo a mano!
+**Attenzione**: Il pacchetto CommonJS distribuito via NPM (`vue.common.js`) **non è** sotto revisione del codice, perciò per usare l'ultima versione del codice sorgente di Vue.js dovrete ricompilarlo a mano!
 
 ``` bash
 git clone https://github.com/vuejs/vue.git node_modules/vue
@@ -74,4 +74,4 @@ $ bower install vue
 
 ## Caricatore dei Moduli AMD
 
-La versione locale o quelle installate via Bower sono racchiuse utilizzando un UMD pertanto possono essere utilizzate direttamente come moduli AMD.
+La versione locale o quelle installate via Bower sono racchiuse utilizzando UMD pertanto possono essere utilizzate direttamente come moduli AMD.

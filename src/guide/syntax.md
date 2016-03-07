@@ -48,7 +48,7 @@ Da notare che l'interpolazione degli attributi è disabilitata nelle specifiche 
 
 ## Espressioni Vincolanti
 
-Il testo all'interno delle doppie parentesi graffe viene chiamato **espressione vincolante**. In Vue.js, un espressione vincolante consiste in una singola espressione JavaScript seguita, molte volta, da uno o più filtri dedicati.
+Il testo all'interno delle doppie parentesi graffe viene chiamato **espressione vincolante**. In Vue.js, un'espressione vincolante consiste in una singola espressione JavaScript seguita, molte volta, da uno o più filtri dedicati.
 
 ### Espressioni in JavaScript
 
@@ -65,7 +65,7 @@ Fin'ora abbiamo solo visto come vegono gestite le proprità dell'oggetto `data` 
 Queste espressioni vengono valutate nell'ambito di chi, in quel momento, detiene l'istanza Vue utilizzata. Questo sistema ha una sola restrizione, ogni doppia graffa può contenere **una singola espressione** perciò i seguenti esempi **NON** funzioneranno:
 
 ``` html
-<!-- Questa, in particolare, non è un espressione: -->
+<!-- Questa, in particolare, non è un'espressione: -->
 {{ var a = 1 }}
 
 <!-- Costrutti di controllo non funzionano: -->
@@ -74,7 +74,7 @@ Queste espressioni vengono valutate nell'ambito di chi, in quel momento, detiene
 
 ### Filtri
 
-Vue.js permette di inserire dei "filtri" opzionali alla fine di un espressione tra parentesi graffe, tutti i filtri sono suddivisi da una `pipe`:
+Vue.js permette di inserire dei "filtri" opzionali alla fine di un'espressione tra parentesi graffe, tutti i filtri sono suddivisi da una `pipe`:
 
 ``` html
 {{ message | capitalize }}
