@@ -190,9 +190,9 @@ Ecco una lista completa di tutti gli alias:
 Vue.directive('on').keyCodes.f1 = 112
 ```
 
-## Perchè ascoltare gli eventi via HTML?
+## Perché ascoltare gli eventi via HTML?
 
-Forse sarete preoccupati a vedere tutti questi eventi ascoltati tramite direttive via HTML, potrebbe sembrare che stessimo violando la vecchia regola di "Separazione dei compiti". Non vi preoccupate - perchè tutta la gestione Vue.js la lega alla vista corrente, non ci sono difficoltà nello scalare e mantenere questa mentalità che deriva dall approcio del ViewModel. Difatti ci sono tre vantaggi nell utilizzo di `v-on`:
+Forse sarete preoccupati a vedere tutti questi eventi ascoltati tramite direttive via HTML, potrebbe sembrare che stessimo violando la vecchia regola di "Separazione dei compiti". Non vi preoccupate - perché tutta la gestione Vue.js la lega alla vista corrente, non ci sono difficoltà nello scalare e mantenere questa mentalità che deriva dall approcio del ViewModel. Difatti ci sono tre vantaggi nell utilizzo di `v-on`:
 
 1. Rendere più facile capire quali metodi in JavaScript gestiscono quali eventi nel template HTML.
 

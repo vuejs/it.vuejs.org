@@ -12,7 +12,7 @@ gz_size: "24.77"
 
 ## Locale
 
-Per installare Vue.js in locale scaricate lo script ed includetelo nel classico script tag. `Vue` verrà registrata come variabile globale. **Ricorda: Non usate la versione compressa durante lo sviluppo perchè andreste a perdere tutti gli avvisi per eventuali errori comuni.**
+Per installare Vue.js in locale scaricate lo script ed includetelo nel classico script tag. `Vue` verrà registrata come variabile globale. **Ricorda: Non usate la versione compressa durante lo sviluppo perché andreste a perdere tutti gli avvisi per eventuali errori comuni.**
 
 <div id="downloads">
 <a class="button" href="/js/vue.js" download>Versione per lo Sviluppo</a><span class="light info">Completa di avvisi e modalità debug</span>

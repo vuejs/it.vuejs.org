@@ -758,7 +758,7 @@ Potete usare `v-for` sui componenti come fate su qualsiasi altro elemento:
 <my-component v-for="item in items"></my-component>
 ```
 
-Però, tale metodo non passerà nessun dato al componente perchè ogni componente ha il proprio ambito isolato. Per passargli i dati tramite un ciclo `v-for` dovete utilizzare una sintassi del tipo:
+Però, tale metodo non passerà nessun dato al componente perché ogni componente ha il proprio ambito isolato. Per passargli i dati tramite un ciclo `v-for` dovete utilizzare una sintassi del tipo:
 
 ``` html
 <my-component
@@ -904,7 +904,7 @@ Ci sono molte situazione che possono trasformare una istanza Vue in un'**istanza
 
 La ragione per la quale tutte questi punto possono portare ad una istanza frammentata è che non si riesce più a definire quale sia l'elemento di rotto principale, questo costringe Vue a gestire tutto il contenuto del DOM come un template. Questo non impedirà di renderizzare il tutto correttamente ma non avendo un elemento di root l'opzione `$el` punterà ad un elemento non corretto, di solito un elemento del DOM testuale.
 
-La cosa più importante di ciò è che **verranno ignorate tutte le direttive non di controllo, tutti gli attributi che non sono prop e tutte le transizioni dei componenti**, perchè non c'è nessun elemento di root definito al quale legarle:
+La cosa più importante di ciò è che **verranno ignorate tutte le direttive non di controllo, tutti gli attributi che non sono prop e tutte le transizioni dei componenti**, perché non c'è nessun elemento di root definito al quale legarle:
 
 ``` html
 <!-- Non funzionerà -->

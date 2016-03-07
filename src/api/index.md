@@ -133,7 +133,7 @@ type: api
 
 - **Utilizzo:**
 
-  Ritarda la funzione perchè venga eseguita al ciclo successivo di update del DOM. Da usare immediatamente dopo un cambiamento dei dati per aspettare l'aggiornamento del DOM.
+  Ritarda la funzione perché venga eseguita al ciclo successivo di update del DOM. Da usare immediatamente dopo un cambiamento dei dati per aspettare l'aggiornamento del DOM.
 
   ``` js
   // Modifica del dato
@@ -356,12 +356,12 @@ type: api
   Quando viene passato alla proprietà data di Vue.js, quest'ultimo cercherà di convertire, in modo ricorsivo, tutte le proprietà in getter/setter in modo da renderle "reattive".
   **L'oggetto dev'essere nativo**: eventuali getter/setter già presenti verranno ignorati. Non è raccomandato osservare oggetti complessi.
 
-  Quando definite un **componente**, la proprietà `data` dev'essere dichiarata come funzione la quale restituisce l'oggetto finale, questo perchè vi possono essere più istanze dello stesso componente.
+  Quando definite un **componente**, la proprietà `data` dev'essere dichiarata come funzione la quale restituisce l'oggetto finale, questo perché vi possono essere più istanze dello stesso componente.
   Se non facessimo così ogni istanza del componente **avrebbe una proprietà data condivisa** tra tutte le istanze del componente stesso. Con la funzione, invece, ogni istanza avrà sempre una copia diversa della proprietà data.
 
   Una volta che l'istanza è creata, l'oggetto originale potrà essere utilizzato tramite `vm.$data`. L'istanza di Vue farà anche da Proxy per tutte le proprietà trovate nell'ogetto data.
 
-  Le proprietà che iniziano con `_` o `$` **non verranno** incluse nel sistema di Proxy di Vue.js perchè potrebbero dare problemi con alcuni metodi interni di Vue stesso. Potrete comunque accedervi tramite `vm.$data._property`.
+  Le proprietà che iniziano con `_` o `$` **non verranno** incluse nel sistema di Proxy di Vue.js perché potrebbero dare problemi con alcuni metodi interni di Vue stesso. Potrete comunque accedervi tramite `vm.$data._property`.
 
   Se avete bisogno di un clone fedele dell oggetto originale, potete ottenerlo usando `vm.$data` tramite `JSON.parse(JSON.stringify(...))`.
 
@@ -459,21 +459,21 @@ type: api
   - [Proprietà Derivate](/guide/computed.html)
   - [Reattività in Dettaglio: Le Properità Derivate](/guide/reactivity.html#Inside_Computed_Properties)
 
-### metodos
+### methods
 
 - **Tipo:** `Oggetto`
 
 - **Dettagli:**
 
-  metodos è un oggetto che contiene nuove funzioni che possono essere usate dall'istanza corrente di Vue. Questi metodi possono essere usanti anche internamente al DOM, sottoforma di espressioni.
-  Tutti i metodi creati dentro metodos avranno `this` puntato all'istanza di Vue.
+  Methods è un oggetto che contiene nuove funzioni che possono essere usate dall'istanza corrente di Vue. Questi metodi possono essere usanti anche internamente al DOM, sottoforma di espressioni.
+  Tutti i metodi creati dentro metodi avranno `this` puntato all'istanza di Vue.
 
 - **Esempio:**
 
   ```js
   var vm = new Vue({
     data: { a: 1 },
-    metodos: {
+    methods: {
       plus: function () {
         this.a++
       }
@@ -492,7 +492,7 @@ type: api
 - **Dettagli:**
 
   Watch contiene delle funzioni dove la chiave è l'espressione da osservare ed il corpo della funzione è il valore di tale chiave.
-  La funzione può essere anche una stringa che punta ad un Metodo interno alla proprietà metodos vista precedentemente oppure un oggetto che contiene un handler, la funzione, e la "profondità" del watch stesso.
+  La funzione può essere anche una stringa che punta ad un Metodo interno alla proprietà metodi vista precedentemente oppure un oggetto che contiene un handler, la funzione, e la "profondità" del watch stesso.
   L'istanza di Vue chiamerà `$watch()` per ogni chiave in data al momento dell'istanziazione.
 
 - **Esempio:**
@@ -507,7 +507,7 @@ type: api
         console.log('new: %s, old: %s', val, oldVal)
       },
       // Metodo come stringa
-      'b': 'somemetodo',
+      'b': 'someMethod',
       // Oggetto
       'c': {
         handler: function (val, oldVal) { /* ... */ },
@@ -815,7 +815,7 @@ type: api
       // si può anche usare una stringa
       bye: 'sayGoodbye'
     },
-    metodos: {
+    metodi: {
       sayGoodbye: function () {
         console.log('Ciao Ciao!')
       }
@@ -826,7 +826,7 @@ type: api
   ```
 
 - **Vedi anche:**
-  - [Metodi di Istanza - Eventi](#Instance_metodos_/_Eventi)
+  - [Metodi di Istanza - Eventi](#Instance_Methods_/_Events)
   - [Comunicazione Padre-Figlio](/guide/components.html#Parent-Child_Communication)
 
 ### mixins
@@ -1009,7 +1009,7 @@ type: api
   Se qualche cambiamento viene rilevate la funzione riceverà il vecchio valore ed il nuovo valore.
   L'espressione può essere di tipo chiave-valore o una stringa logica.
 
-<p class="tip">Si noti: quando si modifica (invece di rimpazzare) un Oggetto od un Array, il vecchio valore coinciderà con quello nuovo perchè le referenze sono le stesse.
+<p class="tip">Si noti: quando si modifica (invece di rimpazzare) un Oggetto od un Array, il vecchio valore coinciderà con quello nuovo perché le referenze sono le stesse.
 Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Esempio:**
@@ -1277,7 +1277,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   child2.$dispatch('test')
   // -> "secondo figlio notificato"
   // -> "primo figlio notificato"
-  // Il padre non viene notificato perchè il primo figlio non ha return true.
+  // Il padre non viene notificato perché il primo figlio non ha return true.
   ```
 
 - **Vedi anche:** [Comuniccazione Padre-Figlio](/guide/components.html#Parent-Child_Communication)
@@ -1316,7 +1316,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   parent.$broadcast('test')
   // -> "Figlio 1 notificato"
   // -> "Figlio 2 notificato"
-  // Figlio3 non viene notificato perchè figlio2 non restituisce true.
+  // Figlio3 non viene notificato perché figlio2 non restituisce true.
   ```
 
 ## Metodi di Istanza / DOM
@@ -1390,7 +1390,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   ``` js
   new Vue({
     // ...
-    metodos: {
+    metodi: {
       // ...
       Esempio: function () {
         // modifica un dato
@@ -1494,7 +1494,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   Internamente l'interpolazione del tipo `{% raw %}{{{ Mustache }}}{% endraw %}` viene compilata come uan direttiva `v-html`.
   La direttiva è un pelino più performance della sua controparte ad interpolazione.
 
-  <p class="tip">Renderizzare HTML in modo dinamico può essere pericoloso perchè potete essere soggetti ad [Attacchi XSS](https://it.wikipedia.org/wiki/Cross-site_scripting).
+  <p class="tip">Renderizzare HTML in modo dinamico può essere pericoloso perché potete essere soggetti ad [Attacchi XSS](https://it.wikipedia.org/wiki/Cross-site_scripting).
   Usate `v-html` solo su contenuto che ritenete sicuro e **MAI** su contenuto fornito dagli utenti.</p>
 
 - **Esempio:**

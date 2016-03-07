@@ -27,7 +27,7 @@ E se usate dei pre processori potete addirittura scrivere:
 <img src="/images/vue-component-with-pre-processors.png">
 
 Potete costruire questi file singoli usando Webpack + [vue-loader](https://github.com/vuejs/vue-loader) oppure Browserify + [vueify](https://github.com/vuejs/vueify).
-Il team di Vue.js vi consiglia l'utilizzo di Webpack perchè è più facile tracciare le dipendenze tra i vari componenti rispetto a Browserify.forms.
+Il team di Vue.js vi consiglia l'utilizzo di Webpack perché è più facile tracciare le dipendenze tra i vari componenti rispetto a Browserify.forms.
 
 Potete trovare gli esempi ufficiali su Github:
 

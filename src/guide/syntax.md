@@ -44,7 +44,7 @@ Le parentesi graffe possono essere usate anche negli attributi dello specifico e
 <div id="item-{{ id }}"></div>
 ```
 
-Da notare che l'interpolazione degli attributi è disabilitata nelle specifiche direttive oppure negli attributi personali di Vue.js. Non preoccupatevi perchè Vue.js vi allerterà qualora utilizziate male le parentesi graffe.
+Da notare che l'interpolazione degli attributi è disabilitata nelle specifiche direttive oppure negli attributi personali di Vue.js. Non preoccupatevi perché Vue.js vi allerterà qualora utilizziate male le parentesi graffe.
 
 ## Espressioni Vincolanti
 
@@ -135,11 +135,11 @@ I modificatori sono suffissi speciali, separati da un punto, che indica in che m
 <a v-bind:href.literal="/a/b/c"></a>
 ```
 
-Ovviamente questo esempio sembra fuorviante perchè potremmo fare benissimo `href="/a/b/c"` invece di usare una direttiva. Abbiamo usato questo esempio solo per farvi vedere la sintassi, successivamente vedremo degli usi più pratici.
+Ovviamente questo esempio sembra fuorviante perché potremmo fare benissimo `href="/a/b/c"` invece di usare una direttiva. Abbiamo usato questo esempio solo per farvi vedere la sintassi, successivamente vedremo degli usi più pratici.
 
 ## Scorciatoie
 
-Il prefisso `v-` è prettamente utilizza per marcare tutti gli attributi specifici di Vue.js. E' molto utile quando Vue.js applica comportamenti dinamici a del markup giù esistente, ma può sembrare prolisso quando si inizia ad utilizzare molto spesso. Allo stesso tempo il prefisso `v-` diventa sempre meno importante quando si costruisco applicazioni quasi interamente con Vue.js. Ecco perchè Vue.js offre delle interessanti ed utili scorciatoie per due delle direttive più utilizzate `v-bind` e `v-on`:
+Il prefisso `v-` è prettamente utilizza per marcare tutti gli attributi specifici di Vue.js. E' molto utile quando Vue.js applica comportamenti dinamici a del markup giù esistente, ma può sembrare prolisso quando si inizia ad utilizzare molto spesso. Allo stesso tempo il prefisso `v-` diventa sempre meno importante quando si costruisco applicazioni quasi interamente con Vue.js. Ecco perché Vue.js offre delle interessanti ed utili scorciatoie per due delle direttive più utilizzate `v-bind` e `v-on`:
 
 ### Scorciatoia per `v-bind`
 

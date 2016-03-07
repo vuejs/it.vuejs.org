@@ -225,4 +225,4 @@ new Vue({
 </script>
 {% endraw %}
 
-Spero che questa introduzione di base vi abbia dato un idea di come Vue.js lavori. Sono sicuro che avrete molte domande ora, continuate a leggere questa guida perchè vi risponderemo a tutto.
+Spero che questa introduzione di base vi abbia dato un idea di come Vue.js lavori. Sono sicuro che avrete molte domande ora, continuate a leggere questa guida perché vi risponderemo a tutto.

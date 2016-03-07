@@ -4,7 +4,7 @@ type: guide
 order: 5
 ---
 
-Le proprietà in-template sono molto comode per alcuni piccoli task dove le espressioni non sono complesse. Inserire troppa logica, calcolata al momento, in un template strutturato e complesso può diventare difficile da mantenere. Ecco perchè Vue.js limita la logica di una proprietà in-template ad una sola espressione, quasi primitiva. Per qualsiasi altro scopo, più complesso, esistono le **Proprietà Derivate**.
+Le proprietà in-template sono molto comode per alcuni piccoli task dove le espressioni non sono complesse. Inserire troppa logica, calcolata al momento, in un template strutturato e complesso può diventare difficile da mantenere. Ecco perché Vue.js limita la logica di una proprietà in-template ad una sola espressione, quasi primitiva. Per qualsiasi altro scopo, più complesso, esistono le **Proprietà Derivate**.
 
 ### Esempio Iniziale
 

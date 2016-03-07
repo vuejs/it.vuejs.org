@@ -88,7 +88,7 @@ var exampleVM2 = new Vue({
 </script>
 {% endraw %}
 
-In questo esempio abbiamo visto qualcosa di relativamente nuovo. L'attributo `v-if` che vedete è chiamato **Direttiva**. Le Direttive hanno il prefisso `v-` per indicare che sono attributi speciali che Vue.js fornisce, avrete già capito perchè, per applicare condizioni particolari al DOM. Provate voi stessi, come prima, cambiare il valore di `exampleVM2.greeting` a `false` tramite la console. Se tutto è fatto in maniera corretta dovreste vedere il messaggio "Ciao!" scomparire.
+In questo esempio abbiamo visto qualcosa di relativamente nuovo. L'attributo `v-if` che vedete è chiamato **Direttiva**. Le Direttive hanno il prefisso `v-` per indicare che sono attributi speciali che Vue.js fornisce, avrete già capito perché, per applicare condizioni particolari al DOM. Provate voi stessi, come prima, cambiare il valore di `exampleVM2.greeting` a `false` tramite la console. Se tutto è fatto in maniera corretta dovreste vedere il messaggio "Ciao!" scomparire.
 
 Il secondo esempio è una dimostrazione di come non solo possiamo vincolare il DOM con i dati, ma possiamo anche vincolare la **struttura** del DOM in base ai dati. Vue.js fornisce anche un potente sistema di effetti transizioni applicabili quando si aggiungono/rimuovono elementi dal DOM.
 
@@ -96,7 +96,7 @@ Ci sono molte altre direttive, ognuna ha delle caratteristiche speciali. Per ese
 
 ## Sistema a Componenti
 
-Il Sistema a Componenti è un altro concetto fondamentale in Vue.js, perchè è una astrazione che ci aiuta a construire applicazioni su larga scala composte da piccoli componenti, isolati e riutilizzabili. Se ci pensiamo, quasi qualsiai interfaccia si può pensare come un albero di componenti:
+Il Sistema a Componenti è un altro concetto fondamentale in Vue.js, perché è una astrazione che ci aiuta a construire applicazioni su larga scala composte da piccoli componenti, isolati e riutilizzabili. Se ci pensiamo, quasi qualsiai interfaccia si può pensare come un albero di componenti:
 
 ![Albero a Componenti](/images/components.png)
 

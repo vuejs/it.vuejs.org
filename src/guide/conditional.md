@@ -69,7 +69,7 @@ L'elemento `v-else` deve seguire immediatamente `v-if` o `v-show` - altrimenti v
 
 ## v-if vs. v-show
 
-Quando un blocco `v-if` viene attivato, Vue.js dovrà fare un rendering parziale perchè il condenuto dentro a `v-if` può contenere altri vincoli o espressioni. `v-if` effettua un vero e proprio rendering per assicurarsi che tutti i componenti figli, nel caso ci siano, vengano gestiti a dovere e distrutti/ricreati in base allo stato della condizione di `v-if`.
+Quando un blocco `v-if` viene attivato, Vue.js dovrà fare un rendering parziale perché il condenuto dentro a `v-if` può contenere altri vincoli o espressioni. `v-if` effettua un vero e proprio rendering per assicurarsi che tutti i componenti figli, nel caso ci siano, vengano gestiti a dovere e distrutti/ricreati in base allo stato della condizione di `v-if`.
 
 `v-if` è definito **lazy**: se la condizione non è soddisfatta al primo rendering, non succederà nulla - il rendering non inizia finché la condizione non è soddisfatta per la prima volta (e successivamente viene messa in cache).
 

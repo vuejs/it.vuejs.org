@@ -91,7 +91,7 @@ Vi sono anche due ragioni dietro questo suggerimento:
 
 1. L'oggetto `data` è come lo schema per il vostro componente ed il suo stato. Dichiarare tutte le properità al suo interno rende il componente più facile da capire ed utilizzare.
 
-2. Aggiungere una properità reattiva al livello alto della vostra istanza Vue obbligherà i watchers a rivalutare l'istanza stessa, perchè non esiste un watcher che aveva tale properità come dipendenza. Le prestazioni di tale operazione sono accettabili (e sono molto simili alle prestazioni del controllo analogo su Angular), ma si possono evitare problemi con la dichiarazione delle properità nell oggetto data.
+2. Aggiungere una properità reattiva al livello alto della vostra istanza Vue obbligherà i watchers a rivalutare l'istanza stessa, perché non esiste un watcher che aveva tale properità come dipendenza. Le prestazioni di tale operazione sono accettabili (e sono molto simili alle prestazioni del controllo analogo su Angular), ma si possono evitare problemi con la dichiarazione delle properità nell oggetto data.
 
 ## Coda di aggiornamento Asincrona
 
@@ -141,9 +141,9 @@ Vue.component('example', {
 
 ## Le proprietà derivate
 
-Come visto in precedenza, Vue.js **non** tratta le proprietà derivate come dei semplici getters. Ogni proprietà derivata tiene traccia delle dipendenze a lei associate, ovvero le proprietà dalla quale deriva. Quando una properità derivata viene richiamata, Vue.js aggiorna la lista delle dipendenze di tale proprietà e tiene in cache il risultato. Tale cache viene invalidata, e ricalcolata, ogni volta che una dipendenza cambia stato/valore. Questo fa si che se non viene cambiato lo stato, la proprietà derivata accederà sempre e solo al valore salvato nella cache, invece di richiamare la properità tramite un getter.
+Come visto in precedenza, Vue.js **non** tratta le proprietà derivate come dei semplici getter. Ogni proprietà derivata tiene traccia delle dipendenze a lei associate, ovvero le proprietà dalla quale deriva. Quando una properità derivata viene richiamata, Vue.js aggiorna la lista delle dipendenze di tale proprietà e tiene in cache il risultato. Tale cache viene invalidata, e ricalcolata, ogni volta che una dipendenza cambia stato/valore. Questo fa si che se non viene cambiato lo stato, la proprietà derivata accederà sempre e solo al valore salvato nella cache, invece di richiamare la properità tramite un getter.
 
-Perchè abbiamo bisogno del sistema di caching? Immaginate di avere una proprietà derivata che effettua molte istruzioni, portando via tempo computazionale, chiamiamola **A**. Poi abbiamo un'altra properità derivata che dipende da **A**, ogni volta che viene chiamata questa nuova properità derivata **A** dovrebbe rifare tutti i calcoli!
+Perché abbiamo bisogno del sistema di caching? Immaginate di avere una proprietà derivata che effettua molte istruzioni, portando via tempo computazionale, chiamiamola **A**. Poi abbiamo un'altra properità derivata che dipende da **A**, ogni volta che viene chiamata questa nuova properità derivata **A** dovrebbe rifare tutti i calcoli!
 
 A causa del sistema di cachine, la funzione di getter non viene sempre richiamata ma, considerate il seguente esempio:
 
@@ -160,7 +160,7 @@ var vm = new Vue({
 })
 ```
 
-La properità derivata `example` ha solo una dipendenza: `vm.msg`. `Date.now()` **non è** una dipendenza reattiva, perchè non ha niente a che fare con il sistema di osservamento dati di Vue. Ogni volta che `example` verrà chiamata, la data calcolata sarà sempre la stesse a meno che `vm.msg` non scateni una rivalutazione, tramite cambiamento del suo stato.
+La properità derivata `example` ha solo una dipendenza: `vm.msg`. `Date.now()` **non è** una dipendenza reattiva, perché non ha niente a che fare con il sistema di osservamento dati di Vue. Ogni volta che `example` verrà chiamata, la data calcolata sarà sempre la stesse a meno che `vm.msg` non scateni una rivalutazione, tramite cambiamento del suo stato.
 
 In alcuni casi avrete bisogno di ottenere sempre il getter senza cache. Potete farlo disattivando la cache per ogni properità derivata:
 
