@@ -815,7 +815,7 @@ type: api
       // si può anche usare una stringa
       bye: 'sayGoodbye'
     },
-    metodi: {
+    methods: {
       sayGoodbye: function () {
         console.log('Ciao Ciao!')
       }
@@ -1390,7 +1390,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   ``` js
   new Vue({
     // ...
-    metodi: {
+    methods: {
       // ...
       Esempio: function () {
         // modifica un dato
