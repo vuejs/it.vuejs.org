@@ -1,6 +1,6 @@
 ---
 title: Transizioni
-type: guide
+type: guida
 order: 11
 ---
 

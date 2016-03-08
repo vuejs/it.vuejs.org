@@ -1,6 +1,6 @@
 ---
 title: Panoramica
-type: guide
+type: guida
 order: 2
 ---
 

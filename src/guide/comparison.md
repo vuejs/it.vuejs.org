@@ -1,6 +1,6 @@
 ---
 title: Confronto con altri Framework
-type: guide
+type: guida
 order: 19
 ---
 

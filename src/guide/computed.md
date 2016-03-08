@@ -1,6 +1,6 @@
 ---
 title: Proprietà Derivate
-type: guide
+type: guida
 order: 5
 ---
 

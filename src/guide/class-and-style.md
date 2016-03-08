@@ -1,6 +1,6 @@
 ---
 title: Vincolo sul CSS
-type: guide
+type: guida
 order: 6
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Costruire un'Applicazione scalabile
-type: guide
+type: guida
 order: 18
 ---
 

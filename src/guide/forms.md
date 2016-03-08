@@ -1,6 +1,6 @@
 ---
 title: Vincolo sugli input dei Form
-type: guide
+type: guida
 order: 10
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Rendering di Liste
-type: guide
+type: guida
 order: 8
 ---
 

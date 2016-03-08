@@ -1,6 +1,6 @@
 ---
 title: Mixins
-type: guide
+type: guida
 order: 16
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Installazione
-type: guide
+type: guida
 order: 0
 vue_version: 1.0.17
 dev_size: "254.66"

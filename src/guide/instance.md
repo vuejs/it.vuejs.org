@@ -1,6 +1,6 @@
 ---
 title: L'instanza di Vue
-type: guide
+type: guida
 order: 3
 ---
 

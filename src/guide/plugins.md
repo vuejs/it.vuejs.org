@@ -1,6 +1,6 @@
 ---
 title: Plugins
-type: guide
+type: guida
 order: 17
 ---
 

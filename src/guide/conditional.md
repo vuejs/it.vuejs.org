@@ -1,6 +1,6 @@
 ---
 title: Rendering Condizionato
-type: guide
+type: guida
 order: 7
 ---
 

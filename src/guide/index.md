@@ -1,6 +1,6 @@
 ---
 title: Per Iniziare
-type: guide
+type: guida
 order: 1
 ---
 

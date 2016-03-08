@@ -1,6 +1,6 @@
 ---
 title: Direttive Personalizzate
-type: guide
+type: guida
 order: 14
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Sintassi del Vincolo dei Dati
-type: guide
+type: guida
 order: 4
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Filtri Personalizzati
-type: guide
+type: guida
 order: 15
 ---
 

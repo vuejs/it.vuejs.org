@@ -1,6 +1,6 @@
 ---
 title: Gestione degli Eventi e dei Metodi
-type: guide
+type: guida
 order: 9
 ---
 

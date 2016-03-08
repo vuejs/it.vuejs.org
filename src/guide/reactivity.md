@@ -1,6 +1,6 @@
 ---
 title: Reattività nel Dettaglio
-type: guide
+type: guida
 order: 13
 ---
 
