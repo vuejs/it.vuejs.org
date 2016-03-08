@@ -1,6 +1,6 @@
 ---
 title: Grafico in SVG
-type: examples
+type: esempi
 order: 5
 ---
 

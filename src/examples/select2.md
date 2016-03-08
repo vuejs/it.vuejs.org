@@ -1,6 +1,6 @@
 ---
 title: Direttiva Customizzata
-type: examples
+type: esempi
 order: 8
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Testata Elastica
-type: examples
+type: esempi
 order: 7
 ---
 

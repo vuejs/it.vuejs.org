@@ -1,6 +1,6 @@
 ---
 title: Firebase + Validazione
-type: examples
+type: esempi
 order: 2
 ---
 

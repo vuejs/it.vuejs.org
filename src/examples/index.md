@@ -1,6 +1,6 @@
 ---
 title: Editor Markdown
-type: examples
+type: esempi
 order: 0
 ---
 

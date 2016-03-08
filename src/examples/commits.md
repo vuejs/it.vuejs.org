@@ -1,6 +1,6 @@
 ---
 title: I Commit di Github
-type: examples
+type: esempi
 order: 1
 ---
 

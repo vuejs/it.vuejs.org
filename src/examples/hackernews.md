@@ -1,6 +1,6 @@
 ---
 title: Clone di HackerNews
-type: examples
+type: esempi
 order: 10
 ---
 

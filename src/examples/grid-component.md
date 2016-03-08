@@ -1,6 +1,6 @@
 ---
 title: Griglia
-type: examples
+type: esempi
 order: 3
 ---
 

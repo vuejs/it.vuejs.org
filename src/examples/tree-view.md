@@ -1,6 +1,6 @@
 ---
 title: Vista ad Albero
-type: examples
+type: esempi
 order: 4
 ---
 

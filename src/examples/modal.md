@@ -1,6 +1,6 @@
 ---
 title: Componente Modale
-type: examples
+type: esempi
 order: 6
 ---
 
