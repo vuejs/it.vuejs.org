@@ -4,9 +4,11 @@ type: guide
 order: 1
 ---
 
-Iniziamo con un piccolo e veloce tour di come funziona il vincolo dei dati. Se sei più interessato a capire come funziona il tutto da una prospettiva più ampia leggi [questo post](http://blog.evanyou.me/2015/10/25/vuejs-re-introduction/).
+Iniziamo con un piccolo e veloce tour di come funziona il binding dei dati.
+Se sei più interessato a capire come funziona il tutto da una prospettiva più ampia leggi [questo post](http://blog.evanyou.me/2015/10/25/vuejs-re-introduction/).
 
-Il modo più facile di provare Vue.js è di utilizzare [l'esempio su JSFiddle](https://jsfiddle.net/yyx990803/okv0rgrk/). Sentiti libero di aprilo in un'altra tab e di seguire l'esempio assieme a questa documentazione, se invece preferisci installare Vue.js consulta la pagina [Installazione](/guide/installation.html).
+Il modo più facile di provare Vue.js è di utilizzare [l'esempio su JSFiddle](https://jsfiddle.net/yyx990803/okv0rgrk/).
+Sentiti libero di aprilo in un'altra tab e di seguire l'esempio assieme a questa documentazione, se invece preferisci installare Vue.js consulta la pagina [Installazione](/guide/installation.html).
 
 ### Ciao Mondo!
 
@@ -37,7 +39,7 @@ new Vue({
 </script>
 {% endraw %}
 
-### Vincolo a due Direzioni
+### Two Way Binding
 
 ``` html
 <div id="app">
@@ -225,4 +227,5 @@ new Vue({
 </script>
 {% endraw %}
 
-Spero che questa introduzione di base vi abbia dato un'idea di come Vue.js lavori. Sono sicuro che avrete molte domande ora, continuate a leggere questa guida perché vi risponderemo a tutto.
+Speriamo che questa introduzione di base vi abbia dato un'idea di come Vue.js lavori.
+Siamo sicuri che avrete molte domande ora, continuate a leggere questa guida perché vi risponderemo a tutto.
