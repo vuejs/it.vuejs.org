@@ -59,7 +59,7 @@ $ npm run dev
 
 ## Versione per lo Sviluppo
 
-**Attenzione**: Il pacchetto CommonJS distribuito via NPM (`vue.common.js`) **non è** sotto sincronizzato con la repository principale, perciò per usare l'ultima versione del codice sorgente di Vue.js dovrete ricompilarlo a mano!
+**Attenzione**: Il pacchetto CommonJS distribuito via NPM (`vue.common.js`) **non è** sincronizzato con la repository principale, perciò per usare l'ultima versione del codice sorgente di Vue.js dovrete ricompilarlo a mano!
 
 ``` bash
 git clone https://github.com/vuejs/vue.git node_modules/vue
