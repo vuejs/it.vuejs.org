@@ -18,7 +18,7 @@ Se non gli avete mai usati prima, è raccomandato iniziare a familiarizzare con 
 
 ## Componenti su File Singolo
 
-In un progetto tipico di Vue.js, la nostra interfaccia sarà divisa in vari componenti, sarebbe carino poter incapsulare ogni componente in un file singolo dedicato contenente il CSS, il template HTML e la logica JavaScript. Come detto prima, se usate Webpack o Browserify, potrete scrivere i vostri componenti in questa maniera:
+In un progetto tipico costruito con Vue.js, la nostra interfaccia sarà divisa in vari componenti, sarebbe carino poter incapsulare ogni componente in un file singolo dedicato contenente il CSS, il template HTML e la logica JavaScript. Come detto prima, se usate Webpack o Browserify, potrete scrivere i vostri componenti in questa maniera:
 
 <img src="/images/vue-component.png">
 
