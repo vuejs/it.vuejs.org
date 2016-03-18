@@ -1,22 +1,22 @@
 ---
-title: Sintassi del Vincolo dei Dati
+title: Two Way Binding nel Dettaglio
 type: guida
 order: 4
 ---
 
-Vue.js implementa un sistema di template basato sul DOM della pagina HTML. Questo significa che tutti i template Vue.js sono visti come delle porzioni di DOM con qualche funzionalità in più. Tenete a mente che questo rende i template di Vue.js molto differenti dai template su unica stringa.
+Vue.js implementa un sistema di template basato sul DOM HTML. Questo significa che tutti i template Vue.js sono visti come delle porzioni di DOM con qualche funzionalità in più rispetto al normale. Queste funzionalità non sono disponibili quando si costruiscono template in-line tramite `Vue.Component`.
 
 ## Interpolazioni
 
 ### Testo
 
-La più base delle interpolazioni è quella che utilizza la sintassi "Mustache", o a Baffo, (le doppie parentesi graffe assomigliano a dei baffi):
+L'interpolazione più semplice è quella che utilizza la sintassi "Mustache", o a Baffo, (le doppie parentesi graffe assomigliano a dei baffi):
 
 ``` html
 <span>Messaggio: {{ msg }}</span>
 ```
 
-Le parentesi graffe verranno rimpiazzate dal valore della variable `msg`, più propriamente andrà a sostituire la proprietà dell'oggetto `data.message` di Vue. Essendo reattiva ogni cambiamento a `msg` verrà riflettuto sulla vista
+Le parentesi graffe indicano che il contenuto è una variabile, in questo caso `msg` la quale dev'essere visualizzata, in poche parole Vue andrà a leggere il valore della proprietà `data.message` e lo stamperà a video. Essendo una proprietà reattiva ogni cambiamento a `msg` verrà riflettuto sulla vista in tempo reale.
 
 Puoi anche effettuare un interpolazione unica omettendo il sistema di sincronizzazione:
 
@@ -32,13 +32,13 @@ Le doppie parentesi graffe interpretano i dati come testo, non come HTML. Per ot
 <div>{{{ raw_html }}}</div>
 ```
 
-Il contenuto verrà inserito come HTML, I vincoli con i dati verranno ignorati. Se questo sistema inizia a diventare ripetitivo puoi sempre fare uso dei [Parziali](/api/#partial).
+Il contenuto verrà inserito come HTML, I vincoli con i dati verranno ignorati. Se questo sistema inizia a diventare ripetitivo potete sempre fare uso dei [Parziali](/api/#partial).
 
-<p class="tip">Attenzione, fare il rendering dinamico di HTML sulla tua applicazione può essere pericolo in quanto può essere soggetto di [Attacchi XSS](https://en.wikipedia.org/wiki/Cross-site_scripting). Usate questa procedura se e soltanto se avete la certezza assoluta della provenienza del codice HTML che volete interpretare e **mai** renderizzare HTML generato dagli utenti.</p>
+<p class="tip">Attenzione, fare il rendering dinamico di HTML sulla tua applicazione può essere pericoloso in quanto può essere soggetto ad [Attacchi XSS](https://en.wikipedia.org/wiki/Cross-site_scripting). Usate questa procedura se, e soltanto se, avete la certezza assoluta della provenienza del codice HTML che volete interpretare e **mai** renderizzare HTML generato dagli utenti.</p>
 
 ### Attributi
 
-Le parentesi graffe possono essere usate anche negli attributi dello specifico elemento HTML:
+Le parentesi graffe possono essere usate anche negli attributi di uno specifico elemento HTML:
 
 ``` html
 <div id="item-{{ id }}"></div>
@@ -48,7 +48,7 @@ Da notare che l'interpolazione degli attributi è disabilitata nelle specifiche 
 
 ## Espressioni Vincolanti
 
-Il testo all'interno delle doppie parentesi graffe viene chiamato **espressione vincolante**. In Vue.js, un'espressione vincolante consiste in una singola espressione JavaScript seguita, molte volta, da uno o più filtri dedicati.
+Il testo all'interno delle doppie parentesi graffe viene chiamato **espressione vincolante**. In Vue.js, un'espressione vincolante consiste in una singola espressione JavaScript seguita, molte volte, da uno o più filtri dedicati.
 
 ### Espressioni in JavaScript
 
@@ -80,11 +80,11 @@ Vue.js permette di inserire dei "filtri" opzionali alla fine di un'espressione t
 {{ message | capitalize }}
 ```
 
-In questo caso stiamo "accodando" (piping) il risultato della espressione di sinistra, ovvero il valore della proprietà `message`, alla parte di espressione dopo la `pipe` che, in questo caso, è il funzione interna `capitalize`. Vue.js fornisce una serie di filtri integrati già pronti all'utilizzo, successivamente vedremo come scrivere filtri personalizzati.
+Nel esempio sopra stiamo "accodando" (piping) il risultato dell espressione di sinistra, ovvero il valore della proprietà `message`, alla parte di espressione dopo la `pipe` che, in questo caso, è la funzione interna `capitalize`. Vue.js fornisce una serie di filtri integrati già pronti all'utilizzo, ma potete crearne di qualsiasi tipo senza nessun limite. Successivamente vedremo come scrivere filtri personalizzati.
 
 Da notare che la `pipe` non fa parte della sintassi generale di JavaScript, difatti non può essere mescolata con altre espressioni ma solo usata come conflusso di dati tra la parte sinistra e destra della pipe stessa.
 
-I filtri possono essere concatenati:
+I filtri si possono anche concatenare:
 
 ``` html
 {{ message | filterA | filterB }}
@@ -117,7 +117,7 @@ Alcune direttive possono ricevere degli "argomenti", separati da un `:` dopo il 
 <a v-bind:href="url"></a>
 ```
 
-In questo caso `href` è l'argomento, che impone a `v-bind` di legare l'attributo concreto `href` dello specifico tag HTML al valore dell'espressione che ne risulta da `url`. Sicuramente avrete notato che la stesso identico risultato si può ottenre con l'intrepolazione degli attributi, nello specifico si poteva scrivere `{% raw %}href="{{url}}"{% endraw %}`: e avreste ottenuto lo stesso risultato, correttamente; difatti l'inrepolazione degli attributi viene "tradotta" in `v-bind` internamente da Vue.js.
+In questo caso `href` è l'argomento, che impone a `v-bind` di legare l'attributo concreto `href` dello specifico tag HTML al valore dell'espressione che ne risulta da `url`. Sicuramente avrete notato che la stesso identico risultato si può ottenre con l'intrepolazione degli attributi, nello specifico si poteva scrivere `{% raw %}href="{{url}}"{% endraw %}`: e avreste ottenuto lo stesso risultato, correttamente; difatti l'inrepolazione degli attributi viene "tradotta" in `v-bind` internamente da Vue.js. E' consigliato l'uso dell'attributo `v-bind` rispetto all'interpolazione.
 
 Un altro esempio è la direttiva `v-on`, la quale ascolta per eventi legati al DOM:
 
