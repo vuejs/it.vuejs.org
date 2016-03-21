@@ -83,6 +83,23 @@ type: api
   ```
 
   Quando la modlità asincrona è spenta, Vue aggiornerà il DOM in modo asincrono quando i dati cambiano. Questo può aiutare a debuggare qualche situazione specifica ma può anche ridurre le prestazioni e cambiare il modo in cui i watchers vengono chiamati. **`async: false` non è raccomandato in produzione.**
+  
+
+### devtools
+
+- **Tipo:** `Booleano`
+
+- **Predefinito:** `true` (`false` nella build di produzione)
+
+- **Utilizzo:**
+
+  ``` js
+  Vue.config.devtools = true
+  ```
+
+Configurazione che ti permette di scegliere se attivare i [vue-devtools](https://github.com/vuejs/vue-devtools) nel sistema di ispezione elemento.
+Questa opzione è `attiva` nelle build per lo sviluppo e `disattiva` nelle build per la produzione.
+Per controllarne lo stato basta impostarla con un valore booleano `true` o `false`.
 
 ## API Globali
 
