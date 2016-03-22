@@ -137,7 +137,7 @@ module.exports = {
     return {
       msg: 'Ciao!'
     }
-  }
+  },
   created: function () {
     console.log('my-component created!')
   }
