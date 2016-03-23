@@ -59,13 +59,13 @@ vm.a = 2
 console.log(vm.b) // -> 3
 ```
 
-Puoi aprire la console del browser e provare tu stesso. Il valore di `vm.b` dipende, o deriva, dal valore di `vm.a`.
+Potete aprire la console del browser e provare a cambiare il valore di `a` e vedere come si riflette su `b` dato che quest'ultimo deriva da `a`.
 
-Le properità derivate possono essere vincolate all'interno del template come una qualsiasi properità normale. Vue.js sa che `vm.b` deriva da `vm.a`, perciò aggiornerà `vm.b` ogni volta che `vm.a` cambia. La parte più interessante è che abbiamo creato questa dipendenza in modo dichiarativo: La funzione che implementa la properità derivata è primitiva, senza effetti collaterali ed è facile da testare.
+Le properità derivate possono essere vincolate all'interno del template come una qualsiasi properità normale. Vue.js sa che `vm.b` deriva da `vm.a`, perciò aggiornerà `vm.b` ogni volta che `vm.a` acquisisce un nuovo valore. La parte più interessante è che abbiamo creato questa dipendenza in modo dichiarativo: La funzione che implementa la properità derivata è primitiva, facile da testare e non ha effetti collaterali su altre proprietà.
 
 ### Proprietà Derivate vs. $watch
 
-Vue.js fornisce un metodo delle API chiamato `$watch`, quest'ultimo permette di osservare il cambiamento su alcuni dati dell'istanza Vue corrente. Quando si hanno dei dati che cambiano in base ad altri dati, come nel nostro esempio precedente, c'è la tentazione di sfruttare `$watch` - specialmente se si arriva da un ambiente come AngularJS. Però è quasi sempre meglio usare una properietà derivata rispetto a `$watch`. Considerate questo esempio:
+Vue.js fornisce un metodo chiamato `$watch`, quest'ultimo permette di osservare il cambiamento di alcuni dati dell'istanza Vue. Quando si hanno delle proprietà che derivano da altre proprietà, come nel nostro esempio precedente, c'è la tentazione di sfruttare `$watch` - specialmente se si arriva da un ambiente come AngularJS. Però è quasi sempre consigliato usare una properietà derivata rispetto ad un `$watch`. Considerate questo esempio:
 
 ``` html
 <div id="demo">{{fullName}}</div>
@@ -130,6 +130,6 @@ computed: {
 // ...
 ```
 
-In questo caso, quando chiamerai `vm.fullName = 'John Doe'`, il setter verrà invocato e `vm.firstName`, `vm.lastName` verranno aggiornati automaticamente.
+In questo caso, quando chiamerete `vm.fullName = 'John Doe'`, il setter verrà invocato e `vm.firstName`, `vm.lastName` verranno aggiornati automaticamente.
 
 I dettagli tecnici di come funzionano le properità derivate vengono [discussi in un altro capitolo](reactivity.html#Inside_Computed_Properties) nel quale si parla del sistema Reattivo.
