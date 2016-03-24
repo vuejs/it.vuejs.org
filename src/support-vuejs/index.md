@@ -29,6 +29,6 @@ Allo stato attuale i manutentori di Vue.js stanno cercando di lavorare al proget
 </a>
 
 <a href="https://www.paypal.me/evanyou" target="_blank">
-  <img style="width:120px" src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png">
+<img style="width:120px" src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png">
   <span>Fate una Donazione via PayPal</span>
 </a>
