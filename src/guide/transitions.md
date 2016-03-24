@@ -59,10 +59,20 @@ Dovrai anche devinire le regole CSS per la transizione, in particolare `.expand-
 }
 ```
 
-Si possono usare anche le transizioni nominate in modo dinamico:
+Si possono usare anche le transizioni nominate in modo dinamico, inoltre è possibile utilizzare più transizioni tramite un unico nome dinamico:
 
 ``` html
-<div v-if="show" :transition="nomeTransizione">Ciao</div>
+<div v-if="show" :transition="transitionName">Ciao</div>
+```
+
+```js
+new Vue({
+  el: '...',
+  data: {
+    show: false,
+    transitionName: 'fade'
+  }
+})
 ```
 
 In aggiunta puoi fornire degli hook in JavaScript:
