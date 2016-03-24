@@ -59,6 +59,12 @@ Dovrai anche devinire le regole CSS per la transizione, in particolare `.expand-
 }
 ```
 
+Si possono usare anche le transizioni nominate in modo dinamico:
+
+``` html
+<div v-if="show" :transition="nomeTransizione">Ciao</div>
+```
+
 In aggiunta puoi fornire degli hook in JavaScript:
 
 ``` js
