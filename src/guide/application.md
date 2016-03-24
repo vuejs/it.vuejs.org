@@ -26,8 +26,10 @@ E se usate dei pre processori potete addirittura scrivere:
 
 <img src="/images/vue-component-with-pre-processors.png">
 
-Potete costruire questi file singoli usando Webpack + [vue-loader](https://github.com/vuejs/vue-loader) oppure Browserify + [vueify](https://github.com/vuejs/vueify).
-Il team di Vue.js vi consiglia l'utilizzo di Webpack perché è più facile tracciare le dipendenze tra i vari componenti rispetto a Browserify.forms.
+Potete costruire questi file singoli usando Webpack + [vue-loader](https://github.com/vuejs/vue-loader) oppure Browserify + [vueify](https://github.com/vuejs/vueify) se volete provare `live` Vue.js potete farlo tramite [Webpackbin.com](http://www.webpackbin.com/vue).
+Lo strumento che sceglierete per creare le vostre build dipende molto dal tipo di progetto, dal team e dalla vostra esperienza personale.
+Il team di Vuejs consiglia Webpack semplicemente perchè ha molte funzionalità interessanti come la suddivisione del codice, il poter processare risorse statiche come moduli e la possibilità di estrarre CSS in file separati
+ovviamente queste caratteristiche vengono fornite con un trade off, quello di dover essere in grado di configurare il tutto in modo funzionale. Browserify è più facile da configurare ed è il massimo per chi non ha bisogno di funzionalità avanzate.
 
 Potete trovare gli esempi ufficiali su Github:
 
