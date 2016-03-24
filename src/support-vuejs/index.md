@@ -13,8 +13,7 @@ Sponsor Premium
 
 
 Vue.js è un progetto open source con licenza MIT, completamente gratuito.
-Comunque, per mantenere e sviluppare le funzionalità di questo framework il progetto ha bisogno di un sostegno finanziario. Potete supportare lo sviluppo di Vue.js tramite [donazioni via Patreon](https://www.patreon.com/evanyou)
-o [donazioni via PayPal](https://www.paypal.me/evanyou).
+Comunque, per mantenere e sviluppare le funzionalità di questo framework il progetto ha bisogno di un sostegno finanziario. Potete supportare lo sviluppo di Vue.js tramite [donazioni via Patreon](https://www.patreon.com/evanyou) o [donazioni via PayPal](https://www.paypal.me/evanyou).
 
 Se avete un impresa con dei progetti che utilizzano Vuejs nel loro core, protrebbe essere una buona idea sponsorizzare lo sviluppo di Vue stesso: **tale azione assicurerà che il vostro prodotto sia sempre al top con Vue**
 Oltre a tale beneficio anche la votra immagine, come sponsor di Vue, ne risentirà positivamente e sarà più facile trovare sviluppatori Vue.
