@@ -138,13 +138,36 @@ var MyComponent = Vue.extend({
 
 Questo discorso vale anche per l'opzione `el`, in quanto vige lo stesso problema di condivizione.
 
-### Attributo `is`
+### Parsing del Template
 
-Alcuni elementi HTML, per esempio `<table>`, hanno restrizioni su cosa può esserci al loro interno. Una di queste restrizioni non permette l'utilizzo di elementi custom e perciò non vengono renderizzati a dovere. In questo caso la soluzione è utilizzare l'attributo `is` su un elemento permesso in modo tale da sfruttarlo per il nostro componente:
+Il motore dietro al sistem di gestione dei template in Vue.js è basato sul DOM ed utilizzare dei parser nativi del browser invece di creare di nuovi. Questo porta sia dei vantaggi, soprattutto se compariamo questo sistemo ad un classico sistema di renderizzazione basato su stringhe, ma anche alcune regole da tenere a mente per esempio, il template dev'essere sempre composto da HTML valido e seguire le classiche regole su "chi contiene cosa", in particolare:
+
+- L'elemento `a` non può contenere altri elementi interattivi (come bottoni o link)
+- L'elemento `li` deve essere figlio diretto del elemento `ul` o `ol`, e sia `ul` che `ol` possono solo contenere `li`
+- L'elemento `option` deve essere figlio diretto di `select`, di conseguenza `select` può solo contenere `option` o `optgroup`
+- L'elemento `table` deve contenere solo `thead`, `tbody`, `tfoot` e `tr`, tutti questi elementi devono essere figli diretti di `table`
+- L'elemento `tr` può solo contenere `th` e `td`, e questi due elementi devono essere figli diretti di `tr`
+
+Queste restrizioni esistono per evitare comportamenti del DOM inaspettati. Anche se alcune casistiche, se non rispettate, possono dare l'idea di funzionare, non potete fare affidamento su come il browser possa validare i componenti custom con elementi errati, per esempio `<my-select><option>...</option></my-select>` non è un template valido anche se `my-select` potrebbe espandersi in `<select>...</select>`.
+
+Un'altra conseguenza che può portare ad un ordine improprio degli elementi è l'utilizzo tag personalizzati (come `<component>`, `<template>` e `<partial>`) internamente ad `ul`, `select`, `table` e altri elementi con  restrizioni simili dato che tali tag verrebbero renderizzati in modo errato dal browser.
+
+Se dovete utilizzare un elemento personalizzato dovete far affidamento all'attributo speciale `is`:
 
 ``` html
 <table>
   <tr is="my-component"></tr>
+</table>
+```
+
+Nel caso di un `<template>` dentro una `<table>` conviene usare `<tbody>`, come tabelle e creare più `tbody`:
+
+``` html
+<table>
+  <tbody v-for="item in items">
+    <tr>Riga pari</tr>
+    <tr>Riga dispari</tr>
+  </tbody>
 </table>
 ```
 
