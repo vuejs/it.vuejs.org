@@ -1705,6 +1705,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   <!-- lega delle classi -->
   <div :class="{ red: isRed }"></div>
   <div :class="[classA, classB]"></div>
+  <div :class="[classA, { classB: isB, classC: isC }]">
 
   <!-- lega lo stile -->
   <div :style="{ fontSize: size + 'px' }"></div>

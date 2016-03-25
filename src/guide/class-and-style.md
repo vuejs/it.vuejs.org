@@ -76,6 +76,12 @@ Se avete la necessità di attivare una specifica classe in base ad una condizion
 
 In questo caso `classA` verrà sempre inserita, ma `classB` verrà inserita solo se `isB` è `true`.
 
+Questo procedimento può diventare abbastanza prolisso quando iniziano ad esserci parecchie classi e condizioni. Dalla versione 1.0.19+ è possibile utilizzare la sintassi ad oggetti internamente agli Array:
+
+``` html
+<div v-bind:class="[classA, { classB: isB, classC: isC }]">
+```
+
 ## Vincolare lo Style CSS
 
 ### Sintassi per gli Oggetti
