@@ -81,11 +81,11 @@ Vue.directive('demo', {
   },
   update: function (value) {
     this.el.innerHTML =
-      'name - '       + this.name + '<br>' +
+      'name - ' + this.name + '<br>' +
       'expression - ' + this.expression + '<br>' +
-      'argument - '   + this.arg + '<br>' +
+      'argument - ' + this.arg + '<br>' +
       'modifiers - '  + JSON.stringify(this.modifiers) + '<br>' +
-      'value - '      + value
+      'value - ' + value
   }
 })
 var demo = new Vue({
@@ -275,8 +275,53 @@ Vue.directive('my-directive', {
 
 Usate questa funziona in modo saggio, generalmente dovreste evitare manipolazioni tramite template.
 
+### terminal
+
+> 1.0.19+
+
+Vue compila i template in modo ricorsivo attraversando tutto l'albero del DOM quando, però, incontra una direttiva con **terminal** smetterà di attraversare l'elemento in questione ed i suoi figli. Per esempio `v-if` e `v-for` sono entrambi direttive terminali.
+
+Scrivere una direttiva terminale è un topic abbastanza avanzato e richiede una conoscenza adeguata della struttura di Vue e della sua pipeline di compilazion ma è comunque possibile farlo. Innanzitutto la vostra direttiva, per diventare terminale, deve includere la proprietà `terminal: true`. Assieme a tale proprietà è consigliato l'uso di `Vue.FragmentFactory` per la compilazione parziale.
+
+Ecco un esempio pratico di come creare una direttiva terminale che compila ed "inietta" il suo contenuto in un altra posizione della pagina renderizzata:
+
+``` js
+var FragmentFactory = Vue.FragmentFactory
+var remove = Vue.util.remove
+var createAnchor = Vue.util.createAnchor
+
+Vue.directive('inject', {
+  terminal: true,
+  bind: function () {
+    var container = document.getElementById(this.arg)
+    this.anchor = createAnchor('v-inject')
+    container.appendChild(this.anchor)
+    remove(this.el)
+    var factory = new FragmentFactory(this.vm, this.el)
+    this.frag = factory.create(this._host, this._scope, this._frag)
+    this.frag.before(this.anchor)
+  },
+  unbind: function () {
+    this.frag.remove()
+    remove(this.anchor)
+  }
+})
+```
+
+``` html
+<div id="modal"></div>
+...
+<div v-inject:modal>
+  <h1>header</h1>
+  <p>body</p>
+  <p>footer</p>
+</div>
+```
+
+Se volete effettivamente sostituire delle direttive che già esistono come `v-if` o `v-for` è raccomandato studiarsi bene le API interne di Vue.js Si noti che quando Vue.js trova una direttiva che implemente `terminal: true` non la gestirà in automatico come le direttive interne.
+
 ### priority
 
-Potete aggiungere un numero di priorità per la vostra direttiva (di default è impostato a 1000). Una direttiva con una priorità più alta verrà processata prima delle altre dello stesso elemento. Le direttive con la priorità uguale, come quella di default, vengono processate in ordine di apparizione anche se l'ordine **non è garantito** per ogni browser.
+Potete aggiungere un numero di priorità per la vostra direttiva (di default è impostato a 1000 per le direttive e 2000 per le direttive terminali). Una direttiva con una priorità più alta verrà processata prima delle altre dello stesso elemento. Le direttive con la priorità uguale, come quella di default, vengono processate in ordine di apparizione anche se l'ordine **non è garantito** per ogni browser.
 
 Potete controllare la priorità per delle direttive integrate in Vue.js tramite [La DOC delle API](/api/#Directives). In aggiunta, le direttive `v-if` e `v-for` hanno sempre la più alta priorità durante la fase di processazione del DOM.
