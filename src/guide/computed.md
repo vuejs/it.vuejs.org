@@ -132,4 +132,4 @@ computed: {
 
 In questo caso, quando chiamerete `vm.fullName = 'John Doe'`, il setter verrà invocato e `vm.firstName`, `vm.lastName` verranno aggiornati automaticamente.
 
-I dettagli tecnici di come funzionano le properità derivate vengono [discussi in un altro capitolo](reactivity.html#Inside_Computed_Properties) nel quale si parla del sistema Reattivo.
+I dettagli tecnici di come funzionano le properità derivate vengono [discussi in un altro capitolo](reactivity.html#Inside-Computed-Properties) nel quale si parla del sistema Reattivo.

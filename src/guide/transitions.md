@@ -17,7 +17,7 @@ L'attributo `transition` può essere usato accoppiato con:
 - `v-if`
 - `v-show`
 - `v-for` (verrà attivato ad ogni aggiunta o rimozione)
-- Componenti Dinamici (che vedremo [nella prossima sezione](components.html#Dynamic_Components))
+- Componenti Dinamici (che vedremo [nella prossima sezione](components.html#Dynamic-Components))
 - Su un nuovo componente attivato tramite l'istanza Vue, per esempio `vm.$appendTo(el)`.
 
 Quando un elemento è inserito o rimosso tramite transizioni, Vue cercherà:

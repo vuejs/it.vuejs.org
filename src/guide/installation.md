@@ -33,7 +33,7 @@ In questi casi potete usare la [Versione CSP compatibile](https://github.com/vue
 ## NPM
 
 NPM è il sistema di installazione consigliato quando si sviluppano applicazioni di grosse dimensioni con Vue.js.
-Si accoppia in modo ottimale con i comuni moduli **CommonJS** come, per esempio, [Webpack](http://webpack.github.io/) oppure [Browserify](http://browserify.org/). Vue.js inoltre fornisce uno strumento di accompagnamento per l'authoring di [Componenti su Singolo File](application.html#Single_File_Components).
+Si accoppia in modo ottimale con i comuni moduli **CommonJS** come, per esempio, [Webpack](http://webpack.github.io/) oppure [Browserify](http://browserify.org/). Vue.js inoltre fornisce uno strumento di accompagnamento per l'authoring di [Componenti su Singolo File](application.html#Single-File-Components).
 
 ``` bash
 # Ultima version stabile
