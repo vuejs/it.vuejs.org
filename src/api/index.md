@@ -241,7 +241,7 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
   var myDirective = Vue.elementDirective('my-elemento')
   ```
 
-- **Vedi anche:** [Element Direttive](/guide/custom-directive.html#Element_Direttive)
+- **Vedi anche:** [Element Direttive](/guide/custom-directive.html#Elements-Directives)
 
 <h3 id="Vue-filter">Vue.filter( id, [definizione] )</h3>
 
@@ -358,7 +358,7 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
 
   Applica un mixin a livello globale, il quale influenzerà tutte le istanze create successivamente. Questo metodo può essere usato dagli autori del plugin per iniettare comportamenti personalizzati dentro ai componenti. **NON è raccomandato l'utilizzo in produzione**.
 
-- **Vedi anche:** [Mixins Globali](/guide/mixins.html#Global_Mixin)
+- **Vedi anche:** [Mixins Globali](/guide/mixins.html#Global-Mixin)
 
 ## Opzioni / Dati
 
@@ -474,7 +474,7 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
 
 - **Vedi anche:**
   - [Proprietà Derivate](/guide/computed.html)
-  - [Reattività in Dettaglio: Le Properità Derivate](/guide/reactivity.html#Inside_Computed_Properties)
+  - [Reattività in Dettaglio: Le Properità Derivate](/guide/reactivity.html#Inside-Computed-Properties)
 
 ### methods
 
@@ -554,7 +554,7 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
 
   Se questa opzione è disponibile durante l'istanziazione, l'istanza verrà immessa subito dopo la compilazione; altrimenti dovrete specificare voi, tramite `vm.$mount()` quando far partire la compilazione.
 
-- **Vedi anche:** [Diagramma del Cilo di Vita](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Diagramma del Cilo di Vita](/guide/instance.html#Lifecycle-Diagram)
 
 ### template
 
@@ -572,9 +572,9 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
   Da notare che in alcune situazioni, per esempio quando il template contiene un altro template di alto livello o del semplice testo, l'istanza create diventerà un'Istanza Frammentata.
 
 - **Vedi anche:**
-  - [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
-  - [Distribuizione dei Contenuti](/guide/components.html#Content_Distribution_with_Slots)
-  - [Istanza Frammentata](/guide/components.html#Fragment_Instance)
+  - [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle-Diagram)
+  - [Distribuizione dei Contenuti](/guide/components.html#Content-Distribution-with-Slots)
+  - [Istanza Frammentata](/guide/components.html#Fragment-Instance)
 
 ### replace
 
@@ -639,7 +639,7 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
 
    Questa funzione viene chiamata in moto sincrono dopo l'istanziazione ma prima di aver processare qualsiasi properità dell'istanza.
 
- - **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
+ - **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle-Diagram)
 
 ### created
 
@@ -651,7 +651,7 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
   che le seguenti caratteristiche sono già state istanziate: Osservazione dei dati, Proprietà derivate, Metodi, Sistema di watching ed Eventi.
   In questo stadio manca solo la compilazione del DOM e l'elemento `$el` non è ancora disponibile.
 
-- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle-Diagram)
 
 ### beforeCompile
 
@@ -661,7 +661,7 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
 
   Questa funzione viene chiamata prima che la compilazione inizi.
 
-- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle-Diagram)
 
 ### compiled
 
@@ -672,7 +672,7 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
   Questa funzione viene chiamata dopo che la compilazione è finita. In questo stadio tutte le direttive sono state linkate ai dati e scateneranno gli eventi di aggiornamento del DOM.
   Comunque sia ancora non è disponibile la proprietà `$el`.
 
-- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle-Diagram)
 
 ### ready
 
@@ -683,7 +683,7 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
   Questa funzione viene chiamata dopo che la compilazione **e** la proprietà `$el` è **stata inserita nel documento per le prima volta**,
   per esempio subito dopo la funzione `attached`.
 
-- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle-Diagram)
 
 ### attached
 
@@ -710,7 +710,7 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
 
   Questa funzione viene chiamata proprio prima che l'istanza di Vue venga distrutta. In questo stadio l'istanza è ancora funzionante al 100%.
 
-- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle-Diagram)
 
 ### destroyed
 
@@ -722,7 +722,7 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
 
   Da notare che se vi è una transizione in corso la funzione `destroyed` viene chiamata **dopo** che la transizione è finita.
 
-- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle-Diagram)
 
 ## Opzioni / Assets
 
@@ -736,7 +736,7 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
 
 - **Vedi anche:**
   - [Custom Direttive](/guide/custom-directive.html)
-  - [Assets Naming Convention](/guide/components.html#Assets_Naming_Convention)
+  - [Assets Naming Convention](/guide/components.html#Assets-Naming-Convention)
 
 ### elementDirettive
 
@@ -747,8 +747,8 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
   Un Hash degli elementi delle direttive disponibile dall'istanza di Vue.
 
 - **Vedi anche:**
-  - [Element Direttive](/guide/custom-directive.html#Element_Direttive)
-  - [Assets Naming Convention](/guide/components.html#Assets_Naming_Convention)
+  - [Element Direttive](/guide/custom-directive.html#Element-Directives)
+  - [Assets Naming Convention](/guide/components.html#Assets-Naming-Convention)
 
 ### filters
 
@@ -760,7 +760,7 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
 
 - **Vedi anche:**
   - [Custom Filters](/guide/custom-filter.html)
-  - [Assets Naming Convention](/guide/components.html#Assets_Naming_Convention)
+  - [Assets Naming Convention](/guide/components.html#Assets-Naming-Convention)
 
 ### components
 
@@ -806,7 +806,7 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
   Specifica l'istanza padre dell'istanza in fase di creazione, stabilendo una relatione padre-figlio.
   L'istanza padre sarà disponibile tramite `this.$parent` da parte del figlio, il padre ritroverà il figlio nel suo array `$children`.
 
-- **Vedi anche:** [Comunicazione Padre-Figlio](/guide/components.html#Parent-Child_Communication)
+- **Vedi anche:** [Comunicazione Padre-Figlio](/guide/components.html#Parent-Child-Communication)
 
 ### Eventi
 
@@ -843,8 +843,8 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
   ```
 
 - **Vedi anche:**
-  - [Metodi di Istanza - Eventi](#Instance_Methods_/_Events)
-  - [Comunicazione Padre-Figlio](/guide/components.html#Parent-Child_Communication)
+  - [Metodi di Istanza - Eventi](#Instance_Methods-Events)
+  - [Comunicazione Padre-Figlio](/guide/components.html#Parent-Child-Communication)
 
 ### mixins
 
@@ -928,7 +928,7 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
 
 - **Dettagli:**
 
-  L elemento del DOM al quale l'istanza di Vue è legata. Da notare che nel caso della [Istanza Frammentata](/guide/components.html#Fragment_Instance), la proprietà `vm.$el`
+  L elemento del DOM al quale l'istanza di Vue è legata. Da notare che nel caso della [Istanza Frammentata](/guide/components.html#Fragment-Instance), la proprietà `vm.$el`
   restituirà la posizione di ancoraggio iniziale del frammento.
 
 ### vm.$options
@@ -992,7 +992,7 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
   Questa proprietà contiene un oggetto con tutti i figli che hanno `v-ref` registrato.
 
 - **Vedi anche:**
-  - [Componenti Figli e v-Ref](/guide/components.html#Child_Component_Refs)
+  - [Componenti Figli e v-Ref](/guide/components.html#Child-Component-Refs)
   - [v-ref](#v-ref).
 
 ### vm.$els
@@ -1297,7 +1297,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   // Il padre non viene notificato perché il primo figlio non ha return true.
   ```
 
-- **Vedi anche:** [Comuniccazione Padre-Figlio](/guide/components.html#Parent-Child_Communication)
+- **Vedi anche:** [Comuniccazione Padre-Figlio](/guide/components.html#Parent-Child-Communication)
 
 <h3 id="vm-broadcast">vm.$broadcast( evento, [...argomenti] )</h3>
 
@@ -1425,7 +1425,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Vedi anche:**
   - [Vue.nextTick](#Vue-nextTick)
-  - [Coda di Aggiornamento Asincrona](/guide/reactivity.html#Async_Update_Queue)
+  - [Coda di Aggiornamento Asincrona](/guide/reactivity.html#Async-Update-Queue)
 
 ## Metodi di Istanza / Ciclo di Vita
 
@@ -1463,7 +1463,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   new MyComponent().$mount().$appendTo('#container')
   ```
 
-- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle-Diagram)
 
 <h3 id="vm-destroy">vm.$destroy( [remove] )</h3>
 
@@ -1476,7 +1476,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
   Questo metodo attiva `beforeDestroy` e `destroyed` come eventi.
 
-- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle_Diagram)
+- **Vedi anche:** [Diagramma del Ciclo di Vita](/guide/instance.html#Lifecycle-Diagram)
 
 ## Direttive
 
@@ -1571,9 +1571,9 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Attributi parametrici:**
   - [`track-by`](/guide/list.html#track-by)
-  - [`stagger`](/guide/transitions.html#Staggering_Transitions)
-  - [`enter-stagger`](/guide/transitions.html#Staggering_Transitions)
-  - [`leave-stagger`](/guide/transitions.html#Staggering_Transitions)
+  - [`stagger`](/guide/transitions.html#Staggering-Transitions)
+  - [`enter-stagger`](/guide/transitions.html#Staggering-Transitions)
+  - [`leave-stagger`](/guide/transitions.html#Staggering-Transitions)
 
 - **Utilizzo:**
 
@@ -1793,7 +1793,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   this.$refs.list
   ```
 
-- **Vedi anche:** [Referenze Padre-Figlio](/guide/components.html#Child_Component_Refs)
+- **Vedi anche:** [Referenze Padre-Figlio](/guide/components.html#Child-Component-Refs)
 
 ### v-el
 
@@ -1881,7 +1881,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   <component :is="componentId"></component>
   ```
 
-- **Vedi anche:** [Componenti Dinamici](/guide/components.html#Dynamic_Components)
+- **Vedi anche:** [Componenti Dinamici](/guide/components.html#Dynamic-Components)
 
 ### slot
 
@@ -1896,7 +1896,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
   Per maggiori dettagli su come funzionano gli slot utilizzate il link sotto,
 
-- **Vedi anche:** [Distribuizione dei Contenuti con Slots](/guide/components.html#Content_Distribution_with_Slots)
+- **Vedi anche:** [Distribuizione dei Contenuti con Slots](/guide/components.html#Content-Distribution-with-Slots)
 
 ### partial
 
