@@ -83,7 +83,7 @@ type: api
   ```
 
   Quando la modlità asincrona è spenta, Vue aggiornerà il DOM in modo asincrono quando i dati cambiano. Questo può aiutare a debuggare qualche situazione specifica ma può anche ridurre le prestazioni e cambiare il modo in cui i watchers vengono chiamati. **`async: false` non è raccomandato in produzione.**
-  
+
 
 ### devtools
 
@@ -94,6 +94,7 @@ type: api
 - **Utilizzo:**
 
   ``` js
+  // Ricordatevi di settare questo in modo sincrono dopo aver caricato Vue
   Vue.config.devtools = true
   ```
 
@@ -2148,6 +2149,45 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   })
   </script>
   {% endraw %}
+
+## Metodi di Estensioni per Array
+
+  Vue.js estende `Array.prototype` aggiungendo due nuovi metodi che rendono più facile effettuare operazioni sugli Array ed assicurarsi che il sistema reattivo sia propriamente attivato.
+
+### array.$set(index, value)
+
+- **Argomenti**
+  - `{Numerico} indice`
+  - `{*} valore`
+
+- **Utilizzo**
+
+  Impostare un elemento in un array specificanto l'indice nel Array
+
+  ``` js
+    vm.animals.$set(0, { name: 'Aardvark' })
+  ```
+
+- **Vedi anche:** [Come rilevare i Cambiamenti sugli Array](/guide/list.html#Caveats)
+
+### array.$remove(reference)
+
+- **Argomenti**
+  - `{Referenza} referenza`
+
+- **Utilizzo**
+
+  Questo è un metodo che fa da "wrapper" a più metodi sugli Array. Il funzionamento è semplice, prima cerca l'elemento tramite l'indice e poi effettua `array.splice(index, 1)`
+
+  ``` js
+    vm.animals.$remove(0)
+    // oppure
+    var aardvark = vm.animals[0]
+    vm.animals.$remove(aardvark)
+  ```
+
+- **Vedi anche:** [Metodi di Mutazione](/guide/list.html#Mutation-Methods)
+
 
 - **Altri Esempi:**
 
