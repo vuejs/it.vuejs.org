@@ -1,5 +1,5 @@
 /*!
- * Vue.js v1.0.19
+ * Vue.js v1.0.21
  * (c) 2016 Evan You
  * Released under the MIT License.
  */
@@ -740,7 +740,7 @@ var directive = Object.freeze({
     var close = escapeRegex(config.delimiters[1]);
     var unsafeOpen = escapeRegex(config.unsafeDelimiters[0]);
     var unsafeClose = escapeRegex(config.unsafeDelimiters[1]);
-    tagRE = new RegExp(unsafeOpen + '(.+?)' + unsafeClose + '|' + open + '(.+?)' + close, 'g');
+    tagRE = new RegExp(unsafeOpen + '((?:.|\\n)+?)' + unsafeClose + '|' + open + '((?:.|\\n)+?)' + close, 'g');
     htmlRE = new RegExp('^' + unsafeOpen + '.*' + unsafeClose + '$');
     // reset cache
     cache = new Cache(1000);
@@ -765,7 +765,6 @@ var directive = Object.freeze({
     if (hit) {
       return hit;
     }
-    text = text.replace(/\n/g, '');
     if (!tagRE.test(text)) {
       return null;
     }
@@ -981,22 +980,21 @@ var text = Object.freeze({
   });
 
   var warn = undefined;
+  var formatComponentName = undefined;
 
   if ('development' !== 'production') {
     (function () {
       var hasConsole = typeof console !== 'undefined';
-      warn = function (msg, e) {
-        if (hasConsole && (!config.silent || config.debug)) {
-          console.warn('[Vue warn]: ' + msg);
-          /* istanbul ignore if */
-          if (config.debug) {
-            if (e) {
-              throw e;
-            } else {
-              console.warn(new Error('Warning Stack Trace').stack);
-            }
-          }
+
+      warn = function (msg, vm) {
+        if (hasConsole && !config.silent) {
+          console.error('[Vue warn]: ' + msg + (vm ? formatComponentName(vm) : ''));
         }
+      };
+
+      formatComponentName = function (vm) {
+        var name = vm._isVue ? vm.$options.name : vm.name;
+        return name ? ' (found in component: <' + hyphenate(name) + '>)' : '';
       };
     })();
   }
@@ -1631,7 +1629,7 @@ var transition = Object.freeze({
         return parentVal;
       }
       if (typeof childVal !== 'function') {
-        'development' !== 'production' && warn('The "data" option should be a function ' + 'that returns a per-instance value in component ' + 'definitions.');
+        'development' !== 'production' && warn('The "data" option should be a function ' + 'that returns a per-instance value in component ' + 'definitions.', vm);
         return parentVal;
       }
       if (!parentVal) {
@@ -1665,7 +1663,7 @@ var transition = Object.freeze({
 
   strats.el = function (parentVal, childVal, vm) {
     if (!vm && childVal && typeof childVal !== 'function') {
-      'development' !== 'production' && warn('The "el" option should be a function ' + 'that returns a per-instance value in component ' + 'definitions.');
+      'development' !== 'production' && warn('The "el" option should be a function ' + 'that returns a per-instance value in component ' + 'definitions.', vm);
       return;
     }
     var ret = childVal || parentVal;
@@ -1679,15 +1677,6 @@ var transition = Object.freeze({
 
   strats.init = strats.created = strats.ready = strats.attached = strats.detached = strats.beforeCompile = strats.compiled = strats.beforeDestroy = strats.destroyed = strats.activate = function (parentVal, childVal) {
     return childVal ? parentVal ? parentVal.concat(childVal) : isArray(childVal) ? childVal : [childVal] : parentVal;
-  };
-
-  /**
-   * 0.11 deprecation warning
-   */
-
-  strats.paramAttributes = function () {
-    /* istanbul ignore next */
-    'development' !== 'production' && warn('"paramAttributes" option has been deprecated in 0.12. ' + 'Use "props" instead.');
   };
 
   /**
@@ -1888,31 +1877,26 @@ var transition = Object.freeze({
    * @param {Object} options
    * @param {String} type
    * @param {String} id
+   * @param {Boolean} warnMissing
    * @return {Object|Function}
    */
 
-  function resolveAsset(options, type, id) {
+  function resolveAsset(options, type, id, warnMissing) {
     /* istanbul ignore if */
     if (typeof id !== 'string') {
       return;
     }
     var assets = options[type];
     var camelizedId;
-    return assets[id] ||
+    var res = assets[id] ||
     // camelCase ID
     assets[camelizedId = camelize(id)] ||
     // Pascal Case ID
     assets[camelizedId.charAt(0).toUpperCase() + camelizedId.slice(1)];
-  }
-
-  /**
-   * Assert asset exists
-   */
-
-  function assertAsset(val, type, id) {
-    if (!val) {
-      'development' !== 'production' && warn('Failed to resolve ' + type + ': ' + id);
+    if ('development' !== 'production' && warnMissing && !res) {
+      warn('Failed to resolve ' + type.slice(0, -1) + ': ' + id, options);
     }
+    return res;
   }
 
   var uid$1 = 0;
@@ -2029,10 +2013,9 @@ var transition = Object.freeze({
   });
 
   /**
-   * Convenience method to remove the element at given index.
+   * Convenience method to remove the element at given index or target element reference.
    *
-   * @param {Number} index
-   * @param {*} val
+   * @param {*} item
    */
 
   def(arrayProto, '$remove', function $remove(item) {
@@ -2045,6 +2028,24 @@ var transition = Object.freeze({
   });
 
   var arrayKeys = Object.getOwnPropertyNames(arrayMethods);
+
+  /**
+   * By default, when a reactive property is set, the new value is
+   * also converted to become reactive. However in certain cases, e.g.
+   * v-for scope alias and props, we don't want to force conversion
+   * because the value may be a nested value under a frozen data structure.
+   *
+   * So whenever we want to set a reactive property without forcing
+   * conversion on the new value, we wrap that call inside this function.
+   */
+
+  var shouldConvert = true;
+
+  function withoutConversion(fn) {
+    shouldConvert = false;
+    fn();
+    shouldConvert = true;
+  }
 
   /**
    * Observer class that are attached to each observed
@@ -2183,7 +2184,7 @@ var transition = Object.freeze({
     var ob;
     if (hasOwn(value, '__ob__') && value.__ob__ instanceof Observer) {
       ob = value.__ob__;
-    } else if ((isArray(value) || isPlainObject(value)) && Object.isExtensible(value) && !value._isVue) {
+    } else if (shouldConvert && (isArray(value) || isPlainObject(value)) && Object.isExtensible(value) && !value._isVue) {
       ob = new Observer(value);
     }
     if (ob && vm) {
@@ -2198,10 +2199,9 @@ var transition = Object.freeze({
    * @param {Object} obj
    * @param {String} key
    * @param {*} val
-   * @param {Boolean} doNotObserve
    */
 
-  function defineReactive(obj, key, val, doNotObserve) {
+  function defineReactive(obj, key, val) {
     var dep = new Dep();
 
     var property = Object.getOwnPropertyDescriptor(obj, key);
@@ -2213,11 +2213,7 @@ var transition = Object.freeze({
     var getter = property && property.get;
     var setter = property && property.set;
 
-    // if doNotObserve is true, only use the child value observer
-    // if it already exists, and do not attempt to create it.
-    // this allows freezing a large object from the root and
-    // avoid unnecessary observation inside v-for fragments.
-    var childOb = doNotObserve ? isObject(val) && val.__ob__ : observe(val);
+    var childOb = observe(val);
     Object.defineProperty(obj, key, {
       enumerable: true,
       configurable: true,
@@ -2247,7 +2243,7 @@ var transition = Object.freeze({
         } else {
           val = newVal;
         }
-        childOb = doNotObserve ? isObject(newVal) && newVal.__ob__ : observe(newVal);
+        childOb = observe(newVal);
         dep.notify();
       }
     });
@@ -2316,7 +2312,6 @@ var transition = Object.freeze({
   	getOuterHTML: getOuterHTML,
   	mergeOptions: mergeOptions,
   	resolveAsset: resolveAsset,
-  	assertAsset: assertAsset,
   	checkComponentAttr: checkComponentAttr,
   	commonTagRE: commonTagRE,
   	reservedTagRE: reservedTagRE,
@@ -2703,8 +2698,8 @@ var transition = Object.freeze({
 
   var warnNonExistent;
   if ('development' !== 'production') {
-    warnNonExistent = function (path) {
-      warn('You are setting a non-existent path "' + path.raw + '" ' + 'on a vm instance. Consider pre-initializing the property ' + 'with the "data" option for more reliable reactivity ' + 'and better performance.');
+    warnNonExistent = function (path, vm) {
+      warn('You are setting a non-existent path "' + path.raw + '" ' + 'on a vm instance. Consider pre-initializing the property ' + 'with the "data" option for more reliable reactivity ' + 'and better performance.', vm);
     };
   }
 
@@ -2736,7 +2731,7 @@ var transition = Object.freeze({
         if (!isObject(obj)) {
           obj = {};
           if ('development' !== 'production' && last._isVue) {
-            warnNonExistent(path);
+            warnNonExistent(path, last);
           }
           set(last, key, obj);
         }
@@ -2747,7 +2742,7 @@ var transition = Object.freeze({
           obj[key] = val;
         } else {
           if ('development' !== 'production' && obj._isVue) {
-            warnNonExistent(path);
+            warnNonExistent(path, obj);
           }
           set(obj, key, val);
         }
@@ -3014,8 +3009,8 @@ var expression = Object.freeze({
       if ('development' !== 'production' && has[id] != null) {
         circular[id] = (circular[id] || 0) + 1;
         if (circular[id] > config._maxUpdateCount) {
-          queue.splice(has[id], 1);
-          warn('You may have an infinite update loop for watcher ' + 'with expression: ' + watcher.expression);
+          warn('You may have an infinite update loop for watcher ' + 'with expression "' + watcher.expression + '"', watcher.vm);
+          break;
         }
       }
     }
@@ -3119,7 +3114,7 @@ var expression = Object.freeze({
       value = this.getter.call(scope, scope);
     } catch (e) {
       if ('development' !== 'production' && config.warnExpressionErrors) {
-        warn('Error when evaluating expression "' + this.expression + '". ' + (config.debug ? '' : 'Turn on debug mode to see stack trace.'), e);
+        warn('Error when evaluating expression ' + '"' + this.expression + '": ' + e.toString(), this.vm);
       }
     }
     // "touch" every property so they are all tracked as
@@ -3155,14 +3150,14 @@ var expression = Object.freeze({
       this.setter.call(scope, scope, value);
     } catch (e) {
       if ('development' !== 'production' && config.warnExpressionErrors) {
-        warn('Error when evaluating setter "' + this.expression + '"', e);
+        warn('Error when evaluating setter ' + '"' + this.expression + '": ' + e.toString(), this.vm);
       }
     }
     // two-way sync for v-for alias
     var forContext = scope.$forContext;
     if (forContext && forContext.alias === this.expression) {
       if (forContext.filters) {
-        'development' !== 'production' && warn('It seems you are using two-way binding on ' + 'a v-for alias (' + this.expression + '), and the ' + 'v-for has filters. This will not work properly. ' + 'Either remove the filters or use an array of ' + 'objects and bind to object properties instead.');
+        'development' !== 'production' && warn('It seems you are using two-way binding on ' + 'a v-for alias (' + this.expression + '), and the ' + 'v-for has filters. This will not work properly. ' + 'Either remove the filters or use an array of ' + 'objects and bind to object properties instead.', this.vm);
         return;
       }
       forContext._withLock(function () {
@@ -3902,9 +3897,9 @@ var template = Object.freeze({
   var EL = 1500;
   var COMPONENT = 1500;
   var PARTIAL = 1750;
-  var FOR = 2000;
-  var IF = 2000;
-  var SLOT = 2100;
+  var IF = 2100;
+  var FOR = 2200;
+  var SLOT = 2300;
 
   var uid$3 = 0;
 
@@ -3930,7 +3925,7 @@ var template = Object.freeze({
       }
 
       if (!this.alias) {
-        'development' !== 'production' && warn('Alias is required in v-for.');
+        'development' !== 'production' && warn('Invalid v-for expression "' + this.descriptor.raw + '": ' + 'alias is required.', this.vm);
         return;
       }
 
@@ -4021,7 +4016,9 @@ var template = Object.freeze({
           // update data for track-by, object repeat &
           // primitive values.
           if (trackByKey || convertedFromObject || primitive) {
-            frag.scope[alias] = value;
+            withoutConversion(function () {
+              frag.scope[alias] = value;
+            });
           }
         } else {
           // new isntance
@@ -4111,7 +4108,11 @@ var template = Object.freeze({
       // for two-way binding on alias
       scope.$forContext = this;
       // define scope properties
-      defineReactive(scope, alias, value, true /* do not observe */);
+      // important: define the scope alias without forced conversion
+      // so that frozen data structures remain non-reactive.
+      withoutConversion(function () {
+        defineReactive(scope, alias, value);
+      });
       defineReactive(scope, '$index', index);
       if (key) {
         defineReactive(scope, '$key', key);
@@ -4266,7 +4267,7 @@ var template = Object.freeze({
       var primitive = !isObject(value);
       var id;
       if (key || trackByKey || primitive) {
-        id = trackByKey ? trackByKey === '$index' ? index : value[trackByKey] : key || value;
+        id = trackByKey ? trackByKey === '$index' ? index : getPath(value, trackByKey) : key || value;
         if (!cache[id]) {
           cache[id] = frag;
         } else if (trackByKey !== '$index') {
@@ -4301,7 +4302,7 @@ var template = Object.freeze({
       var primitive = !isObject(value);
       var frag;
       if (key || trackByKey || primitive) {
-        var id = trackByKey ? trackByKey === '$index' ? index : value[trackByKey] : key || value;
+        var id = trackByKey ? trackByKey === '$index' ? index : getPath(value, trackByKey) : key || value;
         frag = this.cache[id];
       } else {
         frag = value[this.id];
@@ -4328,7 +4329,7 @@ var template = Object.freeze({
       var key = hasOwn(scope, '$key') && scope.$key;
       var primitive = !isObject(value);
       if (trackByKey || key || primitive) {
-        var id = trackByKey ? trackByKey === '$index' ? index : value[trackByKey] : key || value;
+        var id = trackByKey ? trackByKey === '$index' ? index : getPath(value, trackByKey) : key || value;
         this.cache[id] = null;
       } else {
         value[this.id] = null;
@@ -4480,7 +4481,7 @@ var template = Object.freeze({
 
   if ('development' !== 'production') {
     vFor.warnDuplicate = function (value) {
-      warn('Duplicate value found in v-for="' + this.descriptor.raw + '": ' + JSON.stringify(value) + '. Use track-by="$index" if ' + 'you are expecting duplicate values.');
+      warn('Duplicate value found in v-for="' + this.descriptor.raw + '": ' + JSON.stringify(value) + '. Use track-by="$index" if ' + 'you are expecting duplicate values.', this.vm);
     };
   }
 
@@ -4502,7 +4503,7 @@ var template = Object.freeze({
         this.anchor = createAnchor('v-if');
         replace(el, this.anchor);
       } else {
-        'development' !== 'production' && warn('v-if="' + this.expression + '" cannot be ' + 'used on an instance root element.');
+        'development' !== 'production' && warn('v-if="' + this.expression + '" cannot be ' + 'used on an instance root element.', this.vm);
         this.invalid = true;
       }
     },
@@ -4935,7 +4936,7 @@ var template = Object.freeze({
       // friendly warning...
       this.checkFilters();
       if (this.hasRead && !this.hasWrite) {
-        'development' !== 'production' && warn('It seems you are using a read-only filter with ' + 'v-model. You might want to use a two-way filter ' + 'to ensure correct behavior.');
+        'development' !== 'production' && warn('It seems you are using a read-only filter with ' + 'v-model="' + this.descriptor.raw + '". ' + 'You might want to use a two-way filter to ensure correct behavior.', this.vm);
       }
       var el = this.el;
       var tag = el.tagName;
@@ -4947,7 +4948,7 @@ var template = Object.freeze({
       } else if (tag === 'TEXTAREA') {
         handler = handlers.text;
       } else {
-        'development' !== 'production' && warn('v-model does not support element type: ' + tag);
+        'development' !== 'production' && warn('v-model does not support element type: ' + tag, this.vm);
         return;
       }
       el.__v_model = this;
@@ -5063,7 +5064,7 @@ var template = Object.freeze({
       }
 
       if (typeof handler !== 'function') {
-        'development' !== 'production' && warn('v-on:' + this.arg + '="' + this.expression + '" expects a function value, ' + 'got ' + handler);
+        'development' !== 'production' && warn('v-on:' + this.arg + '="' + this.expression + '" expects a function value, ' + 'got ' + handler, this.vm);
         return;
       }
 
@@ -5156,11 +5157,17 @@ var template = Object.freeze({
       if (value) {
         var isImportant = importantRE.test(value) ? 'important' : '';
         if (isImportant) {
+          /* istanbul ignore if */
+          if ('development' !== 'production') {
+            warn('It\'s probably a bad idea to use !important with inline rules. ' + 'This feature will be deprecated in a future version of Vue.');
+          }
           value = value.replace(importantRE, '').trim();
+          this.el.style.setProperty(prop.kebab, value, isImportant);
+        } else {
+          this.el.style[prop.camel] = value;
         }
-        this.el.style.setProperty(prop, value, isImportant);
       } else {
-        this.el.style.removeProperty(prop);
+        this.el.style[prop.camel] = '';
       }
     }
 
@@ -5205,11 +5212,17 @@ var template = Object.freeze({
     while (i--) {
       prefixed = camelPrefixes[i] + upper;
       if (prefixed in testEl.style) {
-        return prefixes[i] + prop;
+        return {
+          kebab: prefixes[i] + prop,
+          camel: prefixed
+        };
       }
     }
     if (camel in testEl.style) {
-      return prop;
+      return {
+        kebab: prop,
+        camel: camel
+      };
     }
   }
 
@@ -5256,7 +5269,7 @@ var template = Object.freeze({
 
         // only allow binding on native attributes
         if (disallowedInterpAttrRE.test(attr) || attr === 'name' && (tag === 'PARTIAL' || tag === 'SLOT')) {
-          'development' !== 'production' && warn(attr + '="' + descriptor.raw + '": ' + 'attribute interpolation is not allowed in Vue.js ' + 'directives and special attributes.');
+          'development' !== 'production' && warn(attr + '="' + descriptor.raw + '": ' + 'attribute interpolation is not allowed in Vue.js ' + 'directives and special attributes.', this.vm);
           this.el.removeAttribute(attr);
           this.invalid = true;
         }
@@ -5266,12 +5279,12 @@ var template = Object.freeze({
           var raw = attr + '="' + descriptor.raw + '": ';
           // warn src
           if (attr === 'src') {
-            warn(raw + 'interpolation in "src" attribute will cause ' + 'a 404 request. Use v-bind:src instead.');
+            warn(raw + 'interpolation in "src" attribute will cause ' + 'a 404 request. Use v-bind:src instead.', this.vm);
           }
 
           // warn style
           if (attr === 'style') {
-            warn(raw + 'interpolation in "style" attribute will cause ' + 'the attribute to be discarded in Internet Explorer. ' + 'Use v-bind:style instead.');
+            warn(raw + 'interpolation in "style" attribute will cause ' + 'the attribute to be discarded in Internet Explorer. ' + 'Use v-bind:style instead.', this.vm);
           }
         }
       }
@@ -5367,7 +5380,7 @@ var template = Object.freeze({
 
   var ref = {
     bind: function bind() {
-      'development' !== 'production' && warn('v-ref:' + this.arg + ' must be used on a child ' + 'component. Found on <' + this.el.tagName.toLowerCase() + '>.');
+      'development' !== 'production' && warn('v-ref:' + this.arg + ' must be used on a child ' + 'component. Found on <' + this.el.tagName.toLowerCase() + '>.', this.vm);
     }
   };
 
@@ -5431,19 +5444,16 @@ var template = Object.freeze({
     },
 
     cleanup: function cleanup(value) {
-      if (this.prevKeys) {
-        var i = this.prevKeys.length;
-        while (i--) {
-          var key = this.prevKeys[i];
-          if (!key) continue;
-          if (isPlainObject(key)) {
-            var keys = Object.keys(key);
-            for (var k = 0; k < keys.length; k++) {
-              removeClass(this.el, keys[k]);
-            }
-          } else {
-            removeClass(this.el, key);
-          }
+      if (!this.prevKeys) return;
+
+      var i = this.prevKeys.length;
+      while (i--) {
+        var key = this.prevKeys[i];
+        if (!key) continue;
+
+        var keys = isPlainObject(key) ? Object.keys(key) : [key];
+        for (var j = 0, l = keys.length; j < l; j++) {
+          toggleClasses(this.el, keys[j], removeClass);
         }
       }
     }
@@ -5453,20 +5463,46 @@ var template = Object.freeze({
     var keys = Object.keys(obj);
     for (var i = 0, l = keys.length; i < l; i++) {
       var key = keys[i];
-      if (obj[key]) {
-        addClass(el, key);
-      }
+      if (!obj[key]) continue;
+      toggleClasses(el, key, addClass);
     }
   }
 
   function stringToObject(value) {
     var res = {};
     var keys = value.trim().split(/\s+/);
-    var i = keys.length;
-    while (i--) {
+    for (var i = 0, l = keys.length; i < l; i++) {
       res[keys[i]] = true;
     }
     return res;
+  }
+
+  /**
+   * Add or remove a class/classes on an element
+   *
+   * @param {Element} el
+   * @param {String} key The class name. This may or may not
+   *                     contain a space character, in such a
+   *                     case we'll deal with multiple class
+   *                     names at once.
+   * @param {Function} fn
+   */
+
+  function toggleClasses(el, key, fn) {
+    key = key.trim();
+
+    if (key.indexOf(' ') === -1) {
+      fn(el, key);
+      return;
+    }
+
+    // The key contains one or more space characters.
+    // Since a class name doesn't accept such characters, we
+    // treat it as multiple classes.
+    var keys = key.split(/\s+/);
+    for (var i = 0, l = keys.length; i < l; i++) {
+      fn(el, keys[i]);
+    }
   }
 
   var component = {
@@ -5684,7 +5720,7 @@ var template = Object.freeze({
         }
         /* istanbul ignore if */
         if ('development' !== 'production' && this.el.hasAttribute('transition') && child._isFragment) {
-          warn('Transitions will not work on a fragment instance. ' + 'Template: ' + child.$options.template);
+          warn('Transitions will not work on a fragment instance. ' + 'Template: ' + child.$options.template, child);
         }
         return child;
       }
@@ -5709,7 +5745,9 @@ var template = Object.freeze({
 
     unbuild: function unbuild(defer) {
       if (this.waitingFor) {
-        this.waitingFor.$destroy();
+        if (!this.keepAlive) {
+          this.waitingFor.$destroy();
+        }
         this.waitingFor = null;
       }
       var child = this.childVM;
@@ -5841,10 +5879,11 @@ var template = Object.freeze({
    *
    * @param {Element|DocumentFragment} el
    * @param {Array} propOptions
+   * @param {Vue} vm
    * @return {Function} propsLinkFn
    */
 
-  function compileProps(el, propOptions) {
+  function compileProps(el, propOptions, vm) {
     var props = [];
     var names = Object.keys(propOptions);
     var i = names.length;
@@ -5854,7 +5893,7 @@ var template = Object.freeze({
       options = propOptions[name] || empty;
 
       if ('development' !== 'production' && name === '$data') {
-        warn('Do not use $data as prop.');
+        warn('Do not use $data as prop.', vm);
         continue;
       }
 
@@ -5863,7 +5902,7 @@ var template = Object.freeze({
       // so we need to camelize the path here
       path = camelize(name);
       if (!identRE$1.test(path)) {
-        'development' !== 'production' && warn('Invalid prop key: "' + name + '". Prop keys ' + 'must be valid identifiers.');
+        'development' !== 'production' && warn('Invalid prop key: "' + name + '". Prop keys ' + 'must be valid identifiers.', vm);
         continue;
       }
 
@@ -5901,14 +5940,14 @@ var template = Object.freeze({
           // check non-settable path for two-way bindings
           if ('development' !== 'production' && prop.mode === propBindingModes.TWO_WAY && !settablePathRE.test(value)) {
             prop.mode = propBindingModes.ONE_WAY;
-            warn('Cannot bind two-way prop with non-settable ' + 'parent path: ' + value);
+            warn('Cannot bind two-way prop with non-settable ' + 'parent path: ' + value, vm);
           }
         }
         prop.parentPath = value;
 
         // warn required two-way
         if ('development' !== 'production' && options.twoWay && prop.mode !== propBindingModes.TWO_WAY) {
-          warn('Prop "' + name + '" expects a two-way binding type.');
+          warn('Prop "' + name + '" expects a two-way binding type.', vm);
         }
       } else if ((value = getAttr(el, attr)) !== null) {
         // has literal binding!
@@ -5918,10 +5957,10 @@ var template = Object.freeze({
         var lowerCaseName = path.toLowerCase();
         value = /[A-Z\-]/.test(name) && (el.getAttribute(lowerCaseName) || el.getAttribute(':' + lowerCaseName) || el.getAttribute('v-bind:' + lowerCaseName) || el.getAttribute(':' + lowerCaseName + '.once') || el.getAttribute('v-bind:' + lowerCaseName + '.once') || el.getAttribute(':' + lowerCaseName + '.sync') || el.getAttribute('v-bind:' + lowerCaseName + '.sync'));
         if (value) {
-          warn('Possible usage error for prop `' + lowerCaseName + '` - ' + 'did you mean `' + attr + '`? HTML is case-insensitive, remember to use ' + 'kebab-case for props in templates.');
+          warn('Possible usage error for prop `' + lowerCaseName + '` - ' + 'did you mean `' + attr + '`? HTML is case-insensitive, remember to use ' + 'kebab-case for props in templates.', vm);
         } else if (options.required) {
           // warn missing required
-          warn('Missing required prop: ' + name);
+          warn('Missing required prop: ' + name, vm);
         }
       }
       // push prop
@@ -5989,6 +6028,37 @@ var template = Object.freeze({
   }
 
   /**
+   * Process a prop with a rawValue, applying necessary coersions,
+   * default values & assertions and call the given callback with
+   * processed value.
+   *
+   * @param {Vue} vm
+   * @param {Object} prop
+   * @param {*} rawValue
+   * @param {Function} fn
+   */
+
+  function processPropValue(vm, prop, rawValue, fn) {
+    var isSimple = prop.dynamic && isSimplePath(prop.parentPath);
+    var value = rawValue;
+    if (value === undefined) {
+      value = getPropDefaultValue(vm, prop);
+    }
+    value = coerceProp(prop, value);
+    var coerced = value !== rawValue;
+    if (!assertProp(prop, value, vm)) {
+      value = undefined;
+    }
+    if (isSimple && !coerced) {
+      withoutConversion(function () {
+        fn(value);
+      });
+    } else {
+      fn(value);
+    }
+  }
+
+  /**
    * Set a prop's initial value on a vm and its data object.
    *
    * @param {Vue} vm
@@ -5997,34 +6067,36 @@ var template = Object.freeze({
    */
 
   function initProp(vm, prop, value) {
-    var key = prop.path;
-    value = coerceProp(prop, value);
-    if (value === undefined) {
-      value = getPropDefaultValue(vm, prop.options);
-    }
-    if (assertProp(prop, value)) {
-      var doNotObserve =
-      // if the passed down prop was already converted, then
-      // subsequent sets should also be converted, because the user
-      // may mutate the prop binding in the child component (#2549)
-      !(value && value.__ob__) && (
-      // otherwise we can skip observation for props that are either
-      // literal or points to a simple path (non-derived values)
-      !prop.dynamic || isSimplePath(prop.raw));
-      defineReactive(vm, key, value, doNotObserve);
-    }
+    processPropValue(vm, prop, value, function (value) {
+      defineReactive(vm, prop.path, value);
+    });
+  }
+
+  /**
+   * Update a prop's value on a vm.
+   *
+   * @param {Vue} vm
+   * @param {Object} prop
+   * @param {*} value
+   */
+
+  function updateProp(vm, prop, value) {
+    processPropValue(vm, prop, value, function (value) {
+      vm[prop.path] = value;
+    });
   }
 
   /**
    * Get the default value of a prop.
    *
    * @param {Vue} vm
-   * @param {Object} options
+   * @param {Object} prop
    * @return {*}
    */
 
-  function getPropDefaultValue(vm, options) {
+  function getPropDefaultValue(vm, prop) {
     // no default, return undefined
+    var options = prop.options;
     if (!hasOwn(options, 'default')) {
       // absent boolean value defaults to false
       return options.type === Boolean ? false : undefined;
@@ -6032,7 +6104,7 @@ var template = Object.freeze({
     var def = options['default'];
     // warn against non-factory defaults for Object & Array
     if (isObject(def)) {
-      'development' !== 'production' && warn('Object/Array as default prop values will be shared ' + 'across multiple instances. Use a factory function ' + 'to return the default value instead.');
+      'development' !== 'production' && warn('Invalid default value for prop "' + prop.name + '": ' + 'Props with type Object/Array must use a factory function ' + 'to return the default value.', vm);
     }
     // call factory function for non-Function types
     return typeof def === 'function' && options.type !== Function ? def.call(vm) : def;
@@ -6043,9 +6115,10 @@ var template = Object.freeze({
    *
    * @param {Object} prop
    * @param {*} value
+   * @param {Vue} vm
    */
 
-  function assertProp(prop, value) {
+  function assertProp(prop, value, vm) {
     if (!prop.options.required && ( // non-required
     prop.raw === null || // abscent
     value == null) // null or undefined
@@ -6054,39 +6127,28 @@ var template = Object.freeze({
       }
     var options = prop.options;
     var type = options.type;
-    var valid = true;
-    var expectedType;
+    var valid = !type;
+    var expectedTypes = [];
     if (type) {
-      if (type === String) {
-        expectedType = 'string';
-        valid = typeof value === expectedType;
-      } else if (type === Number) {
-        expectedType = 'number';
-        valid = typeof value === 'number';
-      } else if (type === Boolean) {
-        expectedType = 'boolean';
-        valid = typeof value === 'boolean';
-      } else if (type === Function) {
-        expectedType = 'function';
-        valid = typeof value === 'function';
-      } else if (type === Object) {
-        expectedType = 'object';
-        valid = isPlainObject(value);
-      } else if (type === Array) {
-        expectedType = 'array';
-        valid = isArray(value);
-      } else {
-        valid = value instanceof type;
+      if (!isArray(type)) {
+        type = [type];
+      }
+      for (var i = 0; i < type.length && !valid; i++) {
+        var assertedType = assertType(value, type[i]);
+        expectedTypes.push(assertedType.expectedType);
+        valid = assertedType.valid;
       }
     }
     if (!valid) {
-      'development' !== 'production' && warn('Invalid prop: type check failed for ' + prop.path + '="' + prop.raw + '".' + ' Expected ' + formatType(expectedType) + ', got ' + formatValue(value) + '.');
+      if ('development' !== 'production') {
+        warn('Invalid prop: type check failed for prop "' + prop.name + '".' + ' Expected ' + expectedTypes.map(formatType).join(', ') + ', got ' + formatValue(value) + '.', vm);
+      }
       return false;
     }
     var validator = options.validator;
     if (validator) {
       if (!validator(value)) {
-        'development' !== 'production' && warn('Invalid prop: custom validator check failed for ' + prop.path + '="' + prop.raw + '"');
+        'development' !== 'production' && warn('Invalid prop: custom validator check failed for prop "' + prop.name + '".', vm);
         return false;
       }
     }
@@ -6110,9 +6172,61 @@ var template = Object.freeze({
     return coerce(value);
   }
 
-  function formatType(val) {
-    return val ? val.charAt(0).toUpperCase() + val.slice(1) : 'custom type';
+  /**
+   * Assert the type of a value
+   *
+   * @param {*} value
+   * @param {Function} type
+   * @return {Object}
+   */
+
+  function assertType(value, type) {
+    var valid;
+    var expectedType;
+    if (type === String) {
+      expectedType = 'string';
+      valid = typeof value === expectedType;
+    } else if (type === Number) {
+      expectedType = 'number';
+      valid = typeof value === expectedType;
+    } else if (type === Boolean) {
+      expectedType = 'boolean';
+      valid = typeof value === expectedType;
+    } else if (type === Function) {
+      expectedType = 'function';
+      valid = typeof value === expectedType;
+    } else if (type === Object) {
+      expectedType = 'object';
+      valid = isPlainObject(value);
+    } else if (type === Array) {
+      expectedType = 'array';
+      valid = isArray(value);
+    } else {
+      valid = value instanceof type;
+    }
+    return {
+      valid: valid,
+      expectedType: expectedType
+    };
   }
+
+  /**
+   * Format type for output
+   *
+   * @param {String} type
+   * @return {String}
+   */
+
+  function formatType(type) {
+    return type ? type.charAt(0).toUpperCase() + type.slice(1) : 'custom type';
+  }
+
+  /**
+   * Format value
+   *
+   * @param {*} value
+   * @return {String}
+   */
 
   function formatValue(val) {
     return Object.prototype.toString.call(val).slice(8, -1);
@@ -6132,10 +6246,7 @@ var template = Object.freeze({
       var twoWay = prop.mode === bindingModes.TWO_WAY;
 
       var parentWatcher = this.parentWatcher = new Watcher(parent, parentKey, function (val) {
-        val = coerceProp(prop, val);
-        if (assertProp(prop, val)) {
-          child[childKey] = val;
-        }
+        updateProp(child, prop, val);
       }, {
         twoWay: twoWay,
         filters: prop.filters,
@@ -6265,7 +6376,7 @@ var template = Object.freeze({
     /* istanbul ignore if */
     if ('development' !== 'production') {
       if (this.type && this.type !== TYPE_TRANSITION && this.type !== TYPE_ANIMATION) {
-        warn('invalid CSS transition type for transition="' + this.id + '": ' + this.type);
+        warn('invalid CSS transition type for transition="' + this.id + '": ' + this.type, vm);
       }
     }
     // bind
@@ -6755,7 +6866,7 @@ var template = Object.freeze({
    */
 
   function compileAndLinkProps(vm, el, props, scope) {
-    var propsLinkFn = compileProps(el, props);
+    var propsLinkFn = compileProps(el, props, vm);
     var propDirs = linkAndCapture(function () {
       propsLinkFn(vm, scope);
     }, vm);
@@ -7143,15 +7254,17 @@ var template = Object.freeze({
       }
     }
 
-    var attr, name, value, matched, dirName, arg, def, termDef;
+    var attr, name, value, modifiers, matched, dirName, rawName, arg, def, termDef;
     for (var i = 0, j = attrs.length; i < j; i++) {
       attr = attrs[i];
-      if (matched = attr.name.match(dirAttrRE)) {
+      modifiers = parseModifiers(attr.name);
+      name = attr.name.replace(modifierRE, '');
+      if (matched = name.match(dirAttrRE)) {
         def = resolveAsset(options, 'directives', matched[1]);
         if (def && def.terminal) {
           if (!termDef || (def.priority || DEFAULT_TERMINAL_PRIORITY) > termDef.priority) {
             termDef = def;
-            name = attr.name;
+            rawName = attr.name;
             value = attr.value;
             dirName = matched[1];
             arg = matched[2];
@@ -7161,7 +7274,7 @@ var template = Object.freeze({
     }
 
     if (termDef) {
-      return makeTerminalNodeLinkFn(el, dirName, value, options, termDef, name, arg);
+      return makeTerminalNodeLinkFn(el, dirName, value, options, termDef, rawName, arg, modifiers);
     }
   }
 
@@ -7179,28 +7292,24 @@ var template = Object.freeze({
    * @param {String} value
    * @param {Object} options
    * @param {Object} def
-   * @param {String} [attrName]
+   * @param {String} [rawName]
    * @param {String} [arg]
+   * @param {Object} [modifiers]
    * @return {Function} terminalLinkFn
    */
 
-  function makeTerminalNodeLinkFn(el, dirName, value, options, def, attrName, arg) {
+  function makeTerminalNodeLinkFn(el, dirName, value, options, def, rawName, arg, modifiers) {
     var parsed = parseDirective(value);
     var descriptor = {
       name: dirName,
+      arg: arg,
       expression: parsed.expression,
       filters: parsed.filters,
       raw: value,
-      rawName: attrName,
+      attr: rawName,
+      modifiers: modifiers,
       def: def
     };
-    if (attrName) {
-      descriptor.rawName = attrName;
-      descriptor.modifiers = parseModifiers(attrName);
-    }
-    if (arg) {
-      descriptor.arg = arg.replace(modifierRE, '');
-    }
     // check ref for v-for and router-view
     if (dirName === 'for' || dirName === 'router-view') {
       descriptor.ref = findRef(el);
@@ -7248,7 +7357,7 @@ var template = Object.freeze({
           if (name === 'class' && Array.prototype.some.call(attrs, function (attr) {
             return attr.name === ':class' || attr.name === 'v-bind:class';
           })) {
-            warn('class="' + rawValue + '": Do not mix mustache interpolation ' + 'and v-bind for "class" on the same element. Use one or the other.');
+            warn('class="' + rawValue + '": Do not mix mustache interpolation ' + 'and v-bind for "class" on the same element. Use one or the other.', options);
           }
         }
       } else
@@ -7286,12 +7395,7 @@ var template = Object.freeze({
                   continue;
                 }
 
-                dirDef = resolveAsset(options, 'directives', dirName);
-
-                if ('development' !== 'production') {
-                  assertAsset(dirDef, 'directive', dirName);
-                }
-
+                dirDef = resolveAsset(options, 'directives', dirName, true);
                 if (dirDef) {
                   pushDir(dirName, dirDef);
                 }
@@ -7543,7 +7647,7 @@ var template = Object.freeze({
       }
       /* eslint-enable no-cond-assign */
       if ('development' !== 'production' && getBindAttr(el, 'slot')) {
-        warn('The "slot" attribute must be static.');
+        warn('The "slot" attribute must be static.', vm.$parent);
       }
     }
     for (name in contents) {
@@ -7628,7 +7732,7 @@ var template = Object.freeze({
       var el = options.el;
       var props = options.props;
       if (props && !el) {
-        'development' !== 'production' && warn('Props will not be compiled if no `el` option is ' + 'provided at instantiation.');
+        'development' !== 'production' && warn('Props will not be compiled if no `el` option is ' + 'provided at instantiation.', this);
       }
       // make sure to convert string selectors into element now
       el = options.el = query(el);
@@ -7646,7 +7750,7 @@ var template = Object.freeze({
       var data = this._data = dataFn ? dataFn() : {};
       if (!isPlainObject(data)) {
         data = {};
-        'development' !== 'production' && warn('data functions should return an object.');
+        'development' !== 'production' && warn('data functions should return an object.', this);
       }
       var props = this._props;
       var runtimeData = this._runtimeData ? typeof this._runtimeData === 'function' ? this._runtimeData() : this._runtimeData : null;
@@ -7663,7 +7767,7 @@ var template = Object.freeze({
         if (!props || !hasOwn(props, key) || runtimeData && hasOwn(runtimeData, key) && props[key].raw === null) {
           this._proxy(key);
         } else if ('development' !== 'production') {
-          warn('Data field "' + key + '" is already defined ' + 'as a prop. Use prop default value instead.');
+          warn('Data field "' + key + '" is already defined ' + 'as a prop. Use prop default value instead.', this);
         }
       }
       // observe data
@@ -7863,7 +7967,7 @@ var template = Object.freeze({
             handler._fromParent = true;
             vm.$on(name.replace(eventRE), handler);
           } else if ('development' !== 'production') {
-            warn('v-on:' + name + '="' + attrs[i].value + '"' + (vm.$options.name ? ' on component <' + vm.$options.name + '>' : '') + ' expects a function value, got ' + handler);
+            warn('v-on:' + name + '="' + attrs[i].value + '" ' + 'expects a function value, got ' + handler, vm);
           }
         }
       }
@@ -7912,7 +8016,7 @@ var template = Object.freeze({
         if (method) {
           vm[action](key, method, options);
         } else {
-          'development' !== 'production' && warn('Unknown method: "' + handler + '" when ' + 'registering callback for ' + action + ': "' + key + '".');
+          'development' !== 'production' && warn('Unknown method: "' + handler + '" when ' + 'registering callback for ' + action + ': "' + key + '".', vm);
         }
       } else if (handler && type === 'object') {
         register(vm, action, key, handler.handler, handler);
@@ -8130,7 +8234,7 @@ var template = Object.freeze({
     var i = params.length;
     var key, val, mappedKey;
     while (i--) {
-      key = params[i];
+      key = hyphenate(params[i]);
       mappedKey = camelize(key);
       val = getBindAttr(this.el, key);
       if (val != null) {
@@ -8553,10 +8657,7 @@ var template = Object.freeze({
       var filter, fn, args, arg, offset, i, l, j, k;
       for (i = 0, l = filters.length; i < l; i++) {
         filter = filters[write ? l - i - 1 : i];
-        fn = resolveAsset(this.$options, 'filters', filter.name);
-        if ('development' !== 'production') {
-          assertAsset(fn, 'filter', filter.name);
-        }
+        fn = resolveAsset(this.$options, 'filters', filter.name, true);
         if (!fn) continue;
         fn = write ? fn.write : fn.read || fn;
         if (typeof fn !== 'function') continue;
@@ -8589,10 +8690,7 @@ var template = Object.freeze({
       if (typeof value === 'function') {
         factory = value;
       } else {
-        factory = resolveAsset(this.$options, 'components', value);
-        if ('development' !== 'production') {
-          assertAsset(factory, 'component', value);
-        }
+        factory = resolveAsset(this.$options, 'components', value, true);
       }
       if (!factory) {
         return;
@@ -9194,7 +9292,7 @@ var template = Object.freeze({
 
     Vue.prototype.$mount = function (el) {
       if (this._isCompiled) {
-        'development' !== 'production' && warn('$mount() should be called only once.');
+        'development' !== 'production' && warn('$mount() should be called only once.', this);
         return;
       }
       el = query(el);
@@ -9353,10 +9451,7 @@ var template = Object.freeze({
     },
 
     insert: function insert(id) {
-      var partial = resolveAsset(this.vm.$options, 'partials', id);
-      if ('development' !== 'production') {
-        assertAsset(partial, 'partial', id);
-      }
+      var partial = resolveAsset(this.vm.$options, 'partials', id, true);
       if (partial) {
         this.factory = new FragmentFactory(this.vm, partial);
         vIf.insert.call(this);
@@ -9412,9 +9507,7 @@ var template = Object.freeze({
     // because why not
     var n = delimiter === 'in' ? 3 : 2;
     // extract and flatten keys
-    var keys = toArray(arguments, n).reduce(function (prev, cur) {
-      return prev.concat(cur);
-    }, []);
+    var keys = Array.prototype.concat.apply([], toArray(arguments, n));
     var res = [];
     var item, key, val, j;
     for (var i = 0, l = arr.length; i < l; i++) {
@@ -9439,26 +9532,58 @@ var template = Object.freeze({
   /**
    * Filter filter for arrays
    *
-   * @param {String} sortKey
-   * @param {String} reverse
+   * @param {String|Array<String>|Function} ...sortKeys
+   * @param {Number} [order]
    */
 
-  function orderBy(arr, sortKey, reverse) {
+  function orderBy(arr) {
+    var comparator = null;
+    var sortKeys = undefined;
     arr = convertArray(arr);
-    if (!sortKey) {
-      return arr;
+
+    // determine order (last argument)
+    var args = toArray(arguments, 1);
+    var order = args[args.length - 1];
+    if (typeof order === 'number') {
+      order = order < 0 ? -1 : 1;
+      args = args.length > 1 ? args.slice(0, -1) : args;
+    } else {
+      order = 1;
     }
-    var order = reverse && reverse < 0 ? -1 : 1;
-    // sort on a copy to avoid mutating original array
-    return arr.slice().sort(function (a, b) {
-      if (sortKey !== '$key') {
-        if (isObject(a) && '$value' in a) a = a.$value;
-        if (isObject(b) && '$value' in b) b = b.$value;
+
+    // determine sortKeys & comparator
+    var firstArg = args[0];
+    if (!firstArg) {
+      return arr;
+    } else if (typeof firstArg === 'function') {
+      // custom comparator
+      comparator = function (a, b) {
+        return firstArg(a, b) * order;
+      };
+    } else {
+      // string keys. flatten first
+      sortKeys = Array.prototype.concat.apply([], args);
+      comparator = function (a, b, i) {
+        i = i || 0;
+        return i >= sortKeys.length - 1 ? baseCompare(a, b, i) : baseCompare(a, b, i) || comparator(a, b, i + 1);
+      };
+    }
+
+    function baseCompare(a, b, sortKeyIndex) {
+      var sortKey = sortKeys[sortKeyIndex];
+      if (sortKey) {
+        if (sortKey !== '$key') {
+          if (isObject(a) && '$value' in a) a = a.$value;
+          if (isObject(b) && '$value' in b) b = b.$value;
+        }
+        a = isObject(a) ? getPath(a, sortKey) : a;
+        b = isObject(b) ? getPath(b, sortKey) : b;
       }
-      a = isObject(a) ? getPath(a, sortKey) : a;
-      b = isObject(b) ? getPath(b, sortKey) : b;
       return a === b ? 0 : a > b ? order : -order;
-    });
+    }
+
+    // sort on a copy to avoid mutating original array
+    return arr.slice().sort(comparator);
   }
 
   /**
@@ -9778,17 +9903,19 @@ var template = Object.freeze({
 
   installGlobalAPI(Vue);
 
-  Vue.version = '1.0.19';
+  Vue.version = '1.0.21';
 
   // devtools global hook
   /* istanbul ignore next */
-  if (config.devtools) {
-    if (devtools) {
-      devtools.emit('init', Vue);
-    } else if ('development' !== 'production' && inBrowser && /Chrome\/\d+/.test(window.navigator.userAgent)) {
-      console.log('Download the Vue Devtools for a better development experience:\n' + 'https://github.com/vuejs/vue-devtools');
+  setTimeout(function () {
+    if (config.devtools) {
+      if (devtools) {
+        devtools.emit('init', Vue);
+      } else if ('development' !== 'production' && inBrowser && /Chrome\/\d+/.test(window.navigator.userAgent)) {
+        console.log('Download the Vue Devtools for a better development experience:\n' + 'https://github.com/vuejs/vue-devtools');
+      }
     }
-  }
+  }, 0);
 
   return Vue;
 
