@@ -319,6 +319,8 @@ Vue.component('example', {
   props: {
     // Tipo richiesto (`null` significa qualsiasi tipo)
     propA: Number,
+    // Tipi multipli (1.0.21+)
+    propM: [String, Number],
     // Una stringa richiesta
     propB: {
       type: String,
