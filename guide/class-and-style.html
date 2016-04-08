@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Vincolo sul CSS - vue.js</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Libreria intuitiva, veloce per costruire interfacce interattive tramite MVVM.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Roboto Mono' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Dosis:300,500&text=Vue.js' rel='stylesheet' type='text/css'>
+        <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="icon" href="/images/logo.png" type="image/x-icon">
+        <script>
+            window.PAGE_TYPE = "guida"
+        </script>
+        <link rel="stylesheet" href="/css/page.css">
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46852172-1', 'vuejs.org');
+  ga('send', 'pageview');
+</script>
+        <script src="/js/vue.js"></script>
+    </head>
+    <body>
+        <div id="mobile-bar">
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        
+            <div id="header">
+    <a id="logo" href="/">
+        <img src="/images/logo.png">
+        <span>Vue.js</span>
+    </a>
+    <ul id="nav">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/guide/" class="nav-link current">Guida</a></li>
+<li><a href="/api/" class="nav-link">API</a></li>
+<li><a href="/examples/" class="nav-link">Esempi</a></li>
+<li><a href="/blog/" class="nav-link">Blog</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">Community</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/vuejs/vue" class="nav-link" target="_blank">GitHub</a></li>
+    <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">Forum</a></li>
+    <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">Chat</a></li>
+    <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+  </ul>
+</li>
+
+
+    </ul>
+</div>
+            <div id="main">
+                
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/guide/" class="nav-link current">Guida</a></li>
+<li><a href="/api/" class="nav-link">API</a></li>
+<li><a href="/examples/" class="nav-link">Esempi</a></li>
+<li><a href="/blog/" class="nav-link">Blog</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">Community</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/vuejs/vue" class="nav-link" target="_blank">GitHub</a></li>
+    <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">Forum</a></li>
+    <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">Chat</a></li>
+    <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+  </ul>
+</li>
+
+
+    </ul>
+    <div class="list">
+        <div id="donate" style="margin-bottom: 20px">
+            <span class="wrapper" style="width: 110px">
+                <img src="/images/patreon.png">
+                <a href="/support-vuejs">Dona a Vue.js</a>
+            </span>
+         </div>
+        <h2>
+            Guida
+            <select class="version-select">
+                <option selected>1.0.*</option>
+                <option>0.12</option>
+                <option>0.11</option>
+            </select>
+        </h2>
+        <ul class="menu-root">
+            
+                <li>
+                    <a href="/guide/installation.html" class="sidebar-link">Installazione</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/index.html" class="sidebar-link">Per Iniziare</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/overview.html" class="sidebar-link">Panoramica</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/instance.html" class="sidebar-link">L'instanza di Vue</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/syntax.html" class="sidebar-link">Two Way Binding nel Dettaglio</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/computed.html" class="sidebar-link">Proprietà Derivate</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/class-and-style.html" class="sidebar-link current">Vincolo sul CSS</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/conditional.html" class="sidebar-link">Rendering Condizionato</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/list.html" class="sidebar-link">Rendering di Liste</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/events.html" class="sidebar-link">Gestione degli Eventi e dei Metodi</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/forms.html" class="sidebar-link">Vincolo sugli input dei Form</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/transitions.html" class="sidebar-link">Transizioni</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/components.html" class="sidebar-link">Componenti</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/reactivity.html" class="sidebar-link">Reattività nel Dettaglio</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/custom-directive.html" class="sidebar-link">Direttive Personalizzate</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/custom-filter.html" class="sidebar-link">Filtri Personalizzati</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/mixins.html" class="sidebar-link">Mixins</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/plugins.html" class="sidebar-link">Plugins</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/application.html" class="sidebar-link">Costruire un'Applicazione scalabile</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/comparison.html" class="sidebar-link">Confronto con altri Framework</a>
+                </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+<div class="content guida with-sidebar">
+    <div id="ad">
+  <a href="https://strikingly.com/s/careers?utm_source=v" target="_blank">
+    <span>Fieramente Sponsorizzato da</span><br>
+    <img src="/images/strikingly.png">
+  </a>
+</div>
+
+    <h1>Vincolo sul CSS</h1>
+    <p>Una necessità molto comune quando si utilizza il vincolo dei dati è quello di manipolare le classi e lo style CSS del tag HTML in questione. Visto che entrambi sono degli attributi comuni dei tag HTML, possiamo usare <code>v-bind</code> per gestirli: dobbiamo solo calcolare il corretto risultato finale della nostra espressione. Comunque sia pasticciare gli attributi con concatenazione di string e risultati di espresioni può portare ed errori. Per questo motivo Vue.js offre dei miglioramenti quando capisce che <code>v-bind</code> è utilizzato per l’attributo <code>class</code> o <code>style</code>. In aggiunta alle stringhe, l’espressione in <code>v-bind</code> potrà valutare anche Oggetti ed Array.</p>
+<h2 id="Vincolare-Classi-HTML"><a href="#Vincolare-Classi-HTML" class="headerlink" title="Vincolare Classi HTML"></a>Vincolare Classi HTML</h2><p class="tip">Anche se potreste usare l’interpolazione con le parentesi graffe <code>class="{{ className }}"</code> per vincolare le classi, non è raccomandato mescolare quel metodo con <code>v-bind:class</code>, usate o uno o l’altro!</p>
+
+<h3 id="Sintassi-per-gli-Oggetti"><a href="#Sintassi-per-gli-Oggetti" class="headerlink" title="Sintassi per gli Oggetti"></a>Sintassi per gli Oggetti</h3><p>Possiamo passare un Oggetto a <code>v-bind:class</code> per attivare classi CSS in modo dinamico. Notare che la direttiva <code>v-bind:class</code> può coesistere con l’attributo standard <code>class</code>:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"static"</span> <span class="attr">v-bind:class</span>=<span class="string">"&#123; 'class-a': isA, 'class-b': isB &#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">  isA: <span class="literal">true</span>,</span><br><span class="line">  isB: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Verrà renderizzato:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"static class-a"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Quando <code>isA</code> e <code>isB</code> cambiano, la lista delle classi cambierà di conseguenza. Per esempio se <code>isB</code> diventa <code>true</code>, la classi css finali saranno <code>&quot;static class-a class-b&quot;</code>.</p>
+<p>Tra le altre cose, puoi vincolare anche un oggetto:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:class</span>=<span class="string">"classObject"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">  classObject: &#123;</span><br><span class="line">    <span class="string">'class-a'</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">'class-b'</span>: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Questo esempio avrà lo stesso risultato. Come avrai intuito possiamo anche vincolare una <a href="computed.html">Proprietà Derivata</a> la quale restituisce un Oggetto. Questo è un metodo di sviluppo comune e molto potente.</p>
+<h3 id="Sintassi-per-gli-Array"><a href="#Sintassi-per-gli-Array" class="headerlink" title="Sintassi per gli Array"></a>Sintassi per gli Array</h3><p>Potete passare un Array a <code>v-bind:class</code> per applicare una lista di classi CSS:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:class</span>=<span class="string">"[classA, classB]"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">  classA: <span class="string">'class-a'</span>,</span><br><span class="line">  classB: <span class="string">'class-b'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Verrà renderizzato:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"class-a class-b"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Se avete la necessità di attivare una specifica classe in base ad una condizione, potete farlo usando le espressioni ternarie:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:class</span>=<span class="string">"[classA, isB ? classB : '']"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>In questo caso <code>classA</code> verrà sempre inserita, ma <code>classB</code> verrà inserita solo se <code>isB</code> è <code>true</code>.</p>
+<p>Questo procedimento può diventare abbastanza prolisso quando iniziano ad esserci parecchie classi e condizioni. Dalla versione 1.0.19+ è possibile utilizzare la sintassi ad oggetti internamente agli Array:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:class</span>=<span class="string">"[classA, &#123; classB: isB, classC: isC &#125;]"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Vincolare-lo-Style-CSS"><a href="#Vincolare-lo-Style-CSS" class="headerlink" title="Vincolare lo Style CSS"></a>Vincolare lo Style CSS</h2><h3 id="Sintassi-per-gli-Oggetti-1"><a href="#Sintassi-per-gli-Oggetti-1" class="headerlink" title="Sintassi per gli Oggetti"></a>Sintassi per gli Oggetti</h3><p>La sintasssi per gli oggetti di <code>v-bind:style</code> è molto chiara - assomiglia molto a quella usata per le classi CSS, tolto il fatto che è un Oggetto JavaScript in questo caso. Puoi utilizzare la sintassi camelCase o kebab-case per i nomi delle proprietà CSS:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:style</span>=<span class="string">"&#123; color: activeColor, fontSize: fontSize + 'px' &#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">  activeColor: <span class="string">'red'</span>,</span><br><span class="line">  fontSize: <span class="number">30</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Spesso è consigliato vincolare lo style utilizzando direttamente on oggetto, per far si di tenere il template più pulito:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:style</span>=<span class="string">"styleObject"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">  styleObject: &#123;</span><br><span class="line">    color: <span class="string">'red'</span>,</span><br><span class="line">    fontSize: <span class="string">'13px'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Anche qui, la sintassi ad oggetti è spesso usata sfruttando le properità derivate le quali restituiscono un oggetto.</p>
+<h3 id="Sintassi-per-gli-Array-1"><a href="#Sintassi-per-gli-Array-1" class="headerlink" title="Sintassi per gli Array"></a>Sintassi per gli Array</h3><p>La sintassi ad Array per <code>v-bind:style</code> vi permette di applicare più oggetti allo stesso elemento:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:style</span>=<span class="string">"[styleObjectA, styleObjectB]"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Prefisso-Automatico"><a href="#Prefisso-Automatico" class="headerlink" title="Prefisso Automatico"></a>Prefisso Automatico</h3><p>Quando si utilizzano delle properità CSS che richiedono dei prefissi, per esempio <code>transform</code> Vue.js cercherà in automatico di individuare ed applicare i prefissi alle properità che necessitano tale controllo.</p>
+
+    
+    <div class="footer">
+      Trovato un errore e vuoi contribuire alla documentazione?
+      <a href="https://github.com/vuejs/it.vuejs.org/blob/master/src/guide/class-and-style.md" target="_blank">
+        Modifica questa pagina su Github!
+      </a>
+    </div>
+</div>
+
+                
+            </div>
+            <script type="text/javascript" src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+            <script src="/js/smooth-scroll.min.js"></script>
+            <script src="/js/common.js"></script>
+        
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        </script>
+    </body>
+</html>

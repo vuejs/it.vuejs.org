@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Vue.js</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://vuejs.org/"/>
+  <updated>2016-04-08T13:31:54.000Z</updated>
+  <id>http://vuejs.org/</id>
+  
+  <author>
+    <name>Evan You</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>March 2016 Update</title>
+    <link href="http://vuejs.org/2016/03/14/march-update/"/>
+    <id>http://vuejs.org/2016/03/14/march-update/</id>
+    <published>2016-03-14T17:45:00.000Z</published>
+    <updated>2016-04-08T13:31:54.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Growing-Community&quot;&gt;&lt;a href=&quot;#Growing-Community&quot; class=&quot;headerlink&quot; title=&quot;Growing Community&quot;&gt;&lt;/a&gt;Growing Community&lt;/h2&gt;&lt;p&gt;Vue’s growth in the past year has been nothing short of amazing. As of today we are at over 15,000 stars on GitHub, over 500k downloads from npm, and over 2,000 users in the Gitter channel. What’s more exciting though, is that the community successfully organized the first &lt;a href=&quot;http://www.meetup.com/London-Vue-js-Meetup/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;London Vue.js Meetup&lt;/a&gt; and the first &lt;a href=&quot;http://www.meetup.com/Vuejs-Paris/?scroll=true&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Paris Vue.js Meetup&lt;/a&gt;! A big shoutout to the awesome organizers: &lt;a href=&quot;https://twitter.com/JackBarham&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Jack&lt;/a&gt;, &lt;a href=&quot;https://twitter.com/onejamesbrowne/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;James&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/posva/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Eduardo&lt;/a&gt;.&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;If you are interested in connecting with Vue.js users near you and share your experiences in using Vue.js, joining a local Meetup is a great idea - even better, maybe you can organize one :)&lt;/p&gt;
+&lt;h2 id=&quot;Cool-Things-Being-Built&quot;&gt;&lt;a href=&quot;#Cool-Things-Being-Built&quot; class=&quot;headerlink&quot; title=&quot;Cool Things Being Built&quot;&gt;&lt;/a&gt;Cool Things Being Built&lt;/h2&gt;&lt;p&gt;More and more amazing things are being built with Vue. There are products like &lt;a href=&quot;https://pagekit.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PageKit&lt;/a&gt;, Laravel Spark (coming soon) and &lt;a href=&quot;https://v2.statamic.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Statamic&lt;/a&gt;, sleek apps like &lt;a href=&quot;http://koel.phanan.net/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Koel&lt;/a&gt; and &lt;a href=&quot;https://github.com/Zhangdroid/Gokotta&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Gokotta&lt;/a&gt;, UI components like &lt;a href=&quot;http://yuche.github.io/vue-strap/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;VueStrap&lt;/a&gt; and &lt;a href=&quot;http://posva.net/vue-mdl/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Vue-MDL&lt;/a&gt;, and smooth, interactive experiences like &lt;a href=&quot;https://adblitz.withyoutube.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;YouTube Adblitz&lt;/a&gt; and even the &lt;a href=&quot;https://newsfeed.fb.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Facebook NewsFeed Marketing Site&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;There are many other great projects - too many to be listed here - but you can check them all out in &lt;a href=&quot;https://github.com/vuejs/awesome-vue&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;awesome-vue&lt;/a&gt;. If you’ve built great things with Vue, you should also add them to the list!&lt;/p&gt;
+&lt;h2 id=&quot;A-New-Vision-For-the-Project&quot;&gt;&lt;a href=&quot;#A-New-Vision-For-the-Project&quot; class=&quot;headerlink&quot; title=&quot;A New Vision For the Project&quot;&gt;&lt;/a&gt;A New Vision For the Project&lt;/h2&gt;&lt;p&gt;Some of you may have noticed that the development on the Vue.js core repo has slowed down lately - in the meanwhile, a lot of efforts went into other sub projects, namely &lt;a href=&quot;https://github.com/vuejs/vuex&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Vuex&lt;/a&gt;, &lt;a href=&quot;https://github.com/vuejs/vue-devtools&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;vue-devtools&lt;/a&gt; and the official &lt;a href=&quot;https://github.com/vuejs-templates/webpack&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Webpack project boilerplate&lt;/a&gt;. The next step is a new release for &lt;a href=&quot;https://github.com/vuejs/vue-router&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;vue-router&lt;/a&gt;, and better documentation/examples demonstrating how Vue.js core, Vuex and vue-router work together in a large single page application.&lt;/p&gt;
+&lt;p&gt;All this adds together towards a new vision for the Vue.js project: a progressive framework that can adapt to different complexity levels. Vue.js core will remain “just the view layer” - you can still drop it on whatever existing page to replace jQuery, but the Vue.js project also includes other pieces like vue-router, Vuex, vue-loader/vueify and vue-cli that works together as a more complete, opinionated framework for single page applications. More on this in a later post.&lt;/p&gt;
+&lt;h2 id=&quot;Vue-js-needs-your-help&quot;&gt;&lt;a href=&quot;#Vue-js-needs-your-help&quot; class=&quot;headerlink&quot; title=&quot;Vue.js needs your help!&quot;&gt;&lt;/a&gt;Vue.js needs your help!&lt;/h2&gt;&lt;p&gt;Open source is awesome, and I’m proud that Vue.js is helping people build real products all over the world. However, as the scope of the project grows, pushing new features while maintaining everything becomes a very demanding job. The good news is you can help!&lt;/p&gt;
+&lt;h3 id=&quot;Looking-for-collaborators&quot;&gt;&lt;a href=&quot;#Looking-for-collaborators&quot; class=&quot;headerlink&quot; title=&quot;Looking for collaborators&quot;&gt;&lt;/a&gt;Looking for collaborators&lt;/h3&gt;&lt;p&gt;There are already users who frequently helps out in various ways, but this is an invitation to make things official. I’m looking for contributors to join the “team”, which is currently mostly just me. If that sounds interesting to you, take a look at the application &lt;a href=&quot;https://docs.google.com/forms/d/1SgDgKZqyivEf5xl0EOWNfs68Xy3f4oBzLXIlwlS0BIs/viewform&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;Looking-for-sponsors&quot;&gt;&lt;a href=&quot;#Looking-for-sponsors&quot; class=&quot;headerlink&quot; title=&quot;Looking for sponsors&quot;&gt;&lt;/a&gt;Looking for sponsors&lt;/h3&gt;&lt;p&gt;Another way to help making Vue development sustainable is providing direct financial support. The more financial support I receive, the more time I get to spend on making Vue even better.&lt;/p&gt;
+&lt;p&gt;If you run a business and is using Vue in a revenue-generating product, it would make business sense to sponsor Vue development: it ensures the project that your product relies on stays healthy and actively maintained. It can also help your exposure in the Vue community and makes it easier to attract Vue developers.&lt;/p&gt;
+&lt;p&gt;If you are an individual user and have enjoyed the productivity of using Vue, consider donating as a sign of appreciation - like buying me coffee once in a while :)&lt;/p&gt;
+&lt;p&gt;In either case, you can provide recurring funding through Vue’s &lt;a href=&quot;https://www.patreon.com/evanyou&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Patreon campaign&lt;/a&gt;, or provide one-time donations via &lt;a href=&quot;https://www.paypal.me/evanyou&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PayPal&lt;/a&gt;. There are many ideas for Vue that I have lined up but haven’t had the time to embark on, and I would love to be able to work on them full time - I hope you can help me make that happen!&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Growing-Community&quot;&gt;&lt;a href=&quot;#Growing-Community&quot; class=&quot;headerlink&quot; title=&quot;Growing Community&quot;&gt;&lt;/a&gt;Growing Community&lt;/h2&gt;&lt;p&gt;Vue’s growth in the past year has been nothing short of amazing. As of today we are at over 15,000 stars on GitHub, over 500k downloads from npm, and over 2,000 users in the Gitter channel. What’s more exciting though, is that the community successfully organized the first &lt;a href=&quot;http://www.meetup.com/London-Vue-js-Meetup/&quot;&gt;London Vue.js Meetup&lt;/a&gt; and the first &lt;a href=&quot;http://www.meetup.com/Vuejs-Paris/?scroll=true&quot;&gt;Paris Vue.js Meetup&lt;/a&gt;! A big shoutout to the awesome organizers: &lt;a href=&quot;https://twitter.com/JackBarham&quot;&gt;Jack&lt;/a&gt;, &lt;a href=&quot;https://twitter.com/onejamesbrowne/&quot;&gt;James&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/posva/&quot;&gt;Eduardo&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Common Beginner Gotchas</title>
+    <link href="http://vuejs.org/2016/02/06/common-gotchas/"/>
+    <id>http://vuejs.org/2016/02/06/common-gotchas/</id>
+    <published>2016-02-06T09:00:00.000Z</published>
+    <updated>2016-04-08T13:31:54.000Z</updated>
+    
+    <content type="html">&lt;p&gt;There are few types of questions that we frequently see from users who are new to Vue.js. Although they are all mentioned somewhere in the guide, they are easy to miss and can be hard to find when you do get bitten by the gotchas. Therefore we are aggregating them in this post and hopefully it can save you some time!&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;Why-isn’t-the-DOM-updating&quot;&gt;&lt;a href=&quot;#Why-isn’t-the-DOM-updating&quot; class=&quot;headerlink&quot; title=&quot;Why isn’t the DOM updating?&quot;&gt;&lt;/a&gt;Why isn’t the DOM updating?&lt;/h3&gt;&lt;p&gt;Most of the time, when you change a Vue instance’s data, the view updates. But there are two edge cases:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;When you are &lt;strong&gt;adding a new property&lt;/strong&gt; that wasn’t present when the data was observed. Due to the limitation of ES5 and to ensure consistent behavior across browsers, Vue.js cannot detect property addition/deletions. The best practice is to always declare properties that need to be reactive upfront. In cases where you absolutely need to add or delete properties at runtime, use the global &lt;a href=&quot;/api/#Vue-set&quot;&gt;&lt;code&gt;Vue.set&lt;/code&gt;&lt;/a&gt; or &lt;a href=&quot;/api/#Vue-delete&quot;&gt;&lt;code&gt;Vue.delete&lt;/code&gt;&lt;/a&gt; methods.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;When you modify an Array by directly setting an index (e.g. &lt;code&gt;arr[0] = val&lt;/code&gt;) or modifying its &lt;code&gt;length&lt;/code&gt; property. Similarly, Vue.js cannot pickup these changes. Always modify arrays by using an Array instance method, or replacing it entirely. Vue provides a convenience method &lt;code&gt;arr.$set(index, value)&lt;/code&gt; which is just syntax sugar for &lt;code&gt;arr.splice(index, 1, value)&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Further reading: &lt;a href=&quot;/guide/reactivity.html&quot;&gt;Reactivity in Depth&lt;/a&gt; and &lt;a href=&quot;http://vuejs.org/guide/list.html#Array-Change-Detection&quot;&gt;Array Change Detection&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;When-is-the-DOM-updated&quot;&gt;&lt;a href=&quot;#When-is-the-DOM-updated&quot; class=&quot;headerlink&quot; title=&quot;When is the DOM updated?&quot;&gt;&lt;/a&gt;When is the DOM updated?&lt;/h3&gt;&lt;p&gt;Vue.js uses an asynchronous queue to batch DOM updates. This means when you modify some data, the DOM updates do not happen instantly: they are applied asynchronously when the queue is flushed. So how do you know when the DOM has been updated? Use &lt;code&gt;Vue.nextTick&lt;/code&gt; right after you modify the data. The callback function you pass to it will be called once the queue has been flushed.&lt;/p&gt;
+&lt;p&gt;Further reading: &lt;a href=&quot;/guide/reactivity.html#Async-Update-Queue&quot;&gt;Async Update Queue&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;Why-does-data-need-to-be-a-function&quot;&gt;&lt;a href=&quot;#Why-does-data-need-to-be-a-function&quot; class=&quot;headerlink&quot; title=&quot;Why does data need to be a function?&quot;&gt;&lt;/a&gt;Why does &lt;code&gt;data&lt;/code&gt; need to be a function?&lt;/h3&gt;&lt;p&gt;In the basic examples, we declare the &lt;code&gt;data&lt;/code&gt; directly as a plain object. This is because we are creating only a single instance with &lt;code&gt;new Vue()&lt;/code&gt;. However, when defining a &lt;strong&gt;component&lt;/strong&gt;, &lt;code&gt;data&lt;/code&gt; must be declared as a function that returns the initial data object. Why? Because there will be many instances created using the same definition. If we still use a plain object for &lt;code&gt;data&lt;/code&gt;, that same object will be &lt;strong&gt;shared by reference&lt;/strong&gt; across all instance created! By providing a &lt;code&gt;data&lt;/code&gt; function, every time a new instance is created, we can simply call it to return a fresh copy of the initial data.&lt;/p&gt;
+&lt;p&gt;Further reading: &lt;a href=&quot;/guide/components.html#Component-Option-Caveats&quot;&gt;Component Option Caveats&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;HTML-case-insensitivity&quot;&gt;&lt;a href=&quot;#HTML-case-insensitivity&quot; class=&quot;headerlink&quot; title=&quot;HTML case insensitivity&quot;&gt;&lt;/a&gt;HTML case insensitivity&lt;/h3&gt;&lt;p&gt;All Vue.js templates are valid, parsable HTML markup, and Vue.js relies on spec-compliant parsers to process its templates. However, as specified in the standard, HTML is case-insensitive when matching tag and attribute names. This means camelCase attributes like &lt;code&gt;:myProp=&amp;quot;123&amp;quot;&lt;/code&gt; will be matched as &lt;code&gt;:myprop=&amp;quot;123&amp;quot;&lt;/code&gt;. As a rule of thumb, you should use camelCase in JavaScript and kebab-case in templates. For example a prop defined in JavaScript as &lt;code&gt;myProp&lt;/code&gt; should be bound in templates as &lt;code&gt;:my-prop&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Further reading: &lt;a href=&quot;http://vuejs.org/guide/components.html#camelCase-vs-_kebab-case&quot;&gt;camelCase vs. kebab-case&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We are also discussing the possibility of eliminating this inconsistency by resolving props and components in a case-insensitive manner. Join the conversation &lt;a href=&quot;https://github.com/vuejs/vue/issues/2308&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;here&lt;/a&gt;.&lt;br&gt;Further reading: &lt;a href=&quot;http://vuejs.org/guide/components.html#camelCase-vs-_kebab-case&quot;&gt;camelCase vs. kebab-case&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We are also discussing the possibility of eliminating this inconsistency by resolving props and components in a case-insensitive manner. Join the conversation &lt;a href=&quot;https://github.com/vuejs/vue/issues/2308&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;There are few types of questions that we frequently see from users who are new to Vue.js. Although they are all mentioned somewhere in the guide, they are easy to miss and can be hard to find when you do get bitten by the gotchas. Therefore we are aggregating them in this post and hopefully it can save you some time!&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Why Vue.js doesn&#39;t support templateURL</title>
+    <link href="http://vuejs.org/2015/10/28/why-no-template-url/"/>
+    <id>http://vuejs.org/2015/10/28/why-no-template-url/</id>
+    <published>2015-10-28T09:56:00.000Z</published>
+    <updated>2016-04-08T13:31:54.000Z</updated>
+    
+    <content type="html">&lt;p&gt;A very common question from new Vue users, especially those who used Angular before, is “can I have &lt;code&gt;templateURL&lt;/code&gt;?”. I have answered this so many times and I figure it’s better to write something about it.&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;In Angular, &lt;code&gt;templateURL&lt;/code&gt; or &lt;code&gt;ng-include&lt;/code&gt; allows the user to dynamically load a remote template file at runtime. This seems pretty convenient as a built-in feature, but let’s rethink what problem it solves.&lt;/p&gt;
+&lt;p&gt;First, it allows us to write our template in a separate HTML file. This gives us proper syntax highlighting in editors, which is probably why many prefer to do so. But is splitting your JavaScript code and the template really the best way? For a Vue.js component, its template and its JavaScript is tightly coupled by nature - it’s in fact much simpler if things are just in the same file. The context switching of jumping back and forth between two files actually makes the development experience much worse. Conceptually, components are the basic building block of a Vue.js app, not templates. Every Vue.js template is coupled to an accompanying JavaScript context - there’s no point in splitting them further apart.&lt;/p&gt;
+&lt;p&gt;Second, because &lt;code&gt;templateURL&lt;/code&gt; loads the template via Ajax at runtime, you don’t need a build step in order to split up your files. This is convenient during development, but comes at a serious cost when you want to deploy it to production. Before HTTP/2 is universally supported, the number of HTTP requests is still probably the most critical factor in your app’s initial load performance. Now imagine you use &lt;code&gt;templateURL&lt;/code&gt; for every component in your app - the browser needs to perform dozens of HTTP requests before even being able to display anything! In case you don’t know, most browsers limit the number of parallel requests it can perform to a single server. When you exceed that limit, your app’s initial rendering will suffer for every extra round trip the browser has to wait for. Sure, there are build tools that can help you pre-register all those templates in &lt;code&gt;$templateCache&lt;/code&gt; - but that shows us a build step is, in fact, inevitable for any serious frontend development.&lt;/p&gt;
+&lt;p&gt;So, without &lt;code&gt;templateURL&lt;/code&gt;, how do we deal with the development experience problem? Writing templates as inline JavaScript strings is terrible, faking templates with &lt;code&gt;&amp;lt;script type=&amp;quot;x/template&amp;quot;&amp;gt;&lt;/code&gt; also feels like a hack. Well, maybe it’s time to up the game a bit and use a proper module bundler like &lt;a href=&quot;http://webpack.github.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Webpack&lt;/a&gt; or &lt;a href=&quot;http://browserify.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Browserify&lt;/a&gt;. It might seem daunting if you’ve never dealt with them before, but trust me it’s worth it to take the leap. Proper modularization is a necessity if you want to build anything large and maintainable. More importantly, you get to write your &lt;a href=&quot;http://vuejs.org/guide/application.html#Single-File-Components&quot;&gt;Vue components in a single file&lt;/a&gt;, with proper syntax highlighting and the extra benefits of custom pre-processors, hot-reloading, ES2015 by default, autoprefixing and scoped CSS, which makes the development experience 10 times better.&lt;/p&gt;
+&lt;p&gt;Finally, Vue does allow you to &lt;a href=&quot;http://vuejs.org/guide/components.html#Async-Components&quot;&gt;lazy load your components&lt;/a&gt;, and with Webpack it is trivially easy. Although this is only a concern when your initial bundle is so large that you are better off splitting it apart.&lt;/p&gt;
+&lt;p&gt;Think in components, not templates.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;A very common question from new Vue users, especially those who used Angular before, is “can I have &lt;code&gt;templateURL&lt;/code&gt;?”. I have answered this so many times and I figure it’s better to write something about it.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Vue.js 1.0.0 Released</title>
+    <link href="http://vuejs.org/2015/10/26/1.0.0-release/"/>
+    <id>http://vuejs.org/2015/10/26/1.0.0-release/</id>
+    <published>2015-10-26T09:00:00.000Z</published>
+    <updated>2016-04-08T13:31:54.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;Hi HN! If you are not familiar with Vue.js, you might want to read this &lt;a href=&quot;http://blog.evanyou.me/2015/10/25/vuejs-re-introduction/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;blog post&lt;/a&gt; for a higher level overview.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;After 300+ commits, 8 alphas, 4 betas and 2 release candidates, today I am very proud to announce the release of &lt;a href=&quot;https://github.com/vuejs/vue/releases/tag/1.0.0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Vue.js 1.0.0 Evangelion&lt;/a&gt;! Many thanks to all those who participated in the API re-design process - it would not have been possible without all the input from the community.&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;Improved-Template-Syntax&quot;&gt;&lt;a href=&quot;#Improved-Template-Syntax&quot; class=&quot;headerlink&quot; title=&quot;Improved Template Syntax&quot;&gt;&lt;/a&gt;Improved Template Syntax&lt;/h3&gt;&lt;p&gt;The 1.0 template syntax resolves a lot of subtle consistency issues and makes Vue templates more concise and more readable in general. The most notable new feature is the shorthand syntax for &lt;code&gt;v-on&lt;/code&gt; and &lt;code&gt;v-bind&lt;/code&gt;:&lt;/p&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- short for v-bind:href --&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;:href&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;someURL&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- short for v-on:click --&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;button&lt;/span&gt; @&lt;span class=&quot;attr&quot;&gt;click&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;onClick&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;button&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;When used on a child component, &lt;code&gt;v-on&lt;/code&gt; listens for custom events and &lt;code&gt;v-bind&lt;/code&gt; can be used to bind props. The shorthands using child components very succinct:&lt;/p&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;item-list&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;:items&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;items&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  @&lt;span class=&quot;attr&quot;&gt;ready&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;onItemsReady&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  @&lt;span class=&quot;attr&quot;&gt;update&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;onItemsUpdate&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;item-list&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;API-Cleanup&quot;&gt;&lt;a href=&quot;#API-Cleanup&quot; class=&quot;headerlink&quot; title=&quot;API Cleanup&quot;&gt;&lt;/a&gt;API Cleanup&lt;/h3&gt;&lt;p&gt;The overall goal for Vue.js 1.0 is to make it suitable for larger projects. This is why there are many API deprecations. Except for ones that are barely used, the most common reason for a deprecation is that the feature leads to patterns that damages maintainability. Specifically, we are deprecating features that make it hard to maintain and refactor a component in isolation without affecting the rest of the project.&lt;/p&gt;
+&lt;p&gt;For example, the default asset resolution in 0.12 has implicit fallbacks to parents in the component tree. This makes the assets available to a component non-deterministic and subject how it is used at runtime. In 1.0, all assets are now resolved in strict mode and there are no longer implicit fallbacks to parent. The &lt;code&gt;inherit&lt;/code&gt; option is also removed, because it too often leads to tightly coupled components that are hard to refactor.&lt;/p&gt;
+&lt;h3 id=&quot;Faster-Initial-Rendering&quot;&gt;&lt;a href=&quot;#Faster-Initial-Rendering&quot; class=&quot;headerlink&quot; title=&quot;Faster Initial Rendering&quot;&gt;&lt;/a&gt;Faster Initial Rendering&lt;/h3&gt;&lt;p&gt;1.0 replaces the old &lt;code&gt;v-repeat&lt;/code&gt; directive with &lt;code&gt;v-for&lt;/code&gt;. In addition to providing the same functionality and more intuitive scoping, &lt;code&gt;v-for&lt;/code&gt; provides up to &lt;strong&gt;100%&lt;/strong&gt; initial render performance boost when rendering large lists and tables!&lt;/p&gt;
+&lt;h3 id=&quot;More-Powerful-Tooling&quot;&gt;&lt;a href=&quot;#More-Powerful-Tooling&quot; class=&quot;headerlink&quot; title=&quot;More Powerful Tooling&quot;&gt;&lt;/a&gt;More Powerful Tooling&lt;/h3&gt;&lt;p&gt;There are also exciting things going on outside of Vue.js core - &lt;a href=&quot;https://github.com/vuejs/vue-loader&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;vue-loader&lt;/a&gt; and &lt;a href=&quot;https://github.com/vuejs/vueify&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;vueify&lt;/a&gt; have received major upgrades including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Hot component reloading. When a &lt;code&gt;*.vue&lt;/code&gt; component is edited, all of its active instances are hot swapped without reloading the page. This means when making small changes, e.g. tweaking the styles or the template, your app doesn’t need to fully reload; the state of the app the swapped component can be preserved, drastically improving the development experience.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Scoped CSS. By simply adding a &lt;code&gt;scoped&lt;/code&gt; attribute to your &lt;code&gt;*.vue&lt;/code&gt; component style tags, the component’s template and final generated CSS are magically re-written to ensure a component’s styles are only applied to its own elements. Most importantly, the styles specified in a parent component &lt;strong&gt;does not&lt;/strong&gt; leak down to child components nested within it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ES2015 by default. JavaScript is evolving. You can write much cleaner and expressive code using the latest syntax. &lt;code&gt;vue-loader&lt;/code&gt; and &lt;code&gt;vueify&lt;/code&gt; now transpiles the JavaScript in your &lt;code&gt;*.vue&lt;/code&gt; components out of the box, without the need for extra setup. Write future JavaScript today!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Combined with &lt;a href=&quot;https://github.com/vuejs/vue-router&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;vue-router&lt;/a&gt;, Vue.js is now more than a library - it provides a solid foundation for building complex SPAs.&lt;/p&gt;
+&lt;h3 id=&quot;What’s-Next&quot;&gt;&lt;a href=&quot;#What’s-Next&quot; class=&quot;headerlink&quot; title=&quot;What’s Next?&quot;&gt;&lt;/a&gt;What’s Next?&lt;/h3&gt;&lt;p&gt;As what 1.0.0 usually suggests, the core API will stay stable for the foreseeable future and the library is ready for production use. Future development will focus on:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Improving &lt;code&gt;vue-router&lt;/code&gt; and make it production ready.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Streamlining the developer experience, e.g. a better devtool and a CLI for scaffolding Vue.js projects and components.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Providing more learning resources such as tutorials and examples.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Hi HN! If you are not familiar with Vue.js, you might want to read this &lt;a href=&quot;http://blog.evanyou.me/2015/10/25/vuejs-re-introduction/&quot;&gt;blog post&lt;/a&gt; for a higher level overview.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;After 300+ commits, 8 alphas, 4 betas and 2 release candidates, today I am very proud to announce the release of &lt;a href=&quot;https://github.com/vuejs/vue/releases/tag/1.0.0&quot;&gt;Vue.js 1.0.0 Evangelion&lt;/a&gt;! Many thanks to all those who participated in the API re-design process - it would not have been possible without all the input from the community.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Vue.js 0.12 released!</title>
+    <link href="http://vuejs.org/2015/06/11/012-release/"/>
+    <id>http://vuejs.org/2015/06/11/012-release/</id>
+    <published>2015-06-11T15:37:30.000Z</published>
+    <updated>2016-04-08T13:31:54.000Z</updated>
+    
+    <content type="html">&lt;p&gt;I’m really excited to announce that &lt;a href=&quot;https://github.com/yyx990803/vue/releases/tag/0.12.0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Vue.js 0.12: Dragon Ball&lt;/a&gt; is finally here! Thanks to everyone who tried out the beta/rc versions and provided feedback / bug reports along the way.&lt;/p&gt;
+&lt;p&gt;There’s a lot to cover in this release, and we will talk about a few highlights below. However, it is still recommended to carefully go through the &lt;a href=&quot;https://github.com/yyx990803/vue/releases/tag/0.12.0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Full Release Note&lt;/a&gt; and updated docs if you are upgrading from 0.11. You can report bugs on GitHub, send questions to &lt;a href=&quot;https://github.com/vuejs/Discussion/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;vuejs/Discussion&lt;/a&gt;, or join us in the &lt;a href=&quot;https://gitter.im/yyx990803/vue&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Gitter chat channel&lt;/a&gt;.&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;More-Consistent-Component-Syntax&quot;&gt;&lt;a href=&quot;#More-Consistent-Component-Syntax&quot; class=&quot;headerlink&quot; title=&quot;More Consistent Component Syntax&quot;&gt;&lt;/a&gt;More Consistent Component Syntax&lt;/h3&gt;&lt;p&gt;Previously in 0.11 you have two ways to use a Vue.js component: using the &lt;code&gt;v-component&lt;/code&gt; directive, or using custom elements. There are also two ways to pass data down to child components: using the &lt;code&gt;v-with&lt;/code&gt; directive, or using the &lt;code&gt;paramAttributes&lt;/code&gt; option. Although both custom elements and param attributes get compiled down to directives eventually, it is confusing and redundant to have two sets of syntax for the same functionality.&lt;/p&gt;
+&lt;p&gt;In addition, it should be noted that the component system is a first-class concept in Vue.js, even more important than directives. It defines how we encapsulate our higher-level view logic and compose our application. In the meanwhile, having a clear and declarative way to pass data into child components is also very important. Components and param attributes really deserve their own dedicated syntax to differentiate from other directives.&lt;/p&gt;
+&lt;p&gt;As a result, &lt;code&gt;v-component&lt;/code&gt; and &lt;code&gt;v-with&lt;/code&gt; have been deprecated in 0.12. &lt;code&gt;paramAttributes&lt;/code&gt; has also been renamed to &lt;code&gt;props&lt;/code&gt;, which is shorter and cleaner. From now on, most Vue.js components will look like this:&lt;/p&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;my-component&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;prop&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;&amp;#123;&amp;#123;parentData&amp;#125;&amp;#125;&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;my-component&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;There are also additional props-related improvements such as explicit one-time or one-way props, expression as props, methods as prop callbacks and more. You can find out more details in the 0.12 release notes linked above and the updated &lt;a href=&quot;/guide/components.html&quot;&gt;Component System&lt;/a&gt; section of the guide.&lt;/p&gt;
+&lt;h3 id=&quot;Filter-Arguments-Improvements&quot;&gt;&lt;a href=&quot;#Filter-Arguments-Improvements&quot; class=&quot;headerlink&quot; title=&quot;Filter Arguments Improvements&quot;&gt;&lt;/a&gt;Filter Arguments Improvements&lt;/h3&gt;&lt;p&gt;In 0.11, filters always receive their arguments as plain strings. An argument can be enclosed in quotes to include whitespace, but the quotes are not automatically stripped when passed into the filter function. Some users were also confused about how to retrive a dynamic value on the vm instead of a plain string.&lt;/p&gt;
+&lt;p&gt;In 0.12, the filter argument syntax now follows a simple rule: if an argument is enclosed in quotes, it will be passed in as a plain string; otherwise, it will be evaluated against the current vm as a dynamic value.&lt;/p&gt;
+&lt;p&gt;This means the usage of some existing filters will have to change:&lt;/p&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;v-on&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;keyup: onKeyUp | key &#39;enter&#39;&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;a&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#123; items.length | pluralize &#39;item&#39; &amp;#125;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;But it would make custom filters that rely on dynamic values much easier to write:&lt;/p&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&amp;#123; msg | concat otherMsg &amp;#125;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Here the first argument to the &lt;code&gt;concat&lt;/code&gt; filter will be the value of &lt;code&gt;this.otherMsg&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;Asynchronous-Components&quot;&gt;&lt;a href=&quot;#Asynchronous-Components&quot; class=&quot;headerlink&quot; title=&quot;Asynchronous Components&quot;&gt;&lt;/a&gt;Asynchronous Components&lt;/h3&gt;&lt;p&gt;It is common practice to bundle all the JavaScript into one file when building large single page applications. But when the file becomes too large, we may want to defer loading parts of our application for a faster initial load. However, this does pose some constraints on how the application architecture should be designed. It could be very tricky to figure out how to properly split up your JavaScript bundles.&lt;/p&gt;
+&lt;p&gt;Well, with Vue.js we can already build our applications as decoupled components. If we can lazily load a dynamic component only when it is needed, wouldn’t it be awesome? As a matter of fact, in 0.12 this would be trivially easy with the new Asynchronous Component feature.&lt;/p&gt;
+&lt;p&gt;In 0.12, you can define a component as a factory function that asynchronously resolves a component definition (can be just a plain options object). Vue.js will only trigger the factory function when the component actually needs to be rendered, and will cache the result for future re-renders:&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Vue.component(&lt;span class=&quot;string&quot;&gt;&#39;async-example&#39;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;resolve, reject&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  setTimeout(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    resolve(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      template: &lt;span class=&quot;string&quot;&gt;&#39;&amp;lt;div&amp;gt;I am async!&amp;lt;/div&amp;gt;&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;, &lt;span class=&quot;number&quot;&gt;1000&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;It is up to you to decide how to load the component from the server, e.g. &lt;code&gt;$.getScript()&lt;/code&gt; or require.js; but the recommended usage is to pair it up with Webpack’s &lt;a href=&quot;http://webpack.github.io/docs/code-splitting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Code Splitting feature&lt;/a&gt;:&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Vue.component(&lt;span class=&quot;string&quot;&gt;&#39;async-webpack-example&#39;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;resolve, reject&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;// In Webpack AMD like syntax indicates a code split point&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;([&lt;span class=&quot;string&quot;&gt;&#39;./my-async-component&#39;&lt;/span&gt;], resolve)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;That’s all you need to do. You can use the component just like before, without even thinking about it being async. Webpack will automatically split your final JavaScript into separate bundles with correct dependencies, and automatically load a bundle via Ajax when it is required. You can check out a fully functional example &lt;a href=&quot;https://github.com/vuejs/vue-webpack-example&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;Improved-Transition-System&quot;&gt;&lt;a href=&quot;#Improved-Transition-System&quot; class=&quot;headerlink&quot; title=&quot;Improved Transition System&quot;&gt;&lt;/a&gt;Improved Transition System&lt;/h3&gt;&lt;p&gt;Vue.js’ transition system is really easy to use, but in the past it has the limitation that you cannot mix CSS and JavaScript-based transitions together. In 0.12 that is no longer the case! The improved transition system now allows you to add JavaScript hooks to a CSS-based transition for additional control. The amount of hooks exposed have also been expanded to give you finer-grained control at every stage of the transition.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;v-repeat&lt;/code&gt; now also ships with built-in support for staggering transitions. It is as simple as adding &lt;code&gt;stagger=&amp;quot;100&amp;quot;&lt;/code&gt; to your repeated element. It is also possible to define separate staggering for enter and leaving, or even dynamically calculate the staggering delay in a JavaScript hook.&lt;/p&gt;
+&lt;p&gt;For full details on the new transition system, check out the &lt;a href=&quot;/guide/transitions.html&quot;&gt;updated guide&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;Performance-Tuning&quot;&gt;&lt;a href=&quot;#Performance-Tuning&quot; class=&quot;headerlink&quot; title=&quot;Performance Tuning&quot;&gt;&lt;/a&gt;Performance Tuning&lt;/h3&gt;&lt;p&gt;Vue.js’ precise dependency tracking makes it the one of the most efficient view layer for small hot updates, but there’s always room for improvement. In 0.12, internal instance creation and compilation refactors have improved first-render performance for large lists by up to 40%. With proper &lt;code&gt;track-by&lt;/code&gt; usage, &lt;a href=&quot;http://vuejs.github.io/js-repaint-perfs/vue/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;re-rendering with large, brand new dataset&lt;/a&gt; is also comparable to, or even faster than other Virtual-DOM based frameworks.&lt;/p&gt;
+&lt;h3 id=&quot;One-More-Thing…&quot;&gt;&lt;a href=&quot;#One-More-Thing…&quot; class=&quot;headerlink&quot; title=&quot;One More Thing…&quot;&gt;&lt;/a&gt;One More Thing…&lt;/h3&gt;&lt;p&gt;With 0.12 out of the door, more efforts will now be spent on the official vue-router, a dedicated routing library for Vue.js with nested view matching, full transition support, and asynchronous data hooks. I have expressed that Vue.js core intends to stay as a no-frills, drop-in view layer library, and that will not change. The vue-router will be shipped separately and is totally optional, however you can expect it to work seamlessly with Vue.js core when you need it.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I’m really excited to announce that &lt;a href=&quot;https://github.com/yyx990803/vue/releases/tag/0.12.0&quot;&gt;Vue.js 0.12: Dragon Ball&lt;/a&gt; is finally here! Thanks to everyone who tried out the beta/rc versions and provided feedback / bug reports along the way.&lt;/p&gt;
+&lt;p&gt;There’s a lot to cover in this release, and we will talk about a few highlights below. However, it is still recommended to carefully go through the &lt;a href=&quot;https://github.com/yyx990803/vue/releases/tag/0.12.0&quot;&gt;Full Release Note&lt;/a&gt; and updated docs if you are upgrading from 0.11. You can report bugs on GitHub, send questions to &lt;a href=&quot;https://github.com/vuejs/Discussion/issues&quot;&gt;vuejs/Discussion&lt;/a&gt;, or join us in the &lt;a href=&quot;https://gitter.im/yyx990803/vue&quot;&gt;Gitter chat channel&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>0.11 Component Tips</title>
+    <link href="http://vuejs.org/2014/12/08/011-component/"/>
+    <id>http://vuejs.org/2014/12/08/011-component/</id>
+    <published>2014-12-08T14:02:14.000Z</published>
+    <updated>2016-04-08T13:31:54.000Z</updated>
+    
+    <content type="html">&lt;p class=&quot;tip&quot;&gt;Note: this post contains information for the outdated 0.11 version. Please refer to the &lt;a href=&quot;https://github.com/yyx990803/vue/releases&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;0.12 release notes&lt;/a&gt; for the changes in the API.&lt;/p&gt;
+
+&lt;p&gt;The release of 0.11 introduced &lt;a href=&quot;https://github.com/yyx990803/vue/blob/master/changes.md&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;many changes&lt;/a&gt;, but the most important one is how the new component scope works. Previously in 0.10.x, components have inherited scope by default. That means in a child component template you can reference parent scope properties. This often leads to tightly-coupled components, where a child component assumes knowledge of what properties are present in the parent scope. It is also possible to accidentally refer to a parent scope property in a child component.&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;Isolated-Scope-and-Data-Passing&quot;&gt;&lt;a href=&quot;#Isolated-Scope-and-Data-Passing&quot; class=&quot;headerlink&quot; title=&quot;Isolated Scope and Data Passing&quot;&gt;&lt;/a&gt;Isolated Scope and Data Passing&lt;/h3&gt;&lt;p&gt;Starting in 0.11, all child components have isolated scope by default, and the recommended way to control component data access is via &lt;a href=&quot;/guide/components.html#Explicit_Data_Passing&quot;&gt;Explicit Data Passing&lt;/a&gt; using &lt;a href=&quot;/api/directives.html#v-with&quot;&gt;&lt;code&gt;v-with&lt;/code&gt;&lt;/a&gt; or &lt;a href=&quot;/api/options.html#paramAttributes&quot;&gt;&lt;code&gt;paramAttributes&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;paramAttributes&lt;/code&gt; enables us to write Web Component style templates:&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Vue.component(&lt;span class=&quot;string&quot;&gt;&#39;my-component&#39;&lt;/span&gt;, &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  paramAttributes: [&lt;span class=&quot;string&quot;&gt;&#39;params&#39;&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  compiled: &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.params) &lt;span class=&quot;comment&quot;&gt;// passed from parent&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;my-component&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;params&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;&amp;#123;&amp;#123;params&amp;#125;&amp;#125;&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;my-component&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;Where-Does-It-Belong&quot;&gt;&lt;a href=&quot;#Where-Does-It-Belong&quot; class=&quot;headerlink&quot; title=&quot;Where Does It Belong?&quot;&gt;&lt;/a&gt;Where Does It Belong?&lt;/h3&gt;&lt;p&gt;Previously in 0.10, all directives on a component’s container element are compiled in the child component’s scope. Because it inherited parent scope, this worked in most situations. Starting in 0.11.1, we want to provide a cleaner separation between component scopes. The rule of thumbs is: if something appears in the parent template, it will be compiled in parent scope; if it appears in child template, it will be compiled in child scope. For example:&lt;/p&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- parent template --&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;v-component&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;child&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;v-on&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;click:onParentClick&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;#123;&amp;#123;parentMessage&amp;#125;&amp;#125;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- child template, with replace: true --&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;v-on&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;click:onChildClick&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;h1&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;#123;&amp;#123;childMessage&amp;#125;&amp;#125;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;h1&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;content&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;content&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Everything in the parent template will be compiled in the parent’s scope, including the content that’s going to be inserted into the child component.&lt;/p&gt;
+&lt;p&gt;The only exception to the rule is &lt;code&gt;v-with&lt;/code&gt; (and &lt;code&gt;paramAttributes&lt;/code&gt; which compiles down to &lt;code&gt;v-with&lt;/code&gt;), which works in both places - so you don’t need to worry about it too much.&lt;/p&gt;
+&lt;h3 id=&quot;Cleaner-Event-Communication&quot;&gt;&lt;a href=&quot;#Cleaner-Event-Communication&quot; class=&quot;headerlink&quot; title=&quot;Cleaner Event Communication&quot;&gt;&lt;/a&gt;Cleaner Event Communication&lt;/h3&gt;&lt;p&gt;Previously the standard way for a child component to communicate to its parent is via dispatching events. However, with this approach, the event listeners on the parent component are not guaranteed to be listening on the desired child component only. It’s also possible to trigger undesired listners further up the chain if we do not cancel the event.&lt;/p&gt;
+&lt;p&gt;The most common use case is for a parent to react to the events from a specific, direct child component. So in 0.11.4, &lt;a href=&quot;/api/directives.html#v-events&quot;&gt;a new directive &lt;code&gt;v-events&lt;/code&gt;&lt;/a&gt; has been introduced to enable exactly this behavior.&lt;/p&gt;
+&lt;p&gt;0.11.4 has already been released, go try it out!&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p class=&quot;tip&quot;&gt;Note: this post contains information for the outdated 0.11 version. Please refer to the &lt;a href=&quot;https://github.com/yyx990803/vue/releases&quot;&gt;0.12 release notes&lt;/a&gt; for the changes in the API.&lt;/p&gt;
+
+&lt;p&gt;The release of 0.11 introduced &lt;a href=&quot;https://github.com/yyx990803/vue/blob/master/changes.md&quot;&gt;many changes&lt;/a&gt;, but the most important one is how the new component scope works. Previously in 0.10.x, components have inherited scope by default. That means in a child component template you can reference parent scope properties. This often leads to tightly-coupled components, where a child component assumes knowledge of what properties are present in the parent scope. It is also possible to accidentally refer to a parent scope property in a child component.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Vue.js 0.11 released!</title>
+    <link href="http://vuejs.org/2014/11/09/vue-011-release/"/>
+    <id>http://vuejs.org/2014/11/09/vue-011-release/</id>
+    <published>2014-11-09T08:23:40.000Z</published>
+    <updated>2016-04-08T13:31:54.000Z</updated>
+    
+    <content type="html">&lt;p&gt;After the long wait, &lt;a href=&quot;https://github.com/yyx990803/vue/releases/tag/0.11.0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Vue.js 0.11 &lt;strong&gt;Cowboy Bebop&lt;/strong&gt;&lt;/a&gt; is finally here! Thanks to everyone who tried out the release candidate versions and provided feedback / bug reports along the way.&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;The 0.11 release introduced many new features and also a fair number of breaking changes, so please carefully read through the &lt;a href=&quot;https://github.com/yyx990803/vue/blob/master/changes.md&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;0.11 Change List&lt;/a&gt; before upgrading. Aside from the API changes, 0.11 also ships with better &lt;a href=&quot;https://codeclimate.com/github/yyx990803/vue&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;code quality&lt;/a&gt; and &lt;a href=&quot;https://coveralls.io/r/yyx990803/vue&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;test coverage&lt;/a&gt;, and is considerably more robust in almost every aspect.&lt;/p&gt;
+&lt;p&gt;This documentation site has been fully upgraded to match the new 0.11 API. For the now legacy 0.10.6 version, you can still find documentations for it at &lt;a href=&quot;http://legacy.vuejs.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;legacy.vuejs.org&lt;/a&gt;.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;After the long wait, &lt;a href=&quot;https://github.com/yyx990803/vue/releases/tag/0.11.0&quot;&gt;Vue.js 0.11 &lt;strong&gt;Cowboy Bebop&lt;/strong&gt;&lt;/a&gt; is finally here! Thanks to everyone who tried out the release candidate versions and provided feedback / bug reports along the way.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Vue.js 0.10.6, and what&#39;s next</title>
+    <link href="http://vuejs.org/2014/07/29/vue-next/"/>
+    <id>http://vuejs.org/2014/07/29/vue-next/</id>
+    <published>2014-07-28T22:04:55.000Z</published>
+    <updated>2016-04-08T13:31:54.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;0-10-6&quot;&gt;&lt;a href=&quot;#0-10-6&quot; class=&quot;headerlink&quot; title=&quot;0.10.6&quot;&gt;&lt;/a&gt;0.10.6&lt;/h2&gt;&lt;p&gt;Vue.js 0.10.6 has been released! This is another small bug-fix release and will be the last maintainance version before the next major release.&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;fix &lt;code&gt;v-style&lt;/code&gt; error when value is falsy or a number. ( thanks to &lt;a href=&quot;https://github.com/dmfilipenko&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;@dmfilipenko&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;fix the built-in &lt;code&gt;currency&lt;/code&gt; filter error when value is a string ( thanks to &lt;a href=&quot;https://github.com/dmfilipenko&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;@dmfilipenko&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;fix &lt;code&gt;Vue.require&lt;/code&gt; for building with Component v1.0+ ( thanks to &lt;a href=&quot;https://github.com/kewah&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;@kewah&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;Allow template nodes to be passed as a template option ( thanks to &lt;a href=&quot;https://github.com/jordangarcia&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;@jordangarcia&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vm.$destroy()&lt;/code&gt; now accepts an optional argument &lt;code&gt;noRemove&lt;/code&gt;. When passed in as &lt;code&gt;true&lt;/code&gt; it will leave the vm’s DOM node intact after the vm is destroyed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Vue-next&quot;&gt;&lt;a href=&quot;#Vue-next&quot; class=&quot;headerlink&quot; title=&quot;Vue-next&quot;&gt;&lt;/a&gt;Vue-next&lt;/h2&gt;&lt;p&gt;Some of you might have noticed there is a &lt;a href=&quot;https://github.com/yyx990803/vue/tree/next&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;next&lt;/a&gt; branch in the repo. And yes, I am re-writing Vue.js from scratch. There are two main reasons:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fix some issues that are caused by design flaws in the current version. Because these changes affect the design of some core modules, it is actually easier to rewrite than to apply on the current codebase.&lt;/li&gt;
+&lt;li&gt;Improve general code quality (in particular, &lt;code&gt;compiler.js&lt;/code&gt; as of now is a big pile of mess, and comments are not consistent across the codebase.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Take note that the &lt;code&gt;next&lt;/code&gt; branch is still in &lt;strong&gt;very&lt;/strong&gt; early stage. The internals will change a lot, and when it comes out it &lt;strong&gt;will&lt;/strong&gt; break current applications. Despite that I will try to keep the API changes to a minimum. Major differences with current 0.10 branch are documented in &lt;a href=&quot;https://github.com/yyx990803/vue/blob/next/changes.md&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;changes.md&lt;/code&gt;&lt;/a&gt;. The list is obviously incomplete and subject to change, some of them are simply ideas, but it at least gives you a taste of what to expect, and I’d appreicate your feedback on any of the topics.&lt;/p&gt;
+&lt;p&gt;Share your thoughts at &lt;a href=&quot;https://github.com/vuejs/Discussion/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;vuejs/Discussion&lt;/a&gt;.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;0-10-6&quot;&gt;&lt;a href=&quot;#0-10-6&quot; class=&quot;headerlink&quot; title=&quot;0.10.6&quot;&gt;&lt;/a&gt;0.10.6&lt;/h2&gt;&lt;p&gt;Vue.js 0.10.6 has been released! This is another small bug-fix release and will be the last maintainance version before the next major release.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Vue.js 0.10 is here!</title>
+    <link href="http://vuejs.org/2014/03/22/vuejs-010-release/"/>
+    <id>http://vuejs.org/2014/03/22/vuejs-010-release/</id>
+    <published>2014-03-22T18:00:13.000Z</published>
+    <updated>2016-04-08T13:31:54.000Z</updated>
+    
+    <content type="html">&lt;p&gt;Vue.js 0.10.0 (Blade Runner) has been released! This release comes with many useful additions based on the suggestions from the users, notably interpolation in literal directives, dynamic components with the new &lt;code&gt;v-view&lt;/code&gt; directive, array filters, and the option to configure interpolation delimiters. Internally, the codebase has received many refactoring and improvements which makes Vue.js &lt;a href=&quot;http://vuejs.org/perf/&quot;&gt;even faster&lt;/a&gt;.&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;See the &lt;a href=&quot;/guide/installation.html&quot;&gt;Installation&lt;/a&gt; page for the latest builds.&lt;/p&gt;
+&lt;h3 id=&quot;New&quot;&gt;&lt;a href=&quot;#New&quot; class=&quot;headerlink&quot; title=&quot;New&quot;&gt;&lt;/a&gt;New&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Literal directives can now contain interpolation tags. These tags will be evaluated only once at compile time. An example usage is conditionally decide which component to instantiate with &lt;code&gt;v-component=&amp;quot;{{type}}&amp;quot;&lt;/code&gt;. &lt;a href=&quot;/guide/directives.html#Literal_Directives&quot;&gt;Doc&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Attributes listed in the &lt;code&gt;paramAttributes&lt;/code&gt; option now accept mustache interpolations too. They will also only be evaluated once.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;v-repeat&lt;/code&gt; now accepts an argument which will be used as the identifier for the wrapped object. This allows more explicit property access in repeaters. &lt;a href=&quot;/guide/list.html#Using_an_Identifier&quot;&gt;Doc&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;v-view&lt;/code&gt; directive which binds to a string value and dynamically instantiate different components using that string as the component ID. &lt;a href=&quot;/api/directives.html#v-view&quot;&gt;Doc&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;filterBy&lt;/code&gt; and &lt;code&gt;orderBy&lt;/code&gt; filters for &lt;code&gt;v-repeat&lt;/code&gt;. &lt;a href=&quot;/api/filters.html#filterBy&quot;&gt;Doc&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Custom filters that access properties on its &lt;code&gt;this&lt;/code&gt; context will be considered &lt;strong&gt;computed filters&lt;/strong&gt;. &lt;a href=&quot;/guide/custom-filter.html#Filter_Context&quot;&gt;Doc&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;You can now access the event in &lt;code&gt;v-on&lt;/code&gt; handler expressions as &lt;code&gt;$event&lt;/code&gt;. Example: &lt;code&gt;&amp;lt;a v-on=&amp;quot;click:handle(&amp;#39;hello&amp;#39;, $event)&amp;quot;&amp;gt;Hello&amp;lt;/a&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Interpolation delimiters can now be customized via the &lt;code&gt;delimiters&lt;/code&gt; global config option. Example: &lt;code&gt;Vue.config({ delimiters: [&amp;quot;[&amp;quot;, &amp;quot;]&amp;quot;] })&lt;/code&gt; will change the matched interpolation tags to &lt;code&gt;[[ ]]&lt;/code&gt; for text bindings and &lt;code&gt;[[[ ]]]&lt;/code&gt; for html bindings.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Changed&quot;&gt;&lt;a href=&quot;#Changed&quot; class=&quot;headerlink&quot; title=&quot;Changed&quot;&gt;&lt;/a&gt;Changed&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;{{&gt;yield}}&lt;/code&gt; syntax has been deprecated. A Web Components spec compatible content insertion mechanism using &lt;code&gt;&amp;lt;content&amp;gt;&lt;/code&gt; elements has been introduced. &lt;a href=&quot;/guide/components.html#Content_Insertion&quot;&gt;Doc&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;To use a component as a custom element, the component ID must now contain a hyphen (&lt;code&gt;-&lt;/code&gt;). This is consistent with the current custom element spec draft.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;v-repeat&lt;/code&gt; Arrays’ augmented methods have been renamed from &lt;code&gt;set&lt;/code&gt; to &lt;code&gt;$set(index, value)&lt;/code&gt; and &lt;code&gt;remove&lt;/code&gt; to &lt;code&gt;$remove(index | value)&lt;/code&gt;. The prefix better differentiates them from native methods. The &lt;code&gt;replace&lt;/code&gt; method has been removed.&lt;/li&gt;
+&lt;li&gt;When iterating over an Object with &lt;code&gt;v-repeat&lt;/code&gt;, the object no longer gets a &lt;code&gt;$repeater&lt;/code&gt; array. Instead, the object is now augmented with two methods: &lt;code&gt;$add(key, value)&lt;/code&gt; and &lt;code&gt;$delete(key)&lt;/code&gt;, which will trigger corresponding view updates.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;v-if&lt;/code&gt; now creates and destroys a child ViewModel instance when the binding value changes, instead of simply removing/inserting the DOM node. In addition, it can no longer be used with &lt;code&gt;v-repeat&lt;/code&gt;. Use &lt;code&gt;v-show&lt;/code&gt; or the new built-in array filters instead.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;v-with&lt;/code&gt; can no longer be used alone. It now must be used with either &lt;code&gt;v-component&lt;/code&gt; or &lt;code&gt;v-view&lt;/code&gt;. &lt;code&gt;v-component&lt;/code&gt; can also be used as an empty directive just to create a child VM using the default &lt;code&gt;Vue&lt;/code&gt; constructor.&lt;/li&gt;
+&lt;li&gt;Production build now strips all warnings and debug logs. To leverage &lt;code&gt;debug: true&lt;/code&gt;, use the development version. The development version now has more detailed warning messages.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Fixed&quot;&gt;&lt;a href=&quot;#Fixed&quot; class=&quot;headerlink&quot; title=&quot;Fixed&quot;&gt;&lt;/a&gt;Fixed&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;event.stopPropagation()&lt;/code&gt; and &lt;code&gt;event.preventDefault()&lt;/code&gt; inside &lt;code&gt;v-on&lt;/code&gt; handlers now work as expected.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;parent&lt;/code&gt; option now works properly when used in &lt;code&gt;Vue.extend&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Mustache bindings inside &lt;code&gt;&amp;lt;textarea&amp;gt;&lt;/code&gt; are now properly interpolated before being set as value.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Internal&quot;&gt;&lt;a href=&quot;#Internal&quot; class=&quot;headerlink&quot; title=&quot;Internal&quot;&gt;&lt;/a&gt;Internal&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;v-component&lt;/code&gt;, &lt;code&gt;v-with&lt;/code&gt; and &lt;code&gt;v-if&lt;/code&gt; have been re-written for a cleaner compile flow.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;v-repeat&lt;/code&gt; has been re-written to use refined diff algorithm which triggers minimum DOM manipulations when the array is set to a different instance containing overlapping elements. This makes it efficient to pipe an Array through filters.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;template&lt;/code&gt; option now directly clones native &lt;code&gt;&amp;lt;template&amp;gt;&lt;/code&gt;‘s content when available.&lt;/li&gt;
+&lt;li&gt;Overall performance improvements for both initialization and rendering.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Vue.js 0.10.0 (Blade Runner) has been released! This release comes with many useful additions based on the suggestions from the users, notably interpolation in literal directives, dynamic components with the new &lt;code&gt;v-view&lt;/code&gt; directive, array filters, and the option to configure interpolation delimiters. Internally, the codebase has received many refactoring and improvements which makes Vue.js &lt;a href=&quot;http://vuejs.org/perf/&quot;&gt;even faster&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
