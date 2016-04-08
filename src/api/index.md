@@ -459,7 +459,7 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
       // anche setter
       aPlus: {
         get: function () {
-          return this.a + 1
+          return this.a 1
         },
         set: function (v) {
           this.a = v - 1
@@ -493,7 +493,7 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
     data: { a: 1 },
     methods: {
       plus: function () {
-        this.a++
+        this.a
       }
     }
   })
@@ -897,9 +897,9 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
   var Ctor = Vue.extend({
     name: 'stack-overflow',
     template:
-      '<div>' +
+      '<div +
         // richiama se stesso
-        '<stack-overflow></stack-overflow>' +
+        '<stack-overflow></ack-overflow>' +
       '</div>'
   })
 
@@ -1039,14 +1039,14 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   })
 
   // espressione
-  vm.$watch('a + b', function (newVal, oldVal) {
+  vm.$watch('a b', function (newVal, oldVal) {
     // esecuzione
   })
 
   // funzione
   vm.$watch(
     function () {
-      return this.a + this.b
+      return th.a + this.b
     },
     function (newVal, oldVal) {
       // esecuzione
@@ -1107,7 +1107,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
     }
   })
   vm.$get('a.b') // -> 1
-  vm.$get('a.b + 1') // -> 2
+  vm.$get('a.b 1') // -> 2
   ```
 
 <h3 id="vm-set">vm.$set( chiave, valore )</h3>
@@ -1624,9 +1624,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   Quando si usano gli **eventi nativi del DOM** Vue gli ascolterà tutti. Se invece si usano eventi personalizzati andranno ascoltati dall'istanza di Vue.
 
   Per quanto riguarda gli eventi nativi del DOM, il metodo che gestisce l'evento riceverà l'evento stesso come unico argomento.
-  Se si usa l'espressione inline allora si avrà accesso alla proprietà speciale `$event`, per esempio: `v-on:click="handle('ok', $event)"`.
-
-  **1.0.11+** Quando si ascoltano gli eventi personalizzati, l'espressione inline avrà accesso anche ad una properità speciale chiamata `$arguments` la quale è un array di tutti gli argomenti passati.
+  Se si usa l'espressione inline allora si avrà accesso alla proprietà speciale `$event`, per esempio: `v-on:click="handle('ok', $event)"`.  **1.0.11+** Quando si ascoltano gli eventi personalizzati, l'espressione inline avrà accesso anche ad una properità speciale chiamata `$arguments` la quale è un array di tutti gli argomenti passati.
 
 - **Esempio:**
 
@@ -1709,7 +1707,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   <div :class="[classA, { classB: isB, classC: isC }]">
 
   <!-- lega lo stile -->
-  <div :style="{ fontSize: size + 'px' }"></div>
+  <div :style="{ fontSe: size + 'px' }"></div>
   <div :style="[styleOggettoA, styleOggettoB]"></div>
 
   <!-- lega un oggetto con proprietà-->
@@ -1833,7 +1831,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 - **Esempio:**
 
   ``` html
-  <span v-pre>{{ Questo non verrà compilato 1 + 1}}</span>
+  <span pre>{{ Questo non verrà compilato 1 + 1}}</span>
   ```
 
 ### v-cloak
@@ -2183,7 +2181,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
   Restituisce una versione riordinata dell'array di origine. La chiave di ordinamento è obbligatoria per specificare come ordinare l'array. Per rendere il sistema più flessibile è possibile passare un Array di chiavi di ordinamento oppure una funzione dedicata alla strategia di ordinamento stessa. Il secondo argomento è facoltativo ed indica il tipo di ordine `ascendente` (`order >= 0`) o `discendente` (`order < 0`).
 
-  Per gli array primitivi bisogna impostare `sortKey` a `true`.
+  Per gli array primitivi si può omettere `sortKeys` ed inderire una costante come `orderBy 1`.
 
 - **Esempio:**
 
@@ -2249,6 +2247,8 @@ Vue non tiene una copia dei valori pre-modifica.</p>
     </li>
   </ul>
   ```
+  
+  Esempio concreto:
 
   {% raw %}
   <div id="esempio-orderBy" class="demo">
@@ -2265,6 +2265,85 @@ Vue non tiene una copia dei valori pre-modifica.</p>
     data: {
       order: 1,
       users: [{ name: 'Bruce' }, { name: 'Chuck' }, { name: 'Jackie' }]
+    }
+  })
+  </script>
+  {% endraw %}
+
+Sort using a Function:
+
+  ``` html
+  <div id="orderby-compare-example" class="demo">
+    <button @click="order = order * -1">Inverti l'Ordine</button>
+    <ul>
+      <li v-for="user in users | orderBy ageByTen">
+        {{ user.name }} - {{ user.age }}
+      </li>
+    </ul>
+  </div>
+  ```
+
+  ``` js
+  new Vue({
+    el: '#orderby-compare-example',
+    data: {
+      order: 1,
+      users: [
+        {
+          name: 'Jackie',
+          age: 62
+        },
+        {
+          name: 'Chuck',
+          age: 76
+        },
+        {
+          name: 'Bruce',
+          age: 61
+        }
+      ]
+    },
+    methods: {
+      ageByTen: function (a, b) {
+        return Math.floor(a.age / 10) - Math.floor(b.age / 10)
+      }
+    }
+  })
+  ```
+
+  {% raw %}
+  <div id="orderby-compare-example" class="demo">
+    <button @click="order = order * -1">Inverti l'Ordine</button>
+    <ul id="orderby-compare-example">
+      <li v-for="user in users | orderBy ageByTen order">
+        {{ user.name }} - {{ user.age }}
+      </li>
+    </ul>
+  </div>
+  <script>
+  new Vue({
+    el: '#orderby-compare-example1',
+    data: {
+      order: 1,
+      users: [
+        {
+          name: 'Jackie',
+          age: 62
+        },
+        {
+          name: 'Chuck',
+          age: 76
+        },
+        {
+          name: 'Bruce',
+          age: 61
+        }
+      ]
+    },
+    methods: {
+      ageByTen: function (a, b) {
+        return Math.floor(a.age / 10) - Math.floor(b.age / 10)
+      }
     }
   })
   </script>
