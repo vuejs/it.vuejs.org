@@ -2150,45 +2150,6 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   </script>
   {% endraw %}
 
-## Metodi di Estensioni per Array
-
-  Vue.js estende `Array.prototype` aggiungendo due nuovi metodi che rendono più facile effettuare operazioni sugli Array ed assicurarsi che il sistema reattivo sia propriamente attivato.
-
-### array.$set(index, value)
-
-- **Argomenti**
-  - `{Numerico} indice`
-  - `{*} valore`
-
-- **Utilizzo**
-
-  Impostare un elemento in un array specificanto l'indice nel Array
-
-  ``` js
-    vm.animals.$set(0, { name: 'Aardvark' })
-  ```
-
-- **Vedi anche:** [Come rilevare i Cambiamenti sugli Array](/guide/list.html#Caveats)
-
-### array.$remove(reference)
-
-- **Argomenti**
-  - `{Referenza} referenza`
-
-- **Utilizzo**
-
-  Questo è un metodo che fa da "wrapper" a più metodi sugli Array. Il funzionamento è semplice, prima cerca l'elemento tramite l'indice e poi effettua `array.splice(index, 1)`
-
-  ``` js
-    vm.animals.$remove(0)
-    // oppure
-    var aardvark = vm.animals[0]
-    vm.animals.$remove(aardvark)
-  ```
-
-- **Vedi anche:** [Metodi di Mutazione](/guide/list.html#Mutation-Methods)
-
-
 - **Altri Esempi:**
 
   Utilizzando più chiavi di filtro:
@@ -2215,16 +2176,14 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 - **Limitato a:** Si aspetta un array passato dalla direttiva `v-for`
 
 - **Argomenti:**
-  - `{Stringa} chiave di ordinamento`
+  - `{Stringa | Array | Funzione} chiave di ordinamento`
   - `{Stringa} [order] - Predefinito: 1`
 
 - **Utilizzo:**
 
-  Restituisce una versione riordinata dell'array di origine.
-  La chiave di ordinamento è obbligatoria per specificare come ordinare l'array.
-  Il secondo argomento è facoltativo ed indica il tipo di ordine `ascendente` (`order >= 0`) o `discendente` (`order < 0`).
+  Restituisce una versione riordinata dell'array di origine. La chiave di ordinamento è obbligatoria per specificare come ordinare l'array. Per rendere il sistema più flessibile è possibile passare un Array di chiavi di ordinamento oppure una funzione dedicata alla strategia di ordinamento stessa. Il secondo argomento è facoltativo ed indica il tipo di ordine `ascendente` (`order >= 0`) o `discendente` (`order < 0`).
 
-  Per gli array primitivi qualsiasi chiave potrebbe funzionare.
+  Per gli array primitivi bisogna impostare `sortKey` a `true`.
 
 - **Esempio:**
 
@@ -2280,6 +2239,16 @@ Vue non tiene una copia dei valori pre-modifica.</p>
     }
   })
   ```
+  
+  Ordinamento utilizzando due chiavi:
+  
+  ``` html
+  <ul>
+    <li v-for="user in users | orderBy 'lastName' 'firstName'">
+      {{ user.lastName }} {{ user.firstName }}
+    </li>
+  </ul>
+  ```
 
   {% raw %}
   <div id="esempio-orderBy" class="demo">
@@ -2300,3 +2269,41 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   })
   </script>
   {% endraw %}
+
+## Metodi di Estensioni per Array
+
+  Vue.js estende `Array.prototype` aggiungendo due nuovi metodi che rendono più facile effettuare operazioni sugli Array ed assicurarsi che il sistema reattivo sia propriamente attivato.
+
+### array.$set(index, value)
+
+- **Argomenti**
+  - `{Numerico} indice`
+  - `{*} valore`
+
+- **Utilizzo**
+
+  Impostare un elemento in un array specificanto l'indice nel Array
+
+  ``` js
+    vm.animals.$set(0, { name: 'Aardvark' })
+  ```
+
+- **Vedi anche:** [Come rilevare i Cambiamenti sugli Array](/guide/list.html#Caveats)
+
+### array.$remove(reference)
+
+- **Argomenti**
+  - `{Referenza} referenza`
+
+- **Utilizzo**
+
+  Questo è un metodo che fa da "wrapper" a più metodi sugli Array. Il funzionamento è semplice, prima cerca l'elemento tramite l'indice e poi effettua `array.splice(index, 1)`
+
+  ``` js
+    vm.animals.$remove(0)
+    // oppure
+    var aardvark = vm.animals[0]
+    vm.animals.$remove(aardvark)
+  ```
+
+- **Vedi anche:** [Metodi di Mutazione](/guide/list.html#Mutation-Methods)
