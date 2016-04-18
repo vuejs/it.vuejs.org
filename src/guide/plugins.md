@@ -73,4 +73,6 @@ Vue.use(VueRouter)
 
 - [vue-element](https://github.com/vuejs/vue-element): Registra elementi personalizzati con Vue.js
 
+- [vue-animated-list](https://github.com/vuejs/vue-animated-list): Un plugin per animare le liste renderizzate tramite `v-for`
+
 - [Lista di Strumenti esterni](https://github.com/vuejs/vue/wiki/User-Contributed-Components-&-Tools)
