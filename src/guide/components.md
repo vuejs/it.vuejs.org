@@ -548,9 +548,9 @@ Prima di approfondire la nostra consocenze sulle API, chiarifichiamo in quale am
 
 ``` html
 <parent>
-  <child>
+  <child-component>
     {{ msg }}
-  </child>
+  </child-component>
 </parent>
 ```
 
@@ -562,7 +562,7 @@ Un esempio di errore molto comunque è quello di cercare di legare una direttiva
 
 ``` html
 <!-- Non funziona -->
-<child v-show="someParentProperty"></child>
+<child-component v-show="someParentProperty"></child-component>
 ```
 
 Mettiamo caso che `someParentProperty` sia una proprietà interna del figlio, l'esempio sopra comunque non funzionerebbe come previsto. Il padre non deve essere a conoscenza dello stato del figlio, o per lo meno non dovrebbe preoccuparsene.
