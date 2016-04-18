@@ -17,6 +17,7 @@ L'attributo `transition` può essere usato accoppiato con:
 - `v-if`
 - `v-show`
 - `v-for` (verrà attivato ad ogni aggiunta o rimozione)
+- `v-for` verrà attivato ad ogni aggiunta o rimozione per attivarlo quando si cambia ordine bisogna sfruttare [plugin vue-animated-list](https://github.com/vuejs/vue-animated-list))
 - Componenti Dinamici (che vedremo [nella prossima sezione](components.html#Dynamic-Components))
 - Su un nuovo componente attivato tramite l'istanza Vue, per esempio `vm.$appendTo(el)`.
 
