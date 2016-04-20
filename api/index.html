@@ -197,7 +197,7 @@
 <p>Crea una “subclasse” del costruttore di base di Vue. L’argomento passato dovrebbe essere un set di opzioni del componente stesso.</p>
 <p>Da notare che le opzioni <code>el</code> e <code>data</code> devono essere delle funzioni, se usate con <code>Vue.extend()</code>.</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"mount-point"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Creiamo il costruttore che si utilizza più volte</span></span><br><span class="line"><span class="keyword">var</span> Profile = Vue.extend(&#123;</span><br><span class="line">  template: <span class="string">'&lt;p&gt;&#123;&#123;firstName&#125;&#125; &#123;&#123;lastName&#125;&#125; detto anche &#123;&#123;alias&#125;&#125;&lt;/p&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// creiao l'istanza del profilo</span></span><br><span class="line"><span class="keyword">var</span> profile = <span class="keyword">new</span> Profile(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    firstName: <span class="string">'Walter'</span>,</span><br><span class="line">    lastName: <span class="string">'White'</span>,</span><br><span class="line">    alias: <span class="string">'Heisenberg'</span></span><br><span class="line">  &#125;  </span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// montiamo il tutto su un elemento</span></span><br><span class="line">profile.$mount(<span class="string">'#mount-point'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Creiamo il costruttore che si utilizza più volte</span></span><br><span class="line"><span class="keyword">var</span> Profile = Vue.extend(&#123;</span><br><span class="line">  template: <span class="string">'&lt;p&gt;&#123;&#123;firstName&#125;&#125; &#123;&#123;lastName&#125;&#125; detto anche &#123;&#123;alias&#125;&#125;&lt;/p&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// creiao l'istanza del profilo</span></span><br><span class="line"><span class="keyword">var</span> profile = <span class="keyword">new</span> Profile(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    firstName: <span class="string">'Walter'</span>,</span><br><span class="line">    lastName: <span class="string">'White'</span>,</span><br><span class="line">    alias: <span class="string">'Heisenberg'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// montiamo il tutto su un elemento</span></span><br><span class="line">profile.$mount(<span class="string">'#mount-point'</span>)</span><br></pre></td></tr></table></figure>
 <p>Il risultato sarà:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Walter White detto anche Heisenberg<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -477,7 +477,7 @@
 </li>
 </ul>
 <h3 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h3><ul>
-<li><p><strong>Tipo:</strong> <code>Booleano</code>  </p>
+<li><p><strong>Tipo:</strong> <code>Booleano</code></p>
 </li>
 <li><p><strong>Predefinito:</strong> <code>true</code></p>
 </li>
@@ -1411,6 +1411,7 @@
 <li><p><strong>Argomenti:</strong></p>
 <ul>
 <li><code>{Stringa} [simbolo] - Predefinito: &#39;$&#39;</code></li>
+<li><code>{Numero} [posizioni decimali] - predefinito: 2</code></li>
 </ul>
 </li>
 <li><p><strong>Esempio:</strong></p>
@@ -1419,6 +1420,9 @@
 <p>Con un simbolo diverso:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;&#123; amount | currency '£' &#125;&#125;</span><br></pre></td></tr></table></figure>
 <p><em>12345 =&gt; £12,345.00</em></p>
+<p>E’ anche possibile impostare le cifre decimali che si vogliono visualizzare in base alla tipo di moneta che si sta filtrando:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;&#123; amount | currency '£' 0 &#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><em>12345 =&gt; £12,345</em></p>
 </li>
 </ul>
 <h3 id="pluralize"><a href="#pluralize" class="headerlink" title="pluralize"></a>pluralize</h3><ul>
@@ -1555,12 +1559,10 @@
 <p>Ordinamento dinamico:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"esempio-orderBy"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"order = order * -1"</span>&gt;</span>Cambia l'ordine<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"user in users | orderBy 'name' order"</span>&gt;</span></span><br><span class="line">      &#123;&#123; user.name &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#esempio-orderBy'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    order: <span class="number">1</span>,</span><br><span class="line">    users: [&#123; name: <span class="string">'Bruce'</span> &#125;, &#123; name: <span class="string">'Chuck'</span> &#125;, &#123; name: <span class="string">'Jackie'</span> &#125;]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>  Ordinamento utilizzando due chiavi:</p>
-  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"user in users | orderBy 'lastName' 'firstName'"</span>&gt;</span></span><br><span class="line">    &#123;&#123; user.lastName &#125;&#125; &#123;&#123; user.firstName &#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>  Esempio concreto:</p>
-  
+<p>Ordinamento utilizzando due chiavi:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"user in users | orderBy 'lastName' 'firstName'"</span>&gt;</span></span><br><span class="line">    &#123;&#123; user.lastName &#125;&#125; &#123;&#123; user.firstName &#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Esempio concreto:</p>
+
   <div id="esempio-orderBy" class="demo">
     <button @click="order = order * -1">Cambia l'ordine</button>
     <ul>
@@ -1579,6 +1581,8 @@
   })
   </script>
   
+</li>
+</ul>
 <p>Sort using a Function:</p>
   <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"orderby-compare-example"</span> <span class="attr">class</span>=<span class="string">"demo"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"order = order * -1"</span>&gt;</span>Inverti l'Ordine<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"user in users | orderBy ageByTen"</span>&gt;</span></span><br><span class="line">      &#123;&#123; user.name &#125;&#125; - &#123;&#123; user.age &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
   <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#orderby-compare-example'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    order: <span class="number">1</span>,</span><br><span class="line">    users: [</span><br><span class="line">      &#123;</span><br><span class="line">        name: <span class="string">'Jackie'</span>,</span><br><span class="line">        age: <span class="number">62</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        name: <span class="string">'Chuck'</span>,</span><br><span class="line">        age: <span class="number">76</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        name: <span class="string">'Bruce'</span>,</span><br><span class="line">        age: <span class="number">61</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    ageByTen: <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Math</span>.floor(a.age / <span class="number">10</span>) - <span class="built_in">Math</span>.floor(b.age / <span class="number">10</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
