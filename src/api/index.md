@@ -130,7 +130,7 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
       firstName: 'Walter',
       lastName: 'White',
       alias: 'Heisenberg'
-    }  
+    }
   })
   // montiamo il tutto su un elemento
   profile.$mount('#mount-point')
@@ -579,7 +579,7 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
 
 ### replace
 
-- **Tipo:** `Booleano`  
+- **Tipo:** `Booleano`
 
 - **Predefinito:** `true`
 
@@ -1963,6 +1963,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
 - **Argomenti:**
   - `{Stringa} [simbolo] - Predefinito: '$'`
+  - `{Numero} [posizioni decimali] - predefinito: 2`
 
 - **Esempio:**
 
@@ -1979,6 +1980,14 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   ```
 
   *12345 => £12,345.00*
+
+  E' anche possibile impostare le cifre decimali che si vogliono visualizzare in base alla tipo di moneta che si sta filtrando:
+
+  ``` html
+  {{ amount | currency '£' 0 }}
+  ```
+
+  *12345 => £12,345*
 
 ### pluralize
 
@@ -1999,7 +2008,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   {{count}} {{count | pluralize 'item'}}
   ```
 
-  *1 => '1 item'*  
+  *1 => '1 item'*
   *2 => '2 items'*
 
   ``` html
@@ -2008,7 +2017,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 
   Risulterà in:
 
-  *1 => '1st'*  
+  *1 => '1st'*
   *2 => '2nd'*
   *3 => '3rd'*
   *4 => '4th'*
@@ -2237,9 +2246,9 @@ Vue non tiene una copia dei valori pre-modifica.</p>
     }
   })
   ```
-  
+
   Ordinamento utilizzando due chiavi:
-  
+
   ``` html
   <ul>
     <li v-for="user in users | orderBy 'lastName' 'firstName'">
@@ -2247,7 +2256,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
     </li>
   </ul>
   ```
-  
+
   Esempio concreto:
 
   {% raw %}
