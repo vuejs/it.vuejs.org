@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://vuejs.org/"/>
-  <updated>2016-04-08T13:31:54.000Z</updated>
+  <updated>2016-04-27T18:59:16.000Z</updated>
   <id>http://vuejs.org/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Announcing Vue.js 2.0</title>
+    <link href="http://vuejs.org/2016/04/27/annuncing-2.0/"/>
+    <id>http://vuejs.org/2016/04/27/annuncing-2.0/</id>
+    <published>2016-04-27T11:33:00.000Z</published>
+    <updated>2016-04-27T18:59:16.000Z</updated>
+    
+    <content type="html">&lt;p&gt;Today I am thrilled to announce the first public preview of Vue.js 2.0, which brings along many exciting improvements and new features. Let’s take a peek at what’s in store!&lt;/p&gt;
+&lt;h2 id=&quot;Even-Leaner-Even-Faster&quot;&gt;&lt;a href=&quot;#Even-Leaner-Even-Faster&quot; class=&quot;headerlink&quot; title=&quot;Even Leaner, Even Faster&quot;&gt;&lt;/a&gt;Even Leaner, Even Faster&lt;/h2&gt;&lt;p&gt;Vue.js has always focused on staying light and fast, but 2.0 pushes it even further. The rendering layer is now based on a lightweight virtual-DOM implementation that improves initial rendering speed and memory consumption by up to 2~4x in most scenarios (check out &lt;a href=&quot;https://github.com/vuejs/vue/tree/next/benchmarks&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;these benchmarks&lt;/a&gt;). The template-to-virtual-DOM compiler and the runtime can be separated, so you can pre-compile templates and ship your app with only the runtime, which is less than 12kb min+gzip (as a reference, React 15 is 44kb min+gzip). The compiler also works in the browser, which means you can still drop in one script tag and start hacking, just like before. Even with the compiler included, the build is sitting at 17kb min+gzip, still lighter than the current 1.0 build.&lt;/p&gt;
+&lt;h2 id=&quot;Not-Your-Average-Virtual-DOM&quot;&gt;&lt;a href=&quot;#Not-Your-Average-Virtual-DOM&quot; class=&quot;headerlink&quot; title=&quot;Not Your Average Virtual-DOM&quot;&gt;&lt;/a&gt;Not Your Average Virtual-DOM&lt;/h2&gt;&lt;p&gt;Now, just virtual-DOM sounds boring because there are so many implementations out there - but this one is different. Combined with Vue’s reactivity system, it provides optimized re-rendering out of the box without you having to do anything. Each component keeps track of its reactive dependencies during its render, so the system knows precisely when to re-render, and which components to re-render. No need for &lt;code&gt;shouldComponentUpdate&lt;/code&gt; or immutable data structures - &lt;strong&gt;it just works&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;In addition, Vue 2.0 applies some advanced optimizations during the template-to-virtual-DOM compilation phase:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;It detects static class names and attributes so that they are never diffed after the initial render.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;It detects the maximum static sub trees (sub trees with no dynamic bindings) and hoist them out of the render function. So on each re-render, it directly reuses the exact same virtual nodes and skips the diffing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;These advanced optimizations can usually only be achieved via Babel plugins when using JSX, but with Vue 2.0 you can get them even using the in-browser compiler.&lt;/p&gt;
+&lt;p&gt;The new rendering system also allows you to disable reactive conversions by simply freezing your data and manually force updates, essentially giving you full control over the re-rendering process.&lt;/p&gt;
+&lt;p&gt;With these techniques combined, Vue 2.0 ensures blazing fast performance in every possible scenario while requiring minimal optimization efforts from the developer.&lt;/p&gt;
+&lt;h2 id=&quot;Templates-JSX-or-Hyperscript&quot;&gt;&lt;a href=&quot;#Templates-JSX-or-Hyperscript&quot; class=&quot;headerlink&quot; title=&quot;Templates, JSX, or Hyperscript?&quot;&gt;&lt;/a&gt;Templates, JSX, or Hyperscript?&lt;/h2&gt;&lt;p&gt;Developers tend to have strong opinions on templates vs. JSX. On the one hand, templates are closer to HTML - they map better to the semantic structure of your app and make it much easier to think visually about the design, layout and styling. On the other hand, templates are limited to the DSL while the programmatic nature of JSX/hyperscript provides the full expressive power of a turing-complete language.&lt;/p&gt;
+&lt;p&gt;Being a designer/developer hybrid, I prefer writing most of my interfaces in templates, but in certain cases I do miss the flexibility of JSX/hyperscript. An example would be writing a component that programmatically handles its children, something not feasible with just the template-based slot mechanism.&lt;/p&gt;
+&lt;p&gt;Well, why not have both? In Vue 2.0, you can keep using the familiar template syntax, or drop down to the virtual-DOM layer whenever you feel constrained by the template DSL. Instead of the &lt;code&gt;template&lt;/code&gt; option, just replace it with a &lt;code&gt;render&lt;/code&gt; function. You can even embed render functions in your templates using the special &lt;code&gt;&amp;lt;render&amp;gt;&lt;/code&gt; tag! The best of both worlds, in the same framework.&lt;/p&gt;
+&lt;h2 id=&quot;Streaming-Server-side-Rendering&quot;&gt;&lt;a href=&quot;#Streaming-Server-side-Rendering&quot; class=&quot;headerlink&quot; title=&quot;Streaming Server-side Rendering&quot;&gt;&lt;/a&gt;Streaming Server-side Rendering&lt;/h2&gt;&lt;p&gt;With the migration to virtual-DOM, Vue 2.0 naturally supports server-side rendering with client-side hydration. One pain point of current mainstream server rendering implementations, such as React’s, is that the rendering is synchronous so it can block the server’s event loop if the app is complex. Synchronous server-side rendering may even adversely affect time-to-content on the client. Vue 2.0 provides built-in streaming server-side rendering, so that you can render your component, get a readable stream back and directly pipe it to the HTTP response. This ensures your server is responsive, and gets the rendered content to your users faster.&lt;/p&gt;
+&lt;h2 id=&quot;Unlocking-More-Possibilities&quot;&gt;&lt;a href=&quot;#Unlocking-More-Possibilities&quot; class=&quot;headerlink&quot; title=&quot;Unlocking More Possibilities&quot;&gt;&lt;/a&gt;Unlocking More Possibilities&lt;/h2&gt;&lt;p&gt;With the new architecture, there are even more possibilities to explore - for example, rendering to native interfaces on mobile. Currently, we are exploring a port of Vue.js 2.0 that uses &lt;a href=&quot;http://alibaba.github.io/weex/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;weex&lt;/a&gt; as a native rendering backend, a project maintained by engineers at Alibaba Group, the biggest tech enterprise of China. It is also technically feasible to adapt Vue 2.0’s virtual-DOM to run inside ReactNative. We are excited to see how it goes!&lt;/p&gt;
+&lt;h2 id=&quot;Compatibility-and-What-to-Expect-Next&quot;&gt;&lt;a href=&quot;#Compatibility-and-What-to-Expect-Next&quot; class=&quot;headerlink&quot; title=&quot;Compatibility and What to Expect Next&quot;&gt;&lt;/a&gt;Compatibility and What to Expect Next&lt;/h2&gt;&lt;p&gt;Vue.js 2.0 is still in pre-alpha, but you can checkout the source code &lt;a href=&quot;https://github.com/vuejs/vue/tree/next/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;here&lt;/a&gt;. Despite being a full rewrite, the API is largely compatible with 1.0 with the exception of some intentional deprecations. Check out &lt;a href=&quot;https://github.com/vuejs/vue/tree/next/examples&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;the same official examples written in 2.0&lt;/a&gt; - you will see that not much has changed!&lt;/p&gt;
+&lt;p&gt;The feature deprecations are part of our continued effort to provide the simplest API possible for maximum developer productivity. You can check out a 1.0 vs. 2.0 feature comparison &lt;a href=&quot;https://github.com/vuejs/vue/wiki/2.0-features&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;here&lt;/a&gt;. This does mean that it will take some effort to migrate an existing app if you happen to use some of these deprecated features heavily, but we will provide detailed upgrade guides in the future.&lt;/p&gt;
+&lt;p&gt;There is still much work left to be done. We will be releasing the first alpha once we reach satisfactory test coverage, and we are aiming for beta by end of May / early June. In addition to more tests, we also need to update the supporting libraries (vue-router, Vuex, vue-loader, vueify…). Currently only Vuex works with 2.0 out of the box, but we will make sure that everything works smoothly together when 2.0 ships.&lt;/p&gt;
+&lt;p&gt;We are also not forgetting about 1.x! 1.1 will be released alongside 2.0 beta, with an LTS period of 6-month critical bug fixes and 9-month security updates. It will also ship with optional deprecation warnings to get you prepared for upgrading to 2.0. Stay tuned!&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Today I am thrilled to announce the first public preview of Vue.js 2.0, which brings along many exciting improvements and new features. L
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>March 2016 Update</title>
