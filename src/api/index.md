@@ -587,46 +587,46 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
 
 - **Dettagli:**
 
-  Determina se rimpiazzare l'elemento al quale l'istanza è legata con il template fornito. Se è impostata su `false`, il template sostituirà il contenuto HTML dell elemento al quale l'istanza è stata legata e non il tuo markup totale.
+  Determina se rimpiazzare l'elemento al quale l'istanza è legata con il template fornito. Se è impostata su `false`, il template sostituirà il contenuto HTML dell elemento al quale l'istanza è stata legata e non il tuo markup totale. Se invece si imposta su `true`, il template verrà sostituito ed unito con il componente padre del nodo più vicino.
 
 - **Esempio**:
 
   ``` html
-  <div id="replace"></div>
+  <div id="replace" class="foo"></div>
   ```
 
   ``` js
   new Vue({
     el: '#replace',
-    template: '<p>replaced</p>'
+    template: '<p class="bar">replaced</p>'
   })
   ```
 
   Risulterà in:
 
   ``` html
-  <p>replaced</p>
+  <p class="foo bar" id="replace">replaced</p>
   ```
 
   Quando `replace` è su `false`:
 
   ``` html
-  <div id="insert"></div>
+  <div id="insert" class="foo"></div>
   ```
 
   ``` js
   new Vue({
     el: '#insert',
     replace: falso,
-    template: '<p>inserted</p>'
+    template: '<p class="bar">inserted</p>'
   })
   ```
 
   Risulterà in:
 
   ``` html
-  <div id="insert">
-    <p>inserted</p>
+  <div id="insert" class="foo">
+    <p class="bar">inserted</p>
   </div>
   ```
 
