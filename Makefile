@@ -7,7 +7,8 @@ deploy:
 	mkdir -p public/unit
 	cp -R ../vue/test/unit/lib/ public/unit/lib
 	cp ../vue/test/unit/index.html public/unit/index.html
-	cp ../vue/test/unit/specs/index.js public/unit/specs.js
+	cp ../vue/test/unit/specs.js public/unit/specs.js
+	cp ../vue/test/unit/specs.js.map public/unit/specs.js.map
 	hexo deploy
 
 update:
