@@ -429,8 +429,10 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
       size: Numero,
       // controllo sul tipo di dato più validazione
       name: {
-        Tipo: Stringa,
-        richiesto: true
+        type: Stringa,
+        required: ,
+        // Specifichiamo se è a due vie
+        twoWay: true
       }
     }
   })
