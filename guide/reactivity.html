@@ -189,12 +189,14 @@
 
 <div class="content guida with-sidebar">
     <div id="ad">
-  <a href="https://strikingly.com/s/careers?utm_source=v" target="_blank">
-    <span>Fieramente Sponsorizzato da</span><br>
+  <span>Sponsorizzato da</span>
+  <br>
+  <a href="https://strikingly.com/s/careers?utm_source=v" target="_blank"
+    style="display:inline-block;padding-top:8px">
     <img src="/images/strikingly.png">
   </a>
+  
 </div>
-
     <h1>Reattività nel Dettaglio</h1>
     <p>Abbiamo visto tutte le basi per utilizzare VueJs - ora è tempo di guardare nel dettaglio alcune parti fondamentali, la prima che andremo ad affrontare è una delle più importanti e meno visibili di VueJs, il sistema di reattività. La reattività è tutto quel sistema che vi permette di aggiornare gli oggetti Javascript della vostra istanza. La reattività rende la gestione dello stato veramente semplice ed intuitiva, ma è anche importante e bisogna capire come funziona per evitare sorprese in futuro. In questa sezione andremo ad analizzare nel dettagli il sistema di reattività per capire come funziona dietro le quinte.</p>
 <h2 id="Come-vengono-tracciati-i-Cambiamenti"><a href="#Come-vengono-tracciati-i-Cambiamenti" class="headerlink" title="Come vengono tracciati i Cambiamenti"></a>Come vengono tracciati i Cambiamenti</h2><p>Quando passate un oggetto Javascript ad un’istanza Vue, ovvero alla sua opzione <code>data</code>, Vue.js in primis analizzerà tutte le sue proprietà e le convertirà in getter/setter usando la funzione <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="external">Object.defineProperty</a>. Questa funzione è disponibile sono da ES5 in su, per questo Vue.js non supportà IE8 e predecessori.</p>

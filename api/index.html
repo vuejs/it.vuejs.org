@@ -109,12 +109,14 @@
 
 <div class="content api with-sidebar">
     <div id="ad">
-  <a href="https://strikingly.com/s/careers?utm_source=v" target="_blank">
-    <span>Fieramente Sponsorizzato da</span><br>
+  <span>Sponsorizzato da</span>
+  <br>
+  <a href="https://strikingly.com/s/careers?utm_source=v" target="_blank"
+    style="display:inline-block;padding-top:8px">
     <img src="/images/strikingly.png">
   </a>
+  
 </div>
-
     <h1></h1>
     <h2 id="Configurazione-Globale"><a href="#Configurazione-Globale" class="headerlink" title="Configurazione Globale"></a>Configurazione Globale</h2><p><code>Vue.config</code> è un oggetto il quale contiene tutte le configurazioni di Vue. Potete modificare le sue proprietà, descritte di seguito, prima di inizializzare l’applicazione:</p>
 <h3 id="debug"><a href="#debug" class="headerlink" title="debug"></a>debug</h3><ul>
@@ -1584,7 +1586,7 @@
 </li>
 </ul>
 <p>Sort using a Function:</p>
-  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"orderby-compare-example"</span> <span class="attr">class</span>=<span class="string">"demo"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"order = order * -1"</span>&gt;</span>Inverti l'Ordine<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"user in users | orderBy ageByTen"</span>&gt;</span></span><br><span class="line">      &#123;&#123; user.name &#125;&#125; - &#123;&#123; user.age &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"orderby-compare-example"</span> <span class="attr">class</span>=<span class="string">"demo"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"order = order * -1"</span>&gt;</span>Inverti l'Ordine<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"user in users | orderBy ageByTen order"</span>&gt;</span></span><br><span class="line">      &#123;&#123; user.name &#125;&#125; - &#123;&#123; user.age &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
   <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#orderby-compare-example'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    order: <span class="number">1</span>,</span><br><span class="line">    users: [</span><br><span class="line">      &#123;</span><br><span class="line">        name: <span class="string">'Jackie'</span>,</span><br><span class="line">        age: <span class="number">62</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        name: <span class="string">'Chuck'</span>,</span><br><span class="line">        age: <span class="number">76</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        name: <span class="string">'Bruce'</span>,</span><br><span class="line">        age: <span class="number">61</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    ageByTen: <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Math</span>.floor(a.age / <span class="number">10</span>) - <span class="built_in">Math</span>.floor(b.age / <span class="number">10</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
   
   <div id="orderby-compare-example" class="demo">
