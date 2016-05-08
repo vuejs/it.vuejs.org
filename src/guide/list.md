@@ -227,6 +227,11 @@ Puoi fare:
 this.items.$remove(item)
 ```
 
+#### Utilizzare `Object.freeze()`
+
+Quando si itera un array di oggetti essa si può `bloccare` con `Object.freeze()`, però dovrete esplicitamente utilizzare `track-by`.
+Nel caso il track non fosse presente Vuejs visualizzera un messaggio di attenzione a riguardo
+
 ## Oggetti e v-for
 
 Potete anche utilizzare `v-for` per scorrere attraverso le properità di un Oggetto specifico. Oltre ad `$index`, ogni elemento avrà anche un'altra speciale properità `$key`.
