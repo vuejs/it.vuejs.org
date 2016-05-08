@@ -440,6 +440,33 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
 
 - **Vedi anche:** [Props](/guide/components.html#Props)
 
+### propsData
+
+> 1.0.22+
+
+- **Tipo:** `Oggetto`
+
+- **Restrizioni:** viene rispettato solo nelle istanze create tramite `new`.
+
+- **Dettagli:**
+
+  Si passa un props ad un istanza durante la sua creazione. Questo viene fatto per testare più facilmente i componenti
+
+- **Esempio:**
+
+  ``` js
+  var Comp = Vue.extend({
+    props: ['msg'],
+    template: '<div>{{ msg }}</div>'
+  })
+
+  var vm = new Comp({
+    propsData: {
+      msg: 'Ciao'
+    }
+  })
+  ```
+
 ### computed
 
 - **Tipo:** `Oggetto`
@@ -910,6 +937,31 @@ Per controllarne lo stato basta impostarla con un valore booleano `true` o `fals
   var vm = new Ctor()
 
   console.log(vm) // -> StackOverflow {$el: null, ...}
+  ```
+
+### extends
+
+> 1.0.22+
+
+- **Tipo:** `Oggetto | Funzione`
+
+- **Dettagli:**
+
+  Permette la dichiarazione di un altro componente come estensione (può essere un costruttore o anche un oggetto) senza utilizzare `Vue.extend`.
+  L'intento è di facilitare l'estensione di componenti a file singolo.
+
+  Questa proprietà si comporta in modo simile a `mixins`, la differenza è che il componente che estende avrà priorità maggiore rispetto a quello esteso.
+
+- **Esempio:**
+
+  ``` js
+  var CompA = { ... }
+
+  // Estendiamo il CompA senza utilizzare Vue.Exetend
+  var CompB = {
+    extends: CompA,
+    ...
+  }
   ```
 
 ## Proprietà d'Istanza
@@ -1964,8 +2016,8 @@ Vue non tiene una copia dei valori pre-modifica.</p>
 ### currency
 
 - **Argomenti:**
-  - `{Stringa} [simbolo] - Predefinito: '$'`
-  - `{Numero} [posizioni decimali] - predefinito: 2`
+  - `{Stringa} [simbolo] - predefinito: '$'`
+  - **1.0.22+** `{Numero} [posizioni decimali] - predefinito: 2`
 
 - **Esempio:**
 
