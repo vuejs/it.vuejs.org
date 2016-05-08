@@ -409,6 +409,21 @@
 <li><p><strong>Vedi anche:</strong> <a href="/guide/components.html#Props">Props</a></p>
 </li>
 </ul>
+<h3 id="propsData"><a href="#propsData" class="headerlink" title="propsData"></a>propsData</h3><blockquote>
+<p>1.0.22+</p>
+</blockquote>
+<ul>
+<li><p><strong>Tipo:</strong> <code>Oggetto</code></p>
+</li>
+<li><p><strong>Restrizioni:</strong> viene rispettato solo nelle istanze create tramite <code>new</code>.</p>
+</li>
+<li><p><strong>Dettagli:</strong></p>
+<p>Si passa un props ad un istanza durante la sua creazione. Questo viene fatto per testare più facilmente i componenti</p>
+</li>
+<li><p><strong>Esempio:</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> Comp = Vue.extend(&#123;</span><br><span class="line">  props: [<span class="string">'msg'</span>],</span><br><span class="line">  template: <span class="string">'&lt;div&gt;&#123;&#123; msg &#125;&#125;&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Comp(&#123;</span><br><span class="line">  propsData: &#123;</span><br><span class="line">    msg: <span class="string">'Ciao'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <h3 id="computed"><a href="#computed" class="headerlink" title="computed"></a>computed</h3><ul>
 <li><p><strong>Tipo:</strong> <code>Oggetto</code></p>
 </li>
@@ -702,6 +717,20 @@
 </li>
 <li><p><strong>Esempio:</strong></p>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">var Ctor = Vue.extend(&#123;</span><br><span class="line">  name: 'stack-overflow',</span><br><span class="line">  template:</span><br><span class="line">    '&lt;div +</span><br><span class="line">      // richiama se stesso</span><br><span class="line">      '&lt;stack-overflow&gt;&lt;/ack-overflow&gt;' +</span><br><span class="line">    '&lt;/div&gt;'</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// Questo, in verità, non può funzionare in quanto</span><br><span class="line">// Risulterà un errore di stack di memoria</span><br><span class="line">var vm = new Ctor()</span><br><span class="line"></span><br><span class="line">console.log(vm) // -&gt; StackOverflow &#123;$el: null, ...&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="extends"><a href="#extends" class="headerlink" title="extends"></a>extends</h3><blockquote>
+<p>1.0.22+</p>
+</blockquote>
+<ul>
+<li><p><strong>Tipo:</strong> <code>Oggetto | Funzione</code></p>
+</li>
+<li><p><strong>Dettagli:</strong></p>
+<p>Permette la dichiarazione di un altro componente come estensione (può essere un costruttore o anche un oggetto) senza utilizzare <code>Vue.extend</code>.<br>L’intento è di facilitare l’estensione di componenti a file singolo.</p>
+<p>Questa proprietà si comporta in modo simile a <code>mixins</code>, la differenza è che il componente che estende avrà priorità maggiore rispetto a quello esteso.</p>
+</li>
+<li><p><strong>Esempio:</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> CompA = &#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Estendiamo il CompA senza utilizzare Vue.Exetend</span></span><br><span class="line"><span class="keyword">var</span> CompB = &#123;</span><br><span class="line">  extends: CompA,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="Proprieta-d’Istanza"><a href="#Proprieta-d’Istanza" class="headerlink" title="Proprietà d’Istanza"></a>Proprietà d’Istanza</h2><h3 id="vm-data"><a href="#vm-data" class="headerlink" title="vm.$data"></a>vm.$data</h3><ul>
@@ -1412,8 +1441,8 @@
 <h3 id="currency"><a href="#currency" class="headerlink" title="currency"></a>currency</h3><ul>
 <li><p><strong>Argomenti:</strong></p>
 <ul>
-<li><code>{Stringa} [simbolo] - Predefinito: &#39;$&#39;</code></li>
-<li><code>{Numero} [posizioni decimali] - predefinito: 2</code></li>
+<li><code>{Stringa} [simbolo] - predefinito: &#39;$&#39;</code></li>
+<li><strong>1.0.22+</strong> <code>{Numero} [posizioni decimali] - predefinito: 2</code></li>
 </ul>
 </li>
 <li><p><strong>Esempio:</strong></p>
