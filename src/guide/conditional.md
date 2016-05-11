@@ -67,6 +67,26 @@ Puoi utilizzare la direttiva `v-else` per indicare un "elemento alternativo" per
 
 L'elemento `v-else` deve seguire immediatamente `v-if` o `v-show` - altrimenti verrà ignorato.
 
+
+### Consigli sui Componenti
+
+Quando si usa un component e notate che `v-show` o `v-else` non vengono applicati correttamente, a causa delle priorità tra direttive
+potete correggere questo:
+
+```html
+<custom-component v-show="condition"></custom-component>
+<p v-else>Questo potrebbe essere un componente...</p>
+```
+
+Dovete rimpiazzare `v-else` con un altro `v-show`:
+
+```html
+<custom-component v-show="condition"></custom-component>
+<p v-show="!condition">Questo potrebbe essere un componente...</p>
+```
+
+Questa tecnica non serve se si utilizza `v-if`.
+
 ## v-if vs. v-show
 
 Quando un blocco `v-if` viene attivato, Vue.js dovrà fare un rendering parziale perché il condenuto dentro a `v-if` può contenere altri vincoli o espressioni. `v-if` effettua un vero e proprio rendering per assicurarsi che tutti i componenti figli, nel caso ci siano, vengano gestiti a dovere e distrutti/ricreati in base allo stato della condizione di `v-if`.
