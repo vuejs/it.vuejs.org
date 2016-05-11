@@ -152,7 +152,7 @@
 	
 	_globalApi2['default'](_instanceVue2['default']);
 	
-	_instanceVue2['default'].version = '1.0.22';
+	_instanceVue2['default'].version = '1.0.23';
 	
 	exports['default'] = _instanceVue2['default'];
 	
@@ -2187,10 +2187,22 @@
 	 * @return {Boolean}
 	 */
 	
-	function inDoc(node) {
-	  var doc = document.documentElement;
+	function inDoc(node, win) {
+	  win = win || window;
+	  var doc = win.document.documentElement;
 	  var parent = node && node.parentNode;
-	  return doc === node || doc === parent || !!(parent && parent.nodeType === 1 && doc.contains(parent));
+	  var isInDoc = doc === node || doc === parent || !!(parent && parent.nodeType === 1 && doc.contains(parent));
+	  if (!isInDoc) {
+	    var frames = win.frames;
+	    if (frames) {
+	      for (var i = 0; i < frames.length; i++) {
+	        if (inDoc(node, frames[i])) {
+	          return true;
+	        }
+	      }
+	    }
+	  }
+	  return isInDoc;
 	}
 	
 	/**
@@ -5404,19 +5416,26 @@
 	 */
 	
 	function flushBatcherQueue() {
-	  runBatcherQueue(queue);
-	  queue.length = 0;
-	  runBatcherQueue(userQueue);
-	  // user watchers triggered more internal watchers
-	  if (queue.length) {
+	  var _again = true;
+	
+	  _function: while (_again) {
+	    _again = false;
+	
 	    runBatcherQueue(queue);
+	    runBatcherQueue(userQueue);
+	    // user watchers triggered more watchers,
+	    // keep flushing until it depletes
+	    if (queue.length) {
+	      _again = true;
+	      continue _function;
+	    }
+	    // dev tool hook
+	    /* istanbul ignore if */
+	    if (_utilIndex.devtools && _config2['default'].devtools) {
+	      _utilIndex.devtools.emit('flush');
+	    }
+	    resetBatcherState();
 	  }
-	  // dev tool hook
-	  /* istanbul ignore if */
-	  if (_utilIndex.devtools && _config2['default'].devtools) {
-	    _utilIndex.devtools.emit('flush');
-	  }
-	  resetBatcherState();
 	}
 	
 	/**
@@ -5442,6 +5461,7 @@
 	      }
 	    }
 	  }
+	  queue.length = 0;
 	}
 	
 	/**
@@ -10470,7 +10490,7 @@
 	    var node = nodes[i];
 	    if (_utilIndex.isTemplate(node) && !node.hasAttribute('v-if') && !node.hasAttribute('v-for')) {
 	      parent.removeChild(node);
-	      node = _parsersTemplate.parseTemplate(node);
+	      node = _parsersTemplate.parseTemplate(node, true);
 	    }
 	    frag.appendChild(node);
 	  }
@@ -23103,6 +23123,37 @@
 	    })
 	    expect(vm.$el.textContent).toBe('135')
 	  })
+	
+	  // #2821
+	  it('batcher should keep flushing until all queues are depleted', function (done) {
+	    var spy = jasmine.createSpy()
+	    var vm = new Vue({
+	      el: document.createElement('div'),
+	      template: '<test :prop="model"></test>',
+	      data: {
+	        model: 0,
+	        count: 0
+	      },
+	      watch: {
+	        count: function () {
+	          this.model++
+	        }
+	      },
+	      components: {
+	        test: {
+	          props: ['prop'],
+	          watch: {
+	            prop: spy
+	          }
+	        }
+	      }
+	    })
+	    vm.count++
+	    Vue.nextTick(function () {
+	      expect(spy).toHaveBeenCalled()
+	      done()
+	    })
+	  })
 	})
 
 
@@ -25170,6 +25221,18 @@
 	    expect(_.inDoc(target)).toBe(true)
 	    document.body.removeChild(target)
 	    expect(_.inDoc(target)).toBe(false)
+	  })
+	
+	  it('inDoc (iframe)', function (done) {
+	    var f = document.createElement('iframe')
+	    f.onload = function () {
+	      f.contentWindow.document.body.appendChild(target)
+	      expect(_.inDoc(target)).toBe(true)
+	      document.body.removeChild(f)
+	      done()
+	    }
+	    document.body.appendChild(f)
+	    f.src = 'about:blank'
 	  })
 	
 	  it('getAttr', function () {
