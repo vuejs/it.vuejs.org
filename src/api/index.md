@@ -1619,6 +1619,7 @@ Vue non tiene una copia dei valori pre-modifica.</p>
   ```
 
 - **Vedi anche:** [Rendering Condizionale - v-else](/guide/conditional.html#v-else)
+- **Vedi anche:** [Rendering Condizionali - consigli sui Componenti](/guide/conditional.html#Component-caveat)
 
 ### v-for
 
