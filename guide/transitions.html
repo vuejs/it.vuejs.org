@@ -433,8 +433,7 @@ new Vue({
 <p>Oppure, potete sfruttare gli hook <code>stagger</code>, <code>enterStagger</code> o <code>leaveStagger</code> per un controllo migliore:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Vue.transition(<span class="string">'stagger'</span>, &#123;</span><br><span class="line">  stagger: <span class="function"><span class="keyword">function</span> (<span class="params">index</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// qui si aumenta il delay di 50ms per ogni elemento di transizione</span></span><br><span class="line">    <span class="comment">// impostando il delay massimo a 300ms</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.min(<span class="number">300</span>, index * <span class="number">50</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>Esempio:</p>
-<iframe width="100%" height="200" style="margin-left:10px" src="http://jsfiddle.net/yyx990803/mvo99bse/embedded/result,html,js,css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
+<iframe width="100%" height="200" style="margin-left:10px" src="https://jsfiddle.net/yyx990803/mvo99bse/embedded/result,html,js,css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
     
     <div class="footer">
       Trovato un errore e vuoi contribuire alla documentazione?

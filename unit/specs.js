@@ -152,7 +152,7 @@
 	
 	_globalApi2['default'](_instanceVue2['default']);
 	
-	_instanceVue2['default'].version = '1.0.23';
+	_instanceVue2['default'].version = '1.0.24';
 	
 	exports['default'] = _instanceVue2['default'];
 	
@@ -2187,22 +2187,11 @@
 	 * @return {Boolean}
 	 */
 	
-	function inDoc(node, win) {
-	  win = win || window;
-	  var doc = win.document.documentElement;
-	  var parent = node && node.parentNode;
-	  var isInDoc = doc === node || doc === parent || !!(parent && parent.nodeType === 1 && doc.contains(parent));
-	  if (!isInDoc) {
-	    var frames = win.frames;
-	    if (frames) {
-	      for (var i = 0; i < frames.length; i++) {
-	        if (inDoc(node, frames[i])) {
-	          return true;
-	        }
-	      }
-	    }
-	  }
-	  return isInDoc;
+	function inDoc(node) {
+	  if (!node) return false;
+	  var doc = node.ownerDocument.documentElement;
+	  var parent = node.parentNode;
+	  return doc === node || doc === parent || !!(parent && parent.nodeType === 1 && doc.contains(parent));
 	}
 	
 	/**
