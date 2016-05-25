@@ -25,6 +25,8 @@ Per installare Vue.js in locale scaricate lo script ed includetelo nel classico 
 
 Vue.js è disponibile su [jsdelivr](//cdn.jsdelivr.net/vue/{{vue_version}}/vue.min.js) oppure [cdnjs](//cdnjs.cloudflare.com/ajax/libs/vue/{{vue_version}}/vue.min.js) (ci vuole del tempo prima che vengano sincronizzate con l'ultima versione, perciò magari non è ancora disponbile online).
 
+Ora Vue.js è anche disponibile su [npmcdn](https://npmcdn.com/vue/dist/vue.min.js), questa cdn scaricherà sempre l'ultima versione appena disponibile e pubblica su npm. E' possibile anche navigare nel codice sorgente su [npmcdn.com/vue/](https://npmcdn.com/vue/).
+
 ### Versione compatibile CSP
 
 Alcuni ambienti, come Google Chrome Apps, obbligano l'utilizzo delle CSP (Content Security Policies) e non permettono l'uso di `new Function()` per valutare le espressioni nel codice.
