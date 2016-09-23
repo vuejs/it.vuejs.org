@@ -18,7 +18,7 @@ Ci sono alcune ragioni per le quali è preferibile utilizzare Vue al posto di An
 
 - Vue.js ha migliori performance ed è molto, molto più semplice da ottimizzare, perché non utilizza il dirty checking (controllo sporco). Angular rallenta molto quando ci sono molti watcher (osservatori), perché ogni qualvolta qualcosa negli ambiti cambia, tutti quegli osservatori devono essere ricontrollati. Inoltre, il digest cycle viene eseguito più volte per "stabilizzare" se qualche osservatore innesca altri aggiornamenti. Gli utenti Angular devono spesso ricorrere a teniche poco ortodosse per aggirare il suddetto ciclo, ed in alcuni casi semplicemente non c'è modo di ottimizzare un ambito con grosse quantità di osservatori. Vue.js non soffre di questo problema affatto perché utilizza un sistema di tracciamento delle dipendenze con coda asincrona - tutte le modifiche si innescano indipendentemente a meno ché non abbiano esplicite relazioni di dipendenza. L'unico accenno di ottimizzazione del quale avrai mai bisogno è il parametro `track-by` nelle liste `v-for`.
 
-È interessante notare che ci sono abbastanza similitudini nel modo in cui Angular 2 e Vue affrontano questi problemi di Angular 1.
+È interessante notare che ci sono abbastanza somiglianze nel modo in cui Angular 2 e Vue affrontano questi problemi di Angular 1.
 
 ## React
 
