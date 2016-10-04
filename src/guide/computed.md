@@ -51,7 +51,7 @@ var vm = new Vue({
 </script>
 {% endraw %}
 
-Abbiamo dichiarato una proprietà derivata `b`. La funziona che implementa questa properità derivata è un Getter per la proprietà `vm.b`:
+Abbiamo dichiarato una proprietà derivata `b`. La funziona che implementa questa proprietà derivata è un Getter per la proprietà `vm.b`:
 
 ``` js
 console.log(vm.b) // -> 2
@@ -61,11 +61,11 @@ console.log(vm.b) // -> 3
 
 Potete aprire la console del browser e provare a cambiare il valore di `a` e vedere come si riflette su `b` dato che quest'ultimo deriva da `a`.
 
-Le properità derivate possono essere vincolate all'interno del template come una qualsiasi properità normale. Vue.js sa che `vm.b` deriva da `vm.a`, perciò aggiornerà `vm.b` ogni volta che `vm.a` acquisisce un nuovo valore. La parte più interessante è che abbiamo creato questa dipendenza in modo dichiarativo: La funzione che implementa la properità derivata è primitiva, facile da testare e non ha effetti collaterali su altre proprietà.
+Le proprietà derivate possono essere vincolate all'interno del template come una qualsiasi proprietà normale. Vue.js sa che `vm.b` deriva da `vm.a`, perciò aggiornerà `vm.b` ogni volta che `vm.a` acquisisce un nuovo valore. La parte più interessante è che abbiamo creato questa dipendenza in modo dichiarativo: La funzione che implementa la proprietà derivata è primitiva, facile da testare e non ha effetti collaterali su altre proprietà.
 
 ### Proprietà Derivate vs. $watch
 
-Vue.js fornisce un metodo chiamato `$watch`, quest'ultimo permette di osservare il cambiamento di alcuni dati dell'istanza Vue. Quando si hanno delle proprietà che derivano da altre proprietà, come nel nostro esempio precedente, c'è la tentazione di sfruttare `$watch` - specialmente se si arriva da un ambiente come AngularJS. Però è quasi sempre consigliato usare una properietà derivata rispetto ad un `$watch`. Considerate questo esempio:
+Vue.js fornisce un metodo chiamato `$watch`; quest'ultimo permette di osservare il cambiamento di alcuni dati dell'istanza Vue. Quando si hanno delle proprietà che derivano da altre proprietà, come nel nostro esempio precedente, c'è la tentazione di sfruttare `$watch` - specialmente se si arriva da un ambiente come AngularJS. Però è quasi sempre consigliato usare una proprietà derivata rispetto ad un `$watch`. Considerate questo esempio:
 
 ``` html
 <div id="demo">{{fullName}}</div>
@@ -89,7 +89,7 @@ vm.$watch('lastName', function (val) {
 })
 ```
 
-Il codice sovrastante è riperitivo ed imperativo. Confrontatelo con una properietà derivata:
+Il codice sovrastante è riperitivo ed imperativo. Confrontatelo con una proprietà derivata:
 
 ``` js
 var vm = new Vue({
@@ -109,7 +109,7 @@ Molto meglio, non trovate?
 
 ### Setter Derivati
 
-Le properietà derivate tendenzialmente vengono usate solo come getter, ma puoi comunuqe specificare un setter nel caso vi serva:
+Le proprietà derivate tendenzialmente vengono usate solo come getter, ma potete comunque specificare un setter nel caso vi serva:
 
 ``` js
 // ...
