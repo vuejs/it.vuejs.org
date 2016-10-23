@@ -65,7 +65,7 @@ app.currentView = 'page1'
 
 Con questo tipo di approccio è anche facile utilizzare librerie esterne come [Page.js](https://github.com/visionmedia/page.js) o [Director](https://github.com/flatiron/director).
 
-## Comunicaione con il Server
+## Comunicazione con il Server
 
 Tutte le istanze Vue hanno la proprietà `$data` direttamente serializzata tramite `JSON.stringify()` senza dover far nulla manualmente. La community di Vue ha aiutato a sviluppare un plugin chiamato [vue-resource](https://github.com/vuejs/vue-resource), il quale fornisce un'interfaccia semplice ed intuitiva per lavorare con l'architettura REST. Come con il routing, puoi utilizzare qualsiasi altra liberia come `$.ajax` oppure [SuperAgent](https://github.com/visionmedia/superagent). Vue.js può anche funzionare benissimo con servizi come Firebase o Parse.
 
