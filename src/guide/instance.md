@@ -18,7 +18,7 @@ Un'istanza di Vue è sostanzialmente un **ViewModel** com'è definito nel [Model
 
 Quando si inizializza un instanza Vue, dovete passargli **delle opzioni** le quali conterrano eventuali dati, template, metodi, callbacks e molto altro. La lista dettagliata delle opzioni la si può trovare nella sezione delle API.
 
-Il costruttore `Vue` può essere esteso per crare componenti **riutilizzabili** e che includano le opzioni predefinite:
+Il costruttore `Vue` può essere esteso per creare componenti **riutilizzabili** e che includano le opzioni predefinite:
 
 ``` js
 var MyComponent = Vue.extend({
@@ -30,7 +30,7 @@ var MyComponent = Vue.extend({
 var myComponentInstance = new MyComponent()
 ```
 
-Sebbene si possa estendere l'istanza in modo imperativo, nella maggior parte dei casi è buona cosa registrare il componente direttamente dal costruttore Vue e gestirlo come un elemento personalizzato, da qui poi puoi assemblare il template in modo dichiarativo.
+Sebbene si possa estendere l'istanza in modo imperativo, nella maggior parte dei casi è buona regola registrare il componente direttamente dal costruttore Vue e gestirlo come un elemento personalizzato, da qui poi puoi assemblare il template in modo dichiarativo.
 Parleremo del sistema dei componenti nel dettaglio più avanti.
 
 Per ora rimaniamo con l'idea che i componenti estendono sostanzialmente l'istanza di Vue.js
