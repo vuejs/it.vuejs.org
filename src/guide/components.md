@@ -9,7 +9,7 @@ order: 12
 In componente è la caratteristica più interessante di Vue.js, ed è anche lo strumento più potente.
 I componenti aiutano ad estendere il classico DOM HTML con dei blocchi di codice riutilizzabile
 In altre parole, i componenti sono elementi personalizzati, contenenti un template HTML,  che Vue.js compila e renderizza come elementi del DOM.
-In alcuni cassi essi possono apparire come elementi nativi HTML con un attributo speciale chiamato `is`.
+In alcuni casi essi possono apparire come elementi nativi HTML con un attributo speciale chiamato `is`.
 
 ## Utilizzare i Componenti
 
@@ -79,7 +79,7 @@ Da notare come il template del componente **rimpiazzi** il tag personalizzato, i
 
 ### Registrazione Locale
 
-Non dovete per forza registrare ogni componente in modo globale. Potete anche creare dei componenti che esistono solo all interno di un altro componente registrandolo internamente:
+Non dovete per forza registrare ogni componente in modo globale. Potete anche creare dei componenti che esistono solo all’interno di un altro componente registrandolo internamente:
 
 ``` js
 var Child = Vue.extend({ /* ... */ })
@@ -126,7 +126,7 @@ var MyComponent = Vue.extend({
 })
 ```
 
-Il problema di questo approccio è che l oggetto `data` sarà condiviso con tutte le istanze del componente stesso! Questo comportamento non è quello che ci aspettiamo da un componente, il quale dovrebbe avere tutto incapsulato, per risolvere questo problema possiamo specificare una funzione per il nostro oggetto `data` la quale restituisce un oggetto nuovo:
+Il problema di questo approccio è che l’oggetto `data` sarà condiviso con tutte le istanze del componente stesso! Questo comportamento non è quello che ci aspettiamo da un componente, il quale dovrebbe avere tutto incapsulato, per risolvere questo problema possiamo specificare una funzione per il nostro oggetto `data` la quale restituisce un oggetto nuovo:
 
 ``` js
 var MyComponent = Vue.extend({
@@ -136,11 +136,11 @@ var MyComponent = Vue.extend({
 })
 ```
 
-Questo discorso vale anche per l'opzione `el`, in quanto vige lo stesso problema di condivizione.
+Questo discorso vale anche per l’opzione `el`, in quanto vige lo stesso problema di condivisione.
 
 ### Parsing del Template
 
-Il motore dietro al sistem di gestione dei template in Vue.js è basato sul DOM ed utilizzare dei parser nativi del browser invece di creare di nuovi. Questo porta sia dei vantaggi, soprattutto se compariamo questo sistemo ad un classico sistema di renderizzazione basato su stringhe, ma anche alcune regole da tenere a mente per esempio, il template dev'essere sempre composto da HTML valido e seguire le classiche regole su "chi contiene cosa", in particolare:
+Il motore dietro al sistema di gestione dei template in Vue.js è basato sul DOM ed utilizza dei parser nativi del browser invece di creare di nuovi. Questo porta sia dei vantaggi, soprattutto se compariamo questo sistema ad un classico sistema di renderizzazione basato su stringhe, ma anche alcune regole da tenere a mente per esempio, il template dev’essere sempre composto da HTML valido e seguire le classiche regole su "chi contiene cosa", in particolare:
 
 - L'elemento `a` non può contenere altri elementi interattivi (come bottoni o link)
 - L'elemento `li` deve essere figlio diretto del elemento `ul` o `ol`, e sia `ul` che `ol` possono solo contenere `li`
@@ -177,7 +177,7 @@ Nel caso di un `<template>` dentro una `<table>` conviene usare `<tbody>`, come 
 
 Tutti i componenti hanno una loro istanza **isolata**. Questo significa che non potete (e non dovreste) referenziare i dati di un componente padre internamente al figlio. I dati però possono essere passati tra le istanze correlate tramite i **props**.
 
-Un "prop", detta anche proprietà di sostengo, è un campo all interno del componento che si aspetta o che intende condividere, se è un componente padre a sua volta. Un componente deve dichiaratamente esprimere quali dati vuole che gli vengano passati, per farlo deve utilizzare [l'opzione `prop`](/api/#props):
+Un "prop", detta anche proprietà di sostegno, è un campo all interno del componente che si aspetta o che intende condividere, se è un componente padre a sua volta. Un componente deve dichiaratamente esprimere quali dati vuole che gli vengano passati, per farlo deve utilizzare [l'opzione `prop`](/api/#props):
 
 ``` js
 Vue.component('child', {
@@ -216,7 +216,7 @@ new Vue({
 
 ### camelCase vs. kebab-case
 
-Nel linguaggio HTML gli attributi sono insensibili alla capitalizzazione. Quando si utilizzano i prop come attributi è conveniente usare la notazione kebab-case, come nell esempio:
+Nel linguaggio HTML gli attributi sono insensibili alla capitalizzazione. Quando si utilizzano i prop come attributi è conveniente usare la notazione kebab-case, come nell’esempio:
 
 ``` js
 Vue.component('child', {
@@ -233,7 +233,7 @@ Vue.component('child', {
 
 ### Props Dinamici
 
-Come abbiamo già visto è possibile vincolare ad un attributo una particolare espressione, con `v-bind` possiamo anche vincolare i props in modo dinamico, i quali verrano aggiornati ogni volta che il dato di origine, quello padre, verrà aggiornato:
+Come abbiamo già visto, è possibile vincolare ad un attributo una particolare espressione, con `v-bind` possiamo anche vincolare i props in modo dinamico, i quali verrano aggiornati ogni volta che il dato di origine, quello padre, verrà aggiornato:
 
 ``` html
 <div>
@@ -243,7 +243,7 @@ Come abbiamo già visto è possibile vincolare ad un attributo una particolare e
 </div>
 ```
 
-E' sempre comodo usare le scorciatoie di sintassi, per `v-bind` abbiamo:
+È sempre comodo usare le scorciatoie di sintassi, per `v-bind` abbiamo:
 
 ``` html
 <child :my-message="parentMsg"></child>
@@ -282,7 +282,7 @@ Un errore comune, soprattutto agli inizi, è quello di passare un numero fisso a
 <comp some-prop="1"></comp>
 ```
 
-Però, essendo questo un prop non dinamico, il valore verrà passato proprio come stringa `"1"`, invece che come numero. Se volete passare un numero vero e proprio, dobbiamo utilizzare la sintassi dinamica vistra precedentemente:
+Però, essendo questo un prop non dinamico, il valore verrà passato proprio come stringa `"1"`, invece che come numero. Se volete passare un numero vero e proprio, dobbiamo utilizzare la sintassi dinamica vista precedentemente:
 
 ``` html
 <!-- In questo modo si passa un numero -->
@@ -306,13 +306,13 @@ Ecco la sintassi:
 <child :msg.once="parentMsg"></child>
 ```
 
-Il vincolo a due direzioni sincronizzerà lo stato della proprietà `msg` con quella del padre `parentMsg`. Il vincolo bidirezionale esplicito che occorre una volta sola sincronizzerà le due proprietà ma solo alla prima occasione.
+Il vincolo a due direzioni sincronizzerà lo stato della proprietà `msg` con quella del padre `parentMsg`. Il vincolo bidirezionale esplicito che occorre una volta sola sincronizzerà le due proprietà, ma solo alla prima occasione.
 
-<p class="tip">Attenzione, se il prop che viene passato è un Oggetto od un Array, verrà passato per referenza. Modificare un Oggetto o l'Array internamente al figlio **muterà** anche la properità del padre indipendentemente dal tipo di vincolo che state utilizzando</p>
+<p class="tip">Attenzione, se il prop che viene passato è un Oggetto od un Array, verrà passato per referenza. Modificare un Oggetto o l'Array internamente al figlio **muterà** anche la proprietà del padre indipendentemente dal tipo di vincolo che state utilizzando</p>
 
 ### Validazione dei Prop
 
-E' possibile, per un componente, specificare i requisiti di validazione di ogni prop. Questo è molto utile quando i prop di un componente verranno utilizzati da altri, dato che questo tipo di validazione sostanzialmente costuisce le fondamente di API per il componente stesso, e rafforza il buon uso del componente stesso. Per attivare le validazioni bisogna trattare la properità prop come un insieme di oggetti:
+È possibile, per un componente, specificare i requisiti di validazione di ogni prop. Questo è molto utile quando i prop di un componente verranno utilizzati da altri, dato che questo tipo di validazione sostanzialmente costuisce le fondamente di API per il componente stesso e rafforza il buon uso del componente stesso. Per attivare le validazioni bisogna trattare la proprietà prop come un insieme di oggetti:
 
 ``` js
 Vue.component('example', {
@@ -404,7 +404,7 @@ Tutte le istanze di Vue possono:
 
 - Trasmettere gli eventi a tutti i discendenti tramite `$broadcast()`.
 
-<p class="tip">Al contrario degli eventi DOM, gli eventi un Vue verranno automaticamente fermati una volta che la propagazione raggiunte il callback finale, a meno che tale callback non abbia un `return true` alla fine.</p>
+<p class="tip">Al contrario degli eventi DOM, gli eventi Vue verranno automaticamente fermati una volta che la propagazione raggiunge il callback finale, a meno che tale callback non abbia un `return true` alla fine.</p>
 
 Un semplice esempio:
 
@@ -507,7 +507,7 @@ Questo rende le cose ancora più chiare: quando un figlio attiva `"child-msg"` a
 
 ### Riferimenti ai Componenti Figli
 
-Nonostante ci siano i Prop e gli eventi, a volte può essere ancora necessario accedere direttamente ad un componente figlio tramite JavaScript. Per fare ciò si può assegnare un ID univoco al componente figlio tramite l'utilizzo di `v-ref`, per esemio:
+Nonostante ci siano i Prop e gli eventi, a volte può essere ancora necessario accedere direttamente ad un componente figlio tramite JavaScript. Per fare ciò si può assegnare un ID univoco al componente figlio tramite l'utilizzo di `v-ref`, per esempio:
 
 ``` html
 <div id="parent">
@@ -536,11 +536,11 @@ Quando si usano dei componenti, molto spesso il risultato è qualcosa di simile:
 
 Ci sono due cose da notare in questo particolare codice:
 
-1. Il componente `<app>` non sa il contenuto che potrà essere presente internamente agli altri componenti è deciso da qualsiasi componente includa `<app>` stesso.
+1. Il componente `<app>` non sa il contenuto che potrà essere presente internamente agli altri componenti, è deciso da qualsiasi componente includa `<app>` stesso.
 
 2. Il componente `<app>` probabilmente avrà un suo template.
 
-Per far in modo che la composizione sia efficace, bisogna intervenire sul flusso dei componenti e del loro stesso stemplate. Questo processo viene definito **distribuzione dei contenuti** (o "transclusion" se arrivate dal mondo AngularJS). Vue.js implemente un sistema di distribuzione dei contenuti e fornisce delle API modellate appositamente secondo [le specifiche dei Componenti Web](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md), utilizzando l elemento speciale `<slot>` per distribuire tali componenti.
+Per far in modo che la composizione sia efficace, bisogna intervenire sul flusso dei componenti e del loro stesso template. Questo processo viene definito **distribuzione dei contenuti** (o "transclusion" se arrivate dal mondo AngularJS). Vue.js implemente un sistema di distribuzione dei contenuti e fornisce delle API modellate appositamente secondo [le specifiche dei Componenti Web](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md), utilizzando l’elemento speciale `<slot>` per distribuire tali componenti.
 
 ### Compilation Scope
 
@@ -554,9 +554,9 @@ Prima di approfondire la nostra consocenze sulle API, chiarifichiamo in quale am
 </parent>
 ```
 
-In questo caso `msg` andrebbe vincolato ai dati del padre oppure del figlio? La risposta è del padre, una regola di base per stabilire l'ambito dei componenti è:
+In questo caso `msg` andrebbe vincolato ai dati del padre oppure del figlio? La risposta è del padre, una regola di base per stabilire l’ambito dei componenti è:
 
-> Tutto ciò che viene compilato all'interno dell'ambito del padre appartiene al padre stesso, tutto quello che viene compilato nell'ambito del figlio appartiene al figlio.
+> Tutto ciò che viene compilato all’interno dell’ambito del padre appartiene al padre stesso, tutto quello che viene compilato nell'ambito del figlio appartiene al figlio.
 
 Un esempio di errore molto comunque è quello di cercare di legare una direttiva del figlio a qualche metodo o proprietà del padre:
 
@@ -567,7 +567,7 @@ Un esempio di errore molto comunque è quello di cercare di legare una direttiva
 
 Mettiamo caso che `someParentProperty` sia una proprietà interna del figlio, l'esempio sopra comunque non funzionerebbe come previsto. Il padre non deve essere a conoscenza dello stato del figlio, o per lo meno non dovrebbe preoccuparsene.
 
-Se avete proprio la necessità di legare direttive figlie a qualche componente padre, dovete farlo all'interno della definizione del componente figlio stessa:
+Se avete proprio la necessità di legare direttive figlie a qualche componente padre, dovete farlo all'interno della definizione del componente figlio stesso:
 
 ``` js
 Vue.component('child-component', {
@@ -585,7 +585,7 @@ Vue.component('child-component', {
 
 Il contenuto del padre verrà **scartato** a meno che il componente figlio non contenga almeno un elemento `<slot>`. Quando viene rilevato un elemento slot, senza contenuti ne attributi, tutto il contenuto del padre andrà a rimpiazzare lo slot stesso.
 
-Se invece c'è del contenuto dentro uno `<slot>` allora verrà considerato **contenuto di rimpiazzio**. Ciò significa che verrà visualizzato se il padre non ha niente da mostrare.
+Se invece c'è del contenuto dentro uno `<slot>` allora verrà considerato **contenuto di rimpiazzo**. Ciò significa che verrà visualizzato se il padre non ha niente da mostrare.
 
 Supponiamo di avere un componente del tipo:
 
@@ -691,7 +691,7 @@ Nel caso tu voglia mantenere lo stato del componente anche se cambia, in modo da
 
 ### Hook `activate`
 
-Quando si cambiano componenti, ed il componente in arrivo deve fare qualche lavoro asincrono prima di essere renderizzato, si può sfruttare l hook `activate` per gestire quel frangente tra il richiamo e la renderizzazione:
+Quando si cambiano componenti, ed il componente in arrivo deve fare qualche lavoro asincrono prima di essere renderizzato, si può sfruttare l’hook `activate` per gestire quel frangente tra il richiamo e la renderizzazione:
 
 ``` js
 Vue.component('activate-example', {
@@ -705,11 +705,11 @@ Vue.component('activate-example', {
 })
 ```
 
-Da notare che questo `activate` viene chiamato solo durante il cambio di componenti o al primo richiamo del componente stesso. Non viene chiamato se viene inserito all interno di un'istanza Vue.
+Da notare che questo `activate` viene chiamato solo durante il cambio di componenti o al primo richiamo del componente stesso. Non viene chiamato se viene inserito all’interno di un’istanza Vue.
 
 ### `transition-mode`
 
-L attributo `transition-mode` vi permette di specificare in che modo avvenga il cambio di due o più componenti dinamici.
+L’attributo `transition-mode` vi permette di specificare in che modo avvenga il cambio di due o più componenti dinamici.
 
 Per definizione, la transizione avviene in modo simultaneo. Questo però non vi impedisce di provare altri due modi disponibili:
 
@@ -793,7 +793,7 @@ Però, tale metodo non passerà nessun dato al componente perché ogni component
 </my-component>
 ```
 
-La motivazione dietro tutto cioè è che non si vuole legare strettamente il componente al funzionamento di `v-for`, se si obbliga a rendere esplicita la provenienza dei dati, sarà più facile riutilizzare il componente.
+La motivazione dietro tutto ciò è che non si vuole legare strettamente il componente al funzionamento di `v-for`, se si obbliga a rendere esplicita la provenienza dei dati, sarà più facile riutilizzare il componente.
 
 ### Authoring dei Componenti Riutilizzabili
 
@@ -835,7 +835,7 @@ Vue.component('async-example', function (resolve, reject) {
 })
 ```
 
-La funzione factory riceve un callback chiamato `resolve`, il quale dovrebbe essere chiamato quando avete ricevuto la definizione del componente dal server. Potete anche chiamare `reject(reason)` per indicare un caricamento fallito, con tanto di moticazione. Nel nostro esempio il `setTimeout` dimostra come il componente venga caricato un secondo dopo in modo asincrono. La logica di caricamento è totalmente gestita da voi. Un consiglio è quello di utilizzare i componenti asincroni ed la [funzione code-splitting di Webpack](http://webpack.github.io/docs/code-splitting.html):
+La funzione factory riceve un callback chiamato `resolve`, il quale dovrebbe essere chiamato quando avete ricevuto la definizione del componente dal server. Potete anche chiamare `reject(reason)` per indicare un caricamento fallito, con tanto di motivazione. Nel nostro esempio il `setTimeout` dimostra come il componente venga caricato un secondo dopo in modo asincrono. La logica di caricamento è totalmente gestita da voi. Un consiglio è quello di utilizzare i componenti asincroni ed la [funzione code-splitting di Webpack](http://webpack.github.io/docs/code-splitting.html):
 
 ``` js
 Vue.component('async-webpack-example', function (resolve) {
@@ -848,7 +848,7 @@ Vue.component('async-webpack-example', function (resolve) {
 
 ### Convenzione sui Nomi da usare
 
-Alcuni elementi, come le direttive ed i componenti, vengono renderizzari dentro il codice HTML sotto forma di attributi oppure tag personalizzati. Dato che gli attributi ed i tag in HTML sono **case-insensitive**, è buona cosa utilizzare la sintassi kebab-case piuttosto che camelCase, quest'ultima potrebbe recare confusione.
+Alcuni elementi, come le direttive ed i componenti, vengono renderizzati dentro il codice HTML sotto forma di attributi oppure tag personalizzati. Dato che gli attributi ed i tag in HTML sono **case-insensitive**, è buona cosa utilizzare la sintassi kebab-case piuttosto che camelCase, quest'ultima potrebbe recare confusione.
 
 Vue.js supporta l'uso di camelCase o PascalCase per le direttive o i componenti, e cercherà nel migliore dei modi di tradurle in kebab-case:
 
@@ -909,7 +909,7 @@ Invece di un template del genere:
 <div>root node 2</div>
 ```
 
-E' consigliato questo:
+È consigliato questo:
 
 ``` html
 <div>
@@ -927,7 +927,7 @@ Ci sono molte situazione che possono trasformare una istanza Vue in un'**istanza
 4. Il template contiene solo una direttiva come `<partial>` oppure una vou-route `<router-view>`.
 5. Il template contiene un elemento di root con delle condizioni tipo `v-if` o `v-for`.
 
-La ragione per la quale tutte questi punto possono portare ad una istanza frammentata è che non si riesce più a definire quale sia l'elemento di rotto principale, questo costringe Vue a gestire tutto il contenuto del DOM come un template. Questo non impedirà di renderizzare il tutto correttamente ma non avendo un elemento di root l'opzione `$el` punterà ad un elemento non corretto, di solito un elemento del DOM testuale.
+La ragione per la quale tutte questi punto possono portare ad una istanza frammentata è che non si riesce più a definire quale sia l'elemento di root principale, questo costringe Vue a gestire tutto il contenuto del DOM come un template. Questo non impedirà di renderizzare il tutto correttamente ma non avendo un elemento di root l'opzione `$el` punterà ad un elemento non corretto, di solito un elemento del DOM testuale.
 
 La cosa più importante di ciò è che **verranno ignorate tutte le direttive non di controllo, tutti gli attributi che non sono prop e tutte le transizioni dei componenti**, perché non c'è nessun elemento di root definito al quale legarle:
 
@@ -955,4 +955,4 @@ Quando si utilizzano i template inline, lo si fa tramite l'utilizzo di un attrib
 </my-component>
 ```
 
-Comunque sia gli `inline-template` rendono lo scope del vostro template più difficile da definire, e rendono il contenuto del template impossibile da salvare in cache. E' sempre consigliato salvare e definire il template internamente al componente tramite l'opzione `template`.
+Comunque sia gli `inline-template` rendono lo scope del vostro template più difficile da definire, e rendono il contenuto del template impossibile da salvare in cache. È sempre consigliato salvare e definire il template internamente al componente tramite l'opzione `template`.
