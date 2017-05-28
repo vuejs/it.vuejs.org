@@ -16,7 +16,7 @@ L'interpolazione più semplice è quella che utilizza la sintassi "Mustache", o 
 <span>Messaggio: {{ msg }}</span>
 ```
 
-Le parentesi graffe indicano che il contenuto è una variabile, in questo caso `msg` la quale dev'essere visualizzata, in poche parole Vue andrà a leggere il valore della proprietà `data.message` e lo stamperà a video. Essendo una proprietà reattiva ogni cambiamento a `msg` verrà riflettuto sulla vista in tempo reale.
+Le parentesi graffe indicano che il contenuto è una variabile, in questo caso `msg` la quale dev'essere visualizzata, in poche parole Vue andrà a leggere il valore della proprietà `data.message` e lo stamperà a video. Essendo una proprietà reattiva ogni cambiamento a `msg` verrà aggiornato sulla vista in tempo reale.
 
 Puoi anche effettuare un interpolazione unica omettendo il sistema di sincronizzazione:
 
@@ -80,7 +80,7 @@ Vue.js permette di inserire dei "filtri" opzionali alla fine di un'espressione t
 {{ message | capitalize }}
 ```
 
-Nel esempio sopra stiamo "accodando" (piping) il risultato dell espressione di sinistra, ovvero il valore della proprietà `message`, alla parte di espressione dopo la `pipe` che, in questo caso, è la funzione interna `capitalize`. Vue.js fornisce una serie di filtri integrati già pronti all'utilizzo, ma potete crearne di qualsiasi tipo senza nessun limite. Successivamente vedremo come scrivere filtri personalizzati.
+Nell' esempio sopra stiamo "accodando" (piping) il risultato dell espressione di sinistra, ovvero il valore della proprietà `message`, alla parte di espressione dopo la `pipe` che, in questo caso, è la funzione interna `capitalize`. Vue.js fornisce una serie di filtri integrati già pronti all'utilizzo, ma potete crearne di qualsiasi tipo senza nessun limite. Successivamente vedremo come scrivere filtri personalizzati.
 
 Da notare che la `pipe` non fa parte della sintassi generale di JavaScript, difatti non può essere mescolata con altre espressioni ma solo usata come conflusso di dati tra la parte sinistra e destra della pipe stessa.
 
@@ -129,7 +129,7 @@ In questo caso l'argomento principale è l'evento da ascoltare, il click, parler
 
 ### Modificatori
 
-I modificatori sono suffissi speciali, separati da un punto, che indica in che modo particolare la direttiva debba legarsi. Per esempio, il modificatore `.literal` impone alla direttiva di intrpretare il valore che riceve come una stringa piuttosto che come un espressione:
+I modificatori sono suffissi speciali, separati da un punto, che indica in che modo particolare la direttiva debba legarsi. Per esempio, il modificatore `.literal` impone alla direttiva di interpretare il valore che riceve come una stringa piuttosto che come un espressione:
 
 ``` html
 <a v-bind:href.literal="/a/b/c"></a>
