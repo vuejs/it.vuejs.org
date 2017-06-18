@@ -57,7 +57,7 @@ Questo modo di operare sembra molto simile al rendering di template, ma Vue.js h
 
 Da notare come non abbiamo dovuto scrivere nessun tipo di logica per manipolare il DOM: il template HTML, arricchito con i binding, è una mappa dichiarativa dello stato dei dati sottostanti, i quali sono solo degli oggetti in JavaScript. Le nostre viste sono interamente guidate dai dati.
 
-Vediamo un secondo esemppio:
+Vediamo un secondo esempio:
 
 ``` html
 <div id="example-2">
@@ -118,4 +118,4 @@ Come avrete notato i componenti di Vue.js sono molto simili ai **Componenti Pers
 
 2. I componenti Vue.js forniscono delle caratteristiche importanti che non si trovano nei classici componenti, le più importanti sono il flusso dei dati tra vari componenti, comunicazione tra componenti totalmente personalizzata, transizioni ad effetto per il cambio di componenti.
 
-Il Sistema a Componenti è un aspetto fondamentale quando si vogliono costruire Applicazioni su Larga scale con Vue.js. Inoltre l'ecostistema di Vue.js fornisce vari strumenti di supporto, librerie, che possono essere messe assieme per creare un'ecosistema molto più simile ad un framework completo.
+Il Sistema a Componenti è un aspetto fondamentale quando si vogliono costruire Applicazioni su Larga scale con Vue.js. Inoltre l'ecostistema di Vue.js fornisce vari strumenti di supporto, librerie, che possono essere messe assieme per creare un ecosistema molto più simile ad un framework completo.
