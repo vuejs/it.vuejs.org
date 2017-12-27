@@ -6,7 +6,7 @@ order: 10
 
 ## Utilizzo di Base
 
-Potete usare la direttiva `v-model` per creare un vincolo a dure direzioni tra l'elemento del form, un input, e i dati presenti in Vue. Vue.js cercherà sempre di aggiornare il vincolo con un occhio di riguardo al tipo di dato.
+Potete usare la direttiva `v-model` per creare un vincolo a due direzioni tra l'elemento del form, un input, e i dati presenti in Vue. Vue.js cercherà sempre di aggiornare il vincolo con un occhio di riguardo al tipo di dato.
 
 ### Testo
 
