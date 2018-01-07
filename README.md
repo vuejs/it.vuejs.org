@@ -11,9 +11,11 @@ $ hexo server
 ```
 
 ## Deploying
-The site is deployed using GitHub pages, therefore you need push access to the vuejs.org repo to run the deploy script:
+Il sito viene distribuito utilizzando le pagine GitHub, pertanto è necessario l'accesso push al repository vuejs.org per eseguire lo script di distribuzione:
+
 
 `$ npm run deploy`
+
 Se si sta lavorando su un fork e si esegue la distribuzione su un URL diverso, è necessario aggiornare di conseguenza:
 url and deploy sections in` _config.yml`
 src/CNAME
