@@ -1,10 +1,12 @@
 <li>
   <form id="search-form">
-    <input type="text" id="search-query" class="st-default-search-input">
+    <input type="text" id="search-query-<%- context %>" class="search-query st-default-search-input">
   </form>
 </li>
-<li><a href="/guide/" class="nav-link<%- page.path.match(/guide/) ? ' current' : '' %>">Guida</a></li>
-<li><a href="/api/" class="nav-link<%- page.path.match(/api/) ? ' current' : '' %>">API</a></li>
-<li><a href="/examples/" class="nav-link<%- page.path.match(/examples/) ? ' current' : '' %>">Esempi</a></li>
-<li><a href="/blog/" class="nav-link<%- page.path.match(/blog/) ? ' current' : '' %>">Blog</a></li>
-<%- partial('partials/community_dropdown') %>
+<%- partial('partials/learn_dropdown') %>
+<%- partial('partials/ecosystem_dropdown') %>
+<li>
+  <a href="<%- url_for("/v2/guide/team.html") %>" class="nav-link team<%- page.path.match(/team\.html/) ? ' current' : '' %>">Team</a>
+</li>
+<%- partial('partials/support_vue_dropdown') %>
+<%- partial('partials/language_dropdown') %>
