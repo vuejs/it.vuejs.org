@@ -15,11 +15,11 @@
       </form>
       <%- partial('partials/toc', { type: 'guide' }) %>
     <% } else { %>
-      <%- partial('partials/ad') %> 
+      <%- partial('partials/ad') %>
     <% } %>
   <% } %>
   <% if (page.title.trim()) { %>
-    <h1><%- page.title %><%- page.type === 'examples' ? ' Example' : '' %></h1>
+    <h1><%- page.title %><%- page.type === 'esempi' ? ' Esempio' : '' %></h1>
   <% } %>
   <%- page.content %>
   <% if (page.type === 'guide') { %>
