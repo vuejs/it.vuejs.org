@@ -1,15 +1,15 @@
 ---
-title: Comparare le Prestazioni
+title: Performance Comparisons
 ---
 
-## Banco prova: TodoMVC
+## TodoMVC Benchmark
 
 > *Last Updated: 2014-10-12*
 
-Stai cercando l'applicazione di prova TodoMVC? E' stata rimossa dopo una discussione con altri autori di altri framwork, abbiamo raggiunto un accordo che stabilisce che:
+Looking for the TodoMVC Benchmark? It's been removed because after discussion with some other framework authors we have agreed that:
 
-1. L'intenzione originale dell'applicazione di prova, e simili, era di stabilire le prestazioni del Browser piuttosto che quelle dei frameworks. Il test di routine "Attiva un'azione xxx volte in modo sincrono" è fuorviante e non riflette un utilizzo reale del framework.
+1. The original intention of these benchmarks were for comparing Browser performance rather than that of frameworks. The "synchrorously trigger an action xxx times" test routine doesn't reflect meaningful real world user actions.
 
-2. Dato che ci sono differenze interne, ogni framework usa un diverso approccio al rendering asincrono, frameworks come Vuejs, Om o Mercury sono vantaggiati sotto questo aspetto perché parte dei calcoli viene omessa durante il loop degli eventi coinvolti oltretutto in un esempio concreto, di utilizzo in produzione, non ci sono stati differenti vantaggi.
+2. Due to internal implementation differences, frameworks that uses async rendering (e.g. Vue, Om, Mercury) gains the advantage by skipping part of the calculations that happened in the same event loop. The real world user experience doesn't demonstrate such dramatic difference.
 
-3. In sostanza il banco prova scaturiva più discussioni controverse che confronti positivi ed ecco perché è stato rimosso, in futuro sarò lieto di rimpiazzarlo con qualcosa di più completo e che sia più dettagliato a sottolineare le differenze di prestazioni tra i vari frameworks.
+3. Overall this benchmark suite gave rise to more controversy than constructive insights, so it's been removed and I'd be happy to replace it with a more meaningful way to measure front-end performance.
