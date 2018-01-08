@@ -3,7 +3,7 @@
 ## Source: https://github.com/tommy351/hexo/
 
 # Site
-title: Vue.js
+title: it.Vue.js
 subtitle:
 description: "The Progressive JavaScript Framework"
 author: Evan You
@@ -12,7 +12,7 @@ language:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://vuejs.org
+url: https://it.vuejs.org
 root: /
 permalink: :year/:month/:day/:title/
 tag_dir: tags
@@ -187,4 +187,3 @@ alias:
   examples/svg.html: v2/examples/svg.html
   examples/todomvc.html: v2/examples/todomvc.html
   examples/tree-view.html: v2/examples/tree-view.html
-
