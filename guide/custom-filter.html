@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Filtri Personalizzati - vue.js</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Libreria intuitiva, veloce per costruire interfacce interattive tramite MVVM.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Roboto Mono' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Dosis:300,500&text=Vue.js' rel='stylesheet' type='text/css'>
+        <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="icon" href="/images/logo.png" type="image/x-icon">
+        <script>
+            window.PAGE_TYPE = "guida"
+        </script>
+        <link rel="stylesheet" href="/css/page.css">
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46852172-1', 'vuejs.org');
+  ga('send', 'pageview');
+</script>
+        <script src="/js/vue.js"></script>
+    </head>
+    <body>
+        <div id="mobile-bar">
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        
+            <div id="header">
+    <a id="logo" href="/">
+        <img src="/images/logo.png">
+        <span>Vue.js</span>
+    </a>
+    <ul id="nav">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/guide/" class="nav-link current">Guida</a></li>
+<li><a href="/api/" class="nav-link">API</a></li>
+<li><a href="/examples/" class="nav-link">Esempi</a></li>
+<li><a href="/blog/" class="nav-link">Blog</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">Community</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/vuejs/vue" class="nav-link" target="_blank">GitHub</a></li>
+    <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">Forum</a></li>
+    <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">Chat</a></li>
+    <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+  </ul>
+</li>
+
+
+    </ul>
+</div>
+            <div id="main">
+                
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/guide/" class="nav-link current">Guida</a></li>
+<li><a href="/api/" class="nav-link">API</a></li>
+<li><a href="/examples/" class="nav-link">Esempi</a></li>
+<li><a href="/blog/" class="nav-link">Blog</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">Community</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/vuejs/vue" class="nav-link" target="_blank">GitHub</a></li>
+    <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">Forum</a></li>
+    <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">Chat</a></li>
+    <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+  </ul>
+</li>
+
+
+    </ul>
+    <div class="list">
+        <div id="donate" style="margin-bottom: 20px">
+            <span class="wrapper" style="width: 110px">
+                <img src="/images/patreon.png">
+                <a href="/support-vuejs">Dona a Vue.js</a>
+            </span>
+         </div>
+        <h2>
+            Guida
+            <select class="version-select">
+                <option selected>1.0.*</option>
+                <option>0.12</option>
+                <option>0.11</option>
+            </select>
+        </h2>
+        <ul class="menu-root">
+            
+                <li>
+                    <a href="/guide/installation.html" class="sidebar-link">Installazione</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/index.html" class="sidebar-link">Per Iniziare</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/overview.html" class="sidebar-link">Panoramica</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/instance.html" class="sidebar-link">L'instanza di Vue</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/syntax.html" class="sidebar-link">Two Way Binding nel Dettaglio</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/computed.html" class="sidebar-link">Proprietà Derivate</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/class-and-style.html" class="sidebar-link">Vincolo sul CSS</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/conditional.html" class="sidebar-link">Rendering Condizionato</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/list.html" class="sidebar-link">Rendering di Liste</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/events.html" class="sidebar-link">Gestione degli Eventi e dei Metodi</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/forms.html" class="sidebar-link">Vincolo sugli input dei Form</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/transitions.html" class="sidebar-link">Transizioni</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/components.html" class="sidebar-link">Componenti</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/reactivity.html" class="sidebar-link">Reattività nel Dettaglio</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/custom-directive.html" class="sidebar-link">Direttive Personalizzate</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/custom-filter.html" class="sidebar-link current">Filtri Personalizzati</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/mixins.html" class="sidebar-link">Mixins</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/plugins.html" class="sidebar-link">Plugins</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/application.html" class="sidebar-link">Costruire un'Applicazione scalabile</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/comparison.html" class="sidebar-link">Confronto con altri Framework</a>
+                </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+<div class="content guida with-sidebar">
+    <div id="ad">
+  <span>Sponsorizzato da</span>
+  <br>
+  <a href="https://strikingly.com/s/careers?utm_source=v" target="_blank"
+    style="display:inline-block;padding-top:8px">
+    <img src="/images/strikingly.png">
+  </a>
+  
+</div>
+    <h1>Filtri Personalizzati</h1>
+    <h2 id="Le-Basi"><a href="#Le-Basi" class="headerlink" title="Le Basi"></a>Le Basi</h2><p>Simili alle Direttive Personalizzate, potete registrare Filtri Personalizzati tramite il metodo globale <code>Vue.filter()</code>, passandogli un <strong>filterID</strong> ed una <strong>filter function</strong>. La funzione prenderà i valori come argomenti e restituirà quest’ultimi con i nuovi valori modificati:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Vue.filter(<span class="string">'reverse'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> value.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 'abc' =&gt; 'cba' --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">v-text</span>=<span class="string">"message | reverse"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>La funzione del filtro può ricevere argomenti su riga:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Vue.filter(<span class="string">'wrap'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">value, begin, end</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> begin + value + end</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 'hello' =&gt; 'before hello after' --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">v-text</span>=<span class="string">"message | wrap 'before' 'after'"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Filtri-a-due-Direzioni"><a href="#Filtri-a-due-Direzioni" class="headerlink" title="Filtri a due Direzioni"></a>Filtri a due Direzioni</h2><p>Fino ad ora abbiamo trasformato i valori che arrivavano dal modello prima di presentarli alla vista. E’ possibile creare dei filtri che facciano l’inverso, modificare il valore dalla vista prima che venga passato al modello:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Vue.filter(<span class="string">'currencyDisplay'</span>, &#123;</span><br><span class="line">  <span class="comment">// model -&gt; view</span></span><br><span class="line">  <span class="comment">// Formattiamo il valore prima di passarlo alla vista</span></span><br><span class="line">  read: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'$'</span>+val.toFixed(<span class="number">2</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// view -&gt; model</span></span><br><span class="line">  <span class="comment">// formattiamo il valore prima di passarlo al modello</span></span><br><span class="line">  write: <span class="function"><span class="keyword">function</span>(<span class="params">val, oldVal</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> number = +val.replace(<span class="regexp">/[^\d.]/g</span>, <span class="string">''</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">isNaN</span>(number) ? <span class="number">0</span> : <span class="built_in">parseFloat</span>(number.toFixed(<span class="number">2</span>))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>Esempio:</p>
+
+<div id="two-way-filter-demo" class="demo">
+  <input type="text" v-model="money | currencyDisplay">
+  <p>Model value: {{money}}</p>
+</div>
+<script>
+new Vue({
+  el: '#two-way-filter-demo',
+  data: {
+    money: 123.45
+  },
+  filters: {
+    currencyDisplay: {
+      read: function(val) {
+        return '$'+val.toFixed(2)
+      },
+      write: function(val, oldVal) {
+        var number = +val.replace(/[^\d.]/g, '')
+        return isNaN(number) ? 0 : parseFloat(number.toFixed(2))
+      }
+    }
+  }
+})
+</script>
+
+<h2 id="Argomenti-Dinamici"><a href="#Argomenti-Dinamici" class="headerlink" title="Argomenti Dinamici"></a>Argomenti Dinamici</h2><p>Se un argomento non è racchiuso tra apici, verrà valutato dinamicamente nel contesto dei dati di vm. In più la funzione del filtro è sempre invocata utilizzando <code>this</code> come contesto della vm attuale, per esempio:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">"userInput"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;msg | concat userInput&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">Vue.filter(<span class="string">'concat'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">value, input</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// in questo caso `input` === `this.userInput`</span></span><br><span class="line">  <span class="keyword">return</span> value + input</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>L’esempio qui sopra si poteva risolvere benissimo tramite un espressione, oppure una Properità Derivata, ma per procedure e logiche più complesse i filtri sono la scelta migliore.</p>
+<p>I filtri integrati <code>filterBy</code> e <code>orderBy</code> sono filtri che effettuano logica non insignificante sugli Array che gli vengono passati e si appoggiano totalmente allo stato corrente dell’istanza Vue.</p>
+
+    
+    <div class="footer">
+      Trovato un errore e vuoi contribuire alla documentazione?
+      <a href="https://github.com/vuejs/it.vuejs.org/blob/master/src/guide/custom-filter.md" target="_blank">
+        Modifica questa pagina su Github!
+      </a>
+    </div>
+</div>
+
+                
+            </div>
+            <script type="text/javascript" src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+            <script src="/js/smooth-scroll.min.js"></script>
+            <script src="/js/common.js"></script>
+        
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Panoramica - vue.js</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Libreria intuitiva, veloce per costruire interfacce interattive tramite MVVM.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Roboto Mono' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Dosis:300,500&text=Vue.js' rel='stylesheet' type='text/css'>
+        <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="icon" href="/images/logo.png" type="image/x-icon">
+        <script>
+            window.PAGE_TYPE = "guida"
+        </script>
+        <link rel="stylesheet" href="/css/page.css">
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46852172-1', 'vuejs.org');
+  ga('send', 'pageview');
+</script>
+        <script src="/js/vue.js"></script>
+    </head>
+    <body>
+        <div id="mobile-bar">
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        
+            <div id="header">
+    <a id="logo" href="/">
+        <img src="/images/logo.png">
+        <span>Vue.js</span>
+    </a>
+    <ul id="nav">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/guide/" class="nav-link current">Guida</a></li>
+<li><a href="/api/" class="nav-link">API</a></li>
+<li><a href="/examples/" class="nav-link">Esempi</a></li>
+<li><a href="/blog/" class="nav-link">Blog</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">Community</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/vuejs/vue" class="nav-link" target="_blank">GitHub</a></li>
+    <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">Forum</a></li>
+    <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">Chat</a></li>
+    <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+  </ul>
+</li>
+
+
+    </ul>
+</div>
+            <div id="main">
+                
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/guide/" class="nav-link current">Guida</a></li>
+<li><a href="/api/" class="nav-link">API</a></li>
+<li><a href="/examples/" class="nav-link">Esempi</a></li>
+<li><a href="/blog/" class="nav-link">Blog</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">Community</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/vuejs/vue" class="nav-link" target="_blank">GitHub</a></li>
+    <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">Forum</a></li>
+    <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">Chat</a></li>
+    <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+  </ul>
+</li>
+
+
+    </ul>
+    <div class="list">
+        <div id="donate" style="margin-bottom: 20px">
+            <span class="wrapper" style="width: 110px">
+                <img src="/images/patreon.png">
+                <a href="/support-vuejs">Dona a Vue.js</a>
+            </span>
+         </div>
+        <h2>
+            Guida
+            <select class="version-select">
+                <option selected>1.0.*</option>
+                <option>0.12</option>
+                <option>0.11</option>
+            </select>
+        </h2>
+        <ul class="menu-root">
+            
+                <li>
+                    <a href="/guide/installation.html" class="sidebar-link">Installazione</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/index.html" class="sidebar-link">Per Iniziare</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/overview.html" class="sidebar-link current">Panoramica</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/instance.html" class="sidebar-link">L'instanza di Vue</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/syntax.html" class="sidebar-link">Two Way Binding nel Dettaglio</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/computed.html" class="sidebar-link">Proprietà Derivate</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/class-and-style.html" class="sidebar-link">Vincolo sul CSS</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/conditional.html" class="sidebar-link">Rendering Condizionato</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/list.html" class="sidebar-link">Rendering di Liste</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/events.html" class="sidebar-link">Gestione degli Eventi e dei Metodi</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/forms.html" class="sidebar-link">Vincolo sugli input dei Form</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/transitions.html" class="sidebar-link">Transizioni</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/components.html" class="sidebar-link">Componenti</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/reactivity.html" class="sidebar-link">Reattività nel Dettaglio</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/custom-directive.html" class="sidebar-link">Direttive Personalizzate</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/custom-filter.html" class="sidebar-link">Filtri Personalizzati</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/mixins.html" class="sidebar-link">Mixins</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/plugins.html" class="sidebar-link">Plugins</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/application.html" class="sidebar-link">Costruire un'Applicazione scalabile</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/comparison.html" class="sidebar-link">Confronto con altri Framework</a>
+                </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+<div class="content guida with-sidebar">
+    <div id="ad">
+  <span>Sponsorizzato da</span>
+  <br>
+  <a href="https://strikingly.com/s/careers?utm_source=v" target="_blank"
+    style="display:inline-block;padding-top:8px">
+    <img src="/images/strikingly.png">
+  </a>
+  
+</div>
+    <h1>Panoramica</h1>
+    <p>Vue.js (pronunciato /vjuː/, come <strong>view</strong> in inglese) è una libreria che si pone lo scopo di costruire interfacce web interattive. L’obbiettivo di Vue.js è quello di offire i benefici che derivano dal <strong>binding reattivo dei dati</strong> e dai <strong>componenti riutilizzabili per le viste</strong> con delle API più semplici possibili.</p>
+<p>Vue.js non è un framework completo - è solo improntato alla gestione dello strato delle viste. Questo d’altronde lo rende facilmente integrabile con altri framework o librerie già esistenti. In altre parole Vue.js, quando utilizzato con altri strumenti adeguati, vi aiuta a creare Applicazioni Web a Pagina Singola sofisticate e complesse.</p>
+<p>Se hai esperienza nello sviluppo di interfacce web e vuoi capire meglio come Vue.js si differenzi da altre librerie/framework puoi controllare la <a href="comparison.html">Comparazione con gli Altri Framework</a>; Se sei più interessato a capire come Vue.js si approcci allo sviluppo di Applicazioni Scalabili allora controlla la sezione <a href="application.html">Costruire Applicazioni Scalabili</a>.</p>
+<h2 id="Binding-reattivo-dei-dati"><a href="#Binding-reattivo-dei-dati" class="headerlink" title="Binding reattivo dei dati"></a>Binding reattivo dei dati</h2><p>Il fulcro di Vue.js si basa sul binding reattivo dei dati, tale vincolo rende estremamente semplice mantenere sincronizzati a dovere i dati all’interno del DOM. Quando si usa jQuery, per esempio, per manipolare il DOM, tramite QueryDOM, il codice che si scrive il più delle volte diventa imperativo, ripetitivo e soggetto ad errori. Vue.js sfrutta il concetto delle <strong>viste manipolate dai dati</strong>. In parole semplici significa che sfruttiamo delle parole chiave all’interno del codice HTML per “vincolare”, o meglio legare, il DOM ai dati sottostanti forniti da Vue.js. Una volta che il binding è creato, il DOM verrà mantenuto in sincronizzazione con i dati. Ogni volta che modificherai i dati il DOM si aggiornerà di conseguenza, in automatico. Questo renderà il codice molto più semplice da scrivere, leggere e mantenere.</p>
+<p><img src="/images/mvvm.png" alt="MVVM"></p>
+<p>Uno degli esempi più semplici:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- La nostra vista, il DOM --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example-1"</span>&gt;</span></span><br><span class="line">  Ciao &#123;&#123; name &#125;&#125;!</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Il nostro Modello</span></span><br><span class="line"><span class="keyword">var</span> exampleData = &#123;</span><br><span class="line">  name: <span class="string">'Vue.js'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Creiamo un'istanza Vue, anche detta ViewModel,</span></span><br><span class="line"><span class="comment">// che collega la Vista al Modello</span></span><br><span class="line"><span class="keyword">var</span> exampleVM = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example-1'</span>,</span><br><span class="line">  data: exampleData</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>Risultato:<br>
+<div id="example-1" class="demo">Ciao {{ name }}!</div>
+<script>
+var exampleData = {
+  name: 'Vue.js'
+}
+var exampleVM = new Vue({
+  el: '#example-1',
+  data: exampleData
+})
+</script>
+</p>
+<p>Questo modo di operare sembra molto simile al rendering di template, ma Vue.js ha fatto tanto lavoro dietro le quinte. I dati e le viste (il DOM) sono ora collegati, ed il tutto è <strong>reattivo</strong>. Come lo sappiamo? Potete provare ad aprire la Console degli Sviluppatori del vostro browser, detta anche ispeziona elemento, e modificare la variabile <code>exampleData.name</code>. Se tutto è fatto a dovere dovreste vedere l’esempio sopra aggiornarsi di conseguenza alle vostre modifiche.</p>
+<p>Da notare come non abbiamo dovuto scrivere nessun tipo di logica per manipolare il DOM: il template HTML, arricchito con i binding, è una mappa dichiarativa dello stato dei dati sottostanti, i quali sono solo degli oggetti in JavaScript. Le nostre viste sono interamente guidate dai dati.</p>
+<p>Vediamo un secondo esemppio:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example-2"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">"greeting"</span>&gt;</span>Ciao!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> exampleVM2 = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example-2'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    greeting: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<div id="example-2" class="demo">
+  <span v-if="greeting">Ciao!</span>
+</div>
+<script>
+var exampleVM2 = new Vue({
+  el: '#example-2',
+  data: {
+    greeting: true
+  }
+})
+</script>
+
+<p>In questo esempio abbiamo visto qualcosa di relativamente nuovo. L’attributo <code>v-if</code>, che vedremo più avanti, è chiamato <strong>Direttiva</strong>. Le Direttive hanno il prefisso <code>v-</code> per indicare che sono attributi speciali che Vue.js fornisce al DOM per applicare condizioni particolari. Provate voi stessi, come prima, a cambiare il valore di <code>exampleVM2.greeting</code> a <code>false</code> tramite la console. Se tutto è fatto in maniera corretta dovreste vedere il messaggio “Ciao!” scomparire.</p>
+<p>Il secondo esempio è una dimostrazione di come non solo possiamo vincolare il DOM con i dati, ma possiamo anche vincolare la <strong>struttura</strong> del DOM in base ai dati. Vue.js fornisce un potente sistema di effetti transizioni applicabili quando si aggiungono/rimuovono elementi dal DOM.</p>
+<p>Ci sono molte altre direttive, ognuna delle quali ha delle caratteristiche speciali. Per esempio la direttiva <code>v-for</code> serve a visualizzare i dati di un Array, oppure la direttiva <code>v-bind</code> per vincolare attributi di un elemento HTML. Discuteremo delle direttive in modo approfondito più avanti.</p>
+<h2 id="Sistema-a-Componenti"><a href="#Sistema-a-Componenti" class="headerlink" title="Sistema a Componenti"></a>Sistema a Componenti</h2><p>Il Sistema a Componenti è un altro concetto fondamentale in Vue.js, perché è una astrazione che ci aiuta a costruire applicazioni su larga scala composte da piccoli componenti, isolati e riutilizzabili. Se ci pensiamo, quasi qualsiasi interfaccia si può pensare come un albero a componenti:</p>
+<p><img src="/images/components.png" alt="Albero a Componenti"></p>
+<p>Difatti qualsiasi tipo di applicazione costruita con Vue.js verrà formata esattamente come visto - un albero di componenti. Parleremo più nel dettaglio dei componenti durante il corso di questa guida ma per ora ecco un esempio molto astratto di come assomigli un’interfaccia costruita con i componenti:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">app-nav</span>&gt;</span><span class="tag">&lt;/<span class="name">app-nav</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">app-view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">app-sidebar</span>&gt;</span><span class="tag">&lt;/<span class="name">app-sidebar</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">app-content</span>&gt;</span><span class="tag">&lt;/<span class="name">app-content</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">app-view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Come avrete notato i componenti di Vue.js sono molto simili ai <strong>Componenti Personalizzati</strong> che fanno parte della <a href="http://www.w3.org/wiki/WebComponents/" target="_blank" rel="external">Specifica sui Componenti Web</a>. Difatti, la sintassi dei componenti Vue.js è fatta ad immagine e somiglianza di quelle specifiche. Per esempio implementano la così detta <a href="https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md" target="_blank" rel="external">Slot API</a> e c’è l’attributo speciale <code>is</code> però ci sono alcune differenze sostanziali:</p>
+<ol>
+<li><p>La specifica dei Componenti web è ancora un lavoro non finito, e non tutti i browser implementano tale specifica. Vue.js invece non ha bisogno di nessun supporto per far funzionare i Componenti, e vengono ben interpretati da tutti i browser (IE9 e maggiori versioni). Quando serve, i Componenti Vue.js possono essere anche incapsulati dentro ad elementi nativi.</p>
+</li>
+<li><p>I componenti Vue.js forniscono delle caratteristiche importanti che non si trovano nei classici componenti, le più importanti sono il flusso dei dati tra vari componenti, comunicazione tra componenti totalmente personalizzata, transizioni ad effetto per il cambio di componenti.</p>
+</li>
+</ol>
+<p>Il Sistema a Componenti è un aspetto fondamentale quando si vogliono costruire Applicazioni su Larga scale con Vue.js. Inoltre l’ecostistema di Vue.js fornisce vari strumenti di supporto, librerie, che possono essere messe assieme per creare un’ecosistema molto più simile ad un framework completo.</p>
+
+    
+    <div class="footer">
+      Trovato un errore e vuoi contribuire alla documentazione?
+      <a href="https://github.com/vuejs/it.vuejs.org/blob/master/src/guide/overview.md" target="_blank">
+        Modifica questa pagina su Github!
+      </a>
+    </div>
+</div>
+
+                
+            </div>
+            <script type="text/javascript" src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+            <script src="/js/smooth-scroll.min.js"></script>
+            <script src="/js/common.js"></script>
+        
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        </script>
+    </body>
+</html>

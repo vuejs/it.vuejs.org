@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Per Iniziare - vue.js</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Libreria intuitiva, veloce per costruire interfacce interattive tramite MVVM.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Roboto Mono' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Dosis:300,500&text=Vue.js' rel='stylesheet' type='text/css'>
+        <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="icon" href="/images/logo.png" type="image/x-icon">
+        <script>
+            window.PAGE_TYPE = "guida"
+        </script>
+        <link rel="stylesheet" href="/css/page.css">
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46852172-1', 'vuejs.org');
+  ga('send', 'pageview');
+</script>
+        <script src="/js/vue.js"></script>
+    </head>
+    <body>
+        <div id="mobile-bar">
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        
+            <div id="header">
+    <a id="logo" href="/">
+        <img src="/images/logo.png">
+        <span>Vue.js</span>
+    </a>
+    <ul id="nav">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/guide/" class="nav-link current">Guida</a></li>
+<li><a href="/api/" class="nav-link">API</a></li>
+<li><a href="/examples/" class="nav-link">Esempi</a></li>
+<li><a href="/blog/" class="nav-link">Blog</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">Community</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/vuejs/vue" class="nav-link" target="_blank">GitHub</a></li>
+    <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">Forum</a></li>
+    <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">Chat</a></li>
+    <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+  </ul>
+</li>
+
+
+    </ul>
+</div>
+            <div id="main">
+                
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/guide/" class="nav-link current">Guida</a></li>
+<li><a href="/api/" class="nav-link">API</a></li>
+<li><a href="/examples/" class="nav-link">Esempi</a></li>
+<li><a href="/blog/" class="nav-link">Blog</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">Community</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/vuejs/vue" class="nav-link" target="_blank">GitHub</a></li>
+    <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">Forum</a></li>
+    <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">Chat</a></li>
+    <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+  </ul>
+</li>
+
+
+    </ul>
+    <div class="list">
+        <div id="donate" style="margin-bottom: 20px">
+            <span class="wrapper" style="width: 110px">
+                <img src="/images/patreon.png">
+                <a href="/support-vuejs">Dona a Vue.js</a>
+            </span>
+         </div>
+        <h2>
+            Guida
+            <select class="version-select">
+                <option selected>1.0.*</option>
+                <option>0.12</option>
+                <option>0.11</option>
+            </select>
+        </h2>
+        <ul class="menu-root">
+            
+                <li>
+                    <a href="/guide/installation.html" class="sidebar-link">Installazione</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/index.html" class="sidebar-link current">Per Iniziare</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/overview.html" class="sidebar-link">Panoramica</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/instance.html" class="sidebar-link">L'instanza di Vue</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/syntax.html" class="sidebar-link">Two Way Binding nel Dettaglio</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/computed.html" class="sidebar-link">Proprietà Derivate</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/class-and-style.html" class="sidebar-link">Vincolo sul CSS</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/conditional.html" class="sidebar-link">Rendering Condizionato</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/list.html" class="sidebar-link">Rendering di Liste</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/events.html" class="sidebar-link">Gestione degli Eventi e dei Metodi</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/forms.html" class="sidebar-link">Vincolo sugli input dei Form</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/transitions.html" class="sidebar-link">Transizioni</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/components.html" class="sidebar-link">Componenti</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/reactivity.html" class="sidebar-link">Reattività nel Dettaglio</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/custom-directive.html" class="sidebar-link">Direttive Personalizzate</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/custom-filter.html" class="sidebar-link">Filtri Personalizzati</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/mixins.html" class="sidebar-link">Mixins</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/plugins.html" class="sidebar-link">Plugins</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/application.html" class="sidebar-link">Costruire un'Applicazione scalabile</a>
+                </li>
+            
+                <li>
+                    <a href="/guide/comparison.html" class="sidebar-link">Confronto con altri Framework</a>
+                </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+<div class="content guida with-sidebar">
+    <div id="ad">
+  <span>Sponsorizzato da</span>
+  <br>
+  <a href="https://strikingly.com/s/careers?utm_source=v" target="_blank"
+    style="display:inline-block;padding-top:8px">
+    <img src="/images/strikingly.png">
+  </a>
+  
+</div>
+    <h1>Per Iniziare</h1>
+    <p>Iniziamo con un piccolo e veloce tour di come funziona il binding dei dati.<br>Se sei più interessato a capire come funziona il tutto da una prospettiva più ampia leggi <a href="http://blog.evanyou.me/2015/10/25/vuejs-re-introduction/" target="_blank" rel="external">questo post</a>.</p>
+<p>Il modo più facile di provare Vue.js è di utilizzare <a href="https://jsfiddle.net/yyx990803/okv0rgrk/" target="_blank" rel="external">l’esempio su JSFiddle</a>.<br>Sentiti libero di aprilo in un’altra tab e di seguire l’esempio assieme a questa documentazione, se invece preferisci installare Vue.js consulta la pagina <a href="/guide/installation.html">Installazione</a>.</p>
+<h3 id="Ciao-Mondo"><a href="#Ciao-Mondo" class="headerlink" title="Ciao Mondo!"></a>Ciao Mondo!</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  &#123;&#123; message &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="string">'Ciao Vue.js!'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<div id="app" class="demo">
+  {{ message }}
+</div>
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    message: 'Ciao Vue.js!'
+  }
+})
+</script>
+
+<h3 id="Two-Way-Binding"><a href="#Two-Way-Binding" class="headerlink" title="Two Way Binding"></a>Two Way Binding</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">"message"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="string">'Ciao Vue.js!'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<div id="app2" class="demo">
+  <p>{{ message }}</p>
+  <input v-model="message">
+</div>
+<script>
+new Vue({
+  el: '#app2',
+  data: {
+    message: 'Ciao Vue.js!'
+  }
+})
+</script>
+
+<h3 id="Rappresentare-una-Lista"><a href="#Rappresentare-una-Lista" class="headerlink" title="Rappresentare una Lista"></a>Rappresentare una Lista</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"todo in todos"</span>&gt;</span></span><br><span class="line">      &#123;&#123; todo.text &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    todos: [</span><br><span class="line">      &#123; text: <span class="string">'Impara JavaScript'</span> &#125;,</span><br><span class="line">      &#123; text: <span class="string">'Impara Vue.js'</span> &#125;,</span><br><span class="line">      &#123; text: <span class="string">'Costruisci qualcosa di interessante'</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<div id="app3" class="demo">
+  <ul>
+    <li v-for="todo in todos">
+      {{ todo.text }}
+    </li>
+  </ul>
+</div>
+<script>
+new Vue({
+  el: '#app3',
+  data: {
+    todos: [
+      { text: 'Impara JavaScript' },
+      { text: 'Impara Vue.js' },
+      { text: 'Costruisci qualcosa di interessante' }
+    ]
+  }
+})
+</script>
+
+<h3 id="Gestire-gli-Input"><a href="#Gestire-gli-Input" class="headerlink" title="Gestire gli Input"></a>Gestire gli Input</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"reverseMessage"</span>&gt;</span>Capovolgi il Messaggio<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="string">'Ciao Vue.js!'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    reverseMessage: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.message = <span class="keyword">this</span>.message.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<div id="app4" class="demo">
+  <p>{{ message }}</p>
+  <button v-on:click="reverseMessage">Capovolgi il Messaggio</button>
+</div>
+<script>
+new Vue({
+  el: '#app4',
+  data: {
+    message: 'Ciao Vue.js!'
+  },
+  methods: {
+    reverseMessage: function () {
+      this.message = this.message.split('').reverse().join('')
+    }
+  }
+})
+</script>
+
+<h3 id="Ora-Tutto-Assieme"><a href="#Ora-Tutto-Assieme" class="headerlink" title="Ora Tutto Assieme"></a>Ora Tutto Assieme</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">"newTodo"</span> <span class="attr">v-on:keyup.enter</span>=<span class="string">"addTodo"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"todo in todos"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123; todo.text &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"removeTodo($index)"</span>&gt;</span>X<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    newTodo: <span class="string">''</span>,</span><br><span class="line">    todos: [</span><br><span class="line">      &#123; text: <span class="string">'Aggiungi qualche compito'</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    addTodo: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> text = <span class="keyword">this</span>.newTodo.trim()</span><br><span class="line">      <span class="keyword">if</span> (text) &#123;</span><br><span class="line">        <span class="keyword">this</span>.todos.push(&#123; text: text &#125;)</span><br><span class="line">        <span class="keyword">this</span>.newTodo = <span class="string">''</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    removeTodo: <span class="function"><span class="keyword">function</span> (<span class="params">index</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.todos.splice(index, <span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<div id="app5" class="demo">
+  <input v-model="newTodo" v-on:keyup.enter="addTodo">
+  <ul>
+    <li v-for="todo in todos">
+      <span>{{ todo.text }}</span>
+      <button v-on:click="removeTodo($index)">X</button>
+    </li>
+  </ul>
+</div>
+<script>
+new Vue({
+  el: '#app5',
+  data: {
+    newTodo: '',
+    todos: [
+      { text: 'Aggiungi qualche compito' }
+    ]
+  },
+  methods: {
+    addTodo: function () {
+      var text = this.newTodo.trim()
+      if (text) {
+        this.todos.push({ text: text })
+        this.newTodo = ''
+      }
+    },
+    removeTodo: function (index) {
+      this.todos.splice(index, 1)
+    }
+  }
+})
+</script>
+
+<p>Speriamo che questa introduzione di base vi abbia dato un’idea di come Vue.js lavori.<br>Siamo sicuri che avrete molte domande ora, continuate a leggere questa guida perché vi risponderemo a tutto.</p>
+
+    
+    <div class="footer">
+      Trovato un errore e vuoi contribuire alla documentazione?
+      <a href="https://github.com/vuejs/it.vuejs.org/blob/master/src/guide/index.md" target="_blank">
+        Modifica questa pagina su Github!
+      </a>
+    </div>
+</div>
+
+                
+            </div>
+            <script type="text/javascript" src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+            <script src="/js/smooth-scroll.min.js"></script>
+            <script src="/js/common.js"></script>
+        
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        </script>
+    </body>
+</html>
