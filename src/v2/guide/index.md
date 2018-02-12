@@ -1,30 +1,30 @@
 ---
-title: Introduction
+title: Introduzione
 type: guide
 order: 2
 ---
 
-## What is Vue.js?
+## Cos'è Vue.js?
 
-Vue (pronounced /vjuː/, like **view**) is a **progressive framework** for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable. The core library is focused on the view layer only, and is easy to pick up and integrate with other libraries or existing projects. On the other hand, Vue is also perfectly capable of powering sophisticated Single-Page Applications when used in combination with [modern tooling](single-file-components.html) and [supporting libraries](https://github.com/vuejs/awesome-vue#components--libraries).
+Vue (pronunciato /vjuː/, like **view**) è un **framework progressivo** per costruire interfacce utente. A differenza di altri framework monolitici, Vue è progettato da zero per essere incrementalmente utilizzabile. La libreria principale è focalizzata solo sul livello di visualizzazione ed è facile da integrare con altre librerie o progetti esistenti. D'altra parte, Vue è anche perfettamente in grado di alimentare sofisticate applicazioni a pagina singola quando utilizzato in combinazione con [strumenti moderni](single-file-components.html) e [librerie di supporto](https://github.com/vuejs/awesome-vue#components--libraries).
 
-If you are an experienced frontend developer and want to know how Vue compares to other libraries/frameworks, check out the [Comparison with Other Frameworks](comparison.html).
+Se sei uno sviluppatore di frontend esperto e vuoi vedere un confronto tra Vue e altre librerie/framework, dai un'occhiata a [Confronto con altri Framework](comparison.html).
 
-## Getting Started
+## Inizia
 
-<p class="tip">The official guide assumes intermediate level knowledge of HTML, CSS, and JavaScript. If you are totally new to frontend development, it might not be the best idea to jump right into a framework as your first step - grasp the basics then come back! Prior experience with other frameworks helps, but is not required.</p>
+<p class="tip">La guida ufficiale presuppone la conoscenza di un livello intermedio di HTML, CSS e JavaScript. Se sei totalmente nuovo nello sviluppo del frontend, potrebbe non essere la migliore idea partire direttamente con un framework come primo passo: impara le basi e poi tornare indietro! Le precedenti esperienze con altri framework aiutano, ma non sono necessarie.</p>
 
-The easiest way to try out Vue.js is using the [JSFiddle Hello World example](https://jsfiddle.net/chrisvfritz/50wL7mdz/). Feel free to open it in another tab and follow along as we go through some basic examples. Or, you can <a href="https://gist.githubusercontent.com/chrisvfritz/7f8d7d63000b48493c336e48b3db3e52/raw/ed60c4e5d5c6fec48b0921edaed0cb60be30e87c/index.html" target="_blank" download="index.html">create an <code>index.html</code> file</a> and include Vue with:
+Il modo più facile per provare Vue.js è usare [l'esempio Hello World di JSFiddle](https://jsfiddle.net/chrisvfritz/50wL7mdz/). Sentiti libero di aprirlo in un'altra scheda e di seguirlo mentre passiamo attraverso alcuni esempi di base. Oppure puoi <a href="https://gist.githubusercontent.com/chrisvfritz/7f8d7d63000b48493c336e48b3db3e52/raw/ed60c4e5d5c6fec48b0921edaed0cb60be30e87c/index.html" target="_blank" download="index.html">creare un file <code>index.html</code></a> ed includere Vue così:
 
 ``` html
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 ```
 
-The [Installation](installation.html) page provides more options of installing Vue. Note: We **do not** recommend that beginners start with `vue-cli`, especially if you are not yet familiar with Node.js-based build tools.
+La pagina [Installazione](installation.html) mostra più modi per installare Vue. Nota: **Non** consigliamo ai principianti di iniziare con `vue-cli`, specialmente se non hai familiarità con strumenti basati su Node.js.
 
-## Declarative Rendering
+## Rendering dichiarativo
 
-At the core of Vue.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:
+Al centro di Vue.js c'è un sistema che permette al DOM di mostrare i dati in modo dichiarativo usando una semplice sintassi di template:
 
 ``` html
 <div id="app">
@@ -53,9 +53,9 @@ var app = new Vue({
 </script>
 {% endraw %}
 
-We have already created our very first Vue app! This looks pretty similar to rendering a string template, but Vue has done a lot of work under the hood. The data and the DOM are now linked, and everything is now **reactive**. How do we know? Open your browser's JavaScript console (right now, on this page) and set `app.message` to a different value. You should see the rendered example above update accordingly.
+Abbiamo così creato la nostra prima app Vue! Tutto ciò è molto simile al rendering di una stringa template, ma intanto Vue ha fatto molto lavoro sotto il cofano. I dati e il DOM adesso sono collegati, e ogni cosa adesso è **reattiva**. Come lo sappiamo? Apri la console JavaScript del tuo browser (in questo momento, in questa pagina) e imposta a `app.message` un diverso valore. Dovresti vedere l'esempio mostrato sopra aggiornarsi di conseguenza.
 
-In addition to text interpolation, we can also bind element attributes like this:
+Oltre all'interpolazione del testo, possiamo anche associare attributi così:
 
 ``` html
 <div id="app-2">
