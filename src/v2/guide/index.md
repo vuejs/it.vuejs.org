@@ -35,7 +35,7 @@ Al centro di Vue.js c'è un sistema che permette al DOM di mostrare i dati in mo
 var app = new Vue({
   el: '#app',
   data: {
-    message: 'Hello Vue!'
+    message: 'Ciao Vue!'
   }
 })
 ```
@@ -47,7 +47,7 @@ var app = new Vue({
 var app = new Vue({
   el: '#app',
   data: {
-    message: 'Hello Vue!'
+    message: 'Ciao Vue!'
   }
 })
 </script>
@@ -60,8 +60,8 @@ Oltre all'interpolazione del testo, possiamo anche associare attributi così:
 ``` html
 <div id="app-2">
   <span v-bind:title="message">
-    Hover your mouse over me for a few seconds
-    to see my dynamically bound title!
+    Punta il mouse sopra di me per alcuni secondi
+    per vedere il mio titolo dinamico
   </span>
 </div>
 ```
@@ -69,37 +69,38 @@ Oltre all'interpolazione del testo, possiamo anche associare attributi così:
 var app2 = new Vue({
   el: '#app-2',
   data: {
-    message: 'You loaded this page on ' + new Date().toLocaleString()
+    message: 'Hai caricato questa pagina il ' + new Date().toLocaleString()
   }
 })
 ```
 {% raw %}
 <div id="app-2" class="demo">
   <span v-bind:title="message">
-    Hover your mouse over me for a few seconds to see my dynamically bound title!
+    Punta il mouse sopra di me per alcuni secondi
+    per vedere il mio titolo dinamico
   </span>
 </div>
 <script>
 var app2 = new Vue({
   el: '#app-2',
   data: {
-    message: 'You loaded this page on ' + new Date().toLocaleString()
+    message: 'Hai caricato questa pagina il ' + new Date().toLocaleString()
   }
 })
 </script>
 {% endraw %}
 
-Here we are encountering something new. The `v-bind` attribute you are seeing is called a **directive**. Directives are prefixed with `v-` to indicate that they are special attributes provided by Vue, and as you may have guessed, they apply special reactive behavior to the rendered DOM. Here, it is basically saying "keep this element's `title` attribute up-to-date with the `message` property on the Vue instance."
+Qui abbiamo incontrato qualcosa di nuovo. L'attributo `v-bind` che vedi è chiamato **direttiva**. Le direttive hanno come prefisso `v-` per indicare che sono attributi speciali forniti da Vue, e come avrai intuito, esse applicano dei comportamenti dinamici al DOM renderizzato. In questo caso dice semplicemente "mantenere aggiornato l'attributo `title` di questo elemento con la proprietà` message` dell'istanza Vue".
 
-If you open up your JavaScript console again and enter `app2.message = 'some new message'`, you'll once again see that the bound HTML - in this case the `title` attribute - has been updated.
+Se apri la tua console Javascript e inserisci `app2.message = 'un altro nuovo messaggio'`, vedrai che l'attributo `title` è stato aggiornato.
 
-## Conditionals and Loops
+## Costrutti condizionali e cicli
 
-It's easy to toggle the presence of an element, too:
+E' facile anche modificare la presenza di un elemento:
 
 ``` html
 <div id="app-3">
-  <span v-if="seen">Now you see me</span>
+  <span v-if="seen">Ora mi vedi</span>
 </div>
 ```
 
@@ -114,7 +115,7 @@ var app3 = new Vue({
 
 {% raw %}
 <div id="app-3" class="demo">
-  <span v-if="seen">Now you see me</span>
+  <span v-if="seen">Ora mi vedi</span>
 </div>
 <script>
 var app3 = new Vue({
@@ -126,11 +127,11 @@ var app3 = new Vue({
 </script>
 {% endraw %}
 
-Go ahead and enter `app3.seen = false` in the console. You should see the message disappear.
+Prosegui e inserisci `app3.seen = false` nella console. Dovresti vedere il messaggio scomparire.
 
-This example demonstrates that we can bind data to not only text and attributes, but also the **structure** of the DOM. Moreover, Vue also provides a powerful transition effect system that can automatically apply [transition effects](transitions.html) when elements are inserted/updated/removed by Vue.
+L'esempio dimostra che possiamo legare dati non solamenente a testo e attributi, ma anche alla **struttura** del DOM. Inoltre, Vue dispone anche di un potente sistema di effetti di transizione che automaticamente applica degli [effetti](transitions.html) quando gli elementi sono inseriti/aggiornati/rimossi da Vue.
 
-There are quite a few other directives, each with its own special functionality. For example, the `v-for` directive can be used for displaying a list of items using the data from an Array:
+Ci sono un po' di altre direttive, ognuna delle quali con la propria funzionalità. Per esempio il la direttiva `v-for` che può essere usata per mostrare una lista di elementi usando i dati che provengono da un Array:
 
 ``` html
 <div id="app-4">
@@ -146,9 +147,9 @@ var app4 = new Vue({
   el: '#app-4',
   data: {
     todos: [
-      { text: 'Learn JavaScript' },
-      { text: 'Learn Vue' },
-      { text: 'Build something awesome' }
+      { text: 'Imparare Javascript' },
+      { text: 'Imparare Vue' },
+      { text: 'Costruire qualcosa di bello' }
     ]
   }
 })
@@ -166,32 +167,33 @@ var app4 = new Vue({
   el: '#app-4',
   data: {
     todos: [
-      { text: 'Learn JavaScript' },
-      { text: 'Learn Vue' },
-      { text: 'Build something awesome' }
+      { text: 'Imparare Javascript' },
+      { text: 'Imparare Vue' },
+      { text: 'Costruire qualcosa di bello' }
     ]
   }
 })
 </script>
 {% endraw %}
 
-In the console, enter `app4.todos.push({ text: 'New item' })`. You should see a new item appended to the list.
+Nelle console, inserisci `app4.todos.push({ text: 'Nuovo elemento' })`. Dovresti vedere un nuovo elemento aggiunto alla lista.
 
-## Handling User Input
+## Gestire gli input dell'utente
 
-To let users interact with your app, we can use the `v-on` directive to attach event listeners that invoke methods on our Vue instances:
+Per lasciare gli utenti interagire con la tua app, si può usare la direttiva `v-on` per aggiungere un evento che invochi i metodi sulle nostre istanze di Vue:
+
 
 ``` html
 <div id="app-5">
   <p>{{ message }}</p>
-  <button v-on:click="reverseMessage">Reverse Message</button>
+  <button v-on:click="reverseMessage">Messaggio inverso</button>
 </div>
 ```
 ``` js
 var app5 = new Vue({
   el: '#app-5',
   data: {
-    message: 'Hello Vue.js!'
+    message: 'Ciao Vue.js!'
   },
   methods: {
     reverseMessage: function () {
@@ -203,13 +205,13 @@ var app5 = new Vue({
 {% raw %}
 <div id="app-5" class="demo">
   <p>{{ message }}</p>
-  <button v-on:click="reverseMessage">Reverse Message</button>
+  <button v-on:click="reverseMessage">Messaggio inverso</button>
 </div>
 <script>
 var app5 = new Vue({
   el: '#app-5',
   data: {
-    message: 'Hello Vue.js!'
+    message: 'Ciao Vue.js!'
   },
   methods: {
     reverseMessage: function () {
@@ -220,9 +222,10 @@ var app5 = new Vue({
 </script>
 {% endraw %}
 
-Note that in this method we update the state of our app without touching the DOM - all DOM manipulations are handled by Vue, and the code you write is focused on the underlying logic.
+Nota che in questo metodo abbiamo aggiornato lo stato della nostra app senza toccare il DOM - tutte le manipolazioni DOM sono gestite da Vue, e il codice che scrivi è focalizzato su questa logica.
 
-Vue also provides the `v-model` directive that makes two-way binding between form input and app state a breeze:
+Vue inoltre dispone della direttiva `v-model` che lega gli input di un form con lo stato dell'app:
+
 
 ``` html
 <div id="app-6">
@@ -234,7 +237,7 @@ Vue also provides the `v-model` directive that makes two-way binding between for
 var app6 = new Vue({
   el: '#app-6',
   data: {
-    message: 'Hello Vue!'
+    message: 'Ciao Vue!'
   }
 })
 ```
@@ -247,58 +250,60 @@ var app6 = new Vue({
 var app6 = new Vue({
   el: '#app-6',
   data: {
-    message: 'Hello Vue!'
+    message: 'Ciao Vue!'
   }
 })
 </script>
 {% endraw %}
 
-## Composing with Components
+## Composizione tramite Componenti
 
-The component system is another important concept in Vue, because it's an abstraction that allows us to build large-scale applications composed of small, self-contained, and often reusable components. If we think about it, almost any type of application interface can be abstracted into a tree of components:
+Il sistema di componenti è un altro concetto importante in Vue, in quanto è un'astrazione che permette di costruire applicazioni di larga scala composte da componenti piccoli e molte volte riutilizzabili. Se ci pensiamo, quasi ogni tipo d'interfaccia applicativa può essere astratta in un albero di componenti:
 
-![Component Tree](/images/components.png)
+![Albero di componenti](/images/components.png)
 
-In Vue, a component is essentially a Vue instance with pre-defined options. Registering a component in Vue is straightforward:
+In Vue, un componente è essenzialmente un'istanza di Vue con opzioni predefinite. Registrare un componente in Vue è veloce:
+
 
 ``` js
-// Define a new component called todo-item
+// Definizione di un nuovo componente chiamato todo-item
 Vue.component('todo-item', {
-  template: '<li>This is a todo</li>'
+  template: '<li>Questa è un elemento</li>'
 })
 ```
 
-Now you can compose it in another component's template:
+Adesso puoi aggiungerlo all'interno del template di un'altro componente:
 
 ``` html
 <ol>
-  <!-- Create an instance of the todo-item component -->
+  <!-- Crea un'istanza del componente todo-item -->
   <todo-item></todo-item>
 </ol>
 ```
 
-But this would render the same text for every todo, which is not super interesting. We should be able to pass data from the parent scope into child components. Let's modify the component definition to make it accept a [prop](components.html#Props):
+Facendo questo si stamperà lo stesso testo per ogni `todo-item`, il che non è molto interessante. Dovremmo essere in grado di passare dati dall'istanza padre al componente figlio. Modifichiamo la definizione del componente in modo tale che accetti una [prop](components.html#Props) (o "proprietà"):
+
 
 ``` js
 Vue.component('todo-item', {
-  // The todo-item component now accepts a
-  // "prop", which is like a custom attribute.
-  // This prop is called todo.
+  // Il componente todo-item ora accetta una
+  // "prop", la quale è simile ad un attributo.
+  // Questa prop è chiamata todo.
   props: ['todo'],
   template: '<li>{{ todo.text }}</li>'
 })
 ```
 
-Now we can pass the todo into each repeated component using `v-bind`:
+Ora è possibile passare del testo per ogni componente ripetuto usando il `v-bind`
 
 ``` html
 <div id="app-7">
   <ol>
     <!--
-      Now we provide each todo-item with the todo object
-      it's representing, so that its content can be dynamic.
-      We also need to provide each component with a "key",
-      which will be explained later.
+      Ora forniamo ogni todo-item dell'oggetto todo che rappresenta, 
+      in modo che il suo contenuto possa essere dinamico. 
+      Inoltre, dobbiamo fornire a ciascun componente una "chiave" 
+      la quale verrà spiegata in seguito.
     -->
     <todo-item
       v-for="item in groceryList"
@@ -318,9 +323,9 @@ var app7 = new Vue({
   el: '#app-7',
   data: {
     groceryList: [
-      { id: 0, text: 'Vegetables' },
-      { id: 1, text: 'Cheese' },
-      { id: 2, text: 'Whatever else humans are supposed to eat' }
+      { id: 0, text: 'Verdure' },
+      { id: 1, text: 'Formaggio' },
+      { id: 2, text: 'Qualsiasi altra cosa che gli umani possano mangiare' }
     ]
   }
 })
@@ -340,18 +345,20 @@ var app7 = new Vue({
   el: '#app-7',
   data: {
     groceryList: [
-      { id: 0, text: 'Vegetables' },
-      { id: 1, text: 'Cheese' },
-      { id: 2, text: 'Whatever else humans are supposed to eat' }
+      { id: 0, text: 'Verdure' },
+      { id: 1, text: 'Formaggio' },
+      { id: 2, text: 'Qualsiasi altra cosa che gli umani possano mangiare' }
     ]
   }
 })
 </script>
 {% endraw %}
 
-This is a contrived example, but we have managed to separate our app into two smaller units, and the child is reasonably well-decoupled from the parent via the props interface. We can now further improve our `<todo-item>` component with more complex template and logic without affecting the parent app.
+Questo è un esempio inventato, ma siamo riusciti a separare la nostra app in due unità più piccole, e il figlio è separato dal componente genitore tramite un'interfaccia di prop. Ora possiamo migliorare ulteriormente il nostro componente `<todo-item>` con template e logica più complessa senza interessarre il componente genitore.
 
 In a large application, it is necessary to divide the whole app into components to make development manageable. We will talk a lot more about components [later in the guide](components.html), but here's an (imaginary) example of what an app's template might look like with components:
+
+In grandi applicazioni, è necessario dividere l'intera app in componenti per rendere lo sviluppo più agevole. Parleremo molto di più riguardo ai componenti [più avanti nella guida](components.html), ma qui c'è un esempio (immaginario) di come potrebbe essere il modello di un'app che utilizza i componenti:
 
 ``` html
 <div id="app">
