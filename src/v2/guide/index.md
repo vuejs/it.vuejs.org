@@ -6,7 +6,7 @@ order: 2
 
 ## Cos'è Vue.js?
 
-Vue (pronunciato /vjuː/, like **view**) è un **framework progressivo** per costruire interfacce utente. A differenza di altri framework monolitici, Vue è progettato da zero per essere incrementalmente utilizzabile. La libreria principale è focalizzata solo sul livello di visualizzazione ed è facile da integrare con altre librerie o progetti esistenti. D'altra parte, Vue è anche perfettamente in grado di alimentare sofisticate applicazioni a pagina singola quando utilizzato in combinazione con [strumenti moderni](single-file-components.html) e [librerie di supporto](https://github.com/vuejs/awesome-vue#components--libraries).
+Vue (pronunciato /vjuː/, come **view**) è un **framework progressivo** per costruire interfacce utente. A differenza di altri framework monolitici, Vue è progettato da zero per essere incrementalmente utilizzabile. La libreria principale è focalizzata solo sul livello di visualizzazione ed è facile da integrare con altre librerie o progetti esistenti. D'altra parte, Vue è anche perfettamente in grado di alimentare sofisticate applicazioni a pagina singola quando utilizzato in combinazione con [strumenti moderni](single-file-components.html) e [librerie di supporto](https://github.com/vuejs/awesome-vue#components--libraries).
 
 Se sei uno sviluppatore di frontend esperto e vuoi vedere un confronto tra Vue e altre librerie/framework, dai un'occhiata a [Confronto con altri Framework](comparison.html).
 
@@ -17,6 +17,13 @@ Se sei uno sviluppatore di frontend esperto e vuoi vedere un confronto tra Vue e
 Il modo più facile per provare Vue.js è usare [l'esempio Hello World di JSFiddle](https://jsfiddle.net/chrisvfritz/50wL7mdz/). Sentiti libero di aprirlo in un'altra scheda e di seguirlo mentre passiamo attraverso alcuni esempi di base. Oppure puoi <a href="https://gist.githubusercontent.com/chrisvfritz/7f8d7d63000b48493c336e48b3db3e52/raw/ed60c4e5d5c6fec48b0921edaed0cb60be30e87c/index.html" target="_blank" download="index.html">creare un file <code>index.html</code></a> ed includere Vue così:
 
 ``` html
+<!-- versione per lo sviluppo, include utili messaggi d'avviso -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+```
+oppure:
+
+``` html
+<!-- versione per la produzione, ottimizzata per dimesione e velocità -->
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 ```
 
@@ -356,8 +363,6 @@ var app7 = new Vue({
 
 Questo è un esempio inventato, ma siamo riusciti a separare la nostra app in due unità più piccole, e il figlio è separato dal componente genitore tramite un'interfaccia di prop. Ora possiamo migliorare ulteriormente il nostro componente `<todo-item>` con template e logica più complessa senza interessarre il componente genitore.
 
-In a large application, it is necessary to divide the whole app into components to make development manageable. We will talk a lot more about components [later in the guide](components.html), but here's an (imaginary) example of what an app's template might look like with components:
-
 In grandi applicazioni, è necessario dividere l'intera app in componenti per rendere lo sviluppo più agevole. Parleremo molto di più riguardo ai componenti [più avanti nella guida](components.html), ma qui c'è un esempio (immaginario) di come potrebbe essere il modello di un'app che utilizza i componenti:
 
 ``` html
@@ -370,14 +375,15 @@ In grandi applicazioni, è necessario dividere l'intera app in componenti per re
 </div>
 ```
 
-### Relation to Custom Elements
+### Relazione con gli elementi personalizzati
 
-You may have noticed that Vue components are very similar to **Custom Elements**, which are part of the [Web Components Spec](https://www.w3.org/wiki/WebComponents/). That's because Vue's component syntax is loosely modeled after the spec. For example, Vue components implement the [Slot API](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md) and the `is` special attribute. However, there are a few key differences:
+Potrai aver notato che i componenti Vue sono molto simili agli **elementi personalizzati** i quali fanno parte della [specifica dei componenti Web](https://www.w3.org/wiki/WebComponents/). Questo perché la sintassi dei componenti di Vue è modellata in modo approssimativo su questa specifica. Per esempio, i componenti Vue implementano lo [Slot API](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md) e l'attributo speciale `is`. Però ci sono delle differenze fondamentali:
 
-1. The Web Components Spec is still in draft status, and is not natively implemented in every browser. In comparison, Vue components don't require any polyfills and work consistently in all supported browsers (IE9 and above). When needed, Vue components can also be wrapped inside a native custom element.
+1. La specifica dei componenti Web è ancora una bozza, e non implementata in modo nativo in ogni browser. Confrontando, i componenti Vue non hanno bisogno di polyfill e funzionano costantemente in tutti i browser supportati (IE9 e superiori).
+Quando necessario, i componenti Vue possono essere anche inseriti all'interno di elementi nativi personalizzati.
 
-2. Vue components provide important features that are not available in plain custom elements, most notably cross-component data flow, custom event communication and build tool integrations.
+2. I componenti Vue forniscono delle importanti caratteristiche che non sono disponibili in semplici elementi personalizzati, in particolare flusso di dati a componenti incrociati, comunicazione di eventi personalizzati e integrazioni di strumenti di build.
 
-## Ready for More?
+## Pronto per altro? 
 
-We've briefly introduced the most basic features of Vue.js core - the rest of this guide will cover them and other advanced features with much finer details, so make sure to read through it all!
+Abbiamo brevemente introdotto la maggior parte delle caratterische Vue.js - il resto di questa guida coprirà queste e altre funzionalità avanzate con dettagli più precisi, quindi assicurati di leggere tutto! 
