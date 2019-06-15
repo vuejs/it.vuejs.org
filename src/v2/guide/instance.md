@@ -1,24 +1,24 @@
 ---
-title: The Vue Instance
+title: L'istanza di Vue
 type: guide
 order: 3
 ---
 
-## Creating a Vue Instance
+## Creare un'istanza di Vue
 
-Every Vue application starts by creating a new **Vue instance** with the `Vue` function:
+Ogni applicazione Vue inizia creando una nuova **istanza di Vue** con la funzione `Vue`:
 
 ```js
 var vm = new Vue({
-  // options
+  // opzioni
 })
 ```
 
-Although not strictly associated with the [MVVM pattern](https://en.wikipedia.org/wiki/Model_View_ViewModel), Vue's design was partly inspired by it. As a convention, we often use the variable `vm` (short for ViewModel) to refer to our Vue instance.
+Sebbene non sia strettamente assiociato con il [pattern MVVM](https://en.wikipedia.org/wiki/Model_View_ViewModel), il design di Vue è in parte ispirato ad esso. Come convenzione, usiamo spesso la variabile `vm` (abbreviazione di ViewModel) per fare riferimento alla nostra istanza di Vue. 
 
-When you create a Vue instance, you pass in an **options object**. The majority of this guide describes how you can use these options to create your desired behavior. For reference, you can also browse the full list of options in the [API reference](../api/#Options-Data).
+Quando crei un'istanza di Vue, passi un **oggetto di opzioni**. La maggior parte di questa guida descrive come utilizzare queste opzioni per creare il comportamento desiderato. Puoi anche cercare la lista completa delle opzioni facendo [riferimento alle API](../api/#Options-Data).
 
-A Vue application consists of a **root Vue instance** created with `new Vue`, optionally organized into a tree of nested, reusable components. For example, a todo app's component tree might look like this:
+Una applicazione Vue consiste in un'**istanza principale di Vue** (Root Instance) creata con `new Vue`, opzionalmente organizzata in un albero di componenti nidificati e riutilizzabili. Per esempio, un albero di componenti di una todo app potrebbe assomigliare a questo:
 
 ```
 Root Instance
@@ -31,7 +31,7 @@ Root Instance
       └─ TodoListStatistics
 ```
 
-We'll talk about [the component system](components.html) in detail later. For now, just know that all Vue components are also Vue instances, and so accept the same options object (except for a few root-specific options).
+Parleremo nel dettaglio del [sistema di componenti](components.html) più avanti. Per ora, basta sapere che tutti i componenti Vue sono anche istanze di Vue, e quandi accettano lo stesso oggetto di opzioni (con eccezioni di alcune opzioni specifiche).
 
 ## Data and Methods
 
