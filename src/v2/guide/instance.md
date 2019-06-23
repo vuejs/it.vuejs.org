@@ -31,7 +31,7 @@ Root Instance
       └─ TodoListStatistics
 ```
 
-Parleremo nel dettaglio del [sistema di componenti](components.html) più avanti. Per ora, basta sapere che tutti i componenti Vue sono anche istanze di Vue, e quandi accettano lo stesso oggetto di opzioni (con eccezioni di alcune opzioni specifiche).
+Parleremo nel dettaglio del [sistema di componenti](components.html) più avanti. Per ora, basta sapere che tutti i componenti Vue sono anche istanze di Vue, e quindi accettano lo stesso oggetto di opzioni (con eccezioni di alcune opzioni specifiche).
 
 ## Dati e metodi
 
@@ -60,13 +60,13 @@ data.a = 3
 vm.a // => 3
 ```
 
-Quando questo dati cambiano, la vista si renderizzaerà nuovamente. Si vuol far notare che le proprietà in `data` sono solamente **reattive** se esistitono nel momento in cui l'istanza è creata. Questo significa che si aggiunge una nuova proprietà come:
+Quando questi dati cambiano, la vista si renderizzaerà nuovamente. Si vuol far notare che le proprietà in `data` sono solamente **reattive** se esistitono nel momento in cui l'istanza è creata. Questo significa che se si aggiunge una nuova proprietà come:
 
 ```js
 vm.b = 'ciao'
 ```
 
-Quindi le modifiche a `b` non attivano alcun aggiornamento di visualizzazione. Se sai che avrai bisogno di aggiungere un proprietà più tardi, ma inizia come vuota o che non esiste, avrai bisogno di inizializzare qualche valore iniziale. Per esempio:
+Le modifiche a `b` non attivano alcun aggiornamento di visualizzazione. Se sai che avrai bisogno di aggiungere un proprietà più tardi, ma inizia come vuota o non esistente, avrai bisogno di inizializzare qualche valore iniziale. Per esempio:
 
 ```js
 data: {
@@ -128,7 +128,7 @@ Nel futuro, puoi consulate le [API](../api/#Instance-Properties) per una lista c
 
 ## Ciclo di vita dei componenti
 
-Ogni istanza di Vue passa attraverso una serie di passi di inizializzazione quando è creata - per esempio, ha bisogno di impostare l'osservazione dei dati, compilare il template, montare l'istanza sul DOM e aggiornare il DOM quando i dati cambiano. Inoltre avvia delle funzioni chiamate **lifecycle hooks**, le quali danno agli utenti l'oppurtunità di aggiungere to aggiungere il loro codice in fasi specifiche.
+Ogni istanza di Vue passa attraverso una serie di passi di inizializzazione quando è creata - per esempio, ha bisogno di impostare l'osservazione dei dati, compilare il template, montare l'istanza sul DOM e aggiornare il DOM quando i dati cambiano. Inoltre avvia delle funzioni chiamate **lifecycle hooks**, le quali danno agli utenti l'oppurtunità di aggiungere il loro codice in fasi specifiche.
 
 Per esempio, la funzione [`created`](../api/#created) può essere usata per eseguire codice dopo che l'istanza è creata:
 
@@ -146,11 +146,9 @@ new Vue({
 // => "a equivale: 1"
 ```
 
-Ci sono altri `hooks` che saranno chiamati in fasi diverse del ciclo di vitab dell'istanza, come [`mounted`](../api/#mounted), [`updated`](../api/#updated), e [`destroyed`](../api/#destroyed).
+Ci sono altri `hook` che saranno chiamati in fasi diverse del ciclo di vita dell'istanza, come [`mounted`](../api/#mounted), [`updated`](../api/#updated), e [`destroyed`](../api/#destroyed). Tutti i lifecycle hook sono chiamati con il `this` che punta all'istanza Vue che li invoca.
 
-There are also other hooks which will be called at different stages of the instance's lifecycle, such as [`mounted`](../api/#mounted), [`updated`](../api/#updated), and [`destroyed`](../api/#destroyed). All lifecycle hooks are called with their `this` context pointing to the Vue instance invoking it. Tutti i lifecycle hooks sono chiamati con il loro `this` che punta all'istanza Vue che li invoca.
-
-<p class="tip">Non utilizzare le [arrow function](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) nelle proprietà delle opzioni o nei callback, come `created: () => console.log(this.a)` o `vm.$watch('a', newValue => this.myMethod())`. Da quando le arrow function sono legate al contesto genitore, `this` non sarà l'istanza di Vue come ci si aspetterebbe, spesso potrebbero esserci errori come `Uncaught TypeError: Cannot read property of undefined` or `Uncaught TypeError: this.myMethod is not a function`.<p>
+<p class="tip">Non utilizzare le [arrow function](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions) nelle proprietà delle opzioni o nei callback, come `created: () => console.log(this.a)` o `vm.$watch('a', newValue => this.myMethod())`. Da quando le arrow function sono legate al contesto genitore, `this` non sarà l'istanza di Vue come ci si aspetterebbe e spesso potrebbero generarsi errori come `Uncaught TypeError: Cannot read property of undefined` o `Uncaught TypeError: this.myMethod is not a function`.<p>
 
 ## Diagramma del ciclo di vita
 
