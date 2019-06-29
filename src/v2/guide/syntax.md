@@ -1,14 +1,14 @@
 ---
-title: Template Syntax
+title: Sintassi del template
 type: guide
 order: 4
 ---
 
-Vue.js uses an HTML-based template syntax that allows you to declaratively bind the rendered DOM to the underlying Vue instance's data. All Vue.js templates are valid HTML that can be parsed by spec-compliant browsers and HTML parsers.
+Vue.js utilizza una sintassi di template basata su HTML che permette di associare in modo dichiarativo il DOM renderizzato ai dati dell'istanza di Vue sottostante. Tutti i template Vue.js è valido HTML che può essere analizzato da browser compatibili con le specifiche e da parser HTML.
 
-Under the hood, Vue compiles the templates into Virtual DOM render functions. Combined with the reactivity system, Vue is able to intelligently figure out the minimal number of components to re-render and apply the minimal amount of DOM manipulations when the app state changes.
+Sotto il cofano, Vue compila i template in funzioni di render del DOM virtuale. Combinato con il sistema di reattività, Vue è in grado di comprendere in modo intelligente il minimo numero di componenti da re-renderizzare e applicare la quantità minima di manipolazioni DOM quando lo stato dell'app cambia.
 
-If you are familiar with Virtual DOM concepts and prefer the raw power of JavaScript, you can also [directly write render functions](render-function.html) instead of templates, with optional JSX support.
+Se sei familiare con i concetti del DOM virtuale e preferisci la potenza cruda di Javascript, puoi anche [scrivere direttamente funzioni di render](render-function.html) al posto di template, con supporto opzionale di JSX.
 
 ## Interpolations
 
