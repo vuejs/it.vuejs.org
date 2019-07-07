@@ -10,69 +10,69 @@ Sotto il cofano, Vue compila i template in funzioni di render del DOM virtuale. 
 
 Se sei familiare con i concetti del DOM virtuale e preferisci la potenza cruda di Javascript, puoi anche [scrivere direttamente funzioni di render](render-function.html) al posto di template, con supporto opzionale di JSX.
 
-## Interpolations
+## Interpolazioni
 
-### Text
+### Testo
 
-The most basic form of data binding is text interpolation using the "Mustache" syntax (double curly braces):
+La forma più semplice di associazione dei dati è la interpolazione del testo utilizzando la sintassi "Mustache" (doppie parantesi graffe)
+
 
 ``` html
-<span>Message: {{ msg }}</span>
+<span>Messaggio: {{ msg }}</span>
 ```
 
-The mustache tag will be replaced with the value of the `msg` property on the corresponding data object. It will also be updated whenever the data object's `msg` property changes.
+Il tag mustache sarà sostituito con il valore della proprietà `msg` nel corrispondente oggetto dati. Sarà inoltre aggiornato ogni volta che la proprietà delll'oggetto dati `msg` camabia.
 
-You can also perform one-time interpolations that do not update on data change by using the [v-once directive](../api/#v-once), but keep in mind this will also affect any binding on the same node:
+È anche possibile eseguire interpolazioni una tantum che non si aggiorna sulla modifica dei dati usando la [direttiva v-once](../api/#v-once), ma tieni presente che ciò influirà anche su qualsiasi associazione sullo stesso nodo:
 
 ``` html
-<span v-once>This will never change: {{ msg }}</span>
+<span v-once>Questo non cambierà mai: {{ msg }}</span>
 ```
 
 ### Raw HTML
 
-The double mustaches interprets the data as plain text, not HTML. In order to output real HTML, you will need to use the `v-html` directive:
+La sintassi mustaches interpreta i dati come testo normale, non HTML. Per generare un vero codice HTML, avrai bisogno di utilizzare la direttiva `v-html` 
 
 ``` html
-<p>Using mustaches: {{ rawHtml }}</p>
-<p>Using v-html directive: <span v-html="rawHtml"></span></p>
+<p>Usando la sintassi mustaches: {{ rawHtml }}</p>
+<p>Usando la direttiva v-html: <span v-html="rawHtml"></span></p>
 ```
 
 {% raw %}
 <div id="example1" class="demo">
-  <p>Using mustaches: {{ rawHtml }}</p>
-  <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+  <p>Usando la sintassi mustaches: {{ rawHtml }}</p>
+  <p>Usando la direttiva v-html: <span v-html="rawHtml"></span></p>
 </div>
 <script>
 new Vue({
   el: '#example1',
   data: function () {
   	return {
-  	  rawHtml: '<span style="color: red">This should be red.</span>'
+  	  rawHtml: '<span style="color: red">Questo dovrebbe essere rosso</span>'
   	}
   }
 })
 </script>
 {% endraw %}
 
-The contents of the `span` will be replaced with the value of the `rawHtml` property, interpreted as plain HTML - data bindings are ignored. Note that you cannot use `v-html` to compose template partials, because Vue is not a string-based templating engine. Instead, components are preferred as the fundamental unit for UI reuse and composition.
+I contenuti dello `span` saranno sostituiti con il valore dalla proprietà `rawHtml`, interpretata come HTML semplice - l'associzione dei dati viene ignorata. Nota che non puoi usare `v-html` per comporre template parziali, perchè Vue non è un engine basato sulle stringhe. Invece, i componenti sono preferiti come unità fondamentali per il riutilizzo e la composizione dell'interfaccia utente.
 
-<p class="tip">Dynamically rendering arbitrary HTML on your website can be very dangerous because it can easily lead to [XSS vulnerabilities](https://en.wikipedia.org/wiki/Cross-site_scripting). Only use HTML interpolation on trusted content and **never** on user-provided content.</p>
+<p class="tip">Renderizzare dinamicamente HTML arbitrario sul tuo sito potrebbe essere davvero pericoloso perchè può condurre facilmente alle [vulnerabilità XSS](https://en.wikipedia.org/wiki/Cross-site_scripting). Usa solo l'interpolazione HTML su contenuto fidato e **mai** su contenuto fornito dall'utente.</p>
 
-### Attributes
+### Attributi
 
-Mustaches cannot be used inside HTML attributes. Instead, use a [v-bind directive](../api/#v-bind):
+La sintassi mustaches non può essere utilizzata all'interno di attributi HTML. Invece, viene utilizzata la [direttiva v-bind](../api/#v-bind):
 
 ``` html
 <div v-bind:id="dynamicId"></div>
 ```
-
-In the case of boolean attributes, where their mere existence implies `true`, `v-bind` works a little differently. In this example: 
+In caso di attributi booleani, dove la loro semplice esistenza implica `true`, ` v-bind` funziona in modo un po' diverso. In questo esempio:
 
 ``` html
-<button v-bind:disabled="isButtonDisabled">Button</button>
+<button v-bind:disabled="isButtonDisabled">Bottone</button>
 ```
 
-If `isButtonDisabled` has the value of `null`, `undefined`, or `false`, the `disabled` attribute will not even be included in the rendered `<button>` element.
+Se `isButtonDisabled` ha come valore `null`, `undefined`, o `false`, l'attributo `disabled` non verrà incluso nell'elemento `<button>` renderizzato.
 
 ### Using JavaScript Expressions
 
