@@ -1,6 +1,6 @@
 # it.vuejs.org
 
-Il sito web è sviluppato utilizzando [hexo](http://hexo.io/). SIl contenuto del sito è scritto sotto forma di Markdown ed è situato nella cartella `src`. Vuoi contribuire? Invia una pull request
+Il sito web è sviluppato utilizzando [hexo](http://hexo.io/). Il contenuto del sito è scritto sotto forma di Markdown ed è situato nella cartella `src`. Vuoi contribuire? Invia una pull request
 
 ## Sviluppo
 
