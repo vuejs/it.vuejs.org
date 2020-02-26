@@ -1,6 +1,6 @@
 # it.vuejs.org
 
-Il sito web è sviluppato utilizzando [hexo](http://hexo.io/). SIl contenuto del sito è scritto sotto forma di Markdown ed è situato nella cartella `src`. Vuoi contribuire? Invia una pull request
+Il sito web è sviluppato utilizzando [hexo](http://hexo.io/). Il contenuto del sito è scritto sotto forma di Markdown ed è situato nella cartella `src`. Vuoi contribuire? Invia una pull request!
 
 ## Sviluppo
 
@@ -9,21 +9,21 @@ $ npm install
 $ npm start # dev server at http://localhost:4000
 ```
 
-## Distribuzione
+## Deploy
 
-Il sito viene distribuito utilizzando le pagine GitHub, pertanto è necessario l'accesso push al repository it.vuejs.org per eseguire lo script di distribuzione:
+Il sito viene pubblicato utilizzando GitHub Pages, pertanto è necessario l'accesso push al repository it.vuejs.org per eseguire lo script di deploy:
 
 ``` bash
 $ npm run deploy
 ```
 
-Se si sta lavorando su un fork e si esegue la distribuzione su un URL diverso, è necessario aggiornare di conseguenza:
+Se si sta lavorando su un fork e si esegue la pubblicazione su un URL diverso, è necessario aggiornare di conseguenza:
 
 - `url` and `deploy` sections in `_config.yml`
 - `src/CNAME`
 
 ### Vuoi aiutare con la traduzione?
 
-Se ti senti a posto con la traduzione di qualche tipo da solo, puoi dare un fork al repository, creare un problema "work in progress" per informare gli altri che stai facendo la traduzione e andare a farlo.
+Se ti senti confidente a procedere con la traduzione da solo, puoi creare un fork del repository, assieme a una issue "work in progress" per informare gli altri di cosa ti vuoi occupare e procedere con la traduzione.
 
 Grazie mille ;)
